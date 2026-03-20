@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yonder AI — Chin-May Aradhye</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #F5F4F0;
+  --surface:   #FFFFFF;
+  --elevated:  #EEECEA;
+  --border:    rgba(255,255,255,0.07);
+  --text:      rgba(18,18,20,1);
+  --muted:     rgba(80,82,96,1);
+  --amber:     rgba(166,118,36,1);
+  --amber-dim: rgba(166,118,36,0.1);
+  --amber-border: rgba(166,118,36,0.3);
+  --purple:    rgba(140,100,220,1);
+  --purple-bg: rgba(18,10,32,1);
+  --font:      'Nunito Sans', sans-serif;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: sticky; top:0; z-index:100;
+  background:rgba(245,244,240,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 160px; height: 60px;
+}
+.nav-logo { font-weight:700; font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--text); text-decoration:none; }
+.nav-links { display:flex; gap:36px; }
+.nav-links a { text-decoration:none; font-size:13px; font-weight:500; color:var(--muted); transition:color .18s; }
+.nav-links a:hover { color:var(--text); }
+.nav-links a.active { color:var(--amber); }
+
+/* BACK LINK */
+.back-link {
+  display: inline-flex; align-items: center; gap:8px;
+  padding: 24px 160px 0;
+  font-size:12px; font-weight:600; color:var(--muted);
+  text-decoration:none; letter-spacing:0.04em;
+  transition: color .18s; text-transform:uppercase;
+}
+.back-link:hover { color:var(--text); }
+.back-link::before { content:'←'; font-size:14px; }
+
+/* HERO */
+.case-hero {
+  padding: 40px 160px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+}
+.case-hero-content { padding-bottom: 60px; }
+.case-tag {
+  display: inline-flex; align-items:center; gap:8px;
+  padding: 5px 12px; border-radius:4px;
+  background: var(--amber-dim); border: 1px solid var(--amber-border);
+  font-size:10px; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--amber);
+  margin-bottom: 24px;
+}
+.case-tag-dot { width:5px; height:5px; background:var(--amber); border-radius:50%; }
+.case-hero-content h1 {
+  font-size: 52px; font-weight: 700; line-height: 1.06;
+  letter-spacing: -0.025em; color: var(--text);
+  margin-bottom: 16px;
+}
+.case-hero-content h1 em {
+  font-style: italic; font-weight: 300;
+  color: rgba(255,255,255,0.55);
+}
+.case-subtitle {
+  font-size: 18px; font-weight: 400; line-height: 1.6;
+  color: var(--muted); margin-bottom: 36px; max-width: 480px;
+}
+.case-meta-row {
+  display: flex; gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden;
+  width: fit-content;
+}
+.meta-cell {
+  padding: 14px 24px;
+  border-right: 1px solid var(--border);
+  min-width: 120px;
+}
+.meta-cell:last-child { border-right: none; }
+.meta-label {
+  font-size: 10px; font-weight: 700; letter-spacing:.12em;
+  text-transform: uppercase; color:rgba(139,140,154,0.4);
+  margin-bottom: 4px;
+}
+.meta-val { font-size: 15px; font-weight: 600; color: var(--text); }
+.meta-val.highlight { color: var(--amber); }
+
+/* HERO IMAGE */
+.case-hero-img {
+  height: 480px; overflow: hidden;
+  background: var(--purple-bg);
+  position: relative;
+  border-radius: 12px 12px 0 0;
+  border: 1px solid rgba(140,100,220,0.15);
+  border-bottom: none;
+}
+.case-hero-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center top;
+  opacity: 0.92; transition: transform 0.6s ease;
+}
+.case-hero-img:hover img { transform: scale(1.02); }
+.case-hero-img-overlay {
+  position:absolute; inset:0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(18,10,32,0.7));
+  pointer-events: none;
+}
+
+/* CONTENT BODY */
+.case-body {
+  padding: 80px 160px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* SIDEBAR */
+.sidebar { position: sticky; top: 80px; }
+.sidebar-section { margin-bottom: 36px; }
+.sidebar-label {
+  font-size: 10px; font-weight: 700; letter-spacing:.16em;
+  text-transform:uppercase; color: rgba(139,140,154,0.4);
+  margin-bottom: 12px;
+}
+.sidebar-val { font-size:14px; font-weight:500; color:var(--text); line-height:1.5; }
+.sidebar-val a { color:var(--amber); text-decoration:none; }
+.sidebar-val a:hover { text-decoration:underline; }
+.outcomes-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.outcomes-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; color: var(--muted); line-height: 1.5;
+}
+.outcomes-list li::before {
+  content:'→'; color:var(--amber); font-size:12px;
+  margin-top:1px; flex-shrink:0;
+}
+.sidebar-divider { height:1px; background:var(--border); margin:28px 0; }
+
+/* MAIN CONTENT */
+.case-main h2 {
+  font-size: 28px; font-weight: 700; letter-spacing: -0.015em;
+  color: var(--text); margin-bottom: 16px; margin-top: 48px; line-height: 1.2;
+}
+.case-main h2:first-child { margin-top: 0; }
+.case-main p {
+  font-size: 15px; line-height: 1.8; color: var(--muted);
+  margin-bottom: 20px; font-weight: 400;
+}
+.case-main strong { color: var(--text); font-weight: 600; }
+
+.pull-quote {
+  margin: 36px 0;
+  padding: 24px 28px;
+  border-left: 3px solid var(--amber);
+  background: var(--surface);
+  border-radius: 0 8px 8px 0;
+}
+.pull-quote p {
+  font-size: 18px; font-weight: 300; font-style: italic;
+  line-height: 1.65; color: var(--text); margin: 0;
+}
+
+.image-block {
+  margin: 36px 0; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--purple-bg);
+}
+.image-block img {
+  width: 100%; height: auto; display: block;
+  opacity: 0.92; transition: opacity 0.25s;
+}
+.image-block:hover img { opacity: 1; }
+.image-caption {
+  padding: 12px 16px;
+  font-size: 12px; color: var(--muted);
+  border-top: 1px solid var(--border);
+  font-weight: 500;
+}
+
+.stat-callout-row {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px; margin: 36px 0;
+}
+.stat-callout {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+  transition: border-color .2s;
+}
+.stat-callout:hover { border-color: var(--amber-border); }
+.sc-val {
+  font-size: 32px; font-weight: 700; color: var(--amber);
+  letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px;
+}
+.sc-lbl { font-size: 12px; font-weight: 500; color: var(--muted); }
+
+/* NEXT CASE -->  */
+.next-case {
+  padding: 0 160px 80px;
+  border-top: 1px solid var(--border);
+  padding-top: 60px;
+}
+.next-case-label {
+  font-size: 10px; font-weight: 700; letter-spacing:.18em;
+  text-transform:uppercase; color:rgba(139,140,154,0.4);
+  margin-bottom: 20px;
+}
+.next-case-card {
+  display: block; text-decoration: none; color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden;
+  max-width: 480px;
+  transition: transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s, border-color .2s;
+}
+.next-case-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+  border-color: rgba(255,255,255,0.11);
+}
+.next-case-img { height: 160px; background: rgba(8,21,16,1); overflow:hidden; }
+.next-case-img img { width:100%; height:100%; object-fit:cover; opacity:.8; }
+.next-case-body { padding: 16px 20px 20px; }
+.next-case-num { font-size:10px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:rgba(139,140,154,0.4); margin-bottom:6px; }
+.next-case-title { font-size:18px; font-weight:600; color:var(--text); margin-bottom:4px; }
+.next-case-arrow { font-size:12px; color:rgba(139,140,154,0.4); font-weight:600; transition:color .18s, padding-left .18s; }
+.next-case-card:hover .next-case-arrow { color:var(--amber); padding-left:4px; }
+
+/* FOOTER */
+footer { display:flex; align-items:center; justify-content:space-between; padding:20px 160px; border-top:1px solid var(--border); }
+.fc { font-size:12px; color:rgba(139,140,154,0.35); }
+.fl { display:flex; gap:28px; }
+.fl a { font-size:12px; text-decoration:none; font-weight:500; color:rgba(139,140,154,0.4); transition:color .18s; }
+.fl a:hover { color:var(--text); }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.case-hero-content { animation: fadeUp .45s ease both; }
+.case-hero-img { animation: fadeUp .45s .1s ease both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="light-chinmay-v3-home.html">Chin-May</a>
+  <div class="nav-links">
+    <a href="light-chinmay-v3-home.html" class="active">Work</a>
+    <a href="light-research.html">Research</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<a class="back-link" href="light-chinmay-v3-home.html">All work</a>
+
+<section class="case-hero">
+  <div class="case-hero-content">
+    <div class="case-tag">
+      <div class="case-tag-dot"></div>
+      02 — Yonder AI · Acquired by Primer AI · Apr–Nov 2021
+    </div>
+    <h1>The $30M exit.<br><em>Designed from scratch.</em></h1>
+    <p class="case-subtitle">I joined Yonder AI as the founding designer when it was an idea and a whiteboard. Eight months later it was acquired by Primer AI for $30M. This is how we built it.</p>
+    <div class="case-meta-row">
+      <div class="meta-cell">
+        <div class="meta-label">Exit value</div>
+        <div class="meta-val highlight">$30M</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Timeline</div>
+        <div class="meta-val">Apr–Nov 2021</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">My role</div>
+        <div class="meta-val">Design Lead</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Stage</div>
+        <div class="meta-val">0→1 · Series A</div>
+      </div>
+    </div>
+  </div>
+  <div class="case-hero-img">
+    <img
+      src="https://static.wixstatic.com/media/a0fcc9_ed32c29c9c224ebbb1c0df4777035780~mv2.png/v1/fill/w_900,h_900,al_c,q_85/a0fcc9_ed32c29c9c224ebbb1c0df4777035780~mv2.png"
+      alt="Yonder AI — Social Media Intelligence Platform"
+      onerror="this.style.display='none'"
+    >
+    <div class="case-hero-img-overlay"></div>
+  </div>
+</section>
+
+<div class="case-body">
+  <div class="case-main">
+
+    <h2>The problem worth $30M</h2>
+    <p>Enterprise brands were drowning in social data. They had access to everything — Twitter firehoses, Reddit threads, news mentions — but no way to extract the signal from the noise at speed. Analysts were spending 80% of their time on data collection and 20% on insight. It was backwards.</p>
+    <p>Yonder AI was built to invert that ratio. Using NLP and machine learning, the platform surfaced the narratives, actors, and coordinated behaviors that actually mattered — in near real-time. My job was to turn that technical capability into something a brand strategist could act on Monday morning.</p>
+
+    <div class="pull-quote">
+      <p>"The hardest design problem wasn't making it beautiful. It was making a political scientist feel as comfortable in the tool as a data scientist."</p>
+    </div>
+
+    <h2>Starting from nothing</h2>
+    <p>I joined in April 2021 as the founding designer. There was no design system, no user research, no existing UI. The engineering team had built a powerful NLP pipeline that nobody outside the company had seen. My first two weeks were entirely in discovery — talking to the target buyers (brand intelligence teams at Fortune 500 companies) to understand their actual workflows, mental models, and vocabulary.</p>
+    <p>The key insight: <strong>these users didn't think in data structures.</strong> They thought in narratives. They asked questions like "why is this brand suddenly toxic?" not "show me sentiment trends for this keyword over 30 days." The product had to meet them there.</p>
+
+    <div class="image-block">
+      <img
+        src="https://static.wixstatic.com/media/a0fcc9_ed32c29c9c224ebbb1c0df4777035780~mv2.png/v1/fill/w_1200,h_720,al_c,q_85/a0fcc9_ed32c29c9c224ebbb1c0df4777035780~mv2.png"
+        alt="Yonder AI — Narrative Intelligence Dashboard"
+        onerror="this.style.display='none'"
+      >
+      <div class="image-caption">Narrative intelligence dashboard — surfacing coordinated social behaviors in real time</div>
+    </div>
+
+    <h2>The design principles that drove every decision</h2>
+    <p>We established three principles early and held to them through every sprint:</p>
+    <p><strong>1. Answers before data.</strong> Every view should answer a question, not present a dataset. We ruthlessly cut charts and tables that described what happened in favor of interfaces that explained why and what next.</p>
+    <p><strong>2. Confidence at a glance.</strong> The target user needed to walk into a boardroom and say "here's what's happening." That required the UI to communicate certainty levels, source quality, and recency without making the user think about it.</p>
+    <p><strong>3. The footnote earns the headline.</strong> Every insight needed to be drill-able. A strategist had to be able to show their work — trace any claim back to raw sources — without that complexity surfacing unless asked for.</p>
+
+    <div class="stat-callout-row">
+      <div class="stat-callout">
+        <div class="sc-val">$30M</div>
+        <div class="sc-lbl">Acquisition by Primer AI</div>
+      </div>
+      <div class="stat-callout">
+        <div class="sc-val">8mo</div>
+        <div class="sc-lbl">From first pixel to exit</div>
+      </div>
+      <div class="stat-callout">
+        <div class="sc-val">0→1</div>
+        <div class="sc-lbl">Entire design function built from scratch</div>
+      </div>
+    </div>
+
+    <h2>What I built</h2>
+    <p>Over eight months I shipped the full product: narrative intelligence dashboard, entity tracking, coordinated behavior detection, campaign monitoring, and a reporting layer that let analysts export boardroom-ready summaries in one click.</p>
+    <p>I also built the design system from scratch — typography, color, spacing, component library, dark mode, accessibility guidelines — so that when Primer AI acquired the company, there was a real foundation to build on rather than a collection of ad-hoc screens.</p>
+
+    <div class="image-block">
+      <img
+        src="https://static.wixstatic.com/media/a0fcc9_9f1a4ccb5cc041a39e4aa64b813167b1~mv2.jpg/v1/fill/w_1200,h_720,al_c,q_85,usm_0.66_1.00_0.01/a0fcc9_9f1a4ccb5cc041a39e4aa64b813167b1~mv2.jpg"
+        alt="Yonder AI — Narrative Detail View"
+        onerror="this.style.display='none'"
+      >
+      <div class="image-caption">Narrative detail view — showing engagement spike patterns, key actors, and coordinated behavior signals</div>
+    </div>
+
+    <h2>The acquisition</h2>
+    <p>Primer AI acquired Yonder in November 2021 as part of their expansion into brand and corporate intelligence. The acquisition validated the core thesis: that NLP-powered narrative intelligence had real enterprise value, and that the design work — making that intelligence accessible to non-technical users — was a key part of that value.</p>
+    <p>The product design I built continued in production at Primer AI after the acquisition. The design system and component library I'd created became the starting point for Primer's rebrand of the Yonder product line.</p>
+
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">My contributions</div>
+      <ul class="outcomes-list">
+        <li>End-to-end product design (0→1)</li>
+        <li>Design system &amp; component library</li>
+        <li>User research &amp; discovery (12 enterprise interviews)</li>
+        <li>Information architecture</li>
+        <li>Narrative intelligence dashboard</li>
+        <li>Entity &amp; actor tracking UI</li>
+        <li>Coordinated behavior detection views</li>
+        <li>One-click reporting layer</li>
+      </ul>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Technologies</div>
+      <div class="sidebar-val">NLP · Machine Learning<br>Social graph analysis<br>Real-time data streams</div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Acquired by</div>
+      <div class="sidebar-val"><a href="https://primer.ai" target="_blank">Primer AI →</a></div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Outcome</div>
+      <div class="sidebar-val" style="color:var(--amber);font-weight:700;font-size:16px">$30M acquisition<br>Series A</div>
+    </div>
+  </aside>
+</div>
+
+<!-- NEXT CASE STUDY -->
+<div class="next-case">
+  <div class="next-case-label">Next case study</div>
+  <a class="next-case-card" href="#">
+    <div class="next-case-img">
+      <img src="https://static.wixstatic.com/media/a0fcc9_49c6223098b8453a9970025226668027~mv2.png/v1/fill/w_700,h_300,al_c,q_85/a0fcc9_49c6223098b8453a9970025226668027~mv2.png" alt="GreenPath" onerror="this.style.display='none'">
+    </div>
+    <div class="next-case-body">
+      <div class="next-case-num">03 — GreenPath Financial Wellness</div>
+      <div class="next-case-title">$30M ARR product suite, team of 10</div>
+      <div class="next-case-arrow">View case study →</div>
+    </div>
+  </a>
+</div>
+
+<footer>
+  <span class="fc">© 2025 Chin-May Aradhye · Ann Arbor, MI</span>
+  <div class="fl"><a href="#">LinkedIn</a><a href="#">Research</a><a href="#">Contact</a></div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+['.stat-callout', '.image-block', '.pull-quote'].forEach(sel => {
+  document.querySelectorAll(sel).forEach((el, i) => {
+    el.style.cssText += `opacity:0;transform:translateY(12px);transition:opacity .4s ${i*.08}s ease,transform .4s ${i*.08}s ease`;
+    io.observe(el);
+  });
+});
+</script>
+
+</body>
+</html>

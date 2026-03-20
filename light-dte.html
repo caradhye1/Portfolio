@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DTE Energy / Vectorform — Chin-May Aradhye</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F4F0;--surface:#FFFFFF;--elevated:#EEECEA;
+  --border:rgba(0,0,0,0.08);--bh:rgba(0,0,0,0.16);
+  --text:rgba(18,18,20,1);--muted:rgba(80,82,96,1);--dim:rgba(80,82,96,0.65);
+  --amber:rgba(166,118,36,1);--amber-dim:rgba(166,118,36,0.1);--amber-b:rgba(166,118,36,0.3);
+  --accent-bg:rgba(220,226,240,1);
+  --font:'Nunito Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(245,244,240,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 160px;height:60px}
+.nav-logo{font-weight:700;font-size:13px;letter-spacing:.2em;text-transform:uppercase}.nav-links{display:flex;gap:36px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:color .18s}.nav-links a:hover{color:var(--text)}.nav-links a.active{color:var(--amber)}
+.back{display:inline-flex;align-items:center;gap:8px;padding:24px 160px 0;font-size:12px;font-weight:700;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;transition:color .18s}.back:hover{color:var(--text)}.back::before{content:'←';font-size:15px}
+.case-hero{padding:36px 160px 0;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end}
+.hero-left{padding-bottom:56px}
+.case-tag{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:4px;background:var(--amber-dim);border:1px solid var(--amber-b);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:24px}
+.case-tag-dot{width:5px;height:5px;background:var(--amber);border-radius:50%}
+.case-hero h1{font-size:48px;font-weight:700;line-height:1.07;letter-spacing:-.025em;color:var(--text);margin-bottom:16px}
+.case-hero h1 em{font-style:italic;font-weight:300;color:var(--muted)}
+.case-subtitle{font-size:17px;font-weight:400;line-height:1.65;color:var(--muted);margin-bottom:32px;max-width:460px}
+.meta-row{display:flex;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;width:fit-content}
+.meta-cell{padding:14px 22px;border-right:1px solid var(--border);min-width:110px}.meta-cell:last-child{border-right:none}
+.meta-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.meta-val{font-size:14px;font-weight:600;color:var(--text)}.meta-val.hi{color:var(--amber)}
+.hero-img{height:460px;overflow:hidden;background:var(--accent-bg);border-radius:12px 12px 0 0;border:1px solid rgba(0,0,0,0.08);border-bottom:none;position:relative;display:flex;align-items:center;justify-content:center}
+.hero-img-placeholder{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,0,0,0.25)}
+.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.88;transition:transform .6s ease}.hero-img:hover img{transform:scale(1.02)}
+.hero-img-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(220,226,240,0.3));pointer-events:none}
+.case-body{padding:80px 160px;display:grid;grid-template-columns:2fr 1fr;gap:80px;align-items:start}
+.case-main h2{font-size:26px;font-weight:700;letter-spacing:-.015em;color:var(--text);margin-bottom:14px;margin-top:44px;line-height:1.2}.case-main h2:first-child{margin-top:0}
+.case-main p{font-size:15px;line-height:1.8;color:var(--muted);margin-bottom:18px}.case-main strong{color:var(--text);font-weight:600}
+.pull-quote{margin:32px 0;padding:22px 26px;border-left:3px solid var(--amber);background:var(--surface);border-radius:0 8px 8px 0}
+.pull-quote p{font-size:17px;font-weight:400;font-style:italic;line-height:1.65;color:var(--text);margin:0}
+.stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:32px 0}
+.stat-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;transition:border-color .2s}.stat-box:hover{border-color:var(--amber-b)}
+.sb-val{font-size:30px;font-weight:700;color:var(--amber);letter-spacing:-.02em;line-height:1;margin-bottom:6px}.sb-lbl{font-size:12px;font-weight:500;color:var(--muted)}
+.sidebar{position:sticky;top:80px}.sb-sec{margin-bottom:32px}
+.sb-lbl-s{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.sb-val-text{font-size:14px;font-weight:500;color:var(--text);line-height:1.55}
+.outcomes{list-style:none;display:flex;flex-direction:column;gap:8px}
+.outcomes li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--muted);line-height:1.5}
+.outcomes li::before{content:'→';color:var(--amber);font-size:12px;margin-top:1px;flex-shrink:0}
+.sb-div{height:1px;background:var(--border);margin:24px 0}
+.back-home{padding:56px 160px 80px;border-top:1px solid var(--border)}
+.back-home a{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--muted);transition:color .18s}.back-home a:hover{color:var(--text)}
+footer{display:flex;align-items:center;justify-content:space-between;padding:20px 160px;border-top:1px solid var(--border)}
+.fc{font-size:12px;color:var(--dim)}.fl{display:flex;gap:28px}.fl a{font-size:13px;font-weight:500;color:var(--dim);transition:color .18s}.fl a:hover{color:var(--text)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}.case-hero{animation:fadeUp .45s ease both}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="light-chinmay-v3-home.html">Chin-May</a>
+  <div class="nav-links"><a href="light-chinmay-v3-home.html" class="active">Work</a><a href="light-research.html">Research</a><a href="#">About</a><a href="#">Contact</a></div>
+</nav>
+<a class="back" href="light-chinmay-v3-home.html">All work</a>
+
+<section class="case-hero">
+  <div class="hero-left">
+    <div class="case-tag"><div class="case-tag-dot"></div>05 — DTE Energy / Vectorform · 2015–2017</div>
+    <h1>The most successful energy program<br><em>in DTE history.</em></h1>
+    <p class="case-subtitle">DTE Energy needed to reduce residential energy consumption. Working with Vectorform, I designed DTE Insight — a hardware and mobile platform that applied behavioral economics to energy conservation. It became DTE's most successful efficiency program ever run.</p>
+    <div class="meta-row">
+      <div class="meta-cell"><div class="meta-lbl">Client</div><div class="meta-val">DTE Energy</div></div>
+      <div class="meta-cell"><div class="meta-lbl">Agency</div><div class="meta-val">Vectorform</div></div>
+      <div class="meta-cell"><div class="meta-lbl">Timeline</div><div class="meta-val">2015–2017</div></div>
+      <div class="meta-cell"><div class="meta-lbl">My role</div><div class="meta-val hi">UX Lead</div></div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <span class="hero-img-placeholder">DTE Insight — Behavioral Energy Platform</span>
+    <div class="hero-img-ov"></div>
+  </div>
+</section>
+
+<div class="case-body">
+  <div class="case-main">
+    <h2>Energy conservation as a behavior design problem</h2>
+    <p>Most energy conservation programs fail for the same reason: they give people information and expect behavior to follow. Show someone their kilowatt-hour usage and assume they'll reduce it. The decades of behavioral economics research says otherwise — <strong>information alone almost never changes behavior.</strong></p>
+    <p>DTE had tried traditional approaches: rebate programs, energy audit mailers, bill inserts with usage comparisons. None moved the needle in a lasting way. Vectorform brought me in as the UX Lead to design something different: a product that applied behavioral science to the problem from the ground up.</p>
+
+    <div class="pull-quote"><p>"The insight from behavioral economics is simple and devastating: people don't conserve energy because they're uninformed. They conserve because it becomes a concrete, immediate, social goal."</p></div>
+
+    <h2>The DTE Insight system</h2>
+    <p>DTE Insight was a two-part system: a hardware device installed in the home (a small display unit that showed real-time energy usage), and a mobile app that gave context, goals, and feedback across time.</p>
+    <p><strong>The hardware.</strong> The in-home display showed current electricity consumption in dollars, not kilowatt-hours — a deliberate choice grounded in research showing that concrete, familiar units produce stronger behavioral responses than abstract technical units. The device glowed different colors based on usage levels, creating an ambient awareness system that didn't require active attention.</p>
+    <p><strong>The mobile app.</strong> The app applied four behavioral levers I identified from the research literature: social comparison (how does your usage compare to similar homes?), goal commitment (set a weekly savings target and track it), implementation intentions (specific plans for specific behaviors outperform general intentions), and progress feedback (granular charts showing the result of individual actions).</p>
+    <p><strong>The design principle.</strong> Every interaction had to close the loop between action and consequence in minutes, not months. Traditional energy bills show you what you used weeks ago. DTE Insight showed you what your dishwasher cost in the last hour.</p>
+
+    <div class="stat-row">
+      <div class="stat-box"><div class="sb-val">#1</div><div class="sb-lbl">Most successful DTE efficiency program ever</div></div>
+      <div class="stat-box"><div class="sb-val">2yr</div><div class="sb-lbl">Development and deployment cycle</div></div>
+      <div class="stat-box"><div class="sb-val">IoT+</div><div class="sb-lbl">Hardware + mobile + behavioral science</div></div>
+    </div>
+
+    <h2>Why behavioral economics made the difference</h2>
+    <p>The behavioral interventions I embedded weren't cosmetic. They were architecturally central to why the program worked.</p>
+    <p>Social comparison, applied correctly, is one of the most powerful conservation tools known to researchers — more effective than financial incentives in many conditions. But it has to be implemented carefully: the comparison group has to feel relevant (similar homes in your neighborhood, not national averages), and the feedback has to communicate the right emotional signal (pride at outperforming, not shame at underperforming — which causes reactance and backlash).</p>
+    <p>The implementation intentions feature — where users committed to specific behaviors at specific times — drew directly from Gollwitzer's research showing that "if-then" plans dramatically improve follow-through vs. general goal-setting. Users who set "when I leave the house in the morning, I will check the thermostat" reduced heating costs more than users who just set a monthly savings target.</p>
+    <p>This project was the clearest demonstration I've had of the direct line between academic research and product impact.</p>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sb-sec">
+      <div class="sb-lbl-s">My contributions</div>
+      <ul class="outcomes">
+        <li>UX strategy and direction</li>
+        <li>Behavioral economics framework</li>
+        <li>Hardware display UX</li>
+        <li>Mobile app design</li>
+        <li>Social comparison interface</li>
+        <li>Goal-setting & commitment system</li>
+        <li>Real-time feedback design</li>
+        <li>User research & testing</li>
+      </ul>
+    </div>
+    <div class="sb-div"></div>
+    <div class="sb-sec">
+      <div class="sb-lbl-s">Behavioral interventions applied</div>
+      <div class="sb-val-text">Social comparison<br>Implementation intentions<br>Loss aversion framing<br>Progress feedback loops<br>Ambient awareness design</div>
+    </div>
+    <div class="sb-div"></div>
+    <div class="sb-sec">
+      <div class="sb-lbl-s">Outcome</div>
+      <div class="sb-val-text" style="color:var(--amber);font-weight:700">Most successful energy optimization program in DTE history</div>
+    </div>
+  </aside>
+</div>
+
+<div class="back-home">
+  <a href="light-chinmay-v3-home.html">← Back to all work</a>
+</div>
+
+<footer>
+  <span class="fc">© 2025 Chin-May Aradhye · Ann Arbor, MI</span>
+  <div class="fl"><a href="light-chinmay-v3-home.html">Work</a><a href="light-research.html">Research</a><a href="#">Contact</a></div>
+</footer>
+</body>
+</html>

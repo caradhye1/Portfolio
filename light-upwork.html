@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upwork — Chin-May Aradhye</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F4F0;--surface:#FFFFFF;--elevated:#EEECEA;
+  --border:rgba(0,0,0,0.08);--bh:rgba(0,0,0,0.16);
+  --text:rgba(18,18,20,1);--muted:rgba(80,82,96,1);--dim:rgba(80,82,96,0.65);
+  --amber:rgba(166,118,36,1);--amber-dim:rgba(166,118,36,0.1);--amber-b:rgba(166,118,36,0.3);
+  --accent-bg:rgba(245,238,210,1);
+  --font:'Nunito Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(245,244,240,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 160px;height:60px}
+.nav-logo{font-weight:700;font-size:13px;letter-spacing:.2em;text-transform:uppercase}.nav-links{display:flex;gap:36px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:color .18s}.nav-links a:hover{color:var(--text)}.nav-links a.active{color:var(--amber)}
+.back{display:inline-flex;align-items:center;gap:8px;padding:24px 160px 0;font-size:12px;font-weight:700;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;transition:color .18s}.back:hover{color:var(--text)}.back::before{content:'←';font-size:15px}
+.case-hero{padding:36px 160px 0;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end}
+.hero-left{padding-bottom:56px}
+.case-tag{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:4px;background:var(--amber-dim);border:1px solid var(--amber-b);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:24px}
+.case-tag-dot{width:5px;height:5px;background:var(--amber);border-radius:50%}
+.case-hero h1{font-size:48px;font-weight:700;line-height:1.07;letter-spacing:-.025em;color:var(--text);margin-bottom:16px}
+.case-hero h1 em{font-style:italic;font-weight:300;color:var(--muted)}
+.case-subtitle{font-size:17px;font-weight:400;line-height:1.65;color:var(--muted);margin-bottom:32px;max-width:460px}
+.meta-row{display:flex;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;width:fit-content}
+.meta-cell{padding:14px 22px;border-right:1px solid var(--border);min-width:110px}.meta-cell:last-child{border-right:none}
+.meta-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.meta-val{font-size:14px;font-weight:600;color:var(--text)}.meta-val.hi{color:var(--amber)}
+.hero-img{height:460px;overflow:hidden;background:var(--accent-bg);border-radius:12px 12px 0 0;border:1px solid rgba(0,0,0,0.08);border-bottom:none;position:relative}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.88;transition:transform .6s ease}.hero-img:hover img{transform:scale(1.02)}
+.hero-img-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(245,238,210,0.3));pointer-events:none}
+.case-body{padding:80px 160px;display:grid;grid-template-columns:2fr 1fr;gap:80px;align-items:start}
+.case-main h2{font-size:26px;font-weight:700;letter-spacing:-.015em;color:var(--text);margin-bottom:14px;margin-top:44px;line-height:1.2}.case-main h2:first-child{margin-top:0}
+.case-main p{font-size:15px;line-height:1.8;color:var(--muted);margin-bottom:18px}.case-main strong{color:var(--text);font-weight:600}
+.pull-quote{margin:32px 0;padding:22px 26px;border-left:3px solid var(--amber);background:var(--surface);border-radius:0 8px 8px 0}
+.pull-quote p{font-size:17px;font-weight:400;font-style:italic;line-height:1.65;color:var(--text);margin:0}
+.img-block{margin:32px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--accent-bg)}
+.img-block img{width:100%;height:auto;display:block;opacity:.88;transition:opacity .25s}.img-block:hover img{opacity:1}
+.img-cap{padding:11px 16px;font-size:12px;color:var(--dim);border-top:1px solid var(--border);font-weight:500}
+.stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:32px 0}
+.stat-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;transition:border-color .2s}.stat-box:hover{border-color:var(--amber-b)}
+.sb-val{font-size:30px;font-weight:700;color:var(--amber);letter-spacing:-.02em;line-height:1;margin-bottom:6px}.sb-lbl{font-size:12px;font-weight:500;color:var(--muted)}
+.sidebar{position:sticky;top:80px}.sb-sec{margin-bottom:32px}
+.sb-lbl-s{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.sb-val-text{font-size:14px;font-weight:500;color:var(--text);line-height:1.55}
+.outcomes{list-style:none;display:flex;flex-direction:column;gap:8px}
+.outcomes li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--muted);line-height:1.5}
+.outcomes li::before{content:'→';color:var(--amber);font-size:12px;margin-top:1px;flex-shrink:0}
+.sb-div{height:1px;background:var(--border);margin:24px 0}
+.next-cs{padding:0 160px 80px;border-top:1px solid var(--border);padding-top:56px}
+.next-lbl{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:20px}
+.next-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;max-width:460px;transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s,border-color .2s}
+.next-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.1);border-color:var(--bh)}
+.next-card-img{height:160px;overflow:hidden}.next-card-img img{width:100%;height:100%;object-fit:cover;opacity:.8}
+.next-card-body{padding:16px 20px 20px}
+.next-card-num{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.next-card-title{font-size:17px;font-weight:600;color:var(--text);margin-bottom:4px}
+.next-card-cta{font-size:12px;color:var(--dim);font-weight:600;transition:color .18s,padding-left .18s}.next-card:hover .next-card-cta{color:var(--amber);padding-left:4px}
+footer{display:flex;align-items:center;justify-content:space-between;padding:20px 160px;border-top:1px solid var(--border)}
+.fc{font-size:12px;color:var(--dim)}.fl{display:flex;gap:28px}.fl a{font-size:13px;font-weight:500;color:var(--dim);transition:color .18s}.fl a:hover{color:var(--text)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}.case-hero{animation:fadeUp .45s ease both}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="light-chinmay-v3-home.html">Chin-May</a>
+  <div class="nav-links"><a href="light-chinmay-v3-home.html" class="active">Work</a><a href="light-research.html">Research</a><a href="#">About</a><a href="#">Contact</a></div>
+</nav>
+<a class="back" href="light-chinmay-v3-home.html">All work</a>
+
+<section class="case-hero">
+  <div class="hero-left">
+    <div class="case-tag"><div class="case-tag-dot"></div>04 — Upwork · Sep 2022–Jan 2024</div>
+    <h1>$5M revenue growth.<br><em>12 ML features shipped.</em></h1>
+    <p class="case-subtitle">Upwork is the world's largest freelance marketplace — 800K+ active clients, 18M+ registered freelancers. I led the redesign of Search & Discovery, shipping 12 ML-powered features that drove measurable revenue impact.</p>
+    <div class="meta-row">
+      <div class="meta-cell"><div class="meta-lbl">Revenue impact</div><div class="meta-val hi">~$5M</div></div>
+      <div class="meta-cell"><div class="meta-lbl">Timeline</div><div class="meta-val">2022–2024</div></div>
+      <div class="meta-cell"><div class="meta-lbl">My role</div><div class="meta-val">Design Lead</div></div>
+      <div class="meta-cell"><div class="meta-lbl">Features</div><div class="meta-val">12 ML</div></div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="https://static.wixstatic.com/media/a0fcc9_1b1da8fd7a07459587247c0a6da0ad80~mv2.png/v1/fill/w_900,h_900,al_c,q_85/a0fcc9_1b1da8fd7a07459587247c0a6da0ad80~mv2.png" alt="Upwork Browse Experience" onerror="this.style.display='none'">
+    <div class="hero-img-ov"></div>
+  </div>
+</section>
+
+<div class="case-body">
+  <div class="case-main">
+    <h2>The search problem at marketplace scale</h2>
+    <p>Finding the right freelancer on Upwork isn't a simple search problem. A client looking for "a React developer for a 3-month engagement" needs to evaluate availability, project history, communication style, rate fit, skill match, and timezone compatibility — simultaneously. The old search experience made them do this manually, linearly, across dozens of profiles.</p>
+    <p>The result was high abandonment. Clients who couldn't find the right match in their first session often didn't return. <strong>The opportunity wasn't just better search — it was reducing the cognitive load of evaluation itself.</strong></p>
+
+    <div class="pull-quote"><p>"The best marketplace search doesn't feel like search. It feels like having a recruiter who already knows what you need."</p></div>
+
+    <h2>Browse Experience redesign</h2>
+    <p>The Browse Experience is the primary entry point for clients who aren't running keyword searches — they're exploring categories, browsing talent, getting oriented. I redesigned this surface from the ground up, introducing:</p>
+    <p><strong>Relevance-aware listings.</strong> ML-ranked results that surfaced the most relevant profiles first, trained on conversion signals rather than keyword matching. The ranking model was already built — my job was designing the presentation layer that made the ranking legible and trustworthy.</p>
+    <p><strong>Skill match indicators.</strong> Visual signals on each profile card that showed clients exactly how a freelancer's skills mapped to their project requirements — reducing time spent clicking into profiles that didn't fit.</p>
+    <p><strong>Contextual filters.</strong> A filter system that adapted its options based on the job category, surfacing the constraints that actually mattered for that type of work rather than a generic list of 40 options.</p>
+
+    <div class="img-block">
+      <img src="https://static.wixstatic.com/media/a0fcc9_1b1da8fd7a07459587247c0a6da0ad80~mv2.png/v1/fill/w_1200,h_720,al_c,q_85/a0fcc9_1b1da8fd7a07459587247c0a6da0ad80~mv2.png" alt="Upwork Browse Experience" onerror="this.style.display='none'">
+      <div class="img-cap">Browse Experience redesign — ML-ranked results with skill match indicators and contextual filtering</div>
+    </div>
+
+    <h2>Profile Preview redesign</h2>
+    <p>I also led the redesign of the Profile Preview — the side panel that lets clients evaluate a freelancer without navigating away from search. The old preview was a compressed version of the full profile page: wall-to-wall text, no clear hierarchy, no decision-enabling format.</p>
+    <p>The redesigned Preview was architected around the client's decision sequence. Lead with the credential that earns trust (top rating, relevant past work), then give the context to evaluate (skills, availability, rate), then provide the action to move forward (invite, message, save). Sequential, not comprehensive.</p>
+
+    <div class="stat-row">
+      <div class="stat-box"><div class="sb-val">~$5M</div><div class="sb-lbl">Revenue impact from redesign</div></div>
+      <div class="stat-box"><div class="sb-val">12</div><div class="sb-lbl">ML-powered features shipped</div></div>
+      <div class="stat-box"><div class="sb-val">18M+</div><div class="sb-lbl">Registered freelancers on platform</div></div>
+    </div>
+
+    <h2>Designing with ML outputs</h2>
+    <p>Working at Upwork deepened my understanding of how to design interfaces around ML model outputs — a challenge that became central to my later work at 84.51°/Kroger. The model can be excellent and the UX can still be terrible. The design work is translating what the model knows into a presentation that earns user trust — which means surfacing the right signals, being honest about confidence, and never forcing users to take the model's word for something they can't verify.</p>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sb-sec">
+      <div class="sb-lbl-s">My contributions</div>
+      <ul class="outcomes">
+        <li>Browse Experience end-to-end redesign</li>
+        <li>Profile Preview redesign</li>
+        <li>ML result presentation layer</li>
+        <li>Skill match indicator system</li>
+        <li>Contextual filter architecture</li>
+        <li>12 ML feature design specs</li>
+        <li>Conversion analytics review</li>
+      </ul>
+    </div>
+    <div class="sb-div"></div>
+    <div class="sb-sec">
+      <div class="sb-lbl-s">Scope</div>
+      <div class="sb-val-text">Search & Discovery<br>Browse Experience<br>Profile Preview<br>Marketplace ML features</div>
+    </div>
+    <div class="sb-div"></div>
+    <div class="sb-sec">
+      <div class="sb-lbl-s">Outcome</div>
+      <div class="sb-val-text" style="color:var(--amber);font-weight:700">~$5M revenue growth<br>12 features shipped</div>
+    </div>
+  </aside>
+</div>
+
+<div class="next-cs">
+  <div class="next-lbl">Next case study</div>
+  <a class="next-card" href="light-dte.html">
+    <div class="next-card-img" style="background:rgba(220,226,240,1)">
+      <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,0,0,0.25)">DTE Energy / Vectorform</div>
+    </div>
+    <div class="next-card-body">
+      <div class="next-card-num">05 — DTE Energy / Vectorform</div>
+      <div class="next-card-title">Most successful energy program in DTE history</div>
+      <div class="next-card-cta">View case study →</div>
+    </div>
+  </a>
+</div>
+
+<footer>
+  <span class="fc">© 2025 Chin-May Aradhye · Ann Arbor, MI</span>
+  <div class="fl"><a href="light-chinmay-v3-home.html">Work</a><a href="light-research.html">Research</a><a href="#">Contact</a></div>
+</footer>
+</body>
+</html>

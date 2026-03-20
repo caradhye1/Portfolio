@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenPath Financial Wellness — Chin-May Aradhye</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F4F0;--surface:#FFFFFF;--elevated:#EEECEA;
+  --border:rgba(0,0,0,0.08);--bh:rgba(0,0,0,0.16);
+  --text:rgba(18,18,20,1);--muted:rgba(80,82,96,1);--dim:rgba(80,82,96,0.65);
+  --amber:rgba(166,118,36,1);--amber-dim:rgba(166,118,36,0.1);--amber-b:rgba(166,118,36,0.3);
+  --accent-bg:rgba(220,240,228,1);
+  --font:'Nunito Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(245,244,240,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 160px;height:60px}
+.nav-logo{font-weight:700;font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.nav-links{display:flex;gap:36px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:color .18s}
+.nav-links a:hover{color:var(--text)}.nav-links a.active{color:var(--amber)}
+.back{display:inline-flex;align-items:center;gap:8px;padding:24px 160px 0;font-size:12px;font-weight:700;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;transition:color .18s}
+.back:hover{color:var(--text)}.back::before{content:'←';font-size:15px}
+.case-hero{padding:36px 160px 0;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end}
+.hero-left{padding-bottom:56px}
+.case-tag{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:4px;background:var(--amber-dim);border:1px solid var(--amber-b);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:24px}
+.case-tag-dot{width:5px;height:5px;background:var(--amber);border-radius:50%}
+.case-hero h1{font-size:48px;font-weight:700;line-height:1.07;letter-spacing:-.025em;color:var(--text);margin-bottom:16px}
+.case-hero h1 em{font-style:italic;font-weight:300;color:var(--muted)}
+.case-subtitle{font-size:17px;font-weight:400;line-height:1.65;color:var(--muted);margin-bottom:32px;max-width:460px}
+.meta-row{display:flex;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;width:fit-content}
+.meta-cell{padding:14px 22px;border-right:1px solid var(--border);min-width:110px}
+.meta-cell:last-child{border-right:none}
+.meta-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.meta-val{font-size:14px;font-weight:600;color:var(--text)}.meta-val.hi{color:var(--amber)}
+.hero-img{height:460px;overflow:hidden;background:var(--accent-bg);border-radius:12px 12px 0 0;border:1px solid rgba(0,0,0,0.08);border-bottom:none;position:relative}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.88;transition:transform .6s ease}
+.hero-img:hover img{transform:scale(1.02)}
+.hero-img-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(220,240,228,0.3));pointer-events:none}
+.case-body{padding:80px 160px;display:grid;grid-template-columns:2fr 1fr;gap:80px;align-items:start}
+.case-main h2{font-size:26px;font-weight:700;letter-spacing:-.015em;color:var(--text);margin-bottom:14px;margin-top:44px;line-height:1.2}
+.case-main h2:first-child{margin-top:0}
+.case-main p{font-size:15px;line-height:1.8;color:var(--muted);margin-bottom:18px}
+.case-main strong{color:var(--text);font-weight:600}
+.pull-quote{margin:32px 0;padding:22px 26px;border-left:3px solid var(--amber);background:var(--surface);border-radius:0 8px 8px 0}
+.pull-quote p{font-size:17px;font-weight:400;font-style:italic;line-height:1.65;color:var(--text);margin:0}
+.img-block{margin:32px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--accent-bg)}
+.img-block img{width:100%;height:auto;display:block;opacity:.88;transition:opacity .25s}
+.img-block:hover img{opacity:1}
+.img-cap{padding:11px 16px;font-size:12px;color:var(--dim);border-top:1px solid var(--border);font-weight:500}
+.stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:32px 0}
+.stat-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;transition:border-color .2s}
+.stat-box:hover{border-color:var(--amber-b)}
+.sb-val{font-size:30px;font-weight:700;color:var(--amber);letter-spacing:-.02em;line-height:1;margin-bottom:6px}
+.sb-lbl{font-size:12px;font-weight:500;color:var(--muted)}
+.sidebar{position:sticky;top:80px}
+.sb-sec{margin-bottom:32px}
+.sb-lbl-s{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.sb-val-text{font-size:14px;font-weight:500;color:var(--text);line-height:1.55}
+.outcomes{list-style:none;display:flex;flex-direction:column;gap:8px}
+.outcomes li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--muted);line-height:1.5}
+.outcomes li::before{content:'→';color:var(--amber);font-size:12px;margin-top:1px;flex-shrink:0}
+.sb-div{height:1px;background:var(--border);margin:24px 0}
+.next-cs{padding:0 160px 80px;border-top:1px solid var(--border);padding-top:56px}
+.next-lbl{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:20px}
+.next-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;max-width:460px;transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s,border-color .2s}
+.next-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.1);border-color:var(--bh)}
+.next-card-img{height:160px;overflow:hidden}
+.next-card-img img{width:100%;height:100%;object-fit:cover;opacity:.8}
+.next-card-body{padding:16px 20px 20px}
+.next-card-num{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.next-card-title{font-size:17px;font-weight:600;color:var(--text);margin-bottom:4px}
+.next-card-cta{font-size:12px;color:var(--dim);font-weight:600;transition:color .18s,padding-left .18s}
+.next-card:hover .next-card-cta{color:var(--amber);padding-left:4px}
+footer{display:flex;align-items:center;justify-content:space-between;padding:20px 160px;border-top:1px solid var(--border)}
+.fc{font-size:12px;color:var(--dim)}.fl{display:flex;gap:28px}
+.fl a{font-size:13px;font-weight:500;color:var(--dim);transition:color .18s}
+.fl a:hover{color:var(--text)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.case-hero{animation:fadeUp .45s ease both}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="light-chinmay-v3-home.html">Chin-May</a>
+  <div class="nav-links">
+    <a href="light-chinmay-v3-home.html" class="active">Work</a>
+    <a href="light-research.html">Research</a>
+    <a href="#">About</a><a href="#">Contact</a>
+  </div>
+</nav>
+<a class="back" href="light-chinmay-v3-home.html">All work</a>
+
+<section class="case-hero">
+  <div class="hero-left">
+    <div class="case-tag"><div class="case-tag-dot"></div>03 — GreenPath Financial Wellness · 2017–2021</div>
+    <h1>$30M ARR. Team of 10.<br><em>Four years building a fintech.</em></h1>
+    <p class="case-subtitle">GreenPath is a national nonprofit offering financial counseling to 60,000+ clients a year. As Design Director, I led the entire digital product from onboarding to financial coaching tools — and built the team that runs it.</p>
+    <div class="meta-row">
+      <div class="meta-cell"><div class="meta-lbl">ARR</div><div class="meta-val hi">$30M</div></div>
+      <div class="meta-cell"><div class="meta-lbl">Timeline</div><div class="meta-val">2017–2021</div></div>
+      <div class="meta-cell"><div class="meta-lbl">My role</div><div class="meta-val">Design Director</div></div>
+      <div class="meta-cell"><div class="meta-lbl">Team size</div><div class="meta-val">10 designers</div></div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="https://static.wixstatic.com/media/a0fcc9_49c6223098b8453a9970025226668027~mv2.png/v1/fill/w_900,h_900,al_c,q_85/a0fcc9_49c6223098b8453a9970025226668027~mv2.png" alt="GreenPath Financial Wellness" onerror="this.style.display='none'">
+    <div class="hero-img-ov"></div>
+  </div>
+</section>
+
+<div class="case-body">
+  <div class="case-main">
+    <h2>A nonprofit product with enterprise complexity</h2>
+    <p>GreenPath serves clients in serious financial distress — people managing debt, navigating bankruptcy, recovering from financial crisis. The product had to meet these users where they were emotionally, while also working within the operational constraints of a nonprofit and the compliance requirements of financial services.</p>
+    <p>When I joined as Design Director, GreenPath had a Wix website and a legacy counseling intake process that was entirely phone-based. <strong>Four years later, I left behind a digital platform with a full onboarding funnel, an online counseling product, a financial health dashboard, and a 10-person design team to run all of it.</strong></p>
+
+    <div class="pull-quote"><p>"Designing for financial stress means every unclear label, every extra click, every confusing form costs real trust — and people in crisis have no trust to spare."</p></div>
+
+    <h2>What I built</h2>
+    <p><strong>Financial wellness onboarding.</strong> A guided digital intake that replaced the phone-first model. The flow took users from "I need help" to "I have a counselor" in under 8 minutes — collecting financial data, matching to the right counselor type, and setting expectations for the session. Built on behavioral economics principles: reducing cognitive load, breaking complexity into stages, using progress mechanics to keep users moving forward.</p>
+    <p><strong>Online counseling platform.</strong> A structured session format for certified credit counselors and their clients. Shared workspace, financial data visualization, goal-setting tools, and action plan generation. Designed for low-bandwidth environments and accessibility compliance across WCAG 2.1.</p>
+    <p><strong>Financial health dashboard.</strong> A personalized view of a client's financial trajectory over time — debt reduction, savings growth, credit score improvement. Visualization-first design that let clients see the work they'd done and the distance they'd come.</p>
+
+    <div class="img-block">
+      <img src="https://static.wixstatic.com/media/a0fcc9_49c6223098b8453a9970025226668027~mv2.png/v1/fill/w_1200,h_720,al_c,q_85/a0fcc9_49c6223098b8453a9970025226668027~mv2.png" alt="GreenPath Financial Wellness Onboarding" onerror="this.style.display='none'">
+      <div class="img-cap">Financial wellness onboarding — guided intake replacing phone-first counseling model</div>
+    </div>
+
+    <h2>Building the team</h2>
+    <p>I inherited one junior designer. I left behind ten, including two senior designers, a UX researcher, and a content strategist. Building the team was as much a design challenge as the product itself — establishing hiring standards, creating a design review process, defining career tracks, and building the culture of quality that let the team operate at the level the product needed.</p>
+
+    <div class="stat-row">
+      <div class="stat-box"><div class="sb-val">$30M</div><div class="sb-lbl">Annual recurring revenue</div></div>
+      <div class="stat-box"><div class="sb-val">60K+</div><div class="sb-lbl">Clients served annually</div></div>
+      <div class="stat-box"><div class="sb-val">10</div><div class="sb-lbl">Designers on the team at exit</div></div>
+    </div>
+
+    <h2>Behavioral economics in financial products</h2>
+    <p>My PhD research in behavioral economics and cognitive psychology wasn't academic background — it was directly applied here. Choice architecture, commitment devices, loss aversion framing, social proof mechanisms — these weren't marketing tactics, they were design decisions grounded in the behavioral science literature that made the difference between a client completing their financial plan and dropping off at step 3.</p>
+    <p>GreenPath is where I learned that the hardest design problems aren't visual — they're behavioral. Getting someone to face their financial reality, make a commitment, and take the first hard step requires a design that earns trust faster than anxiety erodes it.</p>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sb-sec">
+      <div class="sb-lbl-s">My contributions</div>
+      <ul class="outcomes">
+        <li>Product design direction (4 years)</li>
+        <li>Built design team 1→10</li>
+        <li>Financial wellness onboarding</li>
+        <li>Online counseling platform</li>
+        <li>Financial health dashboard</li>
+        <li>Design system & components</li>
+        <li>WCAG 2.1 accessibility</li>
+        <li>User research program</li>
+      </ul>
+    </div>
+    <div class="sb-div"></div>
+    <div class="sb-sec">
+      <div class="sb-lbl-s">Domain expertise applied</div>
+      <div class="sb-val-text">Behavioral economics<br>Cognitive psychology<br>Financial services compliance<br>Nonprofit product strategy</div>
+    </div>
+    <div class="sb-div"></div>
+    <div class="sb-sec">
+      <div class="sb-lbl-s">Colleagues who can speak to this</div>
+      <div class="sb-val-text" style="color:var(--muted);font-size:13px">Weiran Ma — UX/UI Designer<br>Justin Botimer — Program Manager</div>
+    </div>
+  </aside>
+</div>
+
+<div class="next-cs">
+  <div class="next-lbl">Next case study</div>
+  <a class="next-card" href="light-upwork.html">
+    <div class="next-card-img" style="background:rgba(245,238,210,1)">
+      <img src="https://static.wixstatic.com/media/a0fcc9_1b1da8fd7a07459587247c0a6da0ad80~mv2.png/v1/fill/w_700,h_300,al_c,q_85/a0fcc9_1b1da8fd7a07459587247c0a6da0ad80~mv2.png" alt="Upwork" onerror="this.style.display='none'">
+    </div>
+    <div class="next-card-body">
+      <div class="next-card-num">04 — Upwork</div>
+      <div class="next-card-title">~$5M revenue growth via Search &amp; Discovery</div>
+      <div class="next-card-cta">View case study →</div>
+    </div>
+  </a>
+</div>
+
+<footer>
+  <span class="fc">© 2025 Chin-May Aradhye · Ann Arbor, MI</span>
+  <div class="fl"><a href="light-chinmay-v3-home.html">Work</a><a href="light-research.html">Research</a><a href="#">Contact</a></div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --nav-height: 88px;
+  --color-bg: #ffffff;
+  --color-bg-dark: #111111;
+  --color-bg-cream: #f5f3ee;
+  --color-bg-cream2: #f0ede6;
+  --color-text: #111111;
+  --color-text-light: #555555;
+  --color-text-muted: #888888;
+  --color-border: #e9eaeb;
+  --color-border-dark: #111111;
+  --color-accent-blue: #6366F1;
+  --color-accent-blue-light: rgba(99, 102, 241, 0.08);
+  --color-accent-blue-hover: #4F46E5;
+  --color-accent-yellow: #F5C518;
+  --color-accent-yellow-light: rgba(245, 197, 24, 0.12);
+  --container-max: 1920px;
+  --container-padding: 208px;
+
+  --font-primary: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-md: 18px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --text-3xl: 40px;
+  --text-4xl: 56px;
+  --text-5xl: 72px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#root {
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-primary);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* ── Primary buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 28px;
+  background: #111;
+  color: #fff;
+  border: 1px solid #111;
+  border-radius: 160px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: #FFC934;
+  color: #111;
+  border-color: #FFC934;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 24px;
+  background: transparent;
+  color: #111;
+  border: 1px solid var(--color-border);
+  border-radius: 160px;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 400;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  border-color: #111;
+}
+
+.btn-md {
+  height: 48px;
+  padding: 0 28px;
+  font-size: var(--text-base);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 24px;
+  background: transparent;
+  color: #111;
+  border: 1px solid var(--color-border);
+  border-radius: 160px;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 400;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background: #FFC934;
+  color: #111;
+  border-color: #FFC934;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 24px;
+    --nav-height: 64px;
+  }
+}
+
+/* Shared typography classes */
+.section-title {
+  font-size: clamp(28px, 3.5vw, 56px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+}
+
+.section-eyebrow {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.01em;
+}
+
+/* ── Page transitions ── */
+.page-transition {
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.page-zoom-in {
+  animation-name: zoomFadeIn;
+  animation-duration: 0.5s;
+}
+
+.page-zoom-out {
+  animation-name: zoomFadeOut;
+  animation-duration: 0.4s;
+}
+
+@keyframes zoomFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  40% {
+    opacity: 0.4;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomFadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  60% {
+    opacity: 0.4;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+/* ── Scroll-triggered animations ── */
+.anim-fade-in-down {
+  animation: fadeInDown 0.7s ease-out both;
+}
+
+.anim-fade-in-left {
+  animation: fadeInLeft 0.6s ease-out both;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Scroll-triggered fade-up ── */
+.fade-up-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-up-section.fade-up-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,71 @@
+.footer {
+  background: var(--color-bg-dark);
+  color: white;
+  padding: var(--space-7) 0;
+}
+
+.footer-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-8);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: var(--space-5);
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer-logo {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: white;
+}
+
+.footer-tagline {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.5;
+}
+
+.footer-links-row {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.footer-link {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: white;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+}
+
+.footer-legal {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .footer-links-row {
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+}

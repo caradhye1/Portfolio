@@ -1,0 +1,295 @@
+.hero {
+  padding-top: var(--nav-height);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shared centering wrapper for all hero sub-sections */
+.hero-wrap {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* ── 2-column hero grid ── */
+.hero-inner {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 0 var(--space-7);
+  padding-top: var(--space-9);
+  padding-bottom: var(--space-7);
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Column 1: Hero text + CTA + description ── */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.hero-title {
+  font-size: clamp(36px, 3.5vw, 56px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+}
+
+/* ── Typing text ── */
+
+/* The title-block uses a grid overlay so the visible h1 and the
+   invisible reserve share the same grid cell. The reserve is always
+   rendered with the longest phrase, keeping the block height stable. */
+.hero-title-block {
+  display: grid;
+}
+
+.hero-title-block > .hero-title,
+.hero-title-block > .hero-title-reserve {
+  grid-area: 1 / 1;
+}
+
+.hero-title-reserve {
+  visibility: hidden;
+  font-size: clamp(36px, 3.5vw, 56px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  pointer-events: none;
+}
+
+.hero-typing-text {
+  color: var(--color-text-light);
+  font-style: italic;
+}
+
+.hero-cursor {
+  font-style: normal;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  animation: cursorBlink 0.7s step-end infinite;
+  margin-left: 1px;
+}
+
+.hero-cursor--typing {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.hero-desc-text {
+  font-size: var(--text-base);
+  color: var(--color-text-light);
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+/* ── Column 2: Portrait ── */
+.hero-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-portrait-container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.hero-portrait-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-portrait-illustration {
+  position: relative;
+  z-index: 1;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-portrait-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  object-position: center 15%;
+}
+
+.hero-portrait-container:hover .hero-portrait-illustration {
+  opacity: 0;
+}
+
+/* ── Background doodles ── */
+.hero-doodles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-doodle {
+  position: absolute;
+  opacity: 0.35;
+}
+
+.hero-doodle--brain {
+  width: 70px;
+  top: 18%;
+  left: 4%;
+  transform: rotate(-12deg);
+}
+
+.hero-doodle--chart {
+  width: 65px;
+  top: 12%;
+  right: 5%;
+  transform: rotate(6deg);
+}
+
+.hero-doodle--pie {
+  width: 50px;
+  bottom: 28%;
+  left: 6%;
+  transform: rotate(8deg);
+}
+
+.hero-doodle--browser {
+  width: 72px;
+  bottom: 22%;
+  right: 4%;
+  transform: rotate(-4deg);
+}
+
+.hero-doodle--scatter {
+  width: 55px;
+  top: 40%;
+  left: 2%;
+  transform: rotate(-6deg);
+}
+
+.hero-doodle--code {
+  width: 48px;
+  top: 50%;
+  right: 3%;
+  transform: rotate(10deg);
+}
+
+/* ── Hero bottom ── */
+.hero-bottom {
+  border-top: 1px solid var(--color-border);
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Stats ── */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  padding: var(--space-7) 0;
+  border-right: 1px solid var(--color-border);
+}
+
+.hero-stat:last-child {
+  border-right: none;
+}
+
+.hero-stat-value {
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-7) 0;
+    padding-top: var(--space-8);
+  }
+
+  .hero-illustration {
+    order: -1;
+  }
+
+  .hero-portrait-container {
+    max-width: 300px;
+  }
+
+  .hero-doodles {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-title-reserve {
+    font-size: 32px;
+  }
+
+  .hero-portrait-container {
+    max-width: 240px;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stat {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-stat:last-child {
+    border-bottom: none;
+  }
+}

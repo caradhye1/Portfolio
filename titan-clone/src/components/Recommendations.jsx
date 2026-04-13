@@ -1,5 +1,6 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef } from 'react';
 import './Recommendations.css';
+import { DoodleLightbulb, DoodleTarget, DoodleChat } from './Doodles';
 
 const recommendations = [
   {
@@ -74,55 +75,73 @@ function highlightKeywords(text, keywords) {
 }
 
 export default function Recommendations() {
-  const [expandedIdx, setExpandedIdx] = useState(0);
-  const cardRefs = useRef([]);
-
-  const setCardRef = useCallback((el, i) => {
-    cardRefs.current[i] = el;
-  }, []);
+  const [expandedIdx, setExpandedIdx] = useState(-1);
+  const itemRefs = useRef([]);
 
   const toggleCard = (i) => {
-    const isExpanding = expandedIdx !== i;
-    setExpandedIdx(isExpanding ? i : -1);
-    if (isExpanding && cardRefs.current[i]) {
-      setTimeout(() => {
-        cardRefs.current[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 50);
+    if (expandedIdx === i) {
+      setExpandedIdx(-1);
+      return;
+    }
+
+    // Expand and scroll simultaneously
+    setExpandedIdx(i);
+    const el = itemRefs.current[i];
+    if (el) {
+      // Slight delay so the DOM updates, then scroll smoothly
+      requestAnimationFrame(() => {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
     }
   };
 
   return (
     <section className="recs" id="colleagues">
+      {/* Background doodles */}
+      <div className="recs-doodles" aria-hidden="true">
+        <DoodleLightbulb className="doodle--recs-lightbulb" />
+        <DoodleTarget className="doodle--recs-target" />
+        <DoodleChat className="doodle--recs-chat" />
+      </div>
       <div className="container">
         <div className="recs-header">
           <h2 className="section-title">Words from colleagues</h2>
         </div>
-        <div className="recs-stack">
+        <div className="recs-accordion">
           {recommendations.map((rec, i) => {
             const isExpanded = expandedIdx === i;
+            const colorClass = i % 2 === 0 ? 'rec-item--cream' : 'rec-item--white';
             return (
               <div
                 key={i}
-                ref={(el) => setCardRef(el, i)}
-                className={`rec-card ${isExpanded ? 'rec-card--expanded' : ''}`}
-                onClick={() => toggleCard(i)}
+                ref={(el) => { itemRefs.current[i] = el; }}
+                className={`rec-item ${colorClass} ${isExpanded ? 'rec-item--expanded' : ''}`}
               >
-                <div className="rec-card-header">
-                  <div className="rec-card-left">
-                    <p className="rec-pull-quote">&ldquo;{rec.pullQuote}&rdquo;</p>
-                  </div>
-                  <div className="rec-card-right">
+                <button
+                  className="rec-item-header"
+                  onClick={() => toggleCard(i)}
+                  aria-expanded={isExpanded}
+                >
+                  <p className="rec-pull-quote">&ldquo;{rec.pullQuote}&rdquo;</p>
+                  <div className="rec-header-right">
                     <div className="rec-person-info">
                       <p className="rec-name">{rec.name}</p>
                       <p className="rec-title">{rec.title}</p>
                     </div>
-                    <svg className="rec-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M5 8L10 13L15 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <span className="rec-toggle-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="1" />
+                        <line x1="7" y1="12" x2="17" y2="12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                        {!isExpanded && (
+                          <line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                        )}
+                      </svg>
+                    </span>
                   </div>
-                </div>
-                <div className="rec-card-body">
-                  <div className="rec-card-body-inner">
+                </button>
+                {/* Body always in DOM — height animated via CSS */}
+                <div className={`rec-item-body ${isExpanded ? 'rec-item-body--open' : ''}`}>
+                  <div className="rec-item-body-inner">
                     <p className="rec-quote">&ldquo;{highlightKeywords(rec.quote, rec.keywords)}&rdquo;</p>
                   </div>
                 </div>

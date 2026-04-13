@@ -55,7 +55,7 @@ export default function Navbar() {
             </>
           )}
           <Link to="/publications" className="navbar-link">Publications</Link>
-          <Link to="/photography" className="navbar-link">Photography</Link>
+          {/* <Link to="/photography" className="navbar-link">Photography</Link> */}
         </div>
       </div>
     </nav>

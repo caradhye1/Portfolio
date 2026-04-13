@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Contact.css';
+import { DoodleChat, DoodleLightbulb } from './Doodles';
 
 export default function Contact() {
   const [message, setMessage] = useState('');
@@ -16,6 +17,10 @@ export default function Contact() {
 
   return (
     <section className="contact">
+      <div className="contact-doodles" aria-hidden="true">
+        <DoodleChat className="doodle--contact-chat" />
+        <DoodleLightbulb className="doodle--contact-lightbulb" />
+      </div>
       <div className="container">
         <h2 className="section-title">Let's Build Something Together</h2>
         <form className="contact-form" onSubmit={handleSubmit}>

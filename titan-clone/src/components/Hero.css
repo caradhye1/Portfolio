@@ -76,7 +76,7 @@
 .hero-cursor {
   font-style: normal;
   font-weight: 300;
-  color: var(--color-text-muted);
+  color: var(--color-accent-yellow);
   animation: cursorBlink 0.7s step-end infinite;
   margin-left: 1px;
 }
@@ -149,55 +149,9 @@
 .hero-doodles {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 3;
   pointer-events: none;
-}
-
-.hero-doodle {
-  position: absolute;
-  opacity: 0.35;
-}
-
-.hero-doodle--brain {
-  width: 70px;
-  top: 18%;
-  left: 4%;
-  transform: rotate(-12deg);
-}
-
-.hero-doodle--chart {
-  width: 65px;
-  top: 12%;
-  right: 5%;
-  transform: rotate(6deg);
-}
-
-.hero-doodle--pie {
-  width: 50px;
-  bottom: 28%;
-  left: 6%;
-  transform: rotate(8deg);
-}
-
-.hero-doodle--browser {
-  width: 72px;
-  bottom: 22%;
-  right: 4%;
-  transform: rotate(-4deg);
-}
-
-.hero-doodle--scatter {
-  width: 55px;
-  top: 40%;
-  left: 2%;
-  transform: rotate(-6deg);
-}
-
-.hero-doodle--code {
-  width: 48px;
-  top: 50%;
-  right: 3%;
-  transform: rotate(10deg);
+  overflow: hidden;
 }
 
 /* ── Hero bottom ── */

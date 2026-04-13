@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Projects.css';
+import { DoodleFlowchart, DoodlePencil, DoodleGear } from './Doodles';
 
 const projects = [
   {
@@ -67,6 +68,11 @@ export default function Projects() {
 
   return (
     <section className="projects" id="projects">
+      <div className="projects-doodles" aria-hidden="true">
+        <DoodleFlowchart className="doodle--projects-flowchart" />
+        <DoodlePencil className="doodle--projects-pencil" />
+        <DoodleGear className="doodle--projects-gear" />
+      </div>
       <div className="projects-wrap">
         <h2 className="section-title">Case studies</h2>
         <p className="projects-subtitle">Selected product portfolio</p>

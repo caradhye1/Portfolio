@@ -1,6 +1,7 @@
 .recs {
   padding: var(--space-9) 0;
   border-bottom: 1px solid var(--color-border);
+  position: relative;
 }
 
 .recs-header {
@@ -8,61 +9,77 @@
   text-align: center;
 }
 
-/* ── Card stack — centered ── */
-.recs-stack {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+/* ── Accordion ── */
+.recs-accordion {
   max-width: 900px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
 }
 
-/* ── Individual card ── */
-.rec-card {
-  background: var(--color-bg);
-  border: none;
+/* ── Accordion item — shadow cards ── */
+.rec-item {
   border-radius: 14px;
-  padding: var(--space-5) var(--space-6);
-  cursor: pointer;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.4s ease, background 0.4s ease;
+  overflow: hidden;
 }
 
-.rec-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.05);
+.rec-item:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.06);
 }
 
-.rec-card--expanded {
+/* Alternating colors */
+.rec-item--cream {
   background: var(--color-bg-cream);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-.rec-card--expanded .rec-pull-quote {
-  color: var(--color-text-muted);
+.rec-item--white {
+  background: var(--color-bg);
 }
 
-/* ── Card header — pull-quote left, person right ── */
-.rec-card-header {
+/* Expanded state — large shadow, keeps its own bg color */
+.rec-item--expanded {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Header row (clickable) ── */
+.rec-item-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-6);
+  gap: var(--space-5);
+  width: 100%;
+  padding: var(--space-5) var(--space-6);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: opacity 0.2s ease;
 }
 
-.rec-card-left {
-  flex: 1;
-  min-width: 0;
+.rec-item-header:hover {
+  opacity: 0.75;
 }
 
 .rec-pull-quote {
-  font-size: var(--text-md);
+  flex: 1;
+  font-size: var(--text-base);
   color: var(--color-text);
   font-style: normal;
-  line-height: 1.6;
+  line-height: 1.55;
+  min-width: 0;
+  transition: color 0.5s ease;
 }
 
-/* ── Right side: person + chevron ── */
-.rec-card-right {
+/* When expanded, fade the pull quote to muted grey */
+.rec-item--expanded .rec-pull-quote {
+  color: var(--color-text-muted);
+}
+
+.rec-header-right {
   display: flex;
   align-items: center;
   gap: var(--space-4);
@@ -75,59 +92,62 @@
 
 .rec-name {
   font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-text-light);
+  font-weight: 600;
+  color: var(--color-text);
   line-height: 1.4;
 }
 
 .rec-title {
-  font-size: var(--text-xs);
+  font-size: 11px;
   color: var(--color-text-muted);
   line-height: 1.4;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  margin-top: 2px;
 }
 
-.rec-chevron {
-  flex-shrink: 0;
+/* ── Toggle icon ── */
+.rec-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
   color: var(--color-text-muted);
-  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.rec-card--expanded .rec-chevron {
-  transform: rotate(180deg);
+.rec-item--expanded .rec-toggle-icon {
+  color: var(--color-text);
 }
 
-/* ── Expandable body ── */
-.rec-card-body {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.rec-card-body-inner {
+/* ── Expanded body — always in DOM, animated via max-height + opacity ── */
+.rec-item-body {
+  max-height: 0;
+  opacity: 0;
   overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.3s ease;
 }
 
-.rec-card--expanded .rec-card-body {
-  grid-template-rows: 1fr;
+.rec-item-body--open {
+  max-height: 600px;
+  opacity: 1;
+  transition: max-height 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.45s ease 0.2s;
+}
+
+.rec-item-body-inner {
+  padding: 0 var(--space-6) var(--space-6);
 }
 
 .rec-quote {
   font-size: var(--text-base);
   color: var(--color-text);
   line-height: 1.8;
-  padding-top: var(--space-5);
-  margin-top: var(--space-5);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--color-border);
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
-}
-
-.rec-card--expanded .rec-quote {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .rec-keyword {
@@ -135,7 +155,7 @@
   color: #111;
 }
 
-/* ── Footer link — centered between cards and section divider ── */
+/* ── Footer link ── */
 .recs-footer {
   display: flex;
   justify-content: flex-end;
@@ -164,27 +184,18 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .rec-card-header {
+  .rec-item-header {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-3);
   }
 
-  .rec-card-right {
-    justify-content: space-between;
+  .rec-header-right {
     width: 100%;
+    justify-content: space-between;
   }
 
   .rec-person-info {
     text-align: left;
-  }
-
-  .rec-pull-quote {
-    font-size: var(--text-base);
-  }
-
-  .rec-card {
-    padding: var(--space-4) var(--space-5);
-    border: none;
   }
 }

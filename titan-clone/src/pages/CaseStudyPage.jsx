@@ -170,25 +170,38 @@ const caseStudies = {
     subtitle: 'Energy Management App for Behavioral Savings',
     heroImage: 'https://static.wixstatic.com/media/a0fcc9_49c6223098b8453a9970025226668027~mv2.png',
     role: 'Lead UX Designer (Design + Research)',
-    team: '3 UX Designers, 1 UX Researcher, 1 Project Manager, + several hardware & software engineers',
+    team: '1 UI Icon / Motion Designer, 1 Project manager, 1 Design Director, + Several Hardware & Software engineers.',
     overview: 'DTE is one of Michigan\'s largest utility companies. I worked on the team that built an energy management app targeting energy savings behavior change for household clients.',
     fullWidth: true,
     standaloneTexts: [
       {
         heading: 'Overview of the Challenge',
-        text: 'DTE Energy gets government incentives to reduce energy consumption but this gets tougher over time without new technology. DTE came to Vectorform to investigate ways latest technology can achieve this. After looking at various options, DTE liked the idea of using behavioral-technology to reduce consumption. We\'d pointed out that studies had pointed out for several years that decreasing the feedback interval improves savings in small samples, but no such technology had really hit the market yet. Spurred on by this idea supported by strong academic & some applied research, we set on the journey that could potentially begin in a new chapter for both companies.',
+        text: [
+          'DTE Energy gets government incentives to reduce energy consumption but this gets tougher over time without new technology. DTE came to Vectorform to investigate ways latest technology can achieve this.',
+          'After looking at various options, DTE liked the idea of using behavioral-technology to reduce consumption. We\'d pointed out that studies had pointed out for several years that decreasing the feedback interval improves savings in small samples, but no such technology had really hit the market yet.',
+          'Spurred on by this idea supported by strong academic & some applied research, we set on the journey that could potentially begin in a new chapter for both companies.',
+        ],
       },
     ],
     rows: [
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_9f9aecfa9c4e498b85e4a484062acc0d~mv2.png', alt: 'Targeting household consumption' },
         heading: 'Targeting Household Consumption',
-        text: 'We found that decades ago researchers had pointed to an opportunity to improve household energy consumption habits by adopting better behaviors. This remained an underexplored solution as most engineers focused on technological factors rather than human behavioral factors. For example, in 1999, Brandon & Lewis point out the 5 key areas that influence household energy consumption. The two key factors included behavioral change & feedback, which were potentially related.',
+        text: [
+          'We found that decades ago researchers had pointed to an opportunity to improve household energy consumption habits by adopting better behaviors.',
+          'This remained an underexplored solution as most engineers focused on technological factors rather than human behavioral factors.',
+          'For example, in 1999, Brandon & Lewis point out the 5 key areas that influence household energy consumption. The two key factors included behavioral change & feedback, which were potentially related.',
+          'Brandon, G., & Lewis, A. (1999). Reducing household energy consumption: a qualitative and quantitative field study. Journal of environmental Psychology, 19(1), 75-85.',
+        ],
       },
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_87e90e1c59f44f7081fb356953bcd4cb~mv2.png', alt: 'Feedback research chart' },
         heading: 'Making Energy Visible',
-        text: 'One study in 2012 had found mixed results on providing detailed real-time feedback on energy consumption. But this was an extremely small sample of 11 households in The UK and the results were mainly qualitative. We were encouraged by these studies because it showed that others had also sensed there was a market for this.',
+        text: [
+          'One study in 2012 had found mixed results on providing detailed real-time feedback on energy consumption. But this was an extremely small sample of 11 households in The UK and the results were mainly qualitative.',
+          'We were encouraged by these studies because it showed that others had also sensed there was a market for this.',
+          'Hargreaves, T., Nye, M., & Burgess, J. (2013). Keeping energy visible? Exploring how householders interact with feedback from smart energy monitors in the longer term. Energy policy, 52, 126-134.',
+        ],
       },
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_96e03d633e254c648eadf31f4bcd46fe~mv2.png', alt: 'Energy feedback visualization concepts' },
@@ -196,27 +209,47 @@ const caseStudies = {
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_1cb4d1f1544b4e33b7c918ffd46aee83~mv2.jpg', alt: 'Behind the scenes planning' },
         heading: 'Behind the Scenes',
-        text: 'With the knowledge of previous research, two strong teams from DTE & Vectorform, we began the formative stages of the project. The following weeks involved a ton of meetings with DTE to get to know their current team, POV, some background data, regulatory limitations, previous attempts, etc. On the VF side our hardware team was reviewing available technology to see what could work, cost estimates etc. My team — we planned user research. After talking with DTE team, going into people\'s homes to understand the context-of-use of this kind of an idea made sense.',
+        text: [
+          'With the knowledge of previous research, two strong teams from DTE & Vectorform, we began the formative stages of the project.',
+          'The following weeks involved a ton of meetings with DTE to get to know their current team, POV, some background data, regulatory limitations, previous attempts, etc.',
+          'On the VF side our hardware team was reviewing available technology to see what could work, cost estimates etc.',
+          'My team - we planned user research. After talking with DTE team, going into people\'s homes to understand the context-of-use of this kind of an idea made sense.',
+        ],
       },
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_a8ee8a7c660449ad9a6baefa57625cbf~mv2.png', alt: 'User research in homes' },
         heading: 'User Research',
-        text: 'We visited 23 households in Michigan to study the habits, expectations, and behavior patterns of potential clients. Each visit lasted a few hours, which consisted of Q&A as well as learning about their lifestyles. The group was selected based on DTE\'s target client pool. We learned a ton through this field research. For example, we learnt that people ignore the \'invisible\' energy consumption via HVAC units and washing machines, and focus more on visible lighting etc. when it comes to intentionally saving energy.',
+        text: [
+          'We visited 23 households in Michigan to study the habits, expectations, and behavior patterns of potential clients. Each visit lasted a few hours, which consisted of Q&A as well as learning about their lifestyles. The group was selected based on DTE\'s target client pool.',
+          'We learned a ton through this field research. For example, we learnt that people ignore the \'invisible\' energy consumption via HVAC units and washing machines, and focus more on visible lighting etc. when it comes to intentionally saving energy.',
+        ],
       },
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_919eaea3677e479fab237e3f9dd3e6c2~mv2.png', alt: 'Hardware innovation' },
         heading: 'Hardware Innovation',
-        text: 'Along with the app and the idea itself, there was another crucial piece of the puzzle — hardware. Our hardware team was able to research & patent the technology that would allow for real-time energy consumption monitoring, which would send the data to the app. This was a huge win and made the team that much more confident that the idea could come to fruition.',
+        text: [
+          'Along with the app and the idea itself, there was another crucial piece of the puzzle - hardware.',
+          'Our hardware team was able to research & patent the technology that would allow for real-time energy consumption monitoring, which would send the data to the app.',
+          'This was a huge win and made the team that much more confident that the idea could come to fruition.',
+        ],
       },
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_5abdde1b9781464a9fc828c0a372f47a~mv2_d_1400_2879_s_2.jpg', alt: 'Dial visualization prototype' },
         heading: 'Ideate > Design > Test > Repeat',
-        text: 'Based on the rich set of insights derived from field research as well as DTE\'s experienced customer service teams, we decided to start prototyping some ideas. One of the key challenges was designing a visualization that clearly communicates daily energy consumption activity. Initial user interviews showed that people associated bar & line charts with weekly & monthly consumption. After a lot of trial & error, we selected the dial as the visualization. It resembled a clock, which seemed to intuitively make sense to the users.',
+        text: [
+          'Based on the rich set of insights derived from field research as well as DTE\'s experienced customer service teams, we decided to start prototyping some ideas.',
+          'One of the key challenges was designing a visualization that clearly communicates daily energy consumption activity.',
+          'Initial user interviews showed that people associated bar & line charts with weekly & monthly consumption. After a lot of trial & error, we selected the dial as the visualization. It resembled a clock, which seemed to intuitively make sense to the users.',
+        ],
       },
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_92466f32d99a4a908bd3bfd2e1d0ff41~mv2.jpg', alt: 'Setting targets prototype screen' },
         heading: 'Setting Targets',
-        text: 'Another key feature of the potential app was setting targets for consumption so that users can know how close / far they are from reaching their goal. This was based on DTE\'s previous programs which had received positive feedback but were at a monthly level w/ little control over daily activities. Real-time tracking of energy consumption allowed for a much more realistic picture of household consumption, and consequently a more powerful way to control activities. We followed the same process of prototypes & freeform feedback from users to get a sense of what users expected.',
+        text: [
+          'Another key feature of the potential app was setting targets for consumption so that users can know how close / far they are from reaching their goal. This was based on DTE\'s previous programs which had received positive feedback but were at a monthly level w/ little control over daily activities.',
+          'Real-time tracking of energy consumption allowed for a much more realistic picture of household consumption, and consequently a more powerful way to control activities.',
+          'We followed the same process of prototypes & freeform feedback from users to get a sense of what users expected.',
+        ],
       },
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_31efbf8bd9554930be9b695bf60f2e25~mv2.jpg', alt: 'Additional target-setting screens' },
@@ -224,7 +257,11 @@ const caseStudies = {
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_b20227af421e4b13a89b87cbf9e478b2~mv2.jpg', alt: 'Usability testing session' },
         heading: 'Testing Testing Testing',
-        text: 'I believe there is no substitute for testing. Even though we had extremely talented designers and SMEs, we conducted in-depth real-life testing of the prototype for all the designs, which provided crucial info about the desirability of the app, and some of the next features we\'d have to build. We tested each and every page and key feature of the app before launch. We used cognitive walkthroughs and think-aloud protocol to have customers interact with the app and understand how they were processing the information during onboarding and on each of the pages. Interacting with the app as a whole presented more insights into app usage and customer pain points like the app being too data-heavy for some segments at this point.',
+        text: [
+          'I believe there is no substitute for testing. Even though we had extremely talented designers and SMEs, we conducted in-depth real-life testing of the prototype for all the designs, which provided crucial info about the desirability of the app, and some of the next features we\'d have to build.',
+          'We tested each and every page and key feature of the app before launch. We used cognitive walkthroughs and think-aloud protocol to have customers interact with the app and understand how they were processing the information during onboarding and on each of the pages.',
+          'Interacting with the app as a whole presented more insights into app usage and customer pain points like the app being too data-heavy for some segments at this point.',
+        ],
       },
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_ba95957c66bf43cc9bc1b625624b1e4a~mv2.jpg', alt: 'Testing session insights' },
@@ -235,17 +272,27 @@ const caseStudies = {
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_d1efecd37cda4010af55fdacc9d87b27~mv2.png', alt: 'App iterations with new features' },
         heading: 'Iterations',
-        text: 'After the launch of the app, we continued to get feedback from DTE customers around improving detailed info in the app. Based on survey data & interview feedback we improved several aspects of the info such as Energy Spike Identification, Neighborhood Comparison, Last Week\'s Results Review, New Challenges, etc. We tracked the usage for each of the new features to insure usability & utility.',
+        text: [
+          'After the launch of the app, we continued to get feedback from DTE customers around improving detailed info in the app.',
+          'Based on survey data & interview feedback we improved several aspects of the info such as Energy Spike Identification, Neighborhood Comparison, Last Week\'s Results Review, New Challenges, etc.',
+          'We tracked the usage for each of the new features to insure usability & utility.',
+        ],
       },
       {
         textOnly: true,
         heading: 'Goals & Rewards',
-        text: 'Based on the data-heaviness of the initial app felt by some customers, in the next phase we focused on more gamification aspects of the app. We added goals & rewards at key moments & regular intervals to make the interaction with the app more engaging and fun, rather than just a data dump of numbers. We tracked the results post-gamification and the team was excited to find that those features had in fact increased monthly app usage frequency, session duration, and overall engagement metrics from the non-techy segment of the customer pool.',
+        text: [
+          'Based on the data-heaviness of the initial app felt by some customers, in the next phase we focused on more gamification aspects of the app. We added goals & rewards at key moments & regular intervals to make the interaction with the app more engaging and fun, rather than just a data dump of numbers.',
+          'We tracked the results post-gamification and the team was excited to find that those features had in fact increased monthly app usage frequency, session duration, and overall engagement metrics from the non-techy segment of the customer pool.',
+        ],
       },
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_35e0331991a249cc91f14ff0d7f4b9e7~mv2.png', alt: 'Design system — color palette' },
         heading: 'Design System',
-        text: 'Based on the app needs the design team had created a solid design system as a guideline going forward. Bright and basic colors were selected to offer a broad range of options for data visualizations e.g. red for heat and light blue for cold aspects of energy consumption. We also chose a familiar and modern font Helvetica Neue to make the text readable throughout the app. And finally, an icon library was created to help symbolize key aspects of the app and make them memorable for the users.',
+        text: [
+          'Based on the app needs the design team had created a solid design system as a guideline going forward. Bright and basic colors were selected to offer a broad range of options for data visualizations e.g. red for heat and light blue for cold aspects of energy consumption.',
+          'We also chose a familiar and modern font Helvetica Neue to make the text readable throughout the app. And finally, an icon library was created to help symbolize key aspects of the app and make them memorable for the users.',
+        ],
       },
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_73c6e5b28760479397be7ece56badc7d~mv2.png', alt: 'Design system — typography' },
@@ -257,7 +304,11 @@ const caseStudies = {
     closingTexts: [
       {
         heading: 'The Results',
-        text: 'To test the effectiveness of the DTE Insight app on household energy savings, a randomized controlled trial was conducted by an independent professional testing company commissioned by DTE & Michigan Govt. # of encouraged customers = 12,743 · # of treated customers = 7,379 · # of control customers = 4,639 · Avg # of months after installing = 6. Based on energy data captured from 7,379 households over 17 months the results showed that DTE Insight led to the most significant savings in the history of DTE.',
+        text: [
+          'To test the effectiveness of the DTE Insight app on household energy savings, a randomized controlled trial was conducted by an independent professional testing company commissioned by DTE & Michigan Govt.',
+          '# of encouraged customers = 12,743\n# of treated customers = 7,379\n# of control customers = 4,639\nAvg # of months after installing = 6',
+          'Based on energy data captured from 7,379 households over 17 months the results showed that DTE Insight led to the most significant savings in the history of DTE. The results are shown below.',
+        ],
       },
     ],
     closingImages: [
@@ -309,6 +360,15 @@ const caseStudies = {
     ],
   },
 };
+
+// Render one paragraph or an array of paragraphs. Accepts string | string[].
+function renderParagraphs(text, className = 'cs-row-body') {
+  if (text == null) return null;
+  const arr = Array.isArray(text) ? text : [text];
+  return arr.map((t, i) => (
+    <p key={i} className={className}>{t}</p>
+  ));
+}
 
 function renderSection(section, i) {
   switch (section.type) {
@@ -477,7 +537,7 @@ export default function CaseStudyPage() {
           {study.standaloneTexts && study.standaloneTexts.map((block, i) => (
             <div key={`st-${i}`} className="cs-standalone-text">
               <h3 className="cs-row-heading">{block.heading}</h3>
-              <p className="cs-row-body">{block.text}</p>
+              {renderParagraphs(block.text)}
             </div>
           ))}
 
@@ -488,7 +548,7 @@ export default function CaseStudyPage() {
                 return (
                   <div key={i} className="cs-standalone-text cs-row-animate cs-row-text-animated">
                     {row.heading && <h3 className="cs-row-heading">{row.heading}</h3>}
-                    {row.text && <p className="cs-row-body">{row.text}</p>}
+                    {renderParagraphs(row.text)}
                   </div>
                 );
               }
@@ -501,7 +561,7 @@ export default function CaseStudyPage() {
                     <div className="cs-row-text cs-row-text-animated">
                       <div className="cs-row-connector" aria-hidden="true"></div>
                       {row.heading && <h3 className="cs-row-heading">{row.heading}</h3>}
-                      {row.text && <p className="cs-row-body">{row.text}</p>}
+                      {renderParagraphs(row.text)}
                     </div>
                   ) : (
                     <div className="cs-row-text"></div>
@@ -515,7 +575,7 @@ export default function CaseStudyPage() {
           {study.closingTexts && study.closingTexts.map((block, i) => (
             <div key={`ct-${i}`} className="cs-standalone-text">
               <h3 className="cs-row-heading">{block.heading}</h3>
-              <p className="cs-row-body">{block.text}</p>
+              {renderParagraphs(block.text)}
             </div>
           ))}
 

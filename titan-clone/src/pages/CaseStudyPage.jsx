@@ -89,67 +89,147 @@ const caseStudies = {
     standaloneTexts: [
       {
         heading: 'Creating the Highest Converting Channel in Company History',
-        text: 'It takes 30+ mins of phone conversation to determine if GreenPath can help a caller with their financial situation. Obviously, this is extremely tiresome for the callers, makes a bad first impression for GreenPath and leads to a ton of overhead cost. After identifying this issue I lead the team that went on to conceive of, and implement the solution. The goal was to create an online, automated way of identifying the right client fit — hence the project was called Right Reach.',
+        text: [
+          'It takes 30+ mins of phone conversation to determine if GreenPath can help a caller with their financial situation. Obviously, this is extremely tiresome for the callers, makes a bad first impression for GreenPath and leads to a ton of overhead cost.',
+          'After identifying this issue I lead the team that went on to conceive of, and implement the solution. The goal was to create an online, automated way of identifying the right client fit - hence the project was called Right Reach.',
+        ],
       },
     ],
     rows: [
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_147edca113c74176a57aefcd8e415a40~mv2.png', alt: 'Team values and feedback' },
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_8666ed4df2d246dabe669c25c0c23de9~mv2.png', alt: 'Team values and feedback' },
         heading: 'Team Values and Feedback',
-        text: 'We started by understanding our own values and the feedback we\'ve got from clients about their goals. After leading a couple of design thinking sessions, I was fairly confident we had landed on a solid base of concepts to jump off of.',
+        text: [
+          "We started by understanding our own values and the feedback we've got from clients about their goals.",
+          'After leading a couple of design thinking sessions, I was fairly confident we had landed on a solid base of concepts to jump off of.',
+        ],
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_8666ed4df2d246dabe669c25c0c23de9~mv2.png', alt: 'Competitor analysis chart' },
-        heading: 'Competitors Had a Variety of Intake Features',
-        text: 'Next on the agenda was a thorough competitor analysis to see what others in this space were doing to reach their audience online. My researcher and I planned this out. We looked at 6 companies, some direct competitors in the financial wellness space, and others in aligned space who were on top of their game in reaching their audience. We gathered insights from looking at their online products and noted areas of overlap and unique/interesting ideas we found.',
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_425c04290ff64574939ec371d46ec8c4~mv2.png', alt: 'Team values — additional visual' },
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_e57ada1c1e60484a9dd2451b4562265f~mv2.png', alt: 'Roadmap and strategy' },
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_ad3cf0f8fdb847d7b1da9bba8e94fb5d~mv2.png', alt: 'Competitor analysis — intake features' },
+        heading: 'Competitors had a variety of intake features',
+        text: [
+          'Next on the agenda was a thorough competitor analysis to see what others in this space were doing to reach their audience online.',
+          'My researcher and I planned this out. We looked at 6 companies, some direct competitors in the financial wellness space, and others in aligned space who were on top of their game in reaching their audience.',
+          'We gathered insights from looking at their online products and noted areas of overlap and unique/interesting ideas we found.',
+        ],
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_02b6defc5f8e46e6b71b8baa8a26337f~mv2.png', alt: 'Competitor analysis — intake flow' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_a4462a522f9149aeb8c4769461e30059~mv2.png', alt: 'Competitor analysis — detail 1' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_fd8074b6c3e14e1fadcb9e2f9b1c176e~mv2.png', alt: 'Competitor analysis — detail 2' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_430e3f93aaa44e3a8ae28de30ed4742e~mv2.png', alt: 'Study 6 competitors — overview' },
+        heading: 'Study 6 Competitors',
+        text: [
+          'We presented all the findings with detailed visuals to the team. Getting stakeholder support was key for this project.',
+          'This helped solidify the need for this app, as well as create a foundation for strategy.',
+        ],
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_df808badb8e849dab73da9ee7d50d9cc~mv2.png', alt: 'Competitor study — detail 2' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_28987bd3dafb4d23be03c53f09e691ae~mv2.png', alt: 'Competitor study — detail 3' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_6283d565fdeb4680954b5b14d472aae0~mv2.png', alt: 'Competitor study — detail 4' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_4767d1140ba84a0eb933c8d9804214a0~mv2.png', alt: 'Strategic roadmap visual' },
         heading: 'Presented a Roadmap & Strategic Alignment to C-team',
         text: 'After a good look inside and out, I was able to present a cohesive strategy to the C-suite for how we would build this app in stages, and how this app would fit into the overall ecosystem of products at GreenPath. This was seen as "transformational" and "revolutionary" by the C-team, which made me really happy and eager to get started.',
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_3d48aed34528429097b837ea7b1a351f~mv2.png', alt: 'Strategic pyramid' },
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_319b142dbeb64703b23c8bb4af84cb75~mv2.png', alt: 'Roadmap — supporting visual' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_431e723385e34ddba8d8f7d7da07e0ce~mv2.png', alt: 'Vision and execution' },
         heading: 'Vision and Execution',
-        text: 'With a little effort, we were able to put the team together, complete a few pending hires, and get started on showing everyone at GreenPath what we\'d be working on for the next few months.',
+        text: "With a little effort, we were able to put the team together, complete a few pending hires, and get started on showing everyone at GreenPath what we'd be working on for the next few months.",
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_d4b55ab01ccd4bfdb73f7f260a6c4f90~mv2.png', alt: 'Low-fi wireframes' },
-        heading: 'Show Some Basic Concepts to Choose From',
-        text: 'After a few more design thinking exercises, we presented the first round of low-fi wireframes to the team for feedback. We highlighted the different approaches taken by different layouts and elements. Feedback suggested we mix and match some of the elements from the wire sets.',
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_ff9a1ebfffd8415989fba667746bf5f3~mv2.png', alt: 'Low-fi concept — option 1' },
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_ffcfbd00d1084fb49791ee3aadc922df~mv2.png', alt: 'Mid-fidelity wireframes' },
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_faa5a51f5d0440b291559adb5ae84628~mv2.png', alt: 'Low-fi concept — option 2' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_9c090b87f8be4df0b92b30ebbcac659b~mv2.png', alt: 'Low-fi wireframes set 1' },
+        heading: 'Show some basic concepts to choose from',
+        text: [
+          'After a few more design thinking exercises, we presented the first round of low-fi wireframes to the team for feedback.',
+          'We highlighted the different approaches taken by different layouts and elements. Feedback suggested we mix and match some of the elements from the wire sets. These images show wires from various sets.',
+        ],
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_ffcfbd00d1084fb49791ee3aadc922df~mv2.png', alt: 'Low-fi wireframes set 2' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_d4b55ab01ccd4bfdb73f7f260a6c4f90~mv2.png', alt: 'Low-fi wireframes set 3' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_4517683e490049a5969291fd1bf9b25c~mv2.png', alt: 'Low-fi wireframes set 4' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_b770175423064f659ecf044c0b9bf23e~mv2.png', alt: 'Mobile low-fi wires' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_8364ce6f5f6146b1b761661fe1c14a0e~mv2.png', alt: 'Mid-fidelity wireframes' },
         heading: 'Mid-Fidelity Wireframes',
-        text: 'After solidifying low-fi wires and the layout of basic elements we added color, shapes, and other elements to provide more brand and feel to the wires. This gave the team another chance to see the work in progress and provide any additional feedback. In this project, we had 22 stakeholders, so it was important to get constant feedback to keep alignment.',
+        text: [
+          'After solidifying low-fi wires and the layout of basic elements we added color, shapes, and other elements to provide more brand and feel to the wires. This gave the team another chance to see the work in progress and provide any additional feedback.',
+          'In this project, we had 22 stakeholders, so it was important to get constant feedback to keep alignment.',
+        ],
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_4517683e490049a5969291fd1bf9b25c~mv2.png', alt: 'Style guide' },
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_d5f50b34c65a4c149937e0d235b483d8~mv2.png', alt: 'Styleguide / mini-design system' },
         heading: 'Styleguide',
         text: 'As we continued to make progress toward a high-fidelity prototype, we simultaneously created a style guide / mini-design system to help get the front team started on creating basic elements while finalizing the designs.',
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_b770175423064f659ecf044c0b9bf23e~mv2.png', alt: 'Mobile first mockup' },
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_147edca113c74176a57aefcd8e415a40~mv2.png', alt: 'Mobile-first prototypes' },
         heading: 'Mobile First',
-        text: 'With a large percentage of traffic coming from mobile we lead with a mobile-first approach to the app design. With clickable prototypes for both mobile and desktop, we were able to test real users interacting with the prototype and gather valuable feedback about the usability and design of the app.',
+        text: [
+          'With a large percentage of traffic coming from mobile we lead with a mobile-first approach to the app design.',
+          'With clickable prototypes for both mobile and desktop, we were able to test real users interacting with the prototype and gather valuable feedback about the usability and design of the app.',
+          'At the same time refine a responsive app design for the engineering team.',
+        ],
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_8364ce6f5f6146b1b761661fe1c14a0e~mv2.png', alt: 'User research findings' },
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_e57ada1c1e60484a9dd2451b4562265f~mv2.png', alt: 'Research-based design — mobile mockup 1' },
         heading: 'Research-Based Design',
         text: 'We presented all the findings from the user interviews to the team to keep them in the loop. The team felt involved and connected to the product.',
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_d5f50b34c65a4c149937e0d235b483d8~mv2.png', alt: 'Desktop and mobile cohesive design' },
-        heading: 'Cohesive Experience Across Mobile & Web',
-        text: 'Based on competitive research, design thinking, several user interviews, and team feedback, we finally had a high-fidelity interactive prototype to deliver to the engineering team, as well as to demo for potential partners (B2B lob). It was important that the app felt cohesive on mobile and desktop and the trust factor for financial services is extremely high, in addition to the vulnerable state our clients are often in.',
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_3d48aed34528429097b837ea7b1a351f~mv2.png', alt: 'Research-based design — mobile mockup 2' },
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_4767d1140ba84a0eb933c8d9804214a0~mv2.png', alt: 'Strategy to execution' },
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_4767d1140ba84a0eb933c8d9804214a0~mv2.png', alt: 'Cohesive experience — desktop view' },
+        heading: 'Cohesive Experience Across Mobile & Web',
+        text: [
+          'Based on competitive research, design thinking, several user interviews, and team feedback, we finally had a high-fidelity interactive prototype to deliver to the engineering team, as well as to demo for potential partners (B2B lob).',
+          'It was important that the app felt cohesive on mobile and desktop and the trust factor for financial services is extremely high, in addition to the vulnerable state our clients are often in.',
+          'We received great feedback from both the users and our internal team -including B2B partners.',
+        ],
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_e778de85fb38421b9130d4c2c346a1d9~mv2.png', alt: 'Cohesive experience — mobile view' },
+      },
+      {
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_1e3cd1fd294945f8879ad6bdcd11f110~mv2.png', alt: 'Strategy to execution — ecosystem fit' },
         heading: 'Strategy to Execution',
         text: 'My favorite part of the project was the strategic fit of this app into the ecosystem for GreenPath. This accelerated our digital transition and aligned several different teams on a unified vision for the future.',
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_e778de85fb38421b9130d4c2c346a1d9~mv2.png', alt: 'Design process diagram' },
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_66f442cf633946a8a022a7d992db2c70~mv2.png', alt: 'Design process diagram' },
         heading: 'Design Process',
         text: 'This is a diagram of the standard digital design process my team followed at GreenPath. I felt it was important that all the team felt they were aligned on the expectations. This process was based on co-working sessions with engineering, project management, C-team as well as several other teams involved in this project.',
       },
@@ -157,12 +237,11 @@ const caseStudies = {
     closingTexts: [
       {
         heading: 'Results',
-        text: 'In approximately 3 weeks — Visitors: 4,227 · Leads: 1,452 · Sessions: 112 · Accounts generated: 21+ · Conversion: >20% · Value Created: $315,000 in 3 weeks (Avg. value per client was $15,000).',
+        text: 'In ~3 weeks\nVisitors: 4,227\nLeads: 1,452\nSessions: 112\nAccounts generated: 21+\nConversion: >20%\n\nValue Created: $315,000 in 3 weeks (Avg. value per client was $15,000)',
       },
     ],
     closingImages: [
-      { src: 'https://static.wixstatic.com/media/a0fcc9_1e3cd1fd294945f8879ad6bdcd11f110~mv2.png', alt: 'Results dashboard' },
-      { src: 'https://static.wixstatic.com/media/a0fcc9_66f442cf633946a8a022a7d992db2c70~mv2.png', alt: 'Final app mockup' },
+      { src: 'https://static.wixstatic.com/media/a0fcc9_ed32c29c9c224ebbb1c0df4777035780~mv2.png', alt: 'Right Reach — final results visual' },
     ],
   },
   'dte-insight': {

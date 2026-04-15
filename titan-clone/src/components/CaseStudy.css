@@ -88,6 +88,13 @@
   color: var(--color-text-light);
 }
 
+/* When the overview sits directly under the hero (above Role/Team), give it
+   a bit of breathing room around it so it visually reads with the image. */
+.case-study-overview--above-meta {
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
 /* ── Content sections ── */
 .case-study-content {
   display: flex;
@@ -324,11 +331,17 @@
   margin-top: var(--space-4);
 }
 
-/* ── Standalone text block (full-width page) ── */
+/* ── Standalone text block (full-width page) ──
+   Text-only blocks without an image companion are centered horizontally on
+   the page and the text is center-aligned so they read as a distinct
+   "chapter intro" rather than being mistaken for a row with a missing image. */
 .cs-standalone-text {
   max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
   padding: var(--space-8) 0;
   border-bottom: 1px solid var(--color-border);
+  text-align: center;
 }
 
 .cs-standalone-text .cs-row-heading {
@@ -343,6 +356,14 @@
   font-size: var(--text-md);
   line-height: 1.8;
   color: var(--color-text-light);
+}
+
+/* Non-fullWidth pages: center text-only sections too */
+.cs-section--text {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 /* ═══════════════════════════════════════════
@@ -416,10 +437,58 @@
   }
 }
 
+/* ── Back-to-top button ──
+   Fixed to the bottom-right of the viewport. Fades in once the user has
+   scrolled down past the fold. Clicking it instantly jumps to the top
+   (no smooth animation, per spec). */
+.cs-back-to-top {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-bg, #fff);
+  color: var(--color-text);
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.2s ease;
+  animation: csBttFadeIn 0.25s ease-out both;
+  padding: 0;
+}
+
+.cs-back-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 3px 8px rgba(0, 0, 0, 0.07);
+  background: var(--color-bg-cream, #faf7f2);
+}
+
+.cs-back-to-top:focus-visible {
+  outline: 2px solid var(--color-accent-yellow, #f5c518);
+  outline-offset: 3px;
+}
+
+@keyframes csBttFadeIn {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .case-study-meta {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cs-back-to-top {
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
   }
 }
 

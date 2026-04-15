@@ -459,7 +459,7 @@ function renderSection(section, i) {
       );
     case 'text':
       return (
-        <div key={i} className="cs-section">
+        <div key={i} className="cs-section cs-section--text">
           {section.heading && <h3 className="cs-heading">{section.heading}</h3>}
           {section.text && <p className="cs-text">{section.text}</p>}
         </div>
@@ -511,6 +511,7 @@ export default function CaseStudyPage() {
   const navigate = useNavigate();
   const study = caseStudies[slug];
   const [showToast, setShowToast] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const pageRef = useRef(null);
 
   const goToProjects = (e) => {
@@ -518,9 +519,22 @@ export default function CaseStudyPage() {
     navigate('/', { state: { scrollTo: 'projects' } });
   };
 
+  const scrollToTop = () => {
+    // Instant scroll — no smooth animation per spec
+    window.scrollTo(0, 0);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
+
+  // Toggle back-to-top visibility based on scroll position
+  useEffect(() => {
+    const onScroll = () => setShowBackToTop(window.scrollY > 400);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
     if (!study?.fullWidth) return;
@@ -597,6 +611,11 @@ export default function CaseStudyPage() {
             <img src={study.heroImage} alt={study.title} />
           </div>
 
+          {/* Overview moved above the meta row, associated with the hero */}
+          <div className="case-study-overview case-study-overview--above-meta">
+            <p>{study.overview}</p>
+          </div>
+
           <div className="cs-fw-meta-row">
             <div className="case-study-meta-item">
               <span className="case-study-meta-label">Role</span>
@@ -606,10 +625,6 @@ export default function CaseStudyPage() {
               <span className="case-study-meta-label">Team</span>
               <span className="case-study-meta-value">{study.team}</span>
             </div>
-          </div>
-
-          <div className="case-study-overview">
-            <p>{study.overview}</p>
           </div>
 
           {/* Standalone intro text blocks */}
@@ -681,6 +696,19 @@ export default function CaseStudyPage() {
             </a>
           </div>
         </div>
+
+        {showBackToTop && (
+          <button
+            type="button"
+            className="cs-back-to-top"
+            onClick={scrollToTop}
+            aria-label="Back to top"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M10 15V5M10 5L5 10M10 5L15 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        )}
       </section>
     );
   }
@@ -705,6 +733,11 @@ export default function CaseStudyPage() {
           <img src={study.heroImage} alt={study.title} />
         </div>
 
+        {/* Overview moved above the meta row, associated with the hero */}
+        <div className="case-study-overview case-study-overview--above-meta">
+          <p>{study.overview}</p>
+        </div>
+
         <div className="case-study-meta">
           <div className="case-study-meta-item">
             <span className="case-study-meta-label">Role</span>
@@ -714,10 +747,6 @@ export default function CaseStudyPage() {
             <span className="case-study-meta-label">Team</span>
             <span className="case-study-meta-value">{study.team}</span>
           </div>
-        </div>
-
-        <div className="case-study-overview">
-          <p>{study.overview}</p>
         </div>
 
         <div className="case-study-content">
@@ -733,6 +762,19 @@ export default function CaseStudyPage() {
           </a>
         </div>
       </div>
+
+      {showBackToTop && (
+        <button
+          type="button"
+          className="cs-back-to-top"
+          onClick={scrollToTop}
+          aria-label="Back to top"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 15V5M10 5L5 10M10 5L15 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      )}
     </section>
   );
 }

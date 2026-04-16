@@ -89,6 +89,7 @@ const caseStudies = {
     standaloneTexts: [
       {
         heading: 'Creating the Highest Converting Channel in Company History',
+        leftAlign: true,
         text: [
           'It takes 30+ mins of phone conversation to determine if GreenPath can help a caller with their financial situation. Obviously, this is extremely tiresome for the callers, makes a bad first impression for GreenPath and leads to a ton of overhead cost.',
           'After identifying this issue I lead the team that went on to conceive of, and implement the solution. The goal was to create an online, automated way of identifying the right client fit - hence the project was called Right Reach.',
@@ -96,19 +97,29 @@ const caseStudies = {
       },
     ],
     rows: [
+      /* ── Team Values and Feedback ── */
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_8666ed4df2d246dabe669c25c0c23de9~mv2.png', alt: 'Team values and feedback' },
+        images: [
+          { src: 'https://static.wixstatic.com/media/a0fcc9_8666ed4df2d246dabe669c25c0c23de9~mv2.png', alt: 'Team values — feedback & clustering' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_425c04290ff64574939ec371d46ec8c4~mv2.png', alt: 'Team values — design thinking session' },
+        ],
+        gridCols: 1,
         heading: 'Team Values and Feedback',
         text: [
           "We started by understanding our own values and the feedback we've got from clients about their goals.",
           'After leading a couple of design thinking sessions, I was fairly confident we had landed on a solid base of concepts to jump off of.',
         ],
       },
+
+      /* ── Competitors had a variety of intake features ── */
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_425c04290ff64574939ec371d46ec8c4~mv2.png', alt: 'Team values — additional visual' },
-      },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_ad3cf0f8fdb847d7b1da9bba8e94fb5d~mv2.png', alt: 'Competitor analysis — intake features' },
+        images: [
+          { src: 'https://static.wixstatic.com/media/a0fcc9_ad3cf0f8fdb847d7b1da9bba8e94fb5d~mv2.png', alt: 'Competitor analysis — benefit comparison' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_02b6defc5f8e46e6b71b8baa8a26337f~mv2.png', alt: 'Competitor analysis — companies using it' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_a4462a522f9149aeb8c4769461e30059~mv2.png', alt: 'Competitor analysis — outcomes 1' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_fd8074b6c3e14e1fadcb9e2f9b1c176e~mv2.png', alt: 'Competitor analysis — outcomes 2' },
+        ],
+        gridCols: 2,
         heading: 'Competitors had a variety of intake features',
         text: [
           'Next on the agenda was a thorough competitor analysis to see what others in this space were doing to reach their audience online.',
@@ -116,53 +127,55 @@ const caseStudies = {
           'We gathered insights from looking at their online products and noted areas of overlap and unique/interesting ideas we found.',
         ],
       },
+
+      /* ── Study 6 Competitors ── */
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_02b6defc5f8e46e6b71b8baa8a26337f~mv2.png', alt: 'Competitor analysis — intake flow' },
-      },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_a4462a522f9149aeb8c4769461e30059~mv2.png', alt: 'Competitor analysis — detail 1' },
-      },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_fd8074b6c3e14e1fadcb9e2f9b1c176e~mv2.png', alt: 'Competitor analysis — detail 2' },
-      },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_430e3f93aaa44e3a8ae28de30ed4742e~mv2.png', alt: 'Study 6 competitors — overview' },
+        images: [
+          { src: 'https://static.wixstatic.com/media/a0fcc9_430e3f93aaa44e3a8ae28de30ed4742e~mv2.png', alt: 'Competitor review — Dave Ramsey' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_df808badb8e849dab73da9ee7d50d9cc~mv2.png', alt: 'Competitor review — KeyBank' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_28987bd3dafb4d23be03c53f09e691ae~mv2.png', alt: 'Competitor review — Navicore' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_6283d565fdeb4680954b5b14d472aae0~mv2.png', alt: 'Competitor review — MMI' },
+        ],
+        gridCols: 2,
         heading: 'Study 6 Competitors',
         text: [
           'We presented all the findings with detailed visuals to the team. Getting stakeholder support was key for this project.',
           'This helped solidify the need for this app, as well as create a foundation for strategy.',
         ],
       },
+
+      /* ── Presented a Roadmap & Strategic Alignment to C-team ── */
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_df808badb8e849dab73da9ee7d50d9cc~mv2.png', alt: 'Competitor study — detail 2' },
-      },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_28987bd3dafb4d23be03c53f09e691ae~mv2.png', alt: 'Competitor study — detail 3' },
-      },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_6283d565fdeb4680954b5b14d472aae0~mv2.png', alt: 'Competitor study — detail 4' },
-      },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_4767d1140ba84a0eb933c8d9804214a0~mv2.png', alt: 'Strategic roadmap visual' },
+        images: [
+          { src: 'https://static.wixstatic.com/media/a0fcc9_4767d1140ba84a0eb933c8d9804214a0~mv2.png', alt: 'Financial wellness journey pyramid' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_319b142dbeb64703b23c8bb4af84cb75~mv2.png', alt: 'MVP-to-V5 roadmap' },
+        ],
+        gridCols: 2,
         heading: 'Presented a Roadmap & Strategic Alignment to C-team',
         text: 'After a good look inside and out, I was able to present a cohesive strategy to the C-suite for how we would build this app in stages, and how this app would fit into the overall ecosystem of products at GreenPath. This was seen as "transformational" and "revolutionary" by the C-team, which made me really happy and eager to get started.',
       },
+
+      /* ── Vision and Execution — text above, image below ── */
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_319b142dbeb64703b23c8bb4af84cb75~mv2.png', alt: 'Roadmap — supporting visual' },
-      },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_431e723385e34ddba8d8f7d7da07e0ce~mv2.png', alt: 'Vision and execution' },
+        textOnly: true,
         heading: 'Vision and Execution',
         text: "With a little effort, we were able to put the team together, complete a few pending hires, and get started on showing everyone at GreenPath what we'd be working on for the next few months.",
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_ff9a1ebfffd8415989fba667746bf5f3~mv2.png', alt: 'Low-fi concept — option 1' },
+        image: { src: 'https://static.wixstatic.com/media/a0fcc9_431e723385e34ddba8d8f7d7da07e0ce~mv2.png', alt: 'Right Reach — vision mockup' },
       },
+
+      /* ── Show some basic concepts to choose from ── */
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_faa5a51f5d0440b291559adb5ae84628~mv2.png', alt: 'Low-fi concept — option 2' },
-      },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_9c090b87f8be4df0b92b30ebbcac659b~mv2.png', alt: 'Low-fi wireframes set 1' },
+        images: [
+          { src: 'https://static.wixstatic.com/media/a0fcc9_ff9a1ebfffd8415989fba667746bf5f3~mv2.png', alt: 'Low-fi wireframe set A1' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_faa5a51f5d0440b291559adb5ae84628~mv2.png', alt: 'Low-fi wireframe set A2' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_9c090b87f8be4df0b92b30ebbcac659b~mv2.png', alt: 'Low-fi wireframe set B1' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_ffcfbd00d1084fb49791ee3aadc922df~mv2.png', alt: 'Low-fi wireframe set B2' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_d4b55ab01ccd4bfdb73f7f260a6c4f90~mv2.png', alt: 'Low-fi wireframe set C1' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_4517683e490049a5969291fd1bf9b25c~mv2.png', alt: 'Low-fi wireframe set C2' },
+        ],
+        gridCols: 2,
         heading: 'Show some basic concepts to choose from',
         text: [
           'After a few more design thinking exercises, we presented the first round of low-fi wireframes to the team for feedback.',
@@ -170,17 +183,10 @@ const caseStudies = {
         ],
       },
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_ffcfbd00d1084fb49791ee3aadc922df~mv2.png', alt: 'Low-fi wireframes set 2' },
-      },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_d4b55ab01ccd4bfdb73f7f260a6c4f90~mv2.png', alt: 'Low-fi wireframes set 3' },
-      },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_4517683e490049a5969291fd1bf9b25c~mv2.png', alt: 'Low-fi wireframes set 4' },
-      },
-      {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_b770175423064f659ecf044c0b9bf23e~mv2.png', alt: 'Mobile low-fi wires' },
       },
+
+      /* ── Mid-Fidelity Wireframes ── */
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_8364ce6f5f6146b1b761661fe1c14a0e~mv2.png', alt: 'Mid-fidelity wireframes' },
         heading: 'Mid-Fidelity Wireframes',
@@ -189,11 +195,15 @@ const caseStudies = {
           'In this project, we had 22 stakeholders, so it was important to get constant feedback to keep alignment.',
         ],
       },
+
+      /* ── Styleguide ── */
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_d5f50b34c65a4c149937e0d235b483d8~mv2.png', alt: 'Styleguide / mini-design system' },
         heading: 'Styleguide',
         text: 'As we continued to make progress toward a high-fidelity prototype, we simultaneously created a style guide / mini-design system to help get the front team started on creating basic elements while finalizing the designs.',
       },
+
+      /* ── Mobile First ── */
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_147edca113c74176a57aefcd8e415a40~mv2.png', alt: 'Mobile-first prototypes' },
         heading: 'Mobile First',
@@ -203,16 +213,25 @@ const caseStudies = {
           'At the same time refine a responsive app design for the engineering team.',
         ],
       },
+
+      /* ── Research-Based Design — 2 side-by-side ── */
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_e57ada1c1e60484a9dd2451b4562265f~mv2.png', alt: 'Research-based design — mobile mockup 1' },
+        images: [
+          { src: 'https://static.wixstatic.com/media/a0fcc9_e57ada1c1e60484a9dd2451b4562265f~mv2.png', alt: 'Research-based design — mobile mockup 1' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_3d48aed34528429097b837ea7b1a351f~mv2.png', alt: 'Research-based design — mobile mockup 2' },
+        ],
+        gridCols: 2,
         heading: 'Research-Based Design',
         text: 'We presented all the findings from the user interviews to the team to keep them in the loop. The team felt involved and connected to the product.',
       },
+
+      /* ── Cohesive Experience Across Mobile & Web — 2 side-by-side ── */
       {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_3d48aed34528429097b837ea7b1a351f~mv2.png', alt: 'Research-based design — mobile mockup 2' },
-      },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_4767d1140ba84a0eb933c8d9804214a0~mv2.png', alt: 'Cohesive experience — desktop view' },
+        images: [
+          { src: 'https://static.wixstatic.com/media/a0fcc9_4767d1140ba84a0eb933c8d9804214a0~mv2.png', alt: 'Cohesive experience — desktop view' },
+          { src: 'https://static.wixstatic.com/media/a0fcc9_e778de85fb38421b9130d4c2c346a1d9~mv2.png', alt: 'Cohesive experience — mobile view' },
+        ],
+        gridCols: 2,
         heading: 'Cohesive Experience Across Mobile & Web',
         text: [
           'Based on competitive research, design thinking, several user interviews, and team feedback, we finally had a high-fidelity interactive prototype to deliver to the engineering team, as well as to demo for potential partners (B2B lob).',
@@ -220,14 +239,15 @@ const caseStudies = {
           'We received great feedback from both the users and our internal team -including B2B partners.',
         ],
       },
-      {
-        image: { src: 'https://static.wixstatic.com/media/a0fcc9_e778de85fb38421b9130d4c2c346a1d9~mv2.png', alt: 'Cohesive experience — mobile view' },
-      },
+
+      /* ── Strategy to Execution ── */
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_1e3cd1fd294945f8879ad6bdcd11f110~mv2.png', alt: 'Strategy to execution — ecosystem fit' },
         heading: 'Strategy to Execution',
         text: 'My favorite part of the project was the strategic fit of this app into the ecosystem for GreenPath. This accelerated our digital transition and aligned several different teams on a unified vision for the future.',
       },
+
+      /* ── Design Process ── */
       {
         image: { src: 'https://static.wixstatic.com/media/a0fcc9_66f442cf633946a8a022a7d992db2c70~mv2.png', alt: 'Design process diagram' },
         heading: 'Design Process',
@@ -629,7 +649,7 @@ export default function CaseStudyPage() {
 
           {/* Standalone intro text blocks */}
           {study.standaloneTexts && study.standaloneTexts.map((block, i) => (
-            <div key={`st-${i}`} className="cs-standalone-text">
+            <div key={`st-${i}`} className={`cs-standalone-text${block.leftAlign ? ' cs-standalone-text--left' : ''}`}>
               <h3 className="cs-row-heading">{block.heading}</h3>
               {renderParagraphs(block.text)}
             </div>
@@ -646,10 +666,19 @@ export default function CaseStudyPage() {
                   </div>
                 );
               }
+              // Determine image(s) for this row
+              const rowImages = row.images || (row.image ? [row.image] : []);
+              const isMulti = rowImages.length > 1;
+              const gridCols = row.gridCols || 1;
               return (
                 <div key={i} className={`cs-row cs-row-animate ${i % 2 === 0 ? 'cs-row--img-left' : 'cs-row--img-right'}`}>
-                  <div className="cs-row-image cs-parallax">
-                    <img src={row.image.src} alt={row.image.alt} loading="lazy" />
+                  <div
+                    className={`cs-row-image cs-parallax${isMulti ? ' cs-row-image--grid' : ''}`}
+                    style={isMulti ? { '--grid-cols': gridCols } : undefined}
+                  >
+                    {rowImages.map((img, j) => (
+                      <img key={j} src={img.src} alt={img.alt} loading="lazy" />
+                    ))}
                   </div>
                   {(row.heading || row.text) ? (
                     <div className="cs-row-text cs-row-text-animated">

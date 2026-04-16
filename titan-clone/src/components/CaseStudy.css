@@ -305,6 +305,27 @@
   object-fit: contain;
 }
 
+/* ── Multi-image grid inside image column ──
+   Used when a row groups several images (e.g. competitor screenshots,
+   wireframe sets). --grid-cols is set via inline style from JSX. */
+.cs-row-image--grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols, 1), 1fr);
+  gap: var(--space-3);
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.cs-row-image--grid img {
+  width: 100%;
+  max-height: none;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--color-bg-cream);
+}
+
 .cs-row-text {
   display: flex;
   flex-direction: column;
@@ -356,6 +377,15 @@
   font-size: var(--text-md);
   line-height: 1.8;
   color: var(--color-text-light);
+}
+
+/* Left-aligned standalone text — wider reading column for intro-type
+   blocks that feel awkward centered (e.g. "Creating the Highest…"). */
+.cs-standalone-text--left {
+  text-align: left;
+  max-width: 960px;
+  margin-left: 0;
+  margin-right: auto;
 }
 
 /* Non-fullWidth pages: center text-only sections too */

@@ -1,0 +1,100 @@
+.editable-image {
+  position: relative;
+  display: block; /* fills grid cell / flex child without breaking layout */
+  width: 100%;
+  line-height: 0; /* removes phantom inline spacing */
+}
+
+.editable-image__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Admin overlay — hidden until hover */
+.editable-image__controls {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 8px;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.18s;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.editable-image:hover .editable-image__controls {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Camera button */
+.editable-image__camera {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.5);
+  background: rgba(124,58,237,0.8);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.editable-image__camera:hover:not(:disabled) {
+  background: #7c3aed;
+}
+
+.editable-image__camera:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Spinning loader icon */
+.editable-image__spinner {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Zoom label + slider */
+.editable-image__zoom-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 6px;
+  padding: 4px 8px;
+  color: #fff;
+}
+
+.editable-image__zoom-slider {
+  width: 90px;
+  accent-color: #7c3aed;
+  cursor: pointer;
+}
+
+.editable-image__zoom-value {
+  font-size: 11px;
+  min-width: 32px;
+  text-align: right;
+  color: #ddd;
+  font-variant-numeric: tabular-nums;
+}
+
+.editable-image__error {
+  font-size: 11px;
+  color: #fca5a5;
+  background: rgba(0,0,0,0.7);
+  border-radius: 4px;
+  padding: 2px 6px;
+}

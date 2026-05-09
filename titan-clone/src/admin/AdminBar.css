@@ -1,0 +1,114 @@
+.admin-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 24px;
+  background: #1a1a1a;
+  border-top: 1px solid #333;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  color: #e0e0e0;
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
+}
+
+.admin-bar__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.admin-bar__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #7c3aed;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.admin-bar__status {
+  color: #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-bar__error {
+  color: #f87171;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.admin-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.admin-bar__btn {
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s, opacity 0.15s;
+  white-space: nowrap;
+}
+
+.admin-bar__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.admin-bar__btn--save {
+  background: #7c3aed;
+  color: #fff;
+}
+
+.admin-bar__btn--save:not(:disabled):hover {
+  background: #6d28d9;
+}
+
+.admin-bar__btn--saved {
+  background: #059669;
+}
+
+.admin-bar__btn--discard {
+  background: transparent;
+  border-color: #555;
+  color: #ccc;
+}
+
+.admin-bar__btn--discard:hover {
+  background: #2a2a2a;
+}
+
+.admin-bar__btn--logout {
+  background: transparent;
+  border-color: #444;
+  color: #999;
+}
+
+.admin-bar__btn--logout:hover {
+  border-color: #f87171;
+  color: #f87171;
+}
+
+/* Give the page some bottom breathing room so content isn't hidden under the bar */
+body:has(.admin-bar) {
+  padding-bottom: 52px;
+}

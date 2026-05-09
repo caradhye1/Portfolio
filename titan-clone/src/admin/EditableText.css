@@ -1,0 +1,73 @@
+.editable-text {
+  position: relative;
+  display: inline;
+}
+
+.editable-text--idle {
+  cursor: default;
+}
+
+.editable-text--idle:hover .editable-text__pencil {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.editable-text__content {
+  display: inline;
+}
+
+.editable-text__pencil {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-left: 4px;
+  padding: 0;
+  border: 1px solid rgba(124,58,237,0.6);
+  border-radius: 4px;
+  background: rgba(124,58,237,0.1);
+  color: #7c3aed;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.15s, transform 0.15s;
+  vertical-align: middle;
+}
+
+.editable-text__pencil:hover {
+  background: rgba(124,58,237,0.2);
+}
+
+/* Editing state */
+.editable-text--editing {
+  display: block;
+}
+
+.editable-text__input {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  border: 2px solid #7c3aed;
+  border-radius: 6px;
+  background: #fff;
+  color: #111;
+  font: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  resize: vertical;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+}
+
+textarea.editable-text__input {
+  min-height: 80px;
+}
+
+.editable-text__hint {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #888;
+  user-select: none;
+}

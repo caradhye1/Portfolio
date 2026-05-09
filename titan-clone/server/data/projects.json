@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Yonder AI",
+    "subtitle": "Social Media Intelligence for Brands",
+    "image": "https://static.wixstatic.com/media/a0fcc9_9f1a4ccb5cc041a39e4aa64b813167b1~mv2.jpg",
+    "wip": false,
+    "slug": "yonder-ai"
+  },
+  {
+    "title": "Right Reach",
+    "subtitle": "Online Financial Assessment App by Greenpath Financial Wellness",
+    "image": "https://static.wixstatic.com/media/a0fcc9_e8b3630664fc47f99466a8055858d52b~mv2.png",
+    "wip": false,
+    "slug": "right-reach"
+  },
+  {
+    "title": "DTE Insight",
+    "subtitle": "Energy Management App for Behavioral Savings",
+    "image": "https://static.wixstatic.com/media/a0fcc9_49c6223098b8453a9970025226668027~mv2.png",
+    "wip": false,
+    "slug": "dte-insight"
+  },
+  {
+    "title": "Upwork Profile Preview",
+    "subtitle": "Rethinking Freelancer Presentation",
+    "image": "https://static.wixstatic.com/media/a0fcc9_1b1da8fd7a07459587247c0a6da0ad80~mv2.png",
+    "wip": true,
+    "slug": "upwork-profile"
+  },
+  {
+    "title": "Upwork Browse Experience",
+    "subtitle": "Improving Discovery for Clients",
+    "image": "https://static.wixstatic.com/media/a0fcc9_79d3c6babb62478491113759229886d4~mv2.png",
+    "wip": true,
+    "slug": "upwork-browse"
+  },
+  {
+    "title": "Kroger AI Insights",
+    "subtitle": "First to Market AI Insights for CPGs",
+    "image": "/kroger-hero.svg",
+    "wip": true,
+    "slug": "kroger-ai"
+  }
+]

@@ -3,14 +3,9 @@ import './Hero.css';
 import portraitImg from '../assets/portrait.png';
 import portraitReal from '../assets/Portrait_2.png';
 import { DoodleBarChart, DoodleBrowser, DoodleCode } from './Doodles';
-
-const rotatingPhrases = [
-  'High-stakes product decisions',
-  'Turning insights into revenue',
-  'Building teams together',
-  'Pixel perfect UI Designs',
-  'Front end vibe prototyping',
-];
+import { useAdminContent } from '../admin/useAdminContent.js';
+import { EditableText } from '../admin/EditableText.jsx';
+import { useAdmin } from '../admin/AdminContext.jsx';
 
 const TYPING_SPEED = 30;
 const ERASING_SPEED = 18;
@@ -18,10 +13,32 @@ const PAUSE_AFTER = 2200;
 const PAUSE_BEFORE = 300;
 
 export default function Hero() {
+  const { data, loading, updateField } = useAdminContent('hero');
+  const { isAdmin } = useAdmin();
+
+  const rotatingPhrases = data?.rotatingPhrases ?? [
+    'High-stakes product decisions',
+    'Turning insights into revenue',
+    'Building teams together',
+    'Pixel perfect UI Designs',
+    'Front end vibe prototyping',
+  ];
+  const description = data?.description ?? "I'm an experienced product designer with a special interest in AI/ML, data science, and business. With a PhD in Cognitive Psychology focused on decision-making, I bring behavioral science lens to every product I touch.";
+
   const [displayText, setDisplayText] = useState(rotatingPhrases[0]);
   const [isTyping, setIsTyping] = useState(false);
   const phraseIdx = useRef(0);
   const timeoutRef = useRef(null);
+  const phrasesRef = useRef(rotatingPhrases);
+
+  // Keep phrasesRef current when data loads
+  useEffect(() => {
+    phrasesRef.current = rotatingPhrases;
+    // Reset to first phrase when phrases change
+    phraseIdx.current = 0;
+    setDisplayText(rotatingPhrases[0]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(rotatingPhrases)]);
 
   useEffect(() => {
     const scheduleNext = () => {
@@ -32,7 +49,7 @@ export default function Hero() {
 
     const eraseText = () => {
       setIsTyping(true);
-      const currentPhrase = rotatingPhrases[phraseIdx.current];
+      const currentPhrase = phrasesRef.current[phraseIdx.current];
       let charIdx = currentPhrase.length;
 
       const erase = () => {
@@ -41,7 +58,7 @@ export default function Hero() {
           setDisplayText(currentPhrase.substring(0, charIdx));
           timeoutRef.current = setTimeout(erase, ERASING_SPEED);
         } else {
-          phraseIdx.current = (phraseIdx.current + 1) % rotatingPhrases.length;
+          phraseIdx.current = (phraseIdx.current + 1) % phrasesRef.current.length;
           timeoutRef.current = setTimeout(() => {
             typeText();
           }, PAUSE_BEFORE);
@@ -51,7 +68,7 @@ export default function Hero() {
     };
 
     const typeText = () => {
-      const nextPhrase = rotatingPhrases[phraseIdx.current];
+      const nextPhrase = phrasesRef.current[phraseIdx.current];
       let charIdx = 0;
 
       const type = () => {
@@ -91,13 +108,34 @@ export default function Hero() {
               Business focused Product Designer for High-stakes product decisions
             </div>
           </div>
+
+          {/* Admin: edit rotating phrases as newline-separated text */}
+          {isAdmin && !loading && (
+            <div style={{ marginBottom: 8 }}>
+              <EditableText
+                as="span"
+                value={rotatingPhrases.join('\n')}
+                onSave={(val) => updateField('rotatingPhrases', val.split('\n').map(s => s.trim()).filter(Boolean))}
+                multiline
+              >
+                {rotatingPhrases.join('\n')}
+              </EditableText>
+              <span style={{ fontSize: 11, color: '#888', marginLeft: 8 }}>← rotating phrases (one per line)</span>
+            </div>
+          )}
+
           <div className="hero-cta-row">
             <a href="#projects" className="btn-primary">VIEW WORK</a>
           </div>
           <p className="hero-desc-text">
-            I'm an experienced digital product designer with a special interest in AI/ML,
-            data science, and business. With a PhD in Cognitive Psychology focused on
-            decision-making, I bring behavioral science rigor to every product I touch.
+            {isAdmin ? (
+              <EditableText
+                as="span"
+                value={description}
+                onSave={(val) => updateField('description', val)}
+                multiline
+              />
+            ) : description}
           </p>
         </div>
 
@@ -118,18 +156,26 @@ export default function Hero() {
 
       <div className="hero-bottom">
         <div className="hero-stats hero-wrap">
-          <div className="hero-stat">
-            <span className="hero-stat-value">2x</span>
-            <span className="hero-stat-label">Startup exits as<br />lead designer</span>
-          </div>
-          <div className="hero-stat">
-            <span className="hero-stat-value">10+</span>
-            <span className="hero-stat-label">Years building<br />digital products</span>
-          </div>
-          <div className="hero-stat">
-            <span className="hero-stat-value">PhD</span>
-            <span className="hero-stat-label">Cognitive Psychology<br />Behavioral Economics</span>
-          </div>
+          {(data?.stats ?? [
+            { value: '2x', label: 'Startup exits as\nlead designer' },
+            { value: '10+', label: 'Years building\ndigital products' },
+            { value: 'PhD', label: 'Cognitive Psychology\nBehavioral Economics' },
+          ]).map((stat, i) => (
+            <div className="hero-stat" key={i}>
+              <span className="hero-stat-value">
+                {isAdmin ? (
+                  <EditableText value={stat.value} onSave={(val) => updateField(`stats.${i}.value`, val)} multiline={false} />
+                ) : stat.value}
+              </span>
+              <span className="hero-stat-label">
+                {isAdmin ? (
+                  <EditableText value={stat.label} onSave={(val) => updateField(`stats.${i}.label`, val)} />
+                ) : stat.label.split('\n').map((line, j) => (
+                  <span key={j}>{line}{j === 0 ? <br /> : null}</span>
+                ))}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -2,8 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Projects.css';
 import { DoodleFlowchart, DoodlePencil, DoodleGear } from './Doodles';
+import { useAdminContent } from '../admin/useAdminContent.js';
+import { EditableText } from '../admin/EditableText.jsx';
+import { EditableImage } from '../admin/EditableImage.jsx';
+import { useAdmin } from '../admin/AdminContext.jsx';
 
-const projects = [
+const FALLBACK_PROJECTS = [
   {
     title: 'Yonder AI',
     subtitle: 'Social Media Intelligence for Brands',
@@ -50,8 +54,12 @@ const projects = [
 
 export default function Projects() {
   const navigate = useNavigate();
+  const { data, loading, updateField } = useAdminContent('projects');
+  const { isAdmin } = useAdmin();
   const [activeIdx, setActiveIdx] = useState(0);
   const [animKey, setAnimKey] = useState(0);
+
+  const projects = data ?? FALLBACK_PROJECTS;
 
   const handleTabClick = (i) => {
     if (i === activeIdx) return;
@@ -87,9 +95,23 @@ export default function Projects() {
                 className={`projects-tab ${i === activeIdx ? 'projects-tab--active' : ''}`}
                 onClick={() => handleTabClick(i)}
               >
-                <span className="projects-tab-subtitle">{project.subtitle}</span>
+                <span className="projects-tab-subtitle">
+                  {isAdmin ? (
+                    <EditableText
+                      value={project.subtitle}
+                      onSave={(val) => updateField(`${i}.subtitle`, val)}
+                      multiline={false}
+                    />
+                  ) : project.subtitle}
+                </span>
                 <span className="projects-tab-company">
-                  {project.title}
+                  {isAdmin ? (
+                    <EditableText
+                      value={project.title}
+                      onSave={(val) => updateField(`${i}.title`, val)}
+                      multiline={false}
+                    />
+                  ) : project.title}
                   {project.wip && <span className="projects-tab-wip">WIP</span>}
                 </span>
               </button>
@@ -103,7 +125,16 @@ export default function Projects() {
               className="projects-tab-image-link"
             >
               <div className="projects-tab-image-wrap">
-                <img src={active.image} alt={active.title} className="projects-tab-img" />
+                {isAdmin ? (
+                  <EditableImage
+                    src={active.image}
+                    alt={active.title}
+                    imgClassName="projects-tab-img"
+                    onSrcChange={(url) => updateField(`${activeIdx}.image`, url)}
+                  />
+                ) : (
+                  <img src={active.image} alt={active.title} className="projects-tab-img" />
+                )}
               </div>
             </a>
           </div>

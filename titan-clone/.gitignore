@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Admin CMS secrets & generated files
+server/.env
+server/data/backups/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

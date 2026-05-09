@@ -1,0 +1,18 @@
+{
+  "rotatingPhrases": [
+    "High-stakes product decisions",
+    "Turning insights into revenue",
+    "Building teams together",
+    "Pixel perfect UI Designs",
+    "Front end vibe prototyping"
+  ],
+  "title": "Business focused Product Designer for",
+  "description": "I'm an experienced product designer with a special interest in AI/ML, data science, and business. With a PhD in Cognitive Psychology focused on decision-making, I bring behavioral science lens to every product I touch.",
+  "ctaLabel": "VIEW WORK",
+  "ctaHref": "#projects",
+  "stats": [
+    { "value": "3x", "label": "Startup exits as\nlead designer" },
+    { "value": "10+", "label": "Years building\ndigital products" },
+    { "value": "PhD", "label": "Cognitive Psychology\nBehavioral Economics" }
+  ]
+}

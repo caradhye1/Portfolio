@@ -36,8 +36,18 @@ export const adminApi = {
   /** Clear the session cookie */
   logout: () => request('POST', '/auth/logout'),
 
-  /** Fetch all data for a content type */
-  getContent: (type) => request('GET', `/content/${type}`),
+  /** Fetch all data for a content type.
+   *  Tries the Express API first (local dev); falls back to the static JSON
+   *  that prebuild copies to public/ (Vercel / any static host). */
+  getContent: async (type) => {
+    try {
+      return await request('GET', `/content/${type}`);
+    } catch (_) {
+      const res = await fetch(`/${type}.json`);
+      if (!res.ok) throw new Error(`Failed to load ${type}`);
+      return res.json();
+    }
+  },
 
   /** Save (overwrite) a content type entirely */
   saveContent: (type, data) => request('PATCH', `/content/${type}`, data),

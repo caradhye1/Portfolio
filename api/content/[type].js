@@ -1,9 +1,12 @@
+const path = require('path');
+const dataDir = path.join(__dirname, '..', '..', 'server', 'data');
+
 const CONTENT = {
-  caseStudies:     require('../../server/data/caseStudies.json'),
-  hero:            require('../../server/data/hero.json'),
-  projects:        require('../../server/data/projects.json'),
-  publications:    require('../../server/data/publications.json'),
-  recommendations: require('../../server/data/recommendations.json'),
+  caseStudies:     require(path.join(dataDir, 'caseStudies.json')),
+  hero:            require(path.join(dataDir, 'hero.json')),
+  projects:        require(path.join(dataDir, 'projects.json')),
+  publications:    require(path.join(dataDir, 'publications.json')),
+  recommendations: require(path.join(dataDir, 'recommendations.json')),
 };
 
 module.exports = function handler(req, res) {

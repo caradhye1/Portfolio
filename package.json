@@ -7,6 +7,7 @@
     "dev": "vite --port 5174",
     "dev:server": "node server/index.js",
     "dev:full": "concurrently \"npm run dev\" \"npm run dev:server\"",
+    "prebuild": "node -e \"const fs=require('fs');['caseStudies','hero','projects','publications','recommendations'].forEach(f=>fs.copyFileSync('server/data/'+f+'.json','public/'+f+'.json'))\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",

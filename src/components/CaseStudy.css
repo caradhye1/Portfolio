@@ -750,6 +750,11 @@
   }
 }
 
+/* ── Figma row (fullWidth layout context) ── */
+.cs-figma-row {
+  margin: var(--space-8) 0;
+}
+
 /* ── Figma Prototype Embed ── */
 .cs-figma-embed {
   position: relative;

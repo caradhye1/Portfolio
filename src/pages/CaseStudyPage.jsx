@@ -410,6 +410,15 @@ export default function CaseStudyPage() {
                   );
                 }
 
+                /* ── Figma prototype embed row ── */
+                if (row.figmaEmbed) {
+                  return (
+                    <div key={i} className="cs-figma-row cs-row-animate">
+                      <FigmaEmbed section={row} />
+                    </div>
+                  );
+                }
+
                 /* ── Regular image-text grid row ── */
                 const rowImages = row.images || (row.image ? [row.image] : []);
                 const isMulti = rowImages.length > 1;

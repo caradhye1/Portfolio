@@ -15,6 +15,42 @@ function renderParagraphs(text, className = 'cs-row-body') {
   ));
 }
 
+function FigmaEmbed({ section }) {
+  const [active, setActive] = useState(false);
+  return (
+    <div className="cs-section">
+      <div
+        className="cs-figma-embed"
+        style={active ? { height: section.height ?? 720 } : undefined}
+        onClick={!active ? () => setActive(true) : undefined}
+        role={!active ? 'button' : undefined}
+        tabIndex={!active ? 0 : undefined}
+        onKeyDown={!active ? (e) => e.key === 'Enter' && setActive(true) : undefined}
+        aria-label={!active ? 'Launch interactive prototype' : undefined}
+      >
+        {!active ? (
+          <div className="cs-figma-preview">
+            <img src={section.previewImage} alt="Prototype preview" />
+            <div className="cs-figma-play-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        ) : (
+          <iframe
+            src={section.embedUrl}
+            height={section.height ?? 720}
+            allowFullScreen
+            title="Interactive prototype"
+          />
+        )}
+      </div>
+      {section.caption && <p className="cs-caption cs-figma-caption">{section.caption}</p>}
+    </div>
+  );
+}
+
 function renderSection(section, i) {
   switch (section.type) {
     case 'heading-hero':
@@ -61,6 +97,8 @@ function renderSection(section, i) {
           </ol>
         </div>
       );
+    case 'figma-embed':
+      return <FigmaEmbed key={i} section={section} />;
     default:
       return null;
   }

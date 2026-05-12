@@ -425,7 +425,14 @@
     "sections": [
       { "type": "text", "heading": "The Challenge", "text": "Clients reported that finding the right freelancer felt overwhelming. Search results returned hundreds of profiles with similar-looking cards, making meaningful comparison difficult. The browse experience needed to help clients narrow their options more efficiently." },
       { "type": "text", "heading": "My Role", "text": "I designed the improved browse layout with better visual hierarchy, smarter filtering, and inline comparison tools. The design emphasizes differentiation between candidates and surfaces the signals that predict good matches." },
-      { "type": "text", "heading": "Design Approach", "text": "The new browse experience uses responsive cards that adapt to show the most relevant information based on the client's search context. Mobile-first design ensures the experience works seamlessly across devices, with swipeable cards and sticky filters." }
+      { "type": "text", "heading": "Design Approach", "text": "The new browse experience uses responsive cards that adapt to show the most relevant information based on the client's search context. Mobile-first design ensures the experience works seamlessly across devices, with swipeable cards and sticky filters." },
+      {
+        "type": "figma-embed",
+        "previewImage": "/uploads/upwork-browse-preview.png",
+        "embedUrl": "https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/21fgHYeJ1jUNVN438EM8CX/UniBrowse-Full?node-id=290-80196%26starting-point-node-id=290%3A80196%26scaling=scale-down-width%26content-scaling=fixed",
+        "height": 720,
+        "caption": "Explore the interactive prototype"
+      }
     ]
   },
   "kroger-ai": {

@@ -263,7 +263,11 @@ export default function CaseStudyPage() {
                   onSrcChange={(url) => update('heroImage', url)}
                 />
               ) : (
-                <img src={study.heroImage} alt={study.title} />
+                <img
+                  src={study.heroImage}
+                  alt={study.title}
+                  style={study.heroScale ? { transform: `scale(${study.heroScale})`, transformOrigin: 'center center' } : undefined}
+                />
               )}
             </div>
           </div>

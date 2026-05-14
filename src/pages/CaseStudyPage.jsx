@@ -221,7 +221,7 @@ export default function CaseStudyPage() {
           </a>
 
           {/* ── Two-column intro: left = title/overview/meta, right = hero image OR text sections ── */}
-          <div className="cs-intro-columns">
+          <div className={`cs-intro-columns${!study.heroImage ? ' cs-intro-columns--no-hero' : ''}`}>
             {/* Left — title, overview, role + team */}
             <div className={`cs-intro-left${!study.heroImage ? ' cs-intro-left--plain' : ''}`}>
               <h1 className="section-title cs-intro-title">

@@ -250,21 +250,23 @@
   background: transparent;
   border-radius: 0;
   overflow: visible;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: var(--space-6);
-  padding: 0;
+  align-items: start;
+  padding: calc(var(--space-6) + var(--space-5) + 5.75rem) 0 0 0;
 }
 
 .cs-intro-text-block .cs-row-heading {
-  font-size: var(--text-md);
+  font-size: var(--text-md); /* 18px */
   font-weight: 600;
+  color: var(--color-text);
   margin-bottom: var(--space-2);
 }
 
 .cs-intro-text-block .cs-row-body {
-  font-size: var(--text-base);
-  line-height: 1.75;
+  font-size: var(--text-md); /* 18px */
+  line-height: 1.65;
   color: var(--color-text-light);
   margin: 0;
 }

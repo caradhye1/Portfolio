@@ -272,7 +272,7 @@ export default function CaseStudyPage() {
                 )}
               </div>
             ) : study.standaloneTexts ? (
-              <div className="cs-intro-right cs-intro-right--text">
+              <div className="cs-intro-right--text">
                 {study.standaloneTexts.map((block, i) => (
                   <div key={i} className="cs-intro-text-block">
                     <h3 className="cs-row-heading">

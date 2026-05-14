@@ -17,18 +17,20 @@ function renderParagraphs(text, className = 'cs-row-body') {
 
 function FigmaEmbed({ section }) {
   const [active, setActive] = useState(false);
+  const height = section.height ?? 720;
   return (
     <div className="cs-section">
       <div
         className="cs-figma-embed"
-        style={active ? { height: section.height ?? 720 } : undefined}
+        style={active ? { height } : undefined}
         onClick={!active ? () => setActive(true) : undefined}
         role={!active ? 'button' : undefined}
         tabIndex={!active ? 0 : undefined}
         onKeyDown={!active ? (e) => e.key === 'Enter' && setActive(true) : undefined}
         aria-label={!active ? 'Launch interactive prototype' : undefined}
       >
-        {!active ? (
+        {/* Preview image + play button — hidden once active */}
+        {!active && (
           <div className="cs-figma-preview">
             <img src={section.previewImage} alt="Prototype preview" />
             <div className="cs-figma-play-btn" aria-hidden="true">
@@ -37,14 +39,22 @@ function FigmaEmbed({ section }) {
               </svg>
             </div>
           </div>
-        ) : (
-          <iframe
-            src={section.embedUrl}
-            height={section.height ?? 720}
-            allowFullScreen
-            title="Interactive prototype"
-          />
         )}
+        {/* iframe always in DOM so it pre-loads in background; revealed on click */}
+        <iframe
+          src={section.embedUrl}
+          height={height}
+          allowFullScreen
+          title="Interactive prototype"
+          style={active ? undefined : {
+            position: 'absolute',
+            opacity: 0,
+            pointerEvents: 'none',
+            width: '100%',
+            top: 0,
+            left: 0,
+          }}
+        />
       </div>
       {section.caption && <p className="cs-caption cs-figma-caption">{section.caption}</p>}
     </div>

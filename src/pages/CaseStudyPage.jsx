@@ -220,9 +220,9 @@ export default function CaseStudyPage() {
             </svg>
           </a>
 
-          {/* ── Two-column intro: title+overview+meta left / hero right ── */}
-          <div className="cs-intro-columns">
-            {/* Left — title (top-aligned with hero), overview, role + team */}
+          {/* ── Two-column intro (or full-width when no hero image) ── */}
+          <div className={`cs-intro-columns${!study.heroImage ? ' cs-intro-columns--full' : ''}`}>
+            {/* Left — title, overview, role + team */}
             <div className="cs-intro-left">
               <h1 className="section-title cs-intro-title">
                 {isAdmin ? (
@@ -254,23 +254,41 @@ export default function CaseStudyPage() {
               </div>
             </div>
 
-            {/* Right — hero image */}
-            <div className="cs-intro-right">
-              {isAdmin ? (
-                <EditableImage
-                  src={study.heroImage}
-                  alt={study.title}
-                  onSrcChange={(url) => update('heroImage', url)}
-                />
-              ) : (
-                <img
-                  src={study.heroImage}
-                  alt={study.title}
-                  style={study.heroScale ? { transform: `scale(${study.heroScale})`, transformOrigin: 'center center' } : undefined}
-                />
-              )}
-            </div>
+            {/* Right — hero image (only when heroImage is set) */}
+            {study.heroImage && (
+              <div className="cs-intro-right">
+                {isAdmin ? (
+                  <EditableImage
+                    src={study.heroImage}
+                    alt={study.title}
+                    onSrcChange={(url) => update('heroImage', url)}
+                  />
+                ) : (
+                  <img
+                    src={study.heroImage}
+                    alt={study.title}
+                    style={study.heroScale ? { transform: `scale(${study.heroScale})`, transformOrigin: 'center center' } : undefined}
+                  />
+                )}
+              </div>
+            )}
           </div>
+
+          {/* When no hero image: rows appear directly below intro (before text blocks) */}
+          {!study.heroImage && (study.rows ?? []).length > 0 && (
+            <div className="cs-rows">
+              {(study.rows ?? []).map((row, i) => {
+                if (row.figmaEmbed) {
+                  return (
+                    <div key={i} className="cs-figma-row cs-row-animate">
+                      <FigmaEmbed section={row} />
+                    </div>
+                  );
+                }
+                return null;
+              })}
+            </div>
+          )}
 
           {/* Standalone intro text blocks */}
           {study.standaloneTexts && study.standaloneTexts.map((block, i) => (
@@ -294,9 +312,11 @@ export default function CaseStudyPage() {
             </div>
           ))}
 
-          {/* Alternating image-text rows */}
+          {/* Alternating image-text rows (skipped for no-hero studies — already rendered above) */}
           <div className="cs-rows">
             {(() => {
+              // When no heroImage, rows were already rendered right after the intro
+              if (!study.heroImage) return null;
               let gridIdx = 0;
               return (study.rows ?? []).map((row, i) => {
                 /* ── Text-only block ── */

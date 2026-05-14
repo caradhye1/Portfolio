@@ -245,6 +245,15 @@
   margin-bottom: calc(var(--space-8) * 1.3);
 }
 
+/* Full-width intro when there is no hero image */
+.cs-intro-columns--full {
+  grid-template-columns: 1fr;
+}
+
+.cs-intro-columns--full .cs-intro-left {
+  max-width: 860px;
+}
+
 /* Left column: title + overview text + role + team */
 /* Option 1 — cream brief card: the column becomes a self-contained panel */
 .cs-intro-left {

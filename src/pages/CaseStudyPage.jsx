@@ -220,8 +220,8 @@ export default function CaseStudyPage() {
             </svg>
           </a>
 
-          {/* ── Two-column intro (or full-width when no hero image) ── */}
-          <div className={`cs-intro-columns${!study.heroImage ? ' cs-intro-columns--full' : ''}`}>
+          {/* ── Two-column intro: left = title/overview/meta, right = hero image OR text sections ── */}
+          <div className="cs-intro-columns">
             {/* Left — title, overview, role + team */}
             <div className="cs-intro-left">
               <h1 className="section-title cs-intro-title">
@@ -254,8 +254,8 @@ export default function CaseStudyPage() {
               </div>
             </div>
 
-            {/* Right — hero image (only when heroImage is set) */}
-            {study.heroImage && (
+            {/* Right — hero image if present, otherwise standaloneTexts fill this column */}
+            {study.heroImage ? (
               <div className="cs-intro-right">
                 {isAdmin ? (
                   <EditableImage
@@ -271,10 +271,33 @@ export default function CaseStudyPage() {
                   />
                 )}
               </div>
-            )}
+            ) : study.standaloneTexts ? (
+              <div className="cs-intro-right cs-intro-right--text">
+                {study.standaloneTexts.map((block, i) => (
+                  <div key={i} className="cs-intro-text-block">
+                    <h3 className="cs-row-heading">
+                      {isAdmin ? (
+                        <EditableText value={block.heading} onSave={(val) => update(`standaloneTexts.${i}.heading`, val)} multiline={false} />
+                      ) : block.heading}
+                    </h3>
+                    {isAdmin ? (
+                      Array.isArray(block.text)
+                        ? block.text.map((t, j) => (
+                            <p key={j} className="cs-row-body">
+                              <EditableText value={t} onSave={(val) => update(`standaloneTexts.${i}.text.${j}`, val)} />
+                            </p>
+                          ))
+                        : <p className="cs-row-body">
+                            <EditableText value={block.text} onSave={(val) => update(`standaloneTexts.${i}.text`, val)} />
+                          </p>
+                    ) : renderParagraphs(block.text)}
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
 
-          {/* When no hero image: rows appear directly below intro (before text blocks) */}
+          {/* When no hero image: Figma embed renders directly below the two-column intro */}
           {!study.heroImage && (study.rows ?? []).length > 0 && (
             <div className="cs-rows">
               {(study.rows ?? []).map((row, i) => {
@@ -290,8 +313,8 @@ export default function CaseStudyPage() {
             </div>
           )}
 
-          {/* Standalone intro text blocks */}
-          {study.standaloneTexts && study.standaloneTexts.map((block, i) => (
+          {/* Standalone text blocks — only for studies WITH a hero image (otherwise shown in right column above) */}
+          {study.heroImage && study.standaloneTexts && study.standaloneTexts.map((block, i) => (
             <div key={`st-${i}`} className={`cs-standalone-text${block.leftAlign ? ' cs-standalone-text--left' : ''}`}>
               <h3 className="cs-row-heading">
                 {isAdmin ? (

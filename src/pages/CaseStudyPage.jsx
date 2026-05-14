@@ -223,7 +223,7 @@ export default function CaseStudyPage() {
           {/* ── Two-column intro: left = title/overview/meta, right = hero image OR text sections ── */}
           <div className="cs-intro-columns">
             {/* Left — title, overview, role + team */}
-            <div className="cs-intro-left">
+            <div className={`cs-intro-left${!study.heroImage ? ' cs-intro-left--plain' : ''}`}>
               <h1 className="section-title cs-intro-title">
                 {isAdmin ? (
                   <EditableText value={study.title} onSave={(val) => update('title', val)} multiline={false} />

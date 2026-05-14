@@ -252,20 +252,28 @@
   overflow: visible;
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-5);
   padding: 0;
 }
 
 .cs-intro-text-block .cs-row-heading {
-  font-size: var(--text-lg);
-  font-weight: 600;
-  margin-bottom: var(--space-2);
+  font-size: var(--text-base);
+  font-weight: 500;
+  margin-bottom: var(--space-1);
 }
 
 .cs-intro-text-block .cs-row-body {
-  font-size: var(--text-md);
-  line-height: 1.75;
+  font-size: var(--text-sm);
+  line-height: 1.7;
   color: var(--color-text-light);
+  margin: 0;
+}
+
+/* Left column without the cream card (used alongside text right column) */
+.cs-intro-left--plain {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
 }
 
 /* Left column: title + overview text + role + team */

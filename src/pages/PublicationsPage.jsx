@@ -50,11 +50,6 @@ export default function PublicationsPage() {
                         <EditableText value={pub.title} onSave={(val) => updateField(`publications.${i}.title`, val)} multiline={false} />
                       ) : pub.title}
                     </p>
-                    <p className="research-item-authors">
-                      {isAdmin ? (
-                        <EditableText value={pub.authors} onSave={(val) => updateField(`publications.${i}.authors`, val)} multiline={false} />
-                      ) : pub.authors}
-                    </p>
                     {pub.journal && (
                       <p className="research-item-journal">
                         {isAdmin ? (
@@ -62,6 +57,11 @@ export default function PublicationsPage() {
                         ) : pub.journal}
                       </p>
                     )}
+                    <p className="research-item-authors">
+                      {isAdmin ? (
+                        <EditableText value={pub.authors} onSave={(val) => updateField(`publications.${i}.authors`, val)} multiline={false} />
+                      ) : pub.authors}
+                    </p>
                   </div>
                   {pub.downloadUrl && (
                     <a href={pub.downloadUrl} className="research-download" title="Download" target="_blank" rel="noopener noreferrer">

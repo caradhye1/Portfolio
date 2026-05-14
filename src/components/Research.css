@@ -89,6 +89,13 @@
   margin-bottom: var(--space-1);
 }
 
+.research-item-year {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  line-height: 1.5;
+  margin-bottom: var(--space-1);
+}
+
 .research-item-authors {
   font-size: var(--text-sm);
   color: var(--color-text-muted);

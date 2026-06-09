@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import PhotographyPage from './pages/PhotographyPage';
 import PublicationsPage from './pages/PublicationsPage';
 import CaseStudyPage from './pages/CaseStudyPage';
+import CVPage from './pages/CVPage';
 import AdminLogin from './admin/AdminLogin.jsx';
 import { AdminProvider } from './admin/AdminContext.jsx';
 import { AdminBar } from './admin/AdminBar.jsx';
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/photography" element={<PhotographyPage />} />
             <Route path="/publications" element={<PublicationsPage />} />
+            <Route path="/cv" element={<CVPage />} />
             <Route path="/case-study/:slug" element={<CaseStudyPage />} />
             <Route path="/admin" element={<AdminLogin />} />
           </Routes>

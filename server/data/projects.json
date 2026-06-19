@@ -21,18 +21,18 @@
     "slug": "dte-insight"
   },
   {
+    "title": "Upwork Browse Experience",
+    "subtitle": "Improving Discovery for Clients",
+    "image": "/uploads/Universal Browse UX Review 3.png",
+    "wip": false,
+    "slug": "upwork-browse"
+  },
+  {
     "title": "Upwork Profile Preview",
     "subtitle": "Rethinking Freelancer Presentation",
     "image": "https://static.wixstatic.com/media/a0fcc9_1b1da8fd7a07459587247c0a6da0ad80~mv2.png",
     "wip": true,
     "slug": "upwork-profile"
-  },
-  {
-    "title": "Upwork Browse Experience",
-    "subtitle": "Improving Discovery for Clients",
-    "image": "/uploads/Universal Browse UX Review 3.png",
-    "wip": true,
-    "slug": "upwork-browse"
   },
   {
     "title": "Kroger AI Insights",

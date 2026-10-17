@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../components/CaseStudy.css';
+import '../components/Projects.css';
 import { useAdminContent } from '../admin/useAdminContent.js';
 import { EditableText } from '../admin/EditableText.jsx';
 import { EditableImage } from '../admin/EditableImage.jsx';
@@ -114,6 +115,52 @@ function renderSection(section, i) {
   }
 }
 
+const PROTECTED_SLUGS = { 'dte-insight': 'Pulsar8099' };
+const isUnlocked = (slug) => { try { return sessionStorage.getItem(`unlocked_${slug}`) === 'true'; } catch { return false; } };
+
+function CaseStudyPasswordGate({ slug }) {
+  const [passwordInput, setPasswordInput] = useState('');
+  const [passwordError, setPasswordError] = useState(false);
+  const inputRef = useRef(null);
+  useEffect(() => { inputRef.current?.focus(); }, []);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (passwordInput === PROTECTED_SLUGS[slug]) {
+      try { sessionStorage.setItem(`unlocked_${slug}`, 'true'); } catch {}
+      window.location.reload();
+    } else {
+      setPasswordError(true);
+      setPasswordInput('');
+      inputRef.current?.focus();
+    }
+  };
+  return (
+    <div className="pw-overlay" style={{ position: 'fixed' }}>
+      <div className="pw-modal">
+        <svg className="pw-modal-lock" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="11" width="16" height="12" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+          <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        </svg>
+        <h3 className="pw-modal-title">Password required</h3>
+        <p className="pw-modal-desc">This case study is password protected.</p>
+        <form onSubmit={handleSubmit}>
+          <input
+            ref={inputRef}
+            className={`pw-modal-input${passwordError ? ' pw-modal-input--error' : ''}`}
+            type="password"
+            placeholder="Enter password"
+            value={passwordInput}
+            onChange={(e) => { setPasswordInput(e.target.value); setPasswordError(false); }}
+            autoComplete="off"
+          />
+          {passwordError && <p className="pw-modal-error">Incorrect password</p>}
+          <button className="pw-modal-btn" type="submit">View case study</button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
 export default function CaseStudyPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -131,6 +178,10 @@ export default function CaseStudyPage() {
   const [showToast, setShowToast] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const pageRef = useRef(null);
+
+  if (PROTECTED_SLUGS[slug] && !isUnlocked(slug)) {
+    return <CaseStudyPasswordGate slug={slug} />;
+  }
 
   // Helper: update a field scoped to the current study slug
   const update = (path, val) => updateField(`${slug}.${path}`, val);

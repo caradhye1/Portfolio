@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Projects.css';
 import { DoodleFlowchart, DoodlePencil, DoodleGear } from './Doodles';
@@ -6,6 +6,9 @@ import { useAdminContent } from '../admin/useAdminContent.js';
 import { EditableText } from '../admin/EditableText.jsx';
 import { EditableImage } from '../admin/EditableImage.jsx';
 import { useAdmin } from '../admin/AdminContext.jsx';
+
+const PROTECTED_SLUGS = { 'dte-insight': 'Pulsar8099' };
+const isUnlocked = (slug) => { try { return sessionStorage.getItem(`unlocked_${slug}`) === 'true'; } catch { return false; } };
 
 const FALLBACK_PROJECTS = [
   {
@@ -58,8 +61,19 @@ export default function Projects() {
   const { isAdmin } = useAdmin();
   const [activeIdx, setActiveIdx] = useState(0);
   const [animKey, setAnimKey] = useState(0);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
+  const [passwordError, setPasswordError] = useState(false);
+  const [pendingSlug, setPendingSlug] = useState(null);
+  const passwordInputRef = useRef(null);
 
   const projects = data ?? FALLBACK_PROJECTS;
+
+  useEffect(() => {
+    if (showPasswordModal) {
+      setTimeout(() => passwordInputRef.current?.focus(), 50);
+    }
+  }, [showPasswordModal]);
 
   const handleTabClick = (i) => {
     if (i === activeIdx) return;
@@ -67,14 +81,40 @@ export default function Projects() {
     setAnimKey((k) => k + 1);
   };
 
+  const openPasswordModal = (slug) => {
+    setPendingSlug(slug);
+    setPasswordInput('');
+    setPasswordError(false);
+    setShowPasswordModal(true);
+  };
+
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault();
+    if (passwordInput === PROTECTED_SLUGS[pendingSlug]) {
+      try { sessionStorage.setItem(`unlocked_${pendingSlug}`, 'true'); } catch {}
+      setShowPasswordModal(false);
+      navigate(`/case-study/${pendingSlug}`);
+    } else {
+      setPasswordError(true);
+      setPasswordInput('');
+      passwordInputRef.current?.focus();
+    }
+  };
+
   const handleViewStudy = (e) => {
     e.preventDefault();
-    navigate(`/case-study/${projects[activeIdx].slug}`);
+    const slug = projects[activeIdx].slug;
+    if (PROTECTED_SLUGS[slug] && !isUnlocked(slug)) {
+      openPasswordModal(slug);
+    } else {
+      navigate(`/case-study/${slug}`);
+    }
   };
 
   const active = projects[activeIdx];
 
   return (
+    <>
     <section className="projects" id="projects">
       <div className="projects-doodles" aria-hidden="true">
         <DoodleFlowchart className="doodle--projects-flowchart" />
@@ -112,6 +152,12 @@ export default function Projects() {
                       multiline={false}
                     />
                   ) : project.title}
+                  {PROTECTED_SLUGS[project.slug] && (
+                    <svg className="projects-tab-lock" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Password protected">
+                      <rect x="3" y="7" width="10" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.25"/>
+                      <path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"/>
+                    </svg>
+                  )}
                   {project.wip && <span className="projects-tab-wip">WIP</span>}
                 </span>
               </button>
@@ -141,5 +187,32 @@ export default function Projects() {
         </div>
       </div>
     </section>
+
+    {showPasswordModal && (
+      <div className="pw-overlay" onClick={() => setShowPasswordModal(false)}>
+        <div className="pw-modal" onClick={(e) => e.stopPropagation()}>
+          <svg className="pw-modal-lock" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="11" width="16" height="12" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+            <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          </svg>
+          <h3 className="pw-modal-title">Password required</h3>
+          <p className="pw-modal-desc">This case study is password protected.</p>
+          <form onSubmit={handlePasswordSubmit}>
+            <input
+              ref={passwordInputRef}
+              className={`pw-modal-input${passwordError ? ' pw-modal-input--error' : ''}`}
+              type="password"
+              placeholder="Enter password"
+              value={passwordInput}
+              onChange={(e) => { setPasswordInput(e.target.value); setPasswordError(false); }}
+              autoComplete="off"
+            />
+            {passwordError && <p className="pw-modal-error">Incorrect password</p>}
+            <button className="pw-modal-btn" type="submit">View case study</button>
+          </form>
+        </div>
+      </div>
+    )}
+    </>
   );
 }

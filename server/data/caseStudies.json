@@ -16,7 +16,10 @@
     ],
     "rows": [
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_f7dfbaa5b3cb42829176cdc5ff9b630d~mv2.png", "alt": "Conceptual wireframe overview" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_f7dfbaa5b3cb42829176cdc5ff9b630d~mv2.png",
+          "alt": "Conceptual wireframe overview"
+        },
         "heading": "My work involved",
         "text": [
           "1. Understanding the ML-generated info",
@@ -28,40 +31,61 @@
       },
       {
         "noBg": true,
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_63b53d4f765c44289a8c8933f835a7b5~mv2.jpg", "alt": "Daily Digest - Should I care tab" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_63b53d4f765c44289a8c8933f835a7b5~mv2.jpg",
+          "alt": "Daily Digest - Should I care tab"
+        },
         "heading": "Daily Digest",
         "text": "A default landing page gave brands a snapshot of the overall social narratives around a topic they were tracking."
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_dffc37d45a4543eea266db02f38b2819~mv2.jpg", "alt": "Factions tab" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_dffc37d45a4543eea266db02f38b2819~mv2.jpg",
+          "alt": "Factions tab"
+        },
         "heading": "Narrative Analysis",
         "text": "How each narrative was performing over time. It also contained sub-page tabs like: Narrative Overview, Factions, and Authenticity."
       },
       {
         "noBg": true,
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_fa6302a9e5c84b51887b693aff38a646~mv2.png", "alt": "Authenticity tab" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_fa6302a9e5c84b51887b693aff38a646~mv2.png",
+          "alt": "Authenticity tab"
+        },
         "heading": "Factions View",
         "text": "Understanding which groups are driving specific narratives with graph visualizations. User feedback told us the previous insights were too text-heavy and difficult to interpret actionably for our audience."
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_0fb6e98d6c034710ab3e4d17a298e4a3~mv2.png", "alt": "Factions analysis page" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_0fb6e98d6c034710ab3e4d17a298e4a3~mv2.png",
+          "alt": "Factions analysis page"
+        },
         "heading": "Factions Deep Dive",
         "text": "I worked on capturing the essential insights in a conceptual wireframe. The goal was to make complex faction data visually digestible for marketing, brand, and communication analysts at top brands."
       },
       {
         "noBg": true,
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_cd477c8357ac47f69bcf3e8c3e20cb8f~mv2.png", "alt": "Curation page" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_cd477c8357ac47f69bcf3e8c3e20cb8f~mv2.png",
+          "alt": "Curation page"
+        },
         "heading": "Curation Tools",
         "text": "The Curation page (or Convos) is where curated conversations and insights were generated."
       },
       {
         "noBg": true,
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_5731503a172947329d89f7b55705bd98~mv2.png", "alt": "Edit Conversation UI" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_5731503a172947329d89f7b55705bd98~mv2.png",
+          "alt": "Edit Conversation UI"
+        },
         "heading": "Edit Conversation",
         "text": "Tools for editing and managing curated conversations."
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_1babcb0c034b4aa7b0aea88ef975b2ad~mv2.gif", "alt": "Filters interaction" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_1babcb0c034b4aa7b0aea88ef975b2ad~mv2.gif",
+          "alt": "Filters interaction"
+        },
         "heading": "Filters",
         "text": "The Filters allowed users to narrow down the specific narratives that they were looking for inside a curated report."
       }
@@ -77,8 +101,14 @@
       }
     ],
     "closingImages": [
-      { "src": "https://static.wixstatic.com/media/a0fcc9_5baa4cf1650a4f06a8a3562d96026047~mv2.png", "alt": "Design board slide 1" },
-      { "src": "https://static.wixstatic.com/media/a0fcc9_65ef7bd6b45f41b985fbf698b6da8e98~mv2.png", "alt": "Design board slide 2" }
+      {
+        "src": "https://static.wixstatic.com/media/a0fcc9_5baa4cf1650a4f06a8a3562d96026047~mv2.png",
+        "alt": "Design board slide 1"
+      },
+      {
+        "src": "https://static.wixstatic.com/media/a0fcc9_65ef7bd6b45f41b985fbf698b6da8e98~mv2.png",
+        "alt": "Design board slide 2"
+      }
     ]
   },
   "right-reach": {
@@ -101,7 +131,10 @@
     ],
     "rows": [
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_8666ed4df2d246dabe669c25c0c23de9~mv2.png", "alt": "Team values — feedback & clustering" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_8666ed4df2d246dabe669c25c0c23de9~mv2.png",
+          "alt": "Team values — feedback & clustering"
+        },
         "heading": "Team Values and Feedback",
         "text": [
           "We started by understanding our own values and the feedback we've got from clients about their goals.",
@@ -110,9 +143,18 @@
       },
       {
         "images": [
-          { "src": "https://static.wixstatic.com/media/a0fcc9_ad3cf0f8fdb847d7b1da9bba8e94fb5d~mv2.png", "alt": "Competitor analysis — overview" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_02b6defc5f8e46e6b71b8baa8a26337f~mv2.png", "alt": "Competitor analysis — companies using it" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_425c04290ff64574939ec371d46ec8c4~mv2.png", "alt": "Competitor analysis — user benefits" }
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_ad3cf0f8fdb847d7b1da9bba8e94fb5d~mv2.png",
+            "alt": "Competitor analysis — overview"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_02b6defc5f8e46e6b71b8baa8a26337f~mv2.png",
+            "alt": "Competitor analysis — companies using it"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_425c04290ff64574939ec371d46ec8c4~mv2.png",
+            "alt": "Competitor analysis — user benefits"
+          }
         ],
         "gridLayout": "1-2",
         "wideImage": true,
@@ -125,12 +167,30 @@
       },
       {
         "images": [
-          { "src": "https://static.wixstatic.com/media/a0fcc9_a4462a522f9149aeb8c4769461e30059~mv2.png", "alt": "Competitor analysis — outcomes 1" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_fd8074b6c3e14e1fadcb9e2f9b1c176e~mv2.png", "alt": "Competitor analysis — outcomes 2" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_430e3f93aaa44e3a8ae28de30ed4742e~mv2.png", "alt": "Competitor review — Dave Ramsey" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_df808badb8e849dab73da9ee7d50d9cc~mv2.png", "alt": "Competitor review — KeyBank" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_28987bd3dafb4d23be03c53f09e691ae~mv2.png", "alt": "Competitor review — Navicore" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_6283d565fdeb4680954b5b14d472aae0~mv2.png", "alt": "Competitor review — MMI" }
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_a4462a522f9149aeb8c4769461e30059~mv2.png",
+            "alt": "Competitor analysis — outcomes 1"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_fd8074b6c3e14e1fadcb9e2f9b1c176e~mv2.png",
+            "alt": "Competitor analysis — outcomes 2"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_430e3f93aaa44e3a8ae28de30ed4742e~mv2.png",
+            "alt": "Competitor review — Dave Ramsey"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_df808badb8e849dab73da9ee7d50d9cc~mv2.png",
+            "alt": "Competitor review — KeyBank"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_28987bd3dafb4d23be03c53f09e691ae~mv2.png",
+            "alt": "Competitor review — Navicore"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_6283d565fdeb4680954b5b14d472aae0~mv2.png",
+            "alt": "Competitor review — MMI"
+          }
         ],
         "gridCols": 2,
         "wideImage": true,
@@ -142,8 +202,14 @@
       },
       {
         "images": [
-          { "src": "https://static.wixstatic.com/media/a0fcc9_4767d1140ba84a0eb933c8d9804214a0~mv2.png", "alt": "Financial wellness journey pyramid" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_319b142dbeb64703b23c8bb4af84cb75~mv2.png", "alt": "MVP-to-V5 roadmap" }
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_4767d1140ba84a0eb933c8d9804214a0~mv2.png",
+            "alt": "Financial wellness journey pyramid"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_319b142dbeb64703b23c8bb4af84cb75~mv2.png",
+            "alt": "MVP-to-V5 roadmap"
+          }
         ],
         "diagonal": true,
         "wideImage": true,
@@ -154,16 +220,37 @@
         "visionLayout": true,
         "heading": "Vision and Execution",
         "text": "With a little effort, we were able to put the team together, complete a few pending hires, and get started on showing everyone at GreenPath what we'd be working on for the next few months.",
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_431e723385e34ddba8d8f7d7da07e0ce~mv2.png", "alt": "Right Reach — vision mockup" }
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_431e723385e34ddba8d8f7d7da07e0ce~mv2.png",
+          "alt": "Right Reach — vision mockup"
+        }
       },
       {
         "images": [
-          { "src": "https://static.wixstatic.com/media/a0fcc9_ff9a1ebfffd8415989fba667746bf5f3~mv2.png", "alt": "Low-fi wireframe set A1" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_faa5a51f5d0440b291559adb5ae84628~mv2.png", "alt": "Low-fi wireframe set A2" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_9c090b87f8be4df0b92b30ebbcac659b~mv2.png", "alt": "Low-fi wireframe set B1" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_ffcfbd00d1084fb49791ee3aadc922df~mv2.png", "alt": "Low-fi wireframe set B2" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_d4b55ab01ccd4bfdb73f7f260a6c4f90~mv2.png", "alt": "Low-fi wireframe set C1" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_4517683e490049a5969291fd1bf9b25c~mv2.png", "alt": "Low-fi wireframe set C2" }
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_ff9a1ebfffd8415989fba667746bf5f3~mv2.png",
+            "alt": "Low-fi wireframe set A1"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_faa5a51f5d0440b291559adb5ae84628~mv2.png",
+            "alt": "Low-fi wireframe set A2"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_9c090b87f8be4df0b92b30ebbcac659b~mv2.png",
+            "alt": "Low-fi wireframe set B1"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_ffcfbd00d1084fb49791ee3aadc922df~mv2.png",
+            "alt": "Low-fi wireframe set B2"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_d4b55ab01ccd4bfdb73f7f260a6c4f90~mv2.png",
+            "alt": "Low-fi wireframe set C1"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_4517683e490049a5969291fd1bf9b25c~mv2.png",
+            "alt": "Low-fi wireframe set C2"
+          }
         ],
         "gridCols": 2,
         "wideImage": true,
@@ -174,7 +261,10 @@
         ]
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_b770175423064f659ecf044c0b9bf23e~mv2.png", "alt": "Mid-fidelity wireframes" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_b770175423064f659ecf044c0b9bf23e~mv2.png",
+          "alt": "Mid-fidelity wireframes"
+        },
         "heading": "Mid-Fidelity Wireframes",
         "text": [
           "After solidifying low-fi wires and the layout of basic elements we added color, shapes, and other elements to provide more brand and feel to the wires. This gave the team another chance to see the work in progress and provide any additional feedback.",
@@ -182,12 +272,18 @@
         ]
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_8364ce6f5f6146b1b761661fe1c14a0e~mv2.png", "alt": "Styleguide / mini-design system" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_8364ce6f5f6146b1b761661fe1c14a0e~mv2.png",
+          "alt": "Styleguide / mini-design system"
+        },
         "heading": "Styleguide",
         "text": "As we continued to make progress toward a high-fidelity prototype, we simultaneously created a style guide / mini-design system to help get the front team started on creating basic elements while finalizing the designs."
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_d5f50b34c65a4c149937e0d235b483d8~mv2.png", "alt": "Mobile-first prototypes" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_d5f50b34c65a4c149937e0d235b483d8~mv2.png",
+          "alt": "Mobile-first prototypes"
+        },
         "heading": "Mobile First",
         "text": [
           "With a large percentage of traffic coming from mobile we lead with a mobile-first approach to the app design.",
@@ -196,15 +292,24 @@
         ]
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_147edca113c74176a57aefcd8e415a40~mv2.png", "alt": "Research-based design" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_147edca113c74176a57aefcd8e415a40~mv2.png",
+          "alt": "Research-based design"
+        },
         "wideImage": true,
         "heading": "Research-Based Design",
         "text": "We presented all the findings from the user interviews to the team to keep them in the loop. The team felt involved and connected to the product."
       },
       {
         "images": [
-          { "src": "https://static.wixstatic.com/media/a0fcc9_e57ada1c1e60484a9dd2451b4562265f~mv2.png", "alt": "Cohesive experience — mockup 1" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_3d48aed34528429097b837ea7b1a351f~mv2.png", "alt": "Cohesive experience — mockup 2" }
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_e57ada1c1e60484a9dd2451b4562265f~mv2.png",
+            "alt": "Cohesive experience — mockup 1"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_3d48aed34528429097b837ea7b1a351f~mv2.png",
+            "alt": "Cohesive experience — mockup 2"
+          }
         ],
         "gridCols": 2,
         "heading": "Cohesive Experience Across Mobile & Web",
@@ -216,20 +321,32 @@
       },
       {
         "images": [
-          { "src": "https://static.wixstatic.com/media/a0fcc9_4767d1140ba84a0eb933c8d9804214a0~mv2.png", "alt": "Strategy overview — pyramid" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_e778de85fb38421b9130d4c2c346a1d9~mv2.png", "alt": "Strategy overview — dashboard" }
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_4767d1140ba84a0eb933c8d9804214a0~mv2.png",
+            "alt": "Strategy overview — pyramid"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_e778de85fb38421b9130d4c2c346a1d9~mv2.png",
+            "alt": "Strategy overview — dashboard"
+          }
         ],
         "gridCols": 2,
         "heading": "Strategy to Execution",
         "text": "My favorite part of the project was the strategic fit of this app into the ecosystem for GreenPath. This accelerated our digital transition and aligned several different teams on a unified vision for the future."
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_1e3cd1fd294945f8879ad6bdcd11f110~mv2.png", "alt": "Design process diagram" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_1e3cd1fd294945f8879ad6bdcd11f110~mv2.png",
+          "alt": "Design process diagram"
+        },
         "heading": "Design Process",
         "text": "This is a diagram of the standard digital design process my team followed at GreenPath. I felt it was important that all the team felt they were aligned on the expectations. This process was based on co-working sessions with engineering, project management, C-team as well as several other teams involved in this project."
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_66f442cf633946a8a022a7d992db2c70~mv2.png", "alt": "Process overview" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_66f442cf633946a8a022a7d992db2c70~mv2.png",
+          "alt": "Process overview"
+        },
         "standalone": true
       }
     ],
@@ -240,7 +357,10 @@
       }
     ],
     "closingImages": [
-      { "src": "https://static.wixstatic.com/media/a0fcc9_ed32c29c9c224ebbb1c0df4777035780~mv2.png", "alt": "Right Reach — final results visual" }
+      {
+        "src": "https://static.wixstatic.com/media/a0fcc9_ed32c29c9c224ebbb1c0df4777035780~mv2.png",
+        "alt": "Right Reach — final results visual"
+      }
     ]
   },
   "dte-insight": {
@@ -263,7 +383,10 @@
     ],
     "rows": [
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_9f9aecfa9c4e498b85e4a484062acc0d~mv2.png", "alt": "Targeting household consumption" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_9f9aecfa9c4e498b85e4a484062acc0d~mv2.png",
+          "alt": "Targeting household consumption"
+        },
         "heading": "Targeting Household Consumption",
         "text": [
           "We found that decades ago researchers had pointed to an opportunity to improve household energy consumption habits by adopting better behaviors.",
@@ -273,7 +396,10 @@
         ]
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_87e90e1c59f44f7081fb356953bcd4cb~mv2.png", "alt": "Feedback research chart" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_87e90e1c59f44f7081fb356953bcd4cb~mv2.png",
+          "alt": "Feedback research chart"
+        },
         "heading": "Making Energy Visible",
         "text": [
           "One study in 2012 had found mixed results on providing detailed real-time feedback on energy consumption. But this was an extremely small sample of 11 households in The UK and the results were mainly qualitative.",
@@ -282,7 +408,10 @@
         ]
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_96e03d633e254c648eadf31f4bcd46fe~mv2.png", "alt": "Energy feedback visualization concepts" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_96e03d633e254c648eadf31f4bcd46fe~mv2.png",
+          "alt": "Energy feedback visualization concepts"
+        },
         "heading": "Behind the Scenes",
         "text": [
           "With the knowledge of previous research, two strong teams from DTE & Vectorform, we began the formative stages of the project.",
@@ -292,7 +421,10 @@
         ]
       },
       {
-        "image": { "src": "/uploads/Image Kitchen.png", "alt": "User research home visit" },
+        "image": {
+          "src": "/uploads/Image Kitchen.png",
+          "alt": "User research home visit"
+        },
         "heading": "User Research",
         "text": [
           "We visited 23 households in Michigan to study the habits, expectations, and behavior patterns of potential clients. Each visit lasted a few hours, which consisted of Q&A as well as learning about their lifestyles. The group was selected based on DTE's target client pool.",
@@ -300,7 +432,10 @@
         ]
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_a8ee8a7c660449ad9a6baefa57625cbf~mv2.png", "alt": "User research in homes" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_a8ee8a7c660449ad9a6baefa57625cbf~mv2.png",
+          "alt": "User research in homes"
+        },
         "heading": "Hardware Innovation",
         "text": [
           "Along with the app and the idea itself, there was another crucial piece of the puzzle - hardware.",
@@ -309,7 +444,10 @@
         ]
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_919eaea3677e479fab237e3f9dd3e6c2~mv2.png", "alt": "Hardware innovation" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_919eaea3677e479fab237e3f9dd3e6c2~mv2.png",
+          "alt": "Hardware innovation"
+        },
         "heading": "Ideate > Design > Test > Repeat",
         "text": [
           "Based on the rich set of insights derived from field research as well as DTE's experienced customer service teams, we decided to start prototyping some ideas.",
@@ -319,7 +457,10 @@
       },
       {
         "noBg": true,
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_5abdde1b9781464a9fc828c0a372f47a~mv2_d_1400_2879_s_2.jpg", "alt": "Energy Target Design" }
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_5abdde1b9781464a9fc828c0a372f47a~mv2_d_1400_2879_s_2.jpg",
+          "alt": "Energy Target Design"
+        }
       },
       {
         "textOnly": true,
@@ -342,19 +483,37 @@
       {
         "standaloneGrid": true,
         "images": [
-          { "src": "https://static.wixstatic.com/media/a0fcc9_92466f32d99a4a908bd3bfd2e1d0ff41~mv2.jpg", "alt": "Setting targets prototype screen" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_31efbf8bd9554930be9b695bf60f2e25~mv2.jpg", "alt": "Additional target-setting screens" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_b20227af421e4b13a89b87cbf9e478b2~mv2.jpg", "alt": "Usability testing session" },
-          { "src": "https://static.wixstatic.com/media/a0fcc9_ba95957c66bf43cc9bc1b625624b1e4a~mv2.jpg", "alt": "Testing session insights" }
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_92466f32d99a4a908bd3bfd2e1d0ff41~mv2.jpg",
+            "alt": "Setting targets prototype screen"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_31efbf8bd9554930be9b695bf60f2e25~mv2.jpg",
+            "alt": "Additional target-setting screens"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_b20227af421e4b13a89b87cbf9e478b2~mv2.jpg",
+            "alt": "Usability testing session"
+          },
+          {
+            "src": "https://static.wixstatic.com/media/a0fcc9_ba95957c66bf43cc9bc1b625624b1e4a~mv2.jpg",
+            "alt": "Testing session insights"
+          }
         ]
       },
       {
         "noBg": true,
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_816b5e8908714428a9e644cc570d7fd9~mv2.jpg", "alt": "Dashboard Cards" }
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_816b5e8908714428a9e644cc570d7fd9~mv2.jpg",
+          "alt": "Dashboard Cards"
+        }
       },
       {
         "noBg": true,
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_d1efecd37cda4010af55fdacc9d87b27~mv2.png", "alt": "App iterations with new features" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_d1efecd37cda4010af55fdacc9d87b27~mv2.png",
+          "alt": "App iterations with new features"
+        },
         "heading": "Iterations",
         "text": [
           "After the launch of the app, we continued to get feedback from DTE customers around improving detailed info in the app.",
@@ -371,7 +530,10 @@
         ]
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_35e0331991a249cc91f14ff0d7f4b9e7~mv2.png", "alt": "Design system — color palette" },
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_35e0331991a249cc91f14ff0d7f4b9e7~mv2.png",
+          "alt": "Design system — color palette"
+        },
         "heading": "Design System",
         "text": [
           "Based on the app needs the design team had created a solid design system as a guideline going forward. Bright and basic colors were selected to offer a broad range of options for data visualizations e.g. red for heat and light blue for cold aspects of energy consumption.",
@@ -379,14 +541,25 @@
         ]
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_73c6e5b28760479397be7ece56badc7d~mv2.png", "alt": "Design system — typography" }
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_73c6e5b28760479397be7ece56badc7d~mv2.png",
+          "alt": "Design system — typography"
+        }
       },
       {
-        "image": { "src": "https://static.wixstatic.com/media/a0fcc9_b1580fbc029b40cfbc9e9f10f2122f90~mv2.png", "alt": "Design system — iconography" }
+        "image": {
+          "src": "https://static.wixstatic.com/media/a0fcc9_b1580fbc029b40cfbc9e9f10f2122f90~mv2.png",
+          "alt": "Design system — iconography"
+        }
       }
     ],
     "closingBlocks": [
-      { "type": "image", "src": "https://static.wixstatic.com/media/a0fcc9_9f71ee98b389490baa115e8d99819745~mv2.png", "alt": "Illustration of RED Design", "originalSize": true },
+      {
+        "type": "image",
+        "src": "https://static.wixstatic.com/media/a0fcc9_9f71ee98b389490baa115e8d99819745~mv2.png",
+        "alt": "Illustration of RED Design",
+        "originalSize": true
+      },
       {
         "type": "text",
         "heading": "The Results",
@@ -396,8 +569,16 @@
           "Based on energy data captured from 7,379 households over 17 months the results showed that DTE Insight led to the most significant savings in the history of DTE. The results are shown below."
         ]
       },
-      { "type": "image", "src": "https://static.wixstatic.com/media/a0fcc9_72e9b454fe614b898bf1ea5bfc069200~mv2.png", "alt": "The Results — key metrics" },
-      { "type": "image", "src": "https://static.wixstatic.com/media/a0fcc9_ee39293f0691400ea780c72c9dce2c3d~mv2.png", "alt": "The Highlights" }
+      {
+        "type": "image",
+        "src": "https://static.wixstatic.com/media/a0fcc9_72e9b454fe614b898bf1ea5bfc069200~mv2.png",
+        "alt": "The Results — key metrics"
+      },
+      {
+        "type": "image",
+        "src": "https://static.wixstatic.com/media/a0fcc9_ee39293f0691400ea780c72c9dce2c3d~mv2.png",
+        "alt": "The Highlights"
+      }
     ]
   },
   "upwork-profile": {
@@ -409,9 +590,21 @@
     "wip": true,
     "overview": "The Upwork Profile Preview project reimagined how freelancers present themselves to potential clients. The goal was to surface the most relevant information earlier in the browsing experience, helping clients make faster and more confident hiring decisions.",
     "sections": [
-      { "type": "text", "heading": "The Challenge", "text": "Clients on Upwork spent significant time clicking in and out of freelancer profiles to compare candidates. The existing profile preview showed limited information, forcing clients into a tedious back-and-forth flow that slowed down hiring decisions." },
-      { "type": "text", "heading": "My Role", "text": "I designed the expanded profile preview that surfaces key decision-making information — portfolio samples, success rate, skills, and availability — without requiring a full page navigation. The design balances information density with scannability." },
-      { "type": "text", "heading": "Design Approach", "text": "The redesigned preview uses a structured layout that prioritizes the information clients told us they value most: relevant work samples, earnings history, and skill endorsements. Progressive disclosure reveals deeper details on interaction." }
+      {
+        "type": "text",
+        "heading": "The Challenge",
+        "text": "Clients on Upwork spent significant time clicking in and out of freelancer profiles to compare candidates. The existing profile preview showed limited information, forcing clients into a tedious back-and-forth flow that slowed down hiring decisions."
+      },
+      {
+        "type": "text",
+        "heading": "My Role",
+        "text": "I designed the expanded profile preview that surfaces key decision-making information — portfolio samples, success rate, skills, and availability — without requiring a full page navigation. The design balances information density with scannability."
+      },
+      {
+        "type": "text",
+        "heading": "Design Approach",
+        "text": "The redesigned preview uses a structured layout that prioritizes the information clients told us they value most: relevant work samples, earnings history, and skill endorsements. Progressive disclosure reveals deeper details on interaction."
+      }
     ]
   },
   "upwork-browse": {
@@ -422,9 +615,21 @@
     "team": "2 Sr Designers, Product Manager, Data Scientist, UX Researcher",
     "overview": "The Browse Experience project focused on improving how clients discover and evaluate freelancers on Upwork. The redesign aimed to reduce the cognitive load of comparing multiple candidates and streamline the path from search to hire.",
     "standaloneTexts": [
-      { "heading": "The Challenge", "text": "Clients reported that finding the right freelancer felt overwhelming. Search results returned hundreds of profiles with similar-looking cards, making meaningful comparison difficult. The browse experience needed to help clients narrow their options more efficiently.", "leftAlign": true },
-      { "heading": "My Role", "text": "I designed the improved browse layout with better visual hierarchy, smarter filtering, and inline comparison tools. The design emphasizes differentiation between candidates and surfaces the signals that predict good matches.", "leftAlign": true },
-      { "heading": "Design Approach", "text": "The new browse experience uses responsive cards that adapt to show the most relevant information based on the client's search context. Mobile-first design ensures the experience works seamlessly across devices, with swipeable cards and sticky filters.", "leftAlign": true }
+      {
+        "heading": "The Challenge",
+        "text": "Clients reported that finding the right freelancer felt overwhelming. Search results returned hundreds of profiles with similar-looking cards, making meaningful comparison difficult. The browse experience needed to help clients narrow their options more efficiently.",
+        "leftAlign": true
+      },
+      {
+        "heading": "My Role",
+        "text": "I designed the improved browse layout with better visual hierarchy, smarter filtering, and inline comparison tools. The design emphasizes differentiation between candidates and surfaces the signals that predict good matches.",
+        "leftAlign": true
+      },
+      {
+        "heading": "Design Approach",
+        "text": "The new browse experience uses responsive cards that adapt to show the most relevant information based on the client's search context. Mobile-first design ensures the experience works seamlessly across devices, with swipeable cards and sticky filters.",
+        "leftAlign": true
+      }
     ],
     "rows": [
       {
@@ -437,17 +642,108 @@
     ]
   },
   "kroger-ai": {
+    "fullWidth": true,
     "title": "Kroger AI Insights",
-    "subtitle": "First to Market AI Insights for CPGs",
-    "heroImage": "/kroger-hero.svg",
-    "role": "Senior Product Designer",
-    "team": "Product Manager, Data Science Lead, 3 Engineers",
-    "wip": true,
-    "overview": "Kroger Technology & Digital partnered with CPG brands to deliver first-to-market AI-powered consumer insights. The platform leveraged Kroger's massive first-party purchase data to give brands real-time visibility into shopper behavior, category trends, and competitive dynamics — replacing weeks-long research cycles with on-demand intelligence.",
-    "sections": [
-      { "type": "text", "heading": "The Challenge", "text": "CPG brands relied on syndicated data providers with 6-8 week lag times and limited granularity. Kroger had the richest first-party grocery purchase dataset in the country but no self-serve way for brand partners to access actionable insights from it. The opportunity was to create a differentiated data product that could become a new revenue stream." },
-      { "type": "text", "heading": "My Role", "text": "I led the end-to-end design of the insights platform — from early discovery research with CPG brand managers to high-fidelity prototypes tested with pilot partners. I worked closely with data science to translate complex ML outputs into visualizations that brand managers could act on without analyst support." },
-      { "type": "text", "heading": "Design Approach", "text": "The platform surfaces AI-generated insights through three lenses: Category Health (market share trends and competitive movement), Shopper Behavior (basket composition and purchase patterns), and Predictive Signals (early indicators of emerging trends). Each view was designed to answer the specific questions brand managers bring to weekly planning meetings." }
+    "subtitle": "Designing the First AI Layer Across 84.51°’s Product Suite",
+    "heroImage": "/uploads/insights-ai-beta-badge.png",
+    "role": "Lead Product Designer",
+    "team": "Product Manager, Data Science Lead, Engineers",
+    "overview": "84.51° launched two AI products as part of a single FY2026 initiative: Insights Assistant, a chat interface built into 84.51° Stratum that answers CPG suppliers’ business performance questions in plain language, and Ad Assistant, a campaign intelligence chatbot inside KAP that gives brand managers direct answers about their media performance. Both products share design patterns and data infrastructure, and are planned to merge into a unified chatbot (UCM-56676). Together they represent the first AI layer across 84.51°’s platform suite.",
+    "standaloneTexts": [
+      {
+        "heading": "The Challenge",
+        "text": "CPG suppliers and brand managers were navigating multiple reports and dashboards to answer questions the platforms already had the data to answer. Stratum’s navigation was built around older workflows; KAP had no natural language layer at all. Every insight required manual report-building — the AI opportunity was to eliminate that friction entirely."
+      },
+      {
+        "heading": "My Role",
+        "text": "Lead Product Designer across both products, from competitive analysis and ideation through the 10/14 public beta launch and beyond. I worked with product management and data science to define what each AI could credibly answer, established the AI design patterns now adopted across other Stratum features, and shipped iteratively via UCM stories on both platforms simultaneously."
+      },
+      {
+        "heading": "Approach",
+        "text": "Both products were shipped via discrete UCM tickets, each adding a tested capability before the next. Insights Assistant launched with top-KPI responses and evolved through configurable greetings, guided inputs, and transparency patterns. Ad Assistant evolved from simple text responses to structured data tables, feedback collection, and interaction polish. FY26 target: 50% adoption across Stratum users, measured via the HEART framework."
+      }
+    ],
+    "rows": [
+      {
+        "textOnly": true,
+        "heading": "What I Built",
+        "text": [
+          "Insights Assistant lives in 84.51° Stratum as an always-available chat panel for CPG suppliers. Ask a question in plain language — ‘How are my sales trending this quarter?’ — and the assistant responds with direct, KPI-based answers. The experience follows a three-level insight ladder: what happened (sales, units, households), why it happened (drivers like household growth), and what’s influencing the outcome (distribution, velocity, contribution).",
+          "Ad Assistant operates inside KAP, 84.51°’s campaign management platform. Brand managers ask questions about their media performance — ‘What are my underperforming ad groups?’ — and the assistant responds using Kroger purchase data and campaign metrics. No report-building, no dashboard navigation."
+        ]
+      },
+      {
+        "standalone": true,
+        "image": {
+          "src": "/uploads/insights-ai-beta-badge.png",
+          "alt": "Insights Assistant — two design options for the Beta badge placement, configurable greeting, starter questions, and AI Disclaimer"
+        }
+      },
+      {
+        "textOnly": true,
+        "heading": "Key Design Decisions",
+        "text": "The hardest design problems weren’t about the AI — they were about making AI output feel trustworthy, focused, and progressively richer inside enterprise platforms where users make real business decisions based on what they see."
+      },
+      {
+        "heading": "From Open Input to Guided Selection",
+        "text": "The first version of Ad Assistant had a blank text input — ask anything. In practice, users didn’t know what to ask, and the model didn’t always know how to answer. UCM-43472 replaced open input with guided question selection: predefined types that map to what the model can confidently answer. The same pattern — clickable clarifying questions instead of free-text retries — was adopted in Insights Assistant for handling ambiguous KPI, brand, or time period queries (UCM-52738).",
+        "image": {
+          "src": "/uploads/kroger-ai-response-clarity.png",
+          "alt": "Current state vs. future state: from open text input to guided question selection"
+        }
+      },
+      {
+        "heading": "Structured Data Inside a Response",
+        "text": "When a brand manager asks ‘show me my weekly sales trend,’ a prose response isn’t the right answer — a table is. UCM-42826 introduced inline table rendering: the assistant detects when a structured answer is appropriate and formats it as a data table rather than a text block. This required defining response types with data science and building a rendering layer inside the chat component with engineering.",
+        "image": {
+          "src": "/uploads/kroger-ai-table-ui.png",
+          "alt": "Ad Assistant rendering an inline campaign data table inside a conversational response"
+        }
+      },
+      {
+        "heading": "Closing the Model Loop",
+        "text": "AI models improve from feedback, but collecting it inside a chatbot without interrupting the conversation is a design challenge. UCM-47799 introduced a two-stage system: thumbs up/down inline on every reply, expanding to an optional modal for detail on negative responses. A companion story adds an end-of-session rating. Both feed directly into model quality tracking.",
+        "image": {
+          "src": "/uploads/kroger-ai-feedback.png",
+          "alt": "Reply feedback modal — three interaction variants for the thumbs-down flow"
+        }
+      },
+      {
+        "heading": "Expandable Panel + Copy Actions",
+        "text": "Two utility stories that make the assistant feel finished rather than MVP. The expandable window (UCM-43471) lets the chat panel resize across three states — compact, mid, and full-width — to accommodate longer structured responses without modal overlays. Copy Reply (UCM-53157) adds clipboard support to every AI response with a ‘Copied!’ confirmation. The copy, thumbs up, and thumbs down icons visible in every response set the pattern for how users interact with AI output at the message level.",
+        "image": {
+          "src": "/uploads/insights-ai-expandable-window.png",
+          "alt": "Expandable chat panel — three states from compact to full-width, with expand/collapse behavior annotations"
+        }
+      },
+      {
+        "textOnly": true,
+        "heading": "Beta Badge, AI Disclaimer, and Guidance Over Errors",
+        "text": [
+          "Three patterns required before the 10/14 launch — and now the standard for all Stratum AI features. The Beta badge signals the product is still maturing and that feedback is welcome. The AI Disclaimer tells users responses may contain inaccuracies and should be reviewed before important decisions. And rather than red error states, the assistant surfaces conversational guidance pointing users to next steps — a pattern being rolled out to Smart Insights and other Stratum surfaces.",
+          "These aren’t features users ask for, but they’re what earns trust during early adoption."
+        ]
+      },
+      {
+        "textOnly": true,
+        "heading": "Audience Builder — AI-Assisted Segment Creation",
+        "text": "The Audience Builder is a parallel product: instead of answering questions about existing performance, it uses AI to help brand managers create new audience segments for Onsite (TOA) targeting — the most configuration-heavy scenario in KAP. The design challenge was translating a complex decision tree into a guided flow. Rather than exposing the full configuration interface upfront, the Builder walks users through scoped decisions and recommends segments based on their inputs."
+      },
+      {
+        "standalone": true,
+        "image": {
+          "src": "/uploads/kroger-ai-audience-flow.png",
+          "alt": "Audience Builder user flow — Onsite (TOA) decision tree"
+        }
+      },
+      {
+        "textOnly": true,
+        "heading": "Scope & Delivery",
+        "text": [
+          "Phase 1 — Insights Assistant & Ad Assistant core (launched 10/14/2025): conversational interface, top-KPI responses, table rendering, feedback collection, guided inputs, conversation history, Beta badge, and AI Disclaimer. Phase 1 established the shared design patterns used across both products and other Stratum AI surfaces.",
+          "Phase 2 — Audience Builder (Q2/Q3 2026): AI-assisted segment creation. In parallel, Adaptive Text Input (UCM-54061), FAB Updates v2 (UCM-54062), and Unlimited Questions Note (UCM-54104) continue to raise the bar on the core assistant experience. The longer-term milestone: merging Insights Assistant and Ad Assistant into a single unified chatbot (UCM-56676), enabling CPG teams to move from business intelligence to media action in one conversation."
+        ]
+      }
     ]
   }
 }

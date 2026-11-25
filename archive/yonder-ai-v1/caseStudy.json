@@ -1,0 +1,112 @@
+{
+  "title": "Building a $30M AI startup from scratch - Yonder AI",
+  "subtitle": "Social Media Intelligence for Brands",
+  "heroImage": "/uploads/yonder-hero.png",
+  "role": "Design Lead",
+  "team": "CTO, CEO, 2 Sr Product Engineers, Director of Data Science, ML Engineers",
+  "overview": "Yonder AI (Acq. by Primer AI) was a Series A startup that provided top global brands with social media insights using AI",
+  "wideRows": true,
+  "fullWidth": true,
+  "standaloneTexts": [
+    {
+      "heading": "The Challenge",
+      "text": "Building a Zero to One product in a fast-paced world of social media and AI. Our clients were big brands like McDonalds, The Home Depot, Walmart, and Disney, to name a few. Current client needs were crucial for revenue at a small company. Product updates had to be shipped quickly and in a way that clients would appreciate."
+    }
+  ],
+  "rows": [
+    {
+      "image": {
+        "src": "https://static.wixstatic.com/media/a0fcc9_f7dfbaa5b3cb42829176cdc5ff9b630d~mv2.png",
+        "alt": "Conceptual wireframe overview"
+      },
+      "heading": "My work involved",
+      "text": [
+        "1. Understanding the ML-generated info",
+        "2. Compressing it into easily understandable insight",
+        "3. Visualizing that insight and designing a feature in the product",
+        "4. Working with Engg to work around any technical issues with databases, frameworks etc.",
+        "For example, I narrowed down much of the info we were generating into 4 basic questions based on user interviews"
+      ]
+    },
+    {
+      "noBg": true,
+      "image": {
+        "src": "https://static.wixstatic.com/media/a0fcc9_63b53d4f765c44289a8c8933f835a7b5~mv2.jpg",
+        "alt": "Daily Digest - Should I care tab"
+      },
+      "heading": "Daily Digest",
+      "text": "A default landing page gave brands a snapshot of the overall social narratives around a topic they were tracking."
+    },
+    {
+      "image": {
+        "src": "https://static.wixstatic.com/media/a0fcc9_dffc37d45a4543eea266db02f38b2819~mv2.jpg",
+        "alt": "Factions tab"
+      },
+      "heading": "Narrative Analysis",
+      "text": "How each narrative was performing over time. It also contained sub-page tabs like: Narrative Overview, Factions, and Authenticity."
+    },
+    {
+      "noBg": true,
+      "image": {
+        "src": "https://static.wixstatic.com/media/a0fcc9_fa6302a9e5c84b51887b693aff38a646~mv2.png",
+        "alt": "Authenticity tab"
+      },
+      "heading": "Factions View",
+      "text": "Understanding which groups are driving specific narratives with graph visualizations. User feedback told us the previous insights were too text-heavy and difficult to interpret actionably for our audience."
+    },
+    {
+      "image": {
+        "src": "https://static.wixstatic.com/media/a0fcc9_0fb6e98d6c034710ab3e4d17a298e4a3~mv2.png",
+        "alt": "Factions analysis page"
+      },
+      "heading": "Factions Deep Dive",
+      "text": "I worked on capturing the essential insights in a conceptual wireframe. The goal was to make complex faction data visually digestible for marketing, brand, and communication analysts at top brands."
+    },
+    {
+      "noBg": true,
+      "image": {
+        "src": "https://static.wixstatic.com/media/a0fcc9_cd477c8357ac47f69bcf3e8c3e20cb8f~mv2.png",
+        "alt": "Curation page"
+      },
+      "heading": "Curation Tools",
+      "text": "The Curation page (or Convos) is where curated conversations and insights were generated."
+    },
+    {
+      "noBg": true,
+      "image": {
+        "src": "https://static.wixstatic.com/media/a0fcc9_5731503a172947329d89f7b55705bd98~mv2.png",
+        "alt": "Edit Conversation UI"
+      },
+      "heading": "Edit Conversation",
+      "text": "Tools for editing and managing curated conversations."
+    },
+    {
+      "image": {
+        "src": "https://static.wixstatic.com/media/a0fcc9_1babcb0c034b4aa7b0aea88ef975b2ad~mv2.gif",
+        "alt": "Filters interaction"
+      },
+      "heading": "Filters",
+      "text": "The Filters allowed users to narrow down the specific narratives that they were looking for inside a curated report."
+    }
+  ],
+  "closingTexts": [
+    {
+      "heading": "Reflection",
+      "text": "Today I would change a lot of things about the way I designed the product. Mainly around UI consistency, iconography, etc. We had to make several compromises due to the speed needs of the project."
+    },
+    {
+      "heading": "Design Board Overview",
+      "text": "Over 8 months we built a 25+ page product experience with considerable backend lift, NLP and data science. Overall creating Yonder AI was an amazing 0-1 startup experience. To see a business built from nothing is one of my favorite things to experience."
+    }
+  ],
+  "closingImages": [
+    {
+      "src": "https://static.wixstatic.com/media/a0fcc9_5baa4cf1650a4f06a8a3562d96026047~mv2.png",
+      "alt": "Design board slide 1"
+    },
+    {
+      "src": "https://static.wixstatic.com/media/a0fcc9_65ef7bd6b45f41b985fbf698b6da8e98~mv2.png",
+      "alt": "Design board slide 2"
+    }
+  ]
+}

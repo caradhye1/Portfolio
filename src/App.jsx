@@ -12,9 +12,12 @@ import AdminLogin from './admin/AdminLogin.jsx';
 import { AdminProvider } from './admin/AdminContext.jsx';
 import { AdminBar } from './admin/AdminBar.jsx';
 
-// Full page load, so the standalone HTML case study is served instead of the SPA.
-function ExternalCaseStudy({ href }) {
-  useEffect(() => { window.location.replace(href); }, [href]);
+const LANDED_ON = window.location.pathname;
+
+// The server serves the standalone HTML at `path` (vercel.json rewrite). Arriving here by client-side
+// navigation, reload so the server answers; if the SPA got the first load anyway (vite dev), open the file.
+function ExternalCaseStudy({ path, file }) {
+  useEffect(() => { window.location.replace(LANDED_ON === path ? file : path); }, [path, file]);
   return null;
 }
 
@@ -29,7 +32,7 @@ function App() {
             <Route path="/photography" element={<PhotographyPage />} />
             <Route path="/publications" element={<PublicationsPage />} />
             <Route path="/cv" element={<CVPage />} />
-            <Route path="/case-study/yonder-ai" element={<ExternalCaseStudy href="/yonder-ai/case-study-hosted.html" />} />
+            <Route path="/case-study/yonder-ai" element={<ExternalCaseStudy path="/case-study/yonder-ai" file="/yonder-ai/case-study-hosted.html" />} />
             <Route path="/case-study/:slug" element={<CaseStudyPage />} />
             <Route path="/admin" element={<AdminLogin />} />
           </Routes>

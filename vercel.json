@@ -7,6 +7,7 @@
     }
   },
   "rewrites": [
+    { "source": "/case-study/yonder-ai", "destination": "/yonder-ai/case-study-hosted.html" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }

@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yonder AI Design System</title>
+<meta name="description" content="The design system behind Yonder AI: foundations, iconography, components, page anatomy and interaction patterns, running live.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/yonder-ai/yonder-ds.css">
+<style>
+/* Documentation chrome only. System: Yonder AI. Every value is a token from yonder-ds.css. */
+html { scroll-behavior: smooth; scroll-padding-top: var(--space-7); overflow-x: clip; }
+.docs { display: grid; grid-template-columns: var(--size-aside) minmax(0, 1fr); min-height: 100vh; background: var(--color-surface-sunken); }
+.docs__nav { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; padding: var(--space-7) var(--space-5); background: var(--color-surface-raised); border-right: var(--border-width-thin) solid var(--color-border-subtle); display: flex; flex-direction: column; gap: var(--space-6); }
+.docs__group { display: flex; flex-direction: column; gap: var(--space-1); }
+.docs__group .text-overline { padding: var(--space-0) var(--space-4) var(--space-2); }
+.docs__link { display: block; padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm); color: var(--color-text-body); font-size: var(--font-size-small); line-height: var(--line-height-small); text-decoration: none; transition: background-color var(--duration-fast) var(--easing-standard), color var(--duration-fast) var(--easing-standard); }
+.docs__link:hover { background: var(--color-surface-muted); color: var(--color-text-primary); }
+.docs__link:active { background: var(--color-action-surface-hover); }
+.docs__link[aria-current="true"] { background: var(--color-selected); color: var(--color-on-selected); font-weight: var(--font-weight-semibold); }
+.docs__main { padding: var(--space-10) var(--space-10) var(--space-11); display: flex; flex-direction: column; gap: var(--space-11); max-width: calc(var(--size-content-wide) + var(--space-11)); min-width: 0; }
+.docs__hero { padding: var(--space-10); border-radius: var(--radius-xl); background: var(--color-surface-app); display: flex; flex-direction: column; gap: var(--space-5); align-items: flex-start; }
+.docs__hero p { max-width: var(--size-content); color: var(--color-text-on-app-secondary); }
+.docs__stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-5); width: 100%; margin-top: var(--space-4); }
+.docs__stats div { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-5); border-radius: var(--radius-lg); background: var(--color-surface-raised); }
+.docs__stats dd { order: -1; font-size: var(--font-size-display); line-height: var(--line-height-display); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+.part { display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-6); border-top: var(--border-width-thick) solid var(--color-selected); }
+.section { display: flex; flex-direction: column; gap: var(--space-6); }
+.section > p { max-width: var(--size-content); }
+.section__sub { display: flex; flex-direction: column; gap: var(--space-4); }
+.section__sub > p { max-width: var(--size-content); }
+.demo { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5); padding: var(--space-7); background: var(--color-surface-raised); border: var(--border-width-thin) solid var(--color-border-subtle); border-radius: var(--radius-lg); min-width: 0; }
+.demo--app { background: var(--color-surface-app); }
+.demo--column { flex-direction: column; align-items: stretch; }
+.demo--top { align-items: flex-start; }
+.demo--flush { padding: var(--space-0); overflow: hidden; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--size-aside), 1fr)); gap: var(--space-5); }
+.grid--narrow { grid-template-columns: repeat(auto-fill, minmax(var(--size-thumb), 1fr)); gap: var(--space-3); }
+.grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.swatch { display: flex; flex-direction: column; gap: var(--space-2); }
+.swatch__chip { height: var(--space-10); border-radius: var(--radius-md); border: var(--border-width-thin) solid var(--color-border-subtle); }
+.principle { display: flex; flex-direction: column; gap: var(--space-3); }
+.principle .empty-state__icon { width: var(--size-control-md); height: var(--size-control-md); }
+.specimen { display: grid; grid-template-columns: var(--size-aside) minmax(0, 1fr); gap: var(--space-5); align-items: baseline; padding: var(--space-4) var(--space-0); border-bottom: var(--border-width-thin) solid var(--color-border-subtle); }
+.space-bar { height: var(--space-5); border-radius: var(--radius-xs); background: var(--color-action); }
+.shape { width: var(--size-thumb); height: var(--size-thumb); background: var(--color-surface-raised); border: var(--border-width-thin) solid var(--color-border-subtle); display: flex; align-items: center; justify-content: center; }
+.demo .field { width: var(--size-popover); }
+.demo .narrative-card, .demo .stat-card, .demo .empty-state, .demo .thread { flex: 1; min-width: var(--size-popover); }
+.demo .popover, .demo .modal { position: static; animation: none; }
+.demo .toast { animation: none; }
+.demo .skeleton { width: var(--size-popover); }
+.demo .topbar, .demo .sidenav { position: static; min-width: 0; }
+.demo .sidenav { border-radius: var(--radius-lg); }
+.pass { color: var(--color-success-text); font-weight: var(--font-weight-semibold); }
+.rule-list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+.rule-list li { display: flex; gap: var(--space-3); padding: var(--space-2) var(--space-0); }
+.dodont { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+.dodont > div { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); border-radius: var(--radius-lg); background: var(--color-surface-raised); border: var(--border-width-thin) solid var(--color-border-subtle); border-top: var(--border-width-accent) solid var(--color-success); }
+.dodont > div + div { border-top-color: var(--color-selected); }
+.note { color: var(--color-text-secondary); }
+
+/* Icon grid and sizes */
+.icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--size-thumb), 1fr)); gap: var(--space-3); width: 100%; }
+.icon-tile { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); padding: var(--space-5) var(--space-2); border-radius: var(--radius-md); border: var(--border-width-thin) solid var(--color-border-subtle); color: var(--color-text-primary); }
+.icon-tile .text-caption { color: var(--color-text-secondary); }
+.keyline { position: relative; display: inline-flex; padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface-sunken); }
+.keyline svg.keyline__grid { position: absolute; inset: var(--space-3); width: calc(100% - var(--space-6)); height: calc(100% - var(--space-6)); stroke: var(--color-action-surface-hover); stroke-width: 0.1; fill: none; }
+.keyline .icon { width: var(--space-11); height: var(--space-11); stroke-width: 1.75; position: relative; }
+
+/* Signal encodings, as used on the faction profile */
+.care__value { font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.stat-row { display: flex; align-items: center; gap: var(--space-4); }
+.stat-row__name { width: var(--size-thumb); flex-shrink: 0; color: var(--color-text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stat-row__value { width: var(--space-9); text-align: right; font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.wedge { width: 100%; height: var(--space-10); }
+.wedge__track { fill: var(--color-surface-muted); }
+.wedge__fill { fill: var(--color-action); }
+.megaphones { display: flex; align-items: flex-end; justify-content: center; gap: var(--space-8); }
+.megaphones__item { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+.megaphones__item:not(.is-current) { color: var(--color-border-control); }
+.megaphones__item.is-current .text-caption { color: inherit; font-weight: var(--font-weight-bold); }
+.alignment { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-1); }
+.alignment__step { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+.alignment__bar { align-self: stretch; height: var(--size-scale); background: var(--color-action-surface-hover); }
+.alignment__step:first-child .alignment__bar { border-radius: var(--radius-pill) var(--space-0) var(--space-0) var(--radius-pill); }
+.alignment__step:last-child .alignment__bar { border-radius: var(--space-0) var(--radius-pill) var(--radius-pill) var(--space-0); }
+.alignment__step.is-current .alignment__bar { background: var(--color-selected); }
+.alignment__step.is-current .text-caption { color: var(--color-text-primary); font-weight: var(--font-weight-bold); }
+.encoding { display: flex; flex-direction: column; gap: var(--space-4); }
+
+/* Page anatomy */
+.anatomy { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--space-7); align-items: start; padding: var(--space-7); background: var(--color-surface-raised); border: var(--border-width-thin) solid var(--color-border-subtle); border-radius: var(--radius-lg); }
+.anatomy figure { display: flex; flex-direction: column; gap: var(--space-3); }
+.anatomy__shot { display: block; border-radius: var(--radius-md); overflow: hidden; border: var(--border-width-thin) solid var(--color-border-subtle); box-shadow: var(--shadow-sm); transition: box-shadow var(--duration-base) var(--easing-standard), transform var(--duration-base) var(--easing-standard); }
+.anatomy__shot:hover { box-shadow: var(--shadow-md); transform: var(--lift); }
+.anatomy__shot:active { transform: var(--press); }
+.anatomy__shot img { display: block; width: 100%; height: auto; }
+.anatomy__parts { display: flex; flex-direction: column; gap: var(--space-4); counter-reset: part; }
+.anatomy__parts li { display: grid; grid-template-columns: var(--size-mark) minmax(0, 1fr); gap: var(--space-3); counter-increment: part; }
+.anatomy__parts li::before { content: counter(part); display: inline-flex; align-items: center; justify-content: center; width: var(--size-mark); height: var(--size-mark); border-radius: var(--radius-pill); background: var(--color-selected); color: var(--color-on-selected); font-size: var(--font-size-caption); font-weight: var(--font-weight-bold); }
+.anatomy__parts code { font-size: var(--font-size-caption); }
+
+/* Interaction labs */
+.lab { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--space-7); align-items: start; padding: var(--space-7); background: var(--color-surface-raised); border: var(--border-width-thin) solid var(--color-border-subtle); border-radius: var(--radius-lg); }
+.lab__stage { display: flex; flex-direction: column; gap: var(--space-5); min-width: 0; padding: var(--space-6); border-radius: var(--radius-md); background: var(--color-surface-app); color: var(--color-text-on-app); }
+.lab__stage--plain { background: var(--color-surface-sunken); color: var(--color-text-body); }
+.lab__notes { display: flex; flex-direction: column; gap: var(--space-3); }
+.lab__notes ul { display: flex; flex-direction: column; gap: var(--space-2); }
+.lab__notes li { display: flex; gap: var(--space-3); }
+.lab__notes li .icon { flex-shrink: 0; margin-top: var(--space-1); color: var(--color-action); }
+.lab-row { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: var(--color-surface-raised); color: var(--color-text-primary); }
+.lab-row__label { flex: 1; min-width: 0; font-size: var(--font-size-small); line-height: var(--line-height-small); }
+.lab-local-toast { min-height: var(--size-control-lg); }
+.motion-track { position: relative; height: var(--size-control-md); border-radius: var(--radius-pill); background: var(--color-surface-muted); }
+.motion-dot { position: absolute; top: var(--space-1); left: var(--space-1); width: var(--size-control-sm); height: var(--size-control-sm); border-radius: var(--radius-pill); background: var(--color-action); transition-property: transform; transition-timing-function: var(--easing-standard); }
+.motion-track.is-on .motion-dot { transform: translateX(var(--travel, 0)); }
+.motion-row { display: grid; grid-template-columns: var(--size-thumb) minmax(0, 1fr); gap: var(--space-4); align-items: center; }
+.kbd { display: inline-flex; align-items: center; min-width: var(--size-mark); padding: var(--space-0) var(--space-2); border-radius: var(--radius-xs); border: var(--border-width-thin) solid var(--color-border-control); background: var(--color-surface-raised); font-size: var(--font-size-caption); line-height: var(--line-height-caption); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+
+@media (max-width: 1100px) {
+  .anatomy, .lab { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 900px) {
+  .docs { grid-template-columns: minmax(0, 1fr); }
+  .docs__nav { position: static; height: auto; flex-direction: row; flex-wrap: wrap; }
+  .docs__main { padding: var(--space-7) var(--space-5); }
+  .docs__hero { padding: var(--space-7); }
+  .docs__stats, .grid--two, .dodont { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rule-list, .specimen { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .docs__stats, .grid--two, .dodont { grid-template-columns: minmax(0, 1fr); }
+  .table { display: block; overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" class="visually-hidden" aria-hidden="true" focusable="false">
+  <symbol id="i-logo" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+  <symbol id="i-report" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M8 13h8M8 17h5"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/><circle cx="9" cy="7" r="4"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></symbol>
+  <symbol id="i-sort" viewBox="0 0 24 24"><path d="M7 4v16M3 8l4-4 4 4M17 20V4M13 16l4 4 4-4"/></symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-chevron-up" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M4 22V4M4 4h13l-2 4 2 4H4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M8 17v-5M13 17V8M18 17v-8"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1zM15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></symbol>
+  <symbol id="i-trend-up" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
+  <symbol id="i-trend-down" viewBox="0 0 24 24"><path d="M3 7l6 6 4-4 8 8M15 17h6v-6"/></symbol>
+  <symbol id="i-steady" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+  <symbol id="i-id" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.6-1.5 1.7-2 3-2s2.4.5 3 2M15 10h3M15 14h3"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M4 4h16v12l-4 4H4zM16 20v-4h4"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+</svg>
+
+<div class="docs">
+  <nav class="docs__nav" aria-label="Design system sections">
+    <a class="wordmark" href="#overview"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-logo"/></svg>yonder</a>
+    <div class="docs__group"><span class="text-overline">Start</span>
+      <a class="docs__link" href="#overview">Overview</a><a class="docs__link" href="#principles">Principles</a></div>
+    <div class="docs__group"><span class="text-overline">Foundations</span>
+      <a class="docs__link" href="#color">Colour</a><a class="docs__link" href="#contrast">Contrast</a><a class="docs__link" href="#type">Typography</a><a class="docs__link" href="#space">Spacing and radius</a><a class="docs__link" href="#layout">Layout and app shell</a><a class="docs__link" href="#elevation">Elevation</a><a class="docs__link" href="#motion">Motion</a></div>
+    <div class="docs__group"><span class="text-overline">Iconography</span>
+      <a class="docs__link" href="#icons">Icon set</a><a class="docs__link" href="#icon-use">Using icons</a></div>
+    <div class="docs__group"><span class="text-overline">Components</span>
+      <a class="docs__link" href="#buttons">Buttons</a><a class="docs__link" href="#forms">Form controls</a><a class="docs__link" href="#badges">Badges and impact</a><a class="docs__link" href="#selection">Chips and tabs</a><a class="docs__link" href="#cards">Cards</a><a class="docs__link" href="#encodings">Signal encodings</a><a class="docs__link" href="#dataviz">Data visualisation</a><a class="docs__link" href="#navigation">Navigation</a><a class="docs__link" href="#tables">Tables and threads</a><a class="docs__link" href="#overlays">Overlays</a><a class="docs__link" href="#states">Feedback and empty states</a></div>
+    <div class="docs__group"><span class="text-overline">Pages</span>
+      <a class="docs__link" href="#page-digest">Daily Digest</a><a class="docs__link" href="#page-analysis">Narrative Analysis</a><a class="docs__link" href="#page-factions">Factions</a><a class="docs__link" href="#page-faction">Faction profile</a><a class="docs__link" href="#page-convos">Convos</a><a class="docs__link" href="#page-convo">Edit a conversation</a><a class="docs__link" href="#page-curate">Curate panel</a><a class="docs__link" href="#page-alerts">Alerts</a></div>
+    <div class="docs__group"><span class="text-overline">Interactions</span>
+      <a class="docs__link" href="#ix-filter">Instant filters</a><a class="docs__link" href="#ix-collapse">Collapse and star</a><a class="docs__link" href="#ix-curate">Remove, undo, reorder</a><a class="docs__link" href="#ix-tags">Keyword tags</a><a class="docs__link" href="#ix-modal">Modal focus</a><a class="docs__link" href="#ix-keyboard">Keyboard map</a></div>
+    <div class="docs__group"><span class="text-overline">Use</span>
+      <a class="docs__link" href="#voice">Content and voice</a><a class="docs__link" href="#a11y">Accessibility</a><a class="docs__link" href="#rules">Rules</a>
+      <a class="docs__link" href="/case-study/yonder-ai/prototype" target="_blank" rel="noopener">Open the prototype<span class="visually-hidden"> (opens in a new tab)</span></a>
+      <a class="docs__link" href="/case-study/yonder-ai">Back to the case study</a></div>
+  </nav>
+
+  <main class="docs__main">
+    <section class="docs__hero" id="overview">
+      <span class="badge badge--ink">Design system</span>
+      <h1 class="text-display">Yonder AI Design System</h1>
+      <p class="text-lead">The system behind Yonder AI, a social intelligence product that tells brand analysts who is driving a narrative, whether to care, why it is happening and what to do. One stylesheet holds every token and component on this page, and every example here is live.</p>
+      <div class="cluster"><a class="btn btn--primary" href="/case-study/yonder-ai/prototype" target="_blank" rel="noopener">Open the interactive prototype<svg class="icon icon--sm" aria-hidden="true"><use href="#i-external"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a><a class="btn btn--secondary" href="#color">Browse foundations</a></div>
+      <dl class="docs__stats">
+        <div><dt class="text-small">design tokens</dt><dd id="stat-tokens">—</dd></div>
+        <div><dt class="text-small">icons on one grid</dt><dd id="stat-icons">—</dd></div>
+        <div><dt class="text-small">colour pairs passing WCAG AA</dt><dd id="stat-contrast">—</dd></div>
+        <div><dt class="text-small">states on every control</dt><dd>4</dd></div>
+      </dl>
+    </section>
+
+    <section class="section" id="principles">
+      <h2 class="text-h1">Principles</h2>
+      <div class="grid">
+        <div class="card principle"><span class="empty-state__icon"><svg class="icon" aria-hidden="true"><use href="#i-pencil"/></svg></span><h3 class="text-h3">Purple acts, ink selects</h3><p class="text-small">Purple means “you can do this”. Ink (near-black) means “this is on”. Tabs, chips and checkboxes never compete with the primary action.</p></div>
+        <div class="card principle"><span class="empty-state__icon"><svg class="icon" aria-hidden="true"><use href="#i-megaphone"/></svg></span><h3 class="text-h3">Three hues are reserved</h3><p class="text-small">Red, amber and blue mean High, Moderate and Low impact and nothing else. Destructive actions are ink. Charts use a separate palette.</p></div>
+        <div class="card principle"><span class="empty-state__icon"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><h3 class="text-h3">Contrast is measured</h3><p class="text-small">Every text pair is computed on this page from the live tokens. Nothing is quoted from memory, and nothing ships below WCAG AA.</p></div>
+        <div class="card principle"><span class="empty-state__icon"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg></span><h3 class="text-h3">Meaning never rides on colour alone</h3><p class="text-small">Impact carries a level glyph and a word. Selection changes fill and weight. Errors carry an icon and a sentence.</p></div>
+        <div class="card principle"><span class="empty-state__icon"><svg class="icon" aria-hidden="true"><use href="#i-filter"/></svg></span><h3 class="text-h3">Every state is designed</h3><p class="text-small">Hover, focus, pressed, disabled, loading, empty and error exist for every component before it is used in a screen.</p></div>
+        <div class="card principle"><span class="empty-state__icon"><svg class="icon" aria-hidden="true"><use href="#i-sort"/></svg></span><h3 class="text-h3">Tokens in three tiers</h3><p class="text-small">Primitives hold raw values. Semantic roles say what a value is for. Components only ever reference roles.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= FOUNDATIONS ================= -->
+    <div class="part"><p class="text-overline">Part 1</p><h2 class="text-display">Foundations</h2></div>
+
+    <section class="section" id="color">
+      <h2 class="text-h1">Colour</h2>
+      <p class="text-body">Primitives are never used directly in a component. Pick the semantic role; the role points at a primitive. Every swatch below is read from the live stylesheet.</p>
+      <div class="section__sub"><h3 class="text-h2">Brand purple</h3><div class="grid grid--narrow" data-swatches="--purple-50 --purple-100 --purple-200 --purple-300 --purple-400 --purple-500 --purple-600 --purple-700 --purple-800 --purple-900"></div></div>
+      <div class="section__sub"><h3 class="text-h2">Neutrals, tinted violet</h3><div class="grid grid--narrow" data-swatches="--neutral-0 --neutral-50 --neutral-100 --neutral-200 --neutral-300 --neutral-400 --neutral-500 --neutral-600 --neutral-700 --neutral-800 --neutral-900"></div></div>
+      <div class="section__sub"><h3 class="text-h2">Impact: reserved</h3><p class="text-small">Solid for graphics, surface plus text for badges. Not available to any other component.</p><div class="grid grid--narrow" data-swatches="--color-impact-high --color-impact-high-surface --color-impact-high-text --color-impact-moderate --color-impact-moderate-surface --color-impact-moderate-text --color-impact-low --color-impact-low-surface --color-impact-low-text"></div></div>
+      <div class="section__sub"><h3 class="text-h2">Data visualisation and feedback</h3><p class="text-small">Categorical order is fixed: a faction keeps its colour when others are hidden. None of these hues overlap the impact set.</p><div class="grid grid--narrow" data-swatches="--color-viz-1 --color-viz-2 --color-viz-3 --color-viz-4 --color-viz-total --color-viz-benchmark --color-success --color-success-surface --color-success-text"></div></div>
+      <div class="section__sub"><h3 class="text-h2">App surface</h3><div class="demo demo--app"><p class="text-h3">Content sits on the gradient. Cards, panels and the navigation sit on white.</p></div></div>
+      <div class="section__sub"><h3 class="text-h2">Semantic roles</h3>
+        <table class="table"><thead><tr><th scope="col">Role</th><th scope="col">Points at</th><th scope="col">Use</th></tr></thead><tbody>
+          <tr><td><code>--color-text-primary</code></td><td>neutral-900</td><td>Headings, input text, values</td></tr>
+          <tr><td><code>--color-text-body</code></td><td>neutral-700</td><td>Paragraphs, card copy</td></tr>
+          <tr><td><code>--color-text-secondary</code></td><td>neutral-600</td><td>Supporting copy</td></tr>
+          <tr><td><code>--color-text-tertiary</code></td><td>neutral-500</td><td>Captions, hints, axis ticks. The lightest text allowed.</td></tr>
+          <tr><td><code>--color-text-disabled</code></td><td>neutral-400</td><td>Disabled controls only</td></tr>
+          <tr><td><code>--color-action</code> / <code>-hover</code> / <code>-pressed</code></td><td>purple-600 / 700 / 800</td><td>Primary button, links, current navigation</td></tr>
+          <tr><td><code>--color-action-surface</code></td><td>purple-50 → 200</td><td>Tonal buttons, tags, callouts</td></tr>
+          <tr><td><code>--color-selected</code></td><td>neutral-900</td><td>Selected tab, pressed chip, checked box, count badge</td></tr>
+          <tr><td><code>--color-border-control</code></td><td>neutral-400</td><td>Input and chip outlines: 3:1 against white</td></tr>
+          <tr><td><code>--color-border-subtle</code></td><td>neutral-200</td><td>Card hairlines and dividers (decorative)</td></tr>
+          <tr><td><code>--color-focus</code></td><td>purple-700</td><td>2px focus outline with 2px offset, on every interactive element</td></tr>
+        </tbody></table></div>
+    </section>
+
+    <section class="section" id="contrast">
+      <h2 class="text-h1">Contrast</h2>
+      <p class="text-body">Computed in your browser from the tokens loaded on this page (WCAG 2.1 relative luminance). If a token changes, this table changes with it.</p>
+      <table class="table" id="contrast-table"><thead><tr><th scope="col">Pair</th><th scope="col">Used for</th><th scope="col">Needs</th><th scope="col">Measured</th><th scope="col">Result</th></tr></thead><tbody></tbody></table>
+    </section>
+
+    <section class="section" id="type">
+      <h2 class="text-h1">Typography</h2>
+      <p class="text-body">Heebo, four weights. Each role is a fixed size, line height and weight. Nothing is set smaller than 12px. A section with a heading, body and metadata uses three different roles.</p>
+      <div id="type-specimens"></div>
+      <div class="section__sub"><h3 class="text-h2">Weights</h3>
+        <div class="demo"><span class="text-h2" style="font-weight:var(--font-weight-regular)">Regular 400</span><span class="text-h2" style="font-weight:var(--font-weight-medium)">Medium 500</span><span class="text-h2" style="font-weight:var(--font-weight-semibold)">Semibold 600</span><span class="text-h2" style="font-weight:var(--font-weight-bold)">Bold 700</span></div></div>
+      <div class="section__sub"><h3 class="text-h2">Hierarchy in a card</h3><p class="text-body">Three roles, three jobs. The title is read first, the evidence second, the metadata only when it is needed.</p>
+        <div class="demo demo--app demo--top">
+          <article class="card stack" style="flex:1">
+            <p class="text-overline">Narrative · Apr 22, 2021</p>
+            <h3 class="text-h2">McDonalds Using More than 4 Million Plastic Cups</h3>
+            <p class="text-body">Welcome eco-friendlies! Today we have everyone’s favorite unnatural company McDonalds using more than 4 MILLION plastic cups a year!</p>
+            <p class="text-caption">Twitter · 10:29 AM · Social Action</p>
+          </article>
+          <table class="table" style="flex:1"><thead><tr><th scope="col">Line</th><th scope="col">Role</th></tr></thead><tbody>
+            <tr><td>Narrative · date</td><td><code>.text-overline</code></td></tr>
+            <tr><td>Title</td><td><code>.text-h2</code></td></tr>
+            <tr><td>Sample post</td><td><code>.text-body</code></td></tr>
+            <tr><td>Source and time</td><td><code>.text-caption</code></td></tr>
+          </tbody></table>
+        </div></div>
+    </section>
+
+    <section class="section" id="space">
+      <h2 class="text-h1">Spacing and radius</h2>
+      <p class="text-body">A 4px base with a 2px half step. Radius grows with the size of the container: tags and chips are pills, controls are small, cards are large, the hero and modals are extra large.</p>
+      <table class="table" id="space-table"><thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Scale</th></tr></thead><tbody></tbody></table>
+      <div class="demo" id="radius-demo"></div>
+    </section>
+
+    <section class="section" id="layout">
+      <h2 class="text-h1">Layout and app shell</h2>
+      <p class="text-body">Every page sits in the same shell: a fixed top bar, a floating side navigation, and one content column on the gradient. Column widths are tokens, so a page picks a width by its job: reading, comparing or editing.</p>
+      <div class="demo demo--app demo--column demo--flush">
+        <header class="topbar">
+          <span class="wordmark"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-logo"/></svg>yonder</span>
+          <div class="topbar__actions"><button class="btn btn--secondary btn--sm">Submit feedback</button><button class="icon-btn icon-btn--raised icon-btn--sm" aria-label="Sign out" data-tooltip="Sign out" data-tooltip-side="left"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-logout"/></svg></button></div>
+        </header>
+      </div>
+      <div class="demo demo--app demo--top">
+        <nav class="sidenav" aria-label="Example navigation">
+          <a class="sidenav__item" href="#layout" aria-current="page"><span class="sidenav__icon"><strong aria-hidden="true">M</strong></span>McDonalds</a>
+          <a class="sidenav__item" href="#layout"><span class="sidenav__icon"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg></span>Reports</a>
+          <a class="sidenav__item" href="#layout"><span class="sidenav__icon"><svg class="icon" aria-hidden="true"><use href="#i-message"/></svg></span>Convos</a>
+          <a class="sidenav__item" href="#layout"><span class="sidenav__icon"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg></span>Content</a>
+          <a class="sidenav__item" href="#layout"><span class="sidenav__icon"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>Alerts</a>
+          <a class="sidenav__item" href="#layout"><span class="sidenav__icon"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span>Factions</a>
+        </nav>
+        <div class="stack" style="flex:1;min-width:0">
+          <p class="text-h3">Top bar and side navigation</p>
+          <p class="text-small">The top bar carries the wordmark and account actions only. The side navigation carries the brand being tracked first, as a letter avatar, then the five product areas. The current area fills purple, because navigating is an action, not a selection.</p>
+          <table class="table" id="layout-table"><thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Use</th></tr></thead><tbody></tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="elevation">
+      <h2 class="text-h1">Elevation</h2>
+      <p class="text-body">Shadows carry a violet undertone, never gray. Three levels: resting cards, raised or hovered surfaces, overlays. A surface only rises when it can be acted on or sits above the page.</p>
+      <div class="demo" id="shadow-demo"></div>
+    </section>
+
+    <section class="section" id="motion">
+      <h2 class="text-h1">Motion</h2>
+      <p class="text-body">Three durations and one standard curve. Only <code class="token">transform</code> and <code class="token">opacity</code> animate. With reduced motion the state still changes; the travel is dropped.</p>
+      <div class="lab">
+        <div class="lab__stage lab__stage--plain" id="motion-lab">
+          <div class="motion-row"><code class="token">fast</code><div class="motion-track" data-dur="--duration-fast"><span class="motion-dot"></span></div></div>
+          <div class="motion-row"><code class="token">base</code><div class="motion-track" data-dur="--duration-base"><span class="motion-dot"></span></div></div>
+          <div class="motion-row"><code class="token">slow</code><div class="motion-track" data-dur="--duration-slow"><span class="motion-dot"></span></div></div>
+          <div class="cluster"><button class="btn btn--primary btn--sm" id="motion-play">Play</button><span class="text-caption" id="motion-note"></span></div>
+        </div>
+        <div class="lab__notes">
+          <table class="table"><thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Use</th></tr></thead><tbody id="motion-table"></tbody></table>
+          <p class="text-small"><code class="token">--lift</code> moves a hovered card up by 1px. <code class="token">--press</code> scales a pressed control to 98%. Both are transforms, so nothing around them reflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ICONOGRAPHY ================= -->
+    <div class="part"><p class="text-overline">Part 2</p><h2 class="text-display">Iconography</h2></div>
+
+    <section class="section" id="icons">
+      <h2 class="text-h1">Icon set</h2>
+      <p class="text-body">One set, drawn on a 24px grid with a 1.75 stroke, round caps and round joins. No filled icons except a pressed star. Every icon below is the exact symbol the product uses.</p>
+      <div class="demo demo--top">
+        <div class="keyline"><svg class="keyline__grid" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0zM2 2h20v20H2zM0 12h24M12 0v24"/><circle cx="12" cy="12" r="10"/></svg><svg class="icon" aria-hidden="true"><use href="#i-megaphone"/></svg></div>
+        <div class="stack" style="flex:1;min-width:var(--size-popover)">
+          <p class="text-h3">The grid</p>
+          <ul class="stack stack--tight text-small">
+            <li>24 × 24 canvas with 2px of padding on every side.</li>
+            <li>1.75 stroke at every size. Icons scale; strokes do not get heavier.</li>
+            <li>Round caps and joins, to match Heebo’s rounded terminals.</li>
+            <li>Shapes are drawn from simple primitives so the set reads as one family.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="icon-grid" id="icon-demo"></div>
+    </section>
+
+    <section class="section" id="icon-use">
+      <h2 class="text-h1">Using icons</h2>
+      <div class="section__sub"><h3 class="text-h2">Sizes</h3>
+        <div class="demo"><span class="stack stack--tight stack--center"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-bell"/></svg><span class="text-caption">16 · inline, small buttons</span></span><span class="stack stack--tight stack--center"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span class="text-caption">20 · default, navigation</span></span><span class="stack stack--tight stack--center"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-bell"/></svg><span class="text-caption">24 · wordmark, stat cards</span></span></div></div>
+      <div class="section__sub"><h3 class="text-h2">Icons with words, icons alone</h3>
+        <div class="demo demo--app"><button class="btn btn--tonal"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-note"/></svg>Add a note</button><button class="btn btn--primary"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-plus"/></svg>Add alert</button><button class="icon-btn icon-btn--raised" aria-label="Filter" data-tooltip="Filter"><svg class="icon" aria-hidden="true"><use href="#i-filter"/></svg></button><button class="icon-btn icon-btn--raised" aria-label="Sort" data-tooltip="Sort"><svg class="icon" aria-hidden="true"><use href="#i-sort"/></svg></button><button class="info-btn" aria-label="How much this narrative could affect the brand." data-tooltip="How much this narrative could affect the brand."><svg class="icon icon--sm" aria-hidden="true"><use href="#i-info"/></svg></button></div></div>
+      <div class="dodont">
+        <div><p class="text-h3">Do</p><ul class="stack stack--tight text-small"><li>Lead a button label with an icon only when it speeds recognition.</li><li>Give every icon-only button an accessible name and a tooltip.</li><li>Use the trend icons with a word: Rising, Steady, Falling.</li></ul></div>
+        <div><p class="text-h3">Don’t</p><ul class="stack stack--tight text-small"><li>Use emoji, or icons from another set.</li><li>Colour an icon red, amber or blue unless it shows an impact level.</li><li>Use an icon as the only signal of an error or a state.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ================= COMPONENTS ================= -->
+    <div class="part"><p class="text-overline">Part 3</p><h2 class="text-display">Components</h2></div>
+
+    <section class="section" id="buttons">
+      <h2 class="text-h1">Buttons</h2>
+      <p class="text-body">One primary button per view. Hover, focus and pressed states are live below: point at them, tab to them, press them.</p>
+      <div class="demo"><button class="btn btn--primary">Publish digest</button><button class="btn btn--secondary">Cancel</button><button class="btn btn--tonal">Add a note</button><button class="btn btn--ghost">Clear all</button><button class="btn btn--destructive"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-trash"/></svg>Delete group</button></div>
+      <div class="demo"><button class="btn btn--primary" disabled>Disabled</button><button class="btn btn--primary" aria-busy="true" disabled><span class="spinner"></span>Saving</button><button class="btn btn--success" disabled><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Saved</button><button class="btn btn--secondary btn--sm">Small</button><button class="btn btn--primary btn--lg">Large</button></div>
+      <div class="demo demo--app"><button class="icon-btn icon-btn--raised" aria-label="Curate" data-tooltip="Curate"><svg class="icon" aria-hidden="true"><use href="#i-pencil"/></svg></button><button class="icon-btn icon-btn--raised" aria-label="Filter, 2 active" data-tooltip="Filter"><svg class="icon" aria-hidden="true"><use href="#i-filter"/></svg><span class="icon-btn__count" aria-hidden="true">2</span></button><button class="icon-btn icon-btn--raised" aria-label="Sort" aria-expanded="true"><svg class="icon" aria-hidden="true"><use href="#i-sort"/></svg></button><button class="icon-btn icon-btn--raised" aria-label="Star" aria-pressed="true" data-tooltip="Starred"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></button><button class="icon-btn icon-btn--raised" aria-label="Unavailable" disabled><svg class="icon" aria-hidden="true"><use href="#i-pencil"/></svg></button></div>
+      <table class="table"><thead><tr><th scope="col">Variant</th><th scope="col">Use</th></tr></thead><tbody>
+        <tr><td><code>.btn--primary</code></td><td>The one action that moves the task forward</td></tr>
+        <tr><td><code>.btn--secondary</code></td><td>Alternatives and cancel</td></tr>
+        <tr><td><code>.btn--tonal</code> / <code>.btn--ghost</code></td><td>Low-emphasis actions inside cards and toolbars</td></tr>
+        <tr><td><code>.btn--destructive</code></td><td>Deletes. Ink, never red; pair with an undo toast or a confirmation.</td></tr>
+        <tr><td><code>aria-busy="true"</code> + <code>.spinner</code></td><td>Loading. The label changes to the gerund and the button is inert.</td></tr>
+        <tr><td><code>.icon-btn</code> + <code>__count</code></td><td>Toolbar actions. A count badge shows how many filters are on.</td></tr>
+      </tbody></table>
+      <div class="section__sub"><h3 class="text-h2">States</h3>
+        <table class="table"><thead><tr><th scope="col">State</th><th scope="col">Treatment</th></tr></thead><tbody>
+          <tr><td>Hover</td><td>One step darker fill, or a tinted surface on quiet variants. Cards lift 1px.</td></tr>
+          <tr><td>Focus visible</td><td>2px <code>--color-focus</code> outline, 2px offset. Inputs swap their border to the focus colour instead.</td></tr>
+          <tr><td>Pressed</td><td>Two steps darker fill and <code>--press</code>. Toggles stay ink while on.</td></tr>
+          <tr><td>Disabled</td><td>Muted surface, <code>--color-text-disabled</code>, not-allowed cursor. Never just lowered opacity.</td></tr>
+        </tbody></table></div>
+    </section>
+
+    <section class="section" id="forms">
+      <h2 class="text-h1">Form controls</h2>
+      <p class="text-body">Every control has a visible, programmatically associated label. Errors use a thicker ink border, an icon and a sentence that says how to fix it.</p>
+      <div class="demo demo--top">
+        <div class="field"><label class="field__label" for="f1">Name</label><input class="input" id="f1" placeholder="McDonalds + Stakeholder Meeting"><span class="field__hint">Shown in the Convos list.</span></div>
+        <div class="field"><label class="field__label" for="f2">Name</label><input class="input" id="f2" aria-invalid="true" aria-describedby="f2e"><span class="field__error" id="f2e"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-info"/></svg>Give this conversation a name.</span></div>
+        <div class="field"><label class="field__label" for="f3">Name</label><input class="input" id="f3" value="Locked by an admin" disabled></div>
+        <div class="field"><label class="field__label" for="f4">Field</label><select class="select" id="f4"><option>Post Content</option><option>Hashtag</option><option>Author</option></select></div>
+        <div class="field"><label class="field__label" for="f5">Description</label><textarea class="textarea" id="f5" placeholder="What is this conversation tracking?"></textarea></div>
+        <div class="field"><label class="field__label" for="f6">Search factions</label><input class="input" id="f6" type="search" placeholder="Search factions"></div>
+        <div class="stack stack--tight"><label class="checkbox"><input type="checkbox" checked>Flagged narratives only</label><label class="checkbox"><input type="checkbox">Unchecked</label><label class="checkbox"><input type="checkbox" disabled>Disabled</label></div>
+      </div>
+      <p class="text-small note">The keyword tag input is shown working under <a class="link" href="#ix-tags">Interactions</a>.</p>
+    </section>
+
+    <section class="section" id="badges">
+      <h2 class="text-h1">Badges and impact</h2>
+      <p class="text-body">Impact badges pair a tinted surface with dark text and a three-bar level glyph, so the level reads without colour. In dense lists, a single-letter impact mark does the same job. Trajectory and faction stance use ink and purple only.</p>
+      <div class="demo">
+        <span class="badge badge--impact-high"><span class="level level--3" aria-hidden="true"><i></i><i></i><i></i></span>High impact</span>
+        <span class="badge badge--impact-moderate"><span class="level level--2" aria-hidden="true"><i></i><i></i><i></i></span>Moderate impact</span>
+        <span class="badge badge--impact-low"><span class="level level--1" aria-hidden="true"><i></i><i></i><i></i></span>Low impact</span>
+        <span class="impact-mark impact-mark--high" aria-label="High impact">H</span><span class="impact-mark impact-mark--moderate" aria-label="Moderate impact">M</span><span class="impact-mark impact-mark--low" aria-label="Low impact">L</span>
+      </div>
+      <div class="demo">
+        <span class="badge badge--outline"><svg class="icon" aria-hidden="true"><use href="#i-trend-up"/></svg>Rising</span><span class="badge badge--outline"><svg class="icon" aria-hidden="true"><use href="#i-steady"/></svg>Steady</span><span class="badge badge--outline"><svg class="icon" aria-hidden="true"><use href="#i-trend-down"/></svg>Falling</span>
+        <span class="badge badge--ink"><svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg>Flagged</span>
+        <span class="badge badge--ink">Adversarial</span><span class="badge badge--outline">Suspicious</span><span class="badge badge--brand">Aligned</span><span class="badge">Neutral</span>
+        <span class="badge badge--success">Active</span><span class="badge badge--outline">Draft</span>
+      </div>
+      <table class="table"><thead><tr><th scope="col">Badge</th><th scope="col">Means</th></tr></thead><tbody>
+        <tr><td>Impact</td><td>How much a narrative could affect the brand. The only badge allowed the reserved hues.</td></tr>
+        <tr><td>Trajectory</td><td>Whether engagement is rising, steady or falling. Outline, with an arrow.</td></tr>
+        <tr><td>Faction stance</td><td>Adversarial is ink, Suspicious is outline, Aligned is purple, Neutral is muted. Darker means more attention needed.</td></tr>
+        <tr><td>Status</td><td>Active conversations are green; drafts are outline. Green is used for nothing else.</td></tr>
+      </tbody></table>
+    </section>
+
+    <section class="section" id="selection">
+      <h2 class="text-h1">Chips and tabs</h2>
+      <p class="text-body">Both turn ink when on. Chips are toggle buttons (<code class="token">aria-pressed</code>); tabs are a tablist with arrow-key movement. The four analysis tabs keep a fixed order: who, care, why, what.</p>
+      <div class="demo" id="chip-demo"><button class="chip" aria-pressed="true">High</button><button class="chip" aria-pressed="false">Moderate</button><button class="chip" aria-pressed="false">Low</button><button class="chip" disabled>Disabled</button></div>
+      <div class="demo"><div class="tabs" role="tablist" aria-label="Example tabs" id="tab-demo"><button class="tabs__tab" role="tab" aria-selected="true">Who is involved?</button><button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1">Should I care?</button><button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1">Why is this happening?</button><button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1">What can I do?</button></div></div>
+    </section>
+
+    <section class="section" id="cards">
+      <h2 class="text-h1">Cards</h2>
+      <p class="text-body">The narrative card is the product’s core object: title, impact, trajectory, factions, a sample post and an inauthenticity meter. A flagged card gains an ink edge and a Flagged badge. Stat cards carry one metric each on faction profiles. List cards link to a record. Cards never nest.</p>
+      <div class="section__sub"><h3 class="text-h2">Narrative card</h3>
+        <div class="demo demo--app demo--top">
+          <article class="narrative-card is-flagged">
+            <div class="narrative-card__header"><button class="narrative-card__title">McDonalds, TigrayGenocide</button>
+              <div class="narrative-card__actions"><button class="icon-btn icon-btn--sm" aria-label="Analyze narrative" data-tooltip="Analyze"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-chart"/></svg></button><button class="icon-btn icon-btn--sm" aria-label="Star narrative" aria-pressed="true" data-tooltip="Starred"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-star"/></svg></button></div></div>
+            <div class="narrative-card__meta"><span class="badge badge--impact-high"><span class="level level--3" aria-hidden="true"><i></i><i></i><i></i></span>High impact</span><span class="badge badge--outline"><svg class="icon" aria-hidden="true"><use href="#i-trend-down"/></svg>Falling</span><a class="link text-small" href="/case-study/yonder-ai/prototype#/factions/qanon" target="_blank" rel="noopener">QAnon</a></div>
+            <div class="narrative-card__body"><blockquote class="narrative-card__quote">We ask @McDonalds to take a stance against the #TigrayGenocide, as well as the massacres happening across the country.</blockquote>
+              <div class="narrative-card__footer"><span class="text-caption">Inauthenticity</span><span class="meter" role="img" aria-label="Inauthenticity 21%"><span class="meter__fill" style="--meter-value:0.21"></span></span><span class="text-small">21%</span></div></div>
+          </article>
+          <article class="narrative-card is-collapsed">
+            <div class="narrative-card__header"><button class="narrative-card__title">McDonalds Using More than 4 Million Plastic Cups</button>
+              <div class="narrative-card__actions"><button class="icon-btn icon-btn--sm" aria-label="Expand narrative" aria-expanded="false" data-tooltip="Expand"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg></button></div></div>
+            <div class="narrative-card__meta"><span class="badge badge--impact-moderate"><span class="level level--2" aria-hidden="true"><i></i><i></i><i></i></span>Moderate impact</span><span class="badge badge--outline"><svg class="icon" aria-hidden="true"><use href="#i-trend-up"/></svg>Rising</span></div>
+            <div class="narrative-card__body"></div>
+          </article>
+        </div>
+        <table class="table"><thead><tr><th scope="col">Part</th><th scope="col">Rule</th></tr></thead><tbody>
+          <tr><td>Title</td><td>A button that opens Narrative Analysis. Purple underline on hover.</td></tr>
+          <tr><td>Meta row</td><td>Impact first, trajectory second, factions as links. Always in that order.</td></tr>
+          <tr><td>Quote</td><td>One representative post, set in body size with a neutral rule.</td></tr>
+          <tr><td>Footer</td><td>The inauthenticity meter, the fastest check on whether a loud narrative is real.</td></tr>
+          <tr><td>Collapsed</td><td>Keeps title, impact and trajectory. The body folds away.</td></tr>
+        </tbody></table></div>
+      <div class="section__sub"><h3 class="text-h2">Stat card</h3>
+        <div class="demo demo--top">
+          <section class="stat-card"><div class="stat-card__header"><h3 class="text-h3">Popular platforms</h3><button class="info-btn" aria-label="Where this faction posts most." data-tooltip="Where this faction posts most." data-tooltip-side="left"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-info"/></svg></button></div>
+            <div class="stat-card__body"><ul class="stack stack--tight">
+              <li class="stat-row"><span class="text-small stat-row__name">8kun</span><span class="meter" aria-hidden="true"><span class="meter__fill" style="--meter-value:0.4"></span></span><span class="text-small stat-row__value">40%</span></li>
+              <li class="stat-row"><span class="text-small stat-row__name">4chan</span><span class="meter" aria-hidden="true"><span class="meter__fill" style="--meter-value:0.3"></span></span><span class="text-small stat-row__value">30%</span></li>
+              <li class="stat-row"><span class="text-small stat-row__name">reddit</span><span class="meter" aria-hidden="true"><span class="meter__fill" style="--meter-value:0.13"></span></span><span class="text-small stat-row__value">13%</span></li></ul></div></section>
+          <section class="stat-card"><div class="stat-card__header"><h3 class="text-h3">Faction authenticity</h3><button class="info-btn" aria-label="Share of this faction’s accounts that look inauthentic." data-tooltip="Share of this faction’s accounts that look inauthentic." data-tooltip-side="left"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-info"/></svg></button></div>
+            <div class="stat-card__body"><div class="stat-row"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-id"/></svg><span class="meter" aria-hidden="true"><span class="meter__fill" style="--meter-value:0.13"></span></span><span class="care__value">13%</span></div><p class="text-caption">of accounts appear inauthentic</p></div></section>
+        </div></div>
+      <div class="section__sub"><h3 class="text-h2">List card</h3>
+        <div class="demo demo--app demo--top">
+          <a class="card cluster cluster--nowrap" href="/case-study/yonder-ai/prototype#/factions/qanon" target="_blank" rel="noopener" style="flex:1;min-width:var(--size-popover);text-decoration:none;color:inherit"><span class="avatar avatar--ink">Q</span><span class="stack stack--tight" style="flex:1"><span class="text-h3">QAnon</span><span class="cluster"><span class="badge badge--ink">Adversarial</span></span><span class="text-caption">In 2 of today’s narratives</span></span><svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
+          <a class="card cluster cluster--nowrap" href="/case-study/yonder-ai/prototype#/factions/social-action" target="_blank" rel="noopener" style="flex:1;min-width:var(--size-popover);text-decoration:none;color:inherit"><span class="avatar">SA</span><span class="stack stack--tight" style="flex:1"><span class="text-h3">Social Action</span><span class="cluster"><span class="badge badge--brand">Aligned</span></span><span class="text-caption">In 2 of today’s narratives</span></span><svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
+        </div></div>
+    </section>
+
+    <section class="section" id="encodings">
+      <h2 class="text-h1">Signal encodings</h2>
+      <p class="text-body">Model output becomes a graphic shown on its whole scale, so a level is never read alone. Each encoding has one job and is reused wherever that job appears.</p>
+      <div class="grid">
+        <div class="card encoding"><p class="text-h3">Level glyph</p><span class="cluster"><span class="badge badge--impact-high"><span class="level level--3" aria-hidden="true"><i></i><i></i><i></i></span>High</span><span class="badge badge--impact-low"><span class="level level--1" aria-hidden="true"><i></i><i></i><i></i></span>Low</span></span><p class="text-small">Three bars, filled to the level. Impact without colour.</p></div>
+        <div class="card encoding"><p class="text-h3">Meter</p><div class="stat-row"><span class="meter" aria-hidden="true"><span class="meter__fill" style="--meter-value:0.21"></span></span><span class="care__value">21%</span></div><p class="text-small">A share of a whole. Always printed beside its value.</p></div>
+        <div class="card encoding"><p class="text-h3">Wedge</p><svg class="wedge" viewBox="0 0 200 48" role="img" aria-label="Influence 22%"><polygon class="wedge__track" points="0,48 200,48 200,0"/><polygon class="wedge__fill" points="0,48 44,48 44,37.4"/></svg><p class="text-small">Influence: a quantity that grows. The track shows how far it could go.</p></div>
+        <div class="card encoding"><p class="text-h3">Megaphones</p><ul class="megaphones" role="img" aria-label="Low impact"><li class="megaphones__item is-current impact-text--low"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-megaphone"/></svg><span class="text-caption">Low</span></li><li class="megaphones__item"><svg class="icon" aria-hidden="true"><use href="#i-megaphone"/></svg><span class="text-caption">Moderate</span></li><li class="megaphones__item"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-megaphone"/></svg><span class="text-caption">High</span></li></ul><p class="text-small">How loudly a faction lands. Size grows with the level.</p></div>
+        <div class="card encoding"><p class="text-h3">Alignment</p><ol class="alignment" role="img" aria-label="Political alignment: far right"><li class="alignment__step"><span class="alignment__bar"></span><span class="text-caption">Far left</span></li><li class="alignment__step"><span class="alignment__bar"></span><span class="text-caption">Left</span></li><li class="alignment__step"><span class="alignment__bar"></span><span class="text-caption">Center</span></li><li class="alignment__step"><span class="alignment__bar"></span><span class="text-caption">Right</span></li><li class="alignment__step is-current"><span class="alignment__bar"></span><span class="text-caption">Far right</span></li></ol><p class="text-small">A position on a spectrum. Ink marks the step; no hue implies a side.</p></div>
+        <div class="card encoding"><p class="text-h3">Benchmark bars</p><div class="bars" role="img" aria-label="Spam: actual 17%, typical 15%"><div class="bars__group"><div class="bars__pair"><span class="bars__bar" style="--bar-value:0.85"><span></span><em>17%</em></span><span class="bars__bar bars__bar--typical" style="--bar-value:0.75"><span></span><em>15%</em></span></div><span class="text-caption">Spam</span></div></div><p class="text-small">Actual beside typical, so a statistic becomes a judgement.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="dataviz">
+      <h2 class="text-h1">Data visualisation</h2>
+      <p class="text-body">Charts are inline SVG coloured by class. Faction series use the categorical palette in fixed order; the narrative total is purple; benchmarks are neutral and dashed. Every chart has a legend, a keyboard-readable tooltip and a text summary. Impact scales may use the reserved hues; nothing else may.</p>
+      <p class="text-body">Areas fade from their hue at <code class="token">--opacity-viz-area</code> down to <code class="token">--opacity-viz-area-floor</code> at their base, with a solid 2px edge on top so the value still reads clearly. The fade only changes opacity, never hue.</p>
+      <div class="demo demo--top">
+        <div class="scale scale--label-3" role="img" aria-label="High"><span class="scale__label">High</span><span class="scale__track"><span class="scale__seg scale__seg--low"></span><span class="scale__seg scale__seg--moderate"></span><span class="scale__seg scale__seg--high is-current"></span></span></div>
+        <div class="scale scale--label-1" role="img" aria-label="Normal"><span class="scale__label">Normal</span><span class="scale__track"><span class="scale__seg scale__seg--step-1 is-current"></span><span class="scale__seg scale__seg--step-2"></span><span class="scale__seg scale__seg--step-3"></span></span></div>
+        <div class="legend" id="legend-demo" role="group" aria-label="Series"><button class="legend__item viz-1" aria-pressed="true"><span class="legend__swatch"></span><span class="text-small">QAnon</span></button><button class="legend__item viz-2" aria-pressed="true"><span class="legend__swatch"></span><span class="text-small">Fringe Trolls</span></button><button class="legend__item viz-3" aria-pressed="true"><span class="legend__swatch"></span><span class="text-small">Antifa</span></button><span class="legend__item legend__item--static viz-total"><span class="legend__swatch"></span><span class="text-small">Number of posts</span></span><span class="legend__item legend__item--static"><span class="legend__swatch legend__swatch--dashed"></span><span class="text-small">Benchmark</span></span></div>
+        <p class="text-small" style="flex:1;min-width:var(--size-popover)">The legend is the control. Select a faction to hide it; the last visible one cannot be hidden, because an empty chart answers nothing.</p>
+      </div>
+      <a class="anatomy__shot" href="/case-study/yonder-ai/prototype" target="_blank" rel="noopener"><img src="/yonder-ai/screens/analysis.webp" width="1440" height="900" alt="Narrative Analysis showing a stacked area chart of three factions over seven days, with the legend and an explanation beside it." loading="lazy"></a>
+    </section>
+
+    <section class="section" id="navigation">
+      <h2 class="text-h1">Navigation</h2>
+      <p class="text-body">Wayfinding stays small and in the same place on every page: a back link above a detail page’s title, a date pager for days of the digest, pagination under long tables and a menu for sort order.</p>
+      <div class="demo demo--app demo--top">
+        <div class="stack"><span class="text-caption">Back link</span><a class="back-link" href="#navigation"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-left"/></svg>Factions</a></div>
+        <div class="stack"><span class="text-caption">Date pager</span><div class="date-pager"><button class="icon-btn icon-btn--sm" aria-label="Previous day"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-left"/></svg></button><span class="date-pager__label">Daily Digest · Apr 22, 2021</span><button class="icon-btn icon-btn--sm" aria-label="Next day" disabled><svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-right"/></svg></button></div></div>
+        <div class="stack"><span class="text-caption">Pagination</span><nav class="pagination" aria-label="Example pages"><button class="icon-btn icon-btn--sm" aria-label="Previous page" disabled><svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-left"/></svg></button><button class="pagination__page" aria-current="page">1</button><button class="pagination__page">2</button><button class="icon-btn icon-btn--sm" aria-label="Next page"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-right"/></svg></button></nav></div>
+        <div class="stack"><span class="text-caption">Menu</span><div class="popover popover--menu" role="menu" aria-label="Sort example"><button class="menu__item" role="menuitemradio" aria-checked="true">Curated order<svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></button><button class="menu__item" role="menuitemradio" aria-checked="false">Impact, high to low<svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></button><button class="menu__item" role="menuitemradio" aria-checked="false" disabled>Unavailable<svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></button></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="tables">
+      <h2 class="text-h1">Tables and threads</h2>
+      <p class="text-body">Lists of records use <code class="token">.table</code> inside a card, with the row’s title as its link and secondary actions in a row menu. Pagination marks the current page in ink, like every other selection. A thread shows an original post and its replies, joined by a connector, with author, time and platform as metadata.</p>
+      <div class="demo demo--column">
+        <table class="table"><thead><tr><th scope="col">Title</th><th scope="col">Conversation</th><th scope="col">Keyword</th><th scope="col">Created</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead><tbody>
+          <tr><td><a class="link" href="/case-study/yonder-ai/prototype#/alerts" target="_blank" rel="noopener">May 19 Day of Action</a></td><td>Incident Report: Day of Action May 19th</td><td>Day of action</td><td>Apr 20, 2021</td><td><button class="icon-btn icon-btn--sm" aria-label="More actions for May 19 Day of Action"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-more"/></svg></button></td></tr>
+          <tr><td><a class="link" href="/case-study/yonder-ai/prototype#/alerts" target="_blank" rel="noopener">McDonalds + Stakeholder Meeting</a></td><td>McDonalds + Stakeholder Meeting</td><td>boycott</td><td>Apr 12, 2021</td><td><button class="icon-btn icon-btn--sm" aria-label="More actions for McDonalds + Stakeholder Meeting"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-more"/></svg></button></td></tr>
+        </tbody></table>
+      </div>
+      <div class="demo demo--top">
+        <div class="card thread">
+          <article class="thread__post"><p class="text-overline">Original post</p><p class="text-body thread__text">BREAKING: @McDonalds workers in Phoenix are on strike today after at least four employees contracted COVID at the store in the last month.</p><ul class="thread__meta"><li>Apr 20, 2021 at 10:29 AM</li><li>Twitter</li></ul></article>
+          <ul class="thread__replies" aria-label="Replies"><li><article class="thread__post"><p class="text-body thread__text">@fightfor15 @chifightfor15 @McDonalds Solidarity comrades</p><ul class="thread__meta"><li><strong>User 2093</strong></li><li>11:28 PM</li><li>Twitter</li></ul></article></li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="overlays">
+      <h2 class="text-h1">Overlays</h2>
+      <p class="text-body">Modals trap focus, close on Escape and on the scrim, and return focus to the control that opened them. Popovers close on Escape and outside click. Side panels slide in from the left for curation. Toasts confirm and offer undo; they never carry the only copy of an error.</p>
+      <div class="demo demo--app demo--top">
+        <div class="modal modal--sm" role="group" aria-label="Modal example"><div class="modal__header"><h3 class="text-h1">Submit feedback</h3><button class="icon-btn" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button></div><div class="modal__body"><p class="text-body">Header, scrolling body and a right-aligned footer with one primary action.</p></div><div class="modal__footer"><button class="btn btn--secondary">Cancel</button><button class="btn btn--primary">Send feedback</button></div></div>
+        <div class="stack"><div class="toast"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>Query group deleted</span><button class="link">Undo</button><button class="icon-btn icon-btn--sm" aria-label="Dismiss"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+          <div class="cluster"><span class="text-small">Tooltip on hover and focus:</span><button class="info-btn" aria-label="How much this narrative could affect the brand." data-tooltip="How much this narrative could affect the brand."><svg class="icon icon--sm" aria-hidden="true"><use href="#i-info"/></svg></button></div></div>
+      </div>
+      <p class="text-small note">Open a real modal under <a class="link" href="#ix-modal">Interactions</a>. The curation side panel is shown under <a class="link" href="#page-curate">Pages</a>.</p>
+    </section>
+
+    <section class="section" id="states">
+      <h2 class="text-h1">Feedback and empty states</h2>
+      <p class="text-body">An empty state says what happened, why, and offers one way forward. Skeletons hold the layout while data loads. Callouts carry saved notes and guidance.</p>
+      <div class="demo demo--top">
+        <div class="empty-state"><span class="empty-state__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-filter"/></svg></span><h3 class="text-h2">No narratives match these filters</h3><p class="text-small">Remove a filter to see more of today’s narratives.</p><button class="btn btn--secondary">Clear filters</button></div>
+        <div class="stack"><div class="stack stack--tight" aria-label="Loading" role="status"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+          <div class="callout"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-note"/></svg><p><strong>Note.</strong> Fringe Trolls peaked a day before the general public did.</p></div></div>
+      </div>
+    </section>
+
+    <!-- ================= PAGES ================= -->
+    <div class="part"><p class="text-overline">Part 4</p><h2 class="text-display">Pages</h2><p class="text-body">How the components compose into each screen of the product. Select a screen to open it in the prototype.</p></div>
+
+    <section class="section" id="page-digest">
+      <h2 class="text-h1">Daily Digest</h2>
+      <div class="anatomy">
+        <figure><a class="anatomy__shot" href="/case-study/yonder-ai/prototype#/digest" target="_blank" rel="noopener"><img src="/yonder-ai/screens/digest.webp" width="1440" height="900" alt="The Daily Digest: a toolbar, a digest summary card with flagged narratives, and the first narrative card below." loading="lazy"></a><figcaption class="text-caption">The landing page. A snapshot of today’s narratives for one brand.</figcaption></figure>
+        <ol class="anatomy__parts">
+          <li><span class="text-small"><strong>Toolbar.</strong> Curate, filter and sort as raised icon buttons, with a filter count. <code>.icon-btn--raised</code></span></li>
+          <li><span class="text-small"><strong>Date pager.</strong> Steps through days; the next arrow disables on today. <code>.date-pager</code></span></li>
+          <li><span class="text-small"><strong>Digest summary.</strong> Title, date and the flagged narratives as links, on one raised card.</span></li>
+          <li><span class="text-small"><strong>Result count.</strong> “Showing 6 of 6 narratives”, announced when filters change.</span></li>
+          <li><span class="text-small"><strong>Narrative cards.</strong> In curated order, flagged first. <code>.narrative-card</code></span></li>
+          <li><span class="text-small"><strong>Column.</strong> Reading width, <code>--size-content</code>.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="page-analysis">
+      <h2 class="text-h1">Narrative Analysis</h2>
+      <div class="anatomy">
+        <figure><a class="anatomy__shot" href="/case-study/yonder-ai/prototype#/digest" target="_blank" rel="noopener"><img src="/yonder-ai/screens/analysis.webp" width="1440" height="900" alt="Narrative Analysis in a large modal: four question tabs, a stacked area chart, a legend and an explanation." loading="lazy"></a><figcaption class="text-caption">Opened from a narrative card’s title or chart button.</figcaption></figure>
+        <ol class="anatomy__parts">
+          <li><span class="text-small"><strong>Large modal.</strong> Keeps the digest behind it, so returning is one Escape away. <code>.modal</code></span></li>
+          <li><span class="text-small"><strong>Four question tabs.</strong> Who, care, why, what, in that order. <code>.tabs</code></span></li>
+          <li><span class="text-small"><strong>Chart.</strong> Stacked faction areas with a scrubbable, keyboard-readable tooltip. <code>.chart</code></span></li>
+          <li><span class="text-small"><strong>Legend as control.</strong> Hide a faction and the rest re-stack. <code>.legend__item</code></span></li>
+          <li><span class="text-small"><strong>What this means.</strong> A plain-language reading of the chart beside it.</span></li>
+          <li><span class="text-small"><strong>Add a note.</strong> A tonal action; saved notes become callouts. <code>.btn--tonal</code></span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="page-factions">
+      <h2 class="text-h1">Factions</h2>
+      <div class="anatomy">
+        <figure><a class="anatomy__shot" href="/case-study/yonder-ai/prototype#/factions" target="_blank" rel="noopener"><img src="/yonder-ai/screens/factions.webp" width="1440" height="900" alt="The Factions list: a page header with search, and a three-column grid of faction cards." loading="lazy"></a><figcaption class="text-caption">Every group that shapes the brand’s narratives.</figcaption></figure>
+        <ol class="anatomy__parts">
+          <li><span class="text-small"><strong>Page header.</strong> Title, one-line description and a search field. <code>.page-header</code></span></li>
+          <li><span class="text-small"><strong>Faction cards.</strong> Avatar, name, stance badge and how many of today’s narratives it joins. The whole card is the link.</span></li>
+          <li><span class="text-small"><strong>Grid.</strong> Three columns at comparing width, <code>--size-content-wide</code>.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="page-faction">
+      <h2 class="text-h1">Faction profile</h2>
+      <div class="anatomy">
+        <figure><a class="anatomy__shot" href="/case-study/yonder-ai/prototype#/factions/qanon" target="_blank" rel="noopener"><img src="/yonder-ai/screens/faction.webp" width="1440" height="900" alt="The QAnon faction profile: name, stance badge, description, image tiles and a grid of stat cards." loading="lazy"></a><figcaption class="text-caption">Who a faction is in words; what it does in graphics.</figcaption></figure>
+        <ol class="anatomy__parts">
+          <li><span class="text-small"><strong>Back link.</strong> Returns to the Factions list. <code>.back-link</code></span></li>
+          <li><span class="text-small"><strong>Identity.</strong> Display name, stance badge and a lead paragraph. <code>.text-display</code> <code>.text-lead</code></span></li>
+          <li><span class="text-small"><strong>Stat grid.</strong> Six columns; cards span two or three. <code>.stat-card</code></span></li>
+          <li><span class="text-small"><strong>Encodings.</strong> Wedge, megaphones, alignment and meters, each with an info tooltip.</span></li>
+          <li><span class="text-small"><strong>Aligned factions.</strong> Links to related profiles.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="page-convos">
+      <h2 class="text-h1">Convos</h2>
+      <div class="anatomy">
+        <figure><a class="anatomy__shot" href="/case-study/yonder-ai/prototype#/convos" target="_blank" rel="noopener"><img src="/yonder-ai/screens/convos.webp" width="1440" height="900" alt="The Convos list: a page header with a New conversation button and one conversation card." loading="lazy"></a><figcaption class="text-caption">Saved queries that curate the conversations behind each digest.</figcaption></figure>
+        <ol class="anatomy__parts">
+          <li><span class="text-small"><strong>Page header.</strong> Title, description and the page’s one primary action.</span></li>
+          <li><span class="text-small"><strong>Conversation card.</strong> Name, status badge, description and a metadata line of groups and dates.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="page-convo">
+      <h2 class="text-h1">Edit a conversation</h2>
+      <div class="anatomy">
+        <figure><a class="anatomy__shot" href="/case-study/yonder-ai/prototype#/convos/c1" target="_blank" rel="noopener"><img src="/yonder-ai/screens/convo.webp" width="1440" height="900" alt="Edit a Conversation: name, start date and description fields, then query groups built from selects and keyword tag inputs." loading="lazy"></a><figcaption class="text-caption">The query builder. Boolean logic for people who are not engineers.</figcaption></figure>
+        <ol class="anatomy__parts">
+          <li><span class="text-small"><strong>Back link and title.</strong> Back, then “Edit a Conversation”.</span></li>
+          <li><span class="text-small"><strong>Fields.</strong> Name, start date with its allowed range as a hint, description. <code>.field</code></span></li>
+          <li><span class="text-small"><strong>Query group.</strong> Field select, match select, keyword tags, “and not” tags. <code>.tag-input</code></span></li>
+          <li><span class="text-small"><strong>Conditions.</strong> Add or remove “and any of” rows; groups join with OR.</span></li>
+          <li><span class="text-small"><strong>Read-back.</strong> The query restated as a sentence, so mistakes surface before saving.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="page-curate">
+      <h2 class="text-h1">Curate panel</h2>
+      <div class="anatomy">
+        <figure><a class="anatomy__shot" href="/case-study/yonder-ai/prototype#/digest" target="_blank" rel="noopener"><img src="/yonder-ai/screens/curate.webp" width="1440" height="900" alt="The Curate side panel over the digest: a title field and a list of narratives with move and remove buttons." loading="lazy"></a><figcaption class="text-caption">Opened from the digest toolbar. Two steps, then publish.</figcaption></figure>
+        <ol class="anatomy__parts">
+          <li><span class="text-small"><strong>Side panel.</strong> Slides from the left; the digest stays visible. <code>.panel</code></span></li>
+          <li><span class="text-small"><strong>Step indicator.</strong> Two bars beside the title.</span></li>
+          <li><span class="text-small"><strong>Narrative rows.</strong> Impact mark, title, move up, move down, remove. <code>.list-row</code></span></li>
+          <li><span class="text-small"><strong>Footer.</strong> One full-width primary action per step.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="page-alerts">
+      <h2 class="text-h1">Alerts</h2>
+      <div class="anatomy">
+        <figure><a class="anatomy__shot" href="/case-study/yonder-ai/prototype#/alerts" target="_blank" rel="noopener"><img src="/yonder-ai/screens/alerts.webp" width="1440" height="900" alt="The Alerts table: title, conversation, keyword, faction and created date columns, with pagination." loading="lazy"></a><figcaption class="text-caption">Get told when a conversation, keyword or faction picks up new mentions.</figcaption></figure>
+        <ol class="anatomy__parts">
+          <li><span class="text-small"><strong>Page header.</strong> Search and Add alert.</span></li>
+          <li><span class="text-small"><strong>Table in a card.</strong> Title as the link, row menu for secondary actions. <code>.table</code></span></li>
+          <li><span class="text-small"><strong>Empty values.</strong> “Any faction” in tertiary text, never a blank cell.</span></li>
+          <li><span class="text-small"><strong>Footer.</strong> “Showing 1 to 5 of 7 alerts” and pagination.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= INTERACTIONS ================= -->
+    <div class="part"><p class="text-overline">Part 5</p><h2 class="text-display">Interactions</h2><p class="text-body">The patterns that make the product feel fast. Each one below is live: use it with a mouse, then with the keyboard.</p></div>
+
+    <section class="section" id="ix-filter">
+      <h2 class="text-h1">Instant filters</h2>
+      <div class="lab">
+        <div class="lab__stage">
+          <div class="cluster" role="group" aria-label="Impact filter" id="fx-chips"><button class="chip" aria-pressed="false" data-impact="high">High</button><button class="chip" aria-pressed="false" data-impact="moderate">Moderate</button><button class="chip" aria-pressed="false" data-impact="low">Low</button></div>
+          <p class="text-small" aria-live="polite" id="fx-count"></p>
+          <ul class="stack stack--tight" id="fx-list"></ul>
+        </div>
+        <div class="lab__notes"><p class="text-h3">Why it works this way</p><ul class="text-small">
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>Filtering is exploring. Each chip applies the moment it is touched; there is no Apply button.</span></li>
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>The count updates and is announced to screen readers.</span></li>
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>No chip on means everything shows. Nothing matching shows an empty state with one way out.</span></li>
+        </ul></div>
+      </div>
+    </section>
+
+    <section class="section" id="ix-collapse">
+      <h2 class="text-h1">Collapse and star</h2>
+      <div class="lab">
+        <div class="lab__stage">
+          <article class="narrative-card" id="cx-card">
+            <div class="narrative-card__header"><button class="narrative-card__title">McDonalds Pay Your Employees</button>
+              <div class="narrative-card__actions"><button class="icon-btn icon-btn--sm" id="cx-star" aria-label="Star narrative" aria-pressed="false" data-tooltip="Star"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-star"/></svg></button><button class="icon-btn icon-btn--sm" id="cx-toggle" aria-label="Collapse narrative" aria-expanded="true" data-tooltip="Collapse"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-up"/></svg></button></div></div>
+            <div class="narrative-card__meta"><span class="badge badge--impact-moderate"><span class="level level--2" aria-hidden="true"><i></i><i></i><i></i></span>Moderate impact</span><span class="badge badge--outline"><svg class="icon" aria-hidden="true"><use href="#i-steady"/></svg>Steady</span></div>
+            <div class="narrative-card__body"><blockquote class="narrative-card__quote">Workers deserve a living wage. #FightFor15</blockquote>
+              <div class="narrative-card__footer"><span class="text-caption">Inauthenticity</span><span class="meter" role="img" aria-label="Inauthenticity 9%"><span class="meter__fill" style="--meter-value:0.09"></span></span><span class="text-small">9%</span></div></div>
+          </article>
+          <div class="lab-local-toast" id="cx-toast" role="status" aria-live="polite"></div>
+        </div>
+        <div class="lab__notes"><p class="text-h3">Why it works this way</p><ul class="text-small">
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>Triage is a pass through a list. A collapsed card keeps its title and impact, so the page shrinks as the work gets done.</span></li>
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>The toggle reports <code class="token">aria-expanded</code> and its label and icon change with it.</span></li>
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>Star is a toggle button: pressed fills purple, and a toast confirms.</span></li>
+        </ul></div>
+      </div>
+    </section>
+
+    <section class="section" id="ix-curate">
+      <h2 class="text-h1">Remove, undo, reorder</h2>
+      <div class="lab">
+        <div class="lab__stage lab__stage--plain">
+          <p class="text-h3">Narratives <span class="text-caption" id="rx-n"></span></p>
+          <ul class="stack stack--tight" id="rx-list"></ul>
+          <p class="visually-hidden" aria-live="polite" id="rx-live"></p>
+          <div class="lab-local-toast" id="rx-toast"></div>
+        </div>
+        <div class="lab__notes"><p class="text-h3">Why it works this way</p><ul class="text-small">
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>Undo, not “Are you sure?”. Removal is instant; the toast offers Undo and puts the row back where it was.</span></li>
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>Order is editorial, so it gets explicit up and down buttons instead of drag only.</span></li>
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>Focus follows the row you moved, and the new position is announced.</span></li>
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>The first row cannot move up and the last cannot move down; those buttons disable.</span></li>
+        </ul></div>
+      </div>
+    </section>
+
+    <section class="section" id="ix-tags">
+      <h2 class="text-h1">Keyword tags</h2>
+      <div class="lab">
+        <div class="lab__stage lab__stage--plain">
+          <div class="field" style="width:100%"><span class="field__label" id="tx-l">Keywords</span><div class="tag-input" id="tx-box"><input class="tag-input__field" id="tx-in" aria-labelledby="tx-l" aria-describedby="tx-h" placeholder="Type keyword and press Enter"></div><span class="field__hint" id="tx-h">Press Enter or comma to add. Backspace removes the last one.</span></div>
+          <p class="text-small" id="tx-read" aria-live="polite"></p>
+        </div>
+        <div class="lab__notes"><p class="text-h3">Why it works this way</p><ul class="text-small">
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>Keywords are objects, not a string. Nobody has to get separators or quoting right.</span></li>
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>Duplicates are ignored; each tag has its own named remove button.</span></li>
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>The query reads itself back as a sentence while you type.</span></li>
+        </ul></div>
+      </div>
+    </section>
+
+    <section class="section" id="ix-modal">
+      <h2 class="text-h1">Modal focus</h2>
+      <div class="lab">
+        <div class="lab__stage">
+          <div class="cluster"><button class="btn btn--secondary" id="mx-open">Submit feedback</button><span class="text-small">Open it, press Tab past the last button, then Escape.</span></div>
+        </div>
+        <div class="lab__notes"><p class="text-h3">Why it works this way</p><ul class="text-small">
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>Focus moves into the modal on open and cannot leave it while it is open.</span></li>
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>Escape, the close button and the scrim all close it. Focus returns to the button that opened it.</span></li>
+          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg><span>Sending with an empty message shows the error inline, not in a toast.</span></li>
+        </ul></div>
+      </div>
+    </section>
+
+    <section class="section" id="ix-keyboard">
+      <h2 class="text-h1">Keyboard map</h2>
+      <table class="table"><thead><tr><th scope="col">Where</th><th scope="col">Keys</th><th scope="col">Does</th></tr></thead><tbody>
+        <tr><td>Everywhere</td><td><span class="kbd">Tab</span> <span class="kbd">Shift</span> + <span class="kbd">Tab</span></td><td>Moves between controls in reading order, with a visible focus ring</td></tr>
+        <tr><td>Tabs</td><td><span class="kbd">←</span> <span class="kbd">→</span></td><td>Moves between the four questions</td></tr>
+        <tr><td>Chart</td><td><span class="kbd">←</span> <span class="kbd">→</span></td><td>Scrubs day by day; the tooltip reads every series</td></tr>
+        <tr><td>Chips, star, legend</td><td><span class="kbd">Space</span> <span class="kbd">Enter</span></td><td>Toggles on and off</td></tr>
+        <tr><td>Tag input</td><td><span class="kbd">Enter</span> <span class="kbd">,</span> <span class="kbd">Backspace</span></td><td>Adds a tag, adds a tag, removes the last tag</td></tr>
+        <tr><td>Modal, menu, popover</td><td><span class="kbd">Esc</span></td><td>Closes and returns focus</td></tr>
+      </tbody></table>
+    </section>
+
+    <!-- ================= USE ================= -->
+    <div class="part"><p class="text-overline">Part 6</p><h2 class="text-display">Using the system</h2></div>
+
+    <section class="section" id="voice">
+      <h2 class="text-h1">Content and voice</h2>
+      <p class="text-body">The interface talks like a sharp analyst briefing a colleague: plain, specific and short. Labels are the questions people already have in their heads.</p>
+      <div class="dodont">
+        <div><p class="text-h3">Do</p><ul class="stack stack--tight text-small"><li>“Should I care?” as a tab label.</li><li>“21% inauthentic, against a typical 20%.” A number with its benchmark.</li><li>“Give this conversation a name.” An error that says how to fix it.</li><li>“Query group deleted. Undo.” Past tense, with a way back.</li><li>Sentence case everywhere, except overlines.</li></ul></div>
+        <div><p class="text-h3">Don’t</p><ul class="stack stack--tight text-small"><li>“Authenticity metrics” as a tab label.</li><li>“21%” on its own.</li><li>“Invalid input.”</li><li>“Are you sure you want to delete?”</li><li>Title Case Buttons Or Exclamation Marks!</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section" id="a11y">
+      <h2 class="text-h1">Accessibility</h2>
+      <div class="grid">
+        <div class="card principle"><h3 class="text-h3">Contrast</h3><p class="text-small">Every text pair meets WCAG AA at 4.5:1, every control outline and graphic at 3:1. Measured live under <a class="link" href="#contrast">Contrast</a>.</p></div>
+        <div class="card principle"><h3 class="text-h3">Focus</h3><p class="text-small">A 2px purple outline with a 2px offset on every interactive element. It is never removed, only restyled.</p></div>
+        <div class="card principle"><h3 class="text-h3">Not colour alone</h3><p class="text-small">Impact has a glyph and a word; selection changes fill and weight; errors have an icon and a sentence.</p></div>
+        <div class="card principle"><h3 class="text-h3">Names and roles</h3><p class="text-small">Icon buttons are named. Toggles use <code class="token">aria-pressed</code>, disclosures <code class="token">aria-expanded</code>, tabs a real tablist.</p></div>
+        <div class="card principle"><h3 class="text-h3">Announcements</h3><p class="text-small">Result counts, moves and toasts sit in polite live regions, so changes are heard as well as seen.</p></div>
+        <div class="card principle"><h3 class="text-h3">Reduced motion</h3><p class="text-small">With reduced motion on, states still change but nothing travels.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="rules">
+      <h2 class="text-h1">Rules</h2>
+      <ul class="rule-list card text-small">
+        <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Use a semantic role. If no role fits, propose one; do not reach for a primitive or a literal.</li>
+        <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Keep red, amber and blue for impact level. A delete button is ink.</li>
+        <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>One primary button per view.</li>
+        <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Never set text lighter than <code class="token">--color-text-tertiary</code> or smaller than 12px.</li>
+        <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Every interactive element has hover, focus-visible, pressed and disabled states, and a 2px focus outline that is never removed.</li>
+        <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Animate transform and opacity only, and honour reduced motion.</li>
+        <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Pair every colour signal with a word, an icon or a shape.</li>
+        <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Do not nest cards. Do not use the gradient behind text blocks; it is the app canvas.</li>
+      </ul>
+      <p class="text-caption">Scope: the product is designed for desktop, 1280px and wider.</p>
+    </section>
+  </main>
+</div>
+
+<div class="toast-region" id="toasts" role="status" aria-live="polite"></div>
+
+<script>
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const css = getComputedStyle(document.documentElement);
+const tok = (n) => css.getPropertyValue(n).trim();
+const icon = (id, cls = 'icon--sm') => `<svg class="icon ${cls}" aria-hidden="true"><use href="#i-${id}"/></svg>`;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const hexOf = (n) => { const el = document.createElement('i'); el.style.color = `var(${n})`; document.body.append(el); const m = getComputedStyle(el).color.match(/[\d.]+/g).slice(0, 3).map(Number); el.remove(); return '#' + m.map((v) => v.toString(16).padStart(2, '0')).join(''); };
+const lum = (hex) => { const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4)); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)]; return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+
+/* ---------- foundations ---------- */
+$$('[data-swatches]').forEach((el) => {
+  el.innerHTML = el.dataset.swatches.split(' ').map((n) => `<div class="swatch"><div class="swatch__chip" style="background:var(${n})"></div><span class="text-caption">${n.replace(/^--(color-)?/, '')}</span><code class="token">${hexOf(n)}</code></div>`).join('');
+});
+
+const PAIRS = [
+  ['--color-text-primary', '--neutral-0', 'Headings on cards', 4.5], ['--color-text-body', '--neutral-0', 'Body copy on cards', 4.5],
+  ['--color-text-secondary', '--neutral-0', 'Supporting copy', 4.5], ['--color-text-tertiary', '--neutral-0', 'Captions, hints, axis ticks', 4.5],
+  ['--color-text-tertiary', '--neutral-100', 'Captions on muted surfaces', 4.5], ['--color-text-link', '--neutral-0', 'Links', 4.5],
+  ['--neutral-0', '--color-action', 'Primary button label', 4.5], ['--color-action-on-surface', '--purple-100', 'Tonal button label', 4.5],
+  ['--purple-800', '--purple-100', 'Tag and brand badge text', 4.5], ['--neutral-0', '--color-selected', 'Selected tab, pressed chip', 4.5],
+  ['--color-text-on-app', '--lilac-300', 'Page titles on the darkest gradient stop', 4.5], ['--color-text-on-app-secondary', '--lilac-300', 'Supporting copy on the gradient', 4.5],
+  ['--color-impact-high-text', '--color-impact-high-surface', 'High impact badge', 4.5], ['--color-impact-moderate-text', '--color-impact-moderate-surface', 'Moderate impact badge', 4.5],
+  ['--color-impact-low-text', '--color-impact-low-surface', 'Low impact badge', 4.5], ['--color-success-text', '--color-success-surface', 'Saved state, Active badge', 4.5],
+  ['--color-border-control', '--neutral-0', 'Input and chip outline', 3], ['--color-focus', '--neutral-0', 'Focus outline on white', 3], ['--color-focus', '--lilac-300', 'Focus outline on the gradient', 3],
+  ['--color-impact-high', '--neutral-0', 'High scale segment', 3], ['--color-impact-moderate', '--neutral-0', 'Moderate scale segment', 3], ['--color-impact-low', '--neutral-0', 'Low scale segment', 3],
+  ['--color-viz-1', '--neutral-0', 'Chart series 1', 3], ['--color-viz-2', '--neutral-0', 'Chart series 2', 3], ['--color-viz-3', '--neutral-0', 'Chart series 3', 3], ['--color-viz-total', '--neutral-0', 'Chart total line', 3],
+];
+let passing = 0;
+$('#contrast-table tbody').innerHTML = PAIRS.map(([f, b, use, need]) => {
+  const r = ratio(hexOf(f), hexOf(b)); if (r >= need) passing++;
+  return `<tr><td><span class="cluster cluster--nowrap"><span class="impact-mark" style="background:var(${b});color:var(${f});box-shadow:inset 0 0 0 var(--border-width-thin) var(--color-border-default)">Aa</span><code>${f.replace('--color-', '').replace('--', '')}</code> on <code>${b.replace('--color-', '').replace('--', '')}</code></span></td><td>${use}</td><td>${need}:1</td><td>${r.toFixed(2)}:1</td><td>${r >= need ? '<span class="pass">Pass</span>' : '<strong>Fail</strong>'}</td></tr>`;
+}).join('');
+$('#stat-contrast').textContent = `${passing}/${PAIRS.length}`;
+
+const ROLES = [['hero', 'Long-form page titles only'], ['display', 'One per screen: page or profile title'], ['h1', 'Screen and modal titles'], ['h2', 'Section and card titles'], ['lead', 'Lead paragraph on profiles'], ['h3', 'Sub-section titles, list item names'], ['body', 'Paragraphs, posts, inputs'], ['small', 'Supporting copy, table cells'], ['caption', 'Metadata, hints, axis labels'], ['overline', 'Group labels in filters and menus']];
+$('#type-specimens').innerHTML = ROLES.map(([r, use]) => { const k = r === 'lead' ? 'h2' : r === 'overline' ? 'caption' : r; const size = tok(`--font-size-${k}`); return `<div class="specimen"><div><code class="token">.text-${r}</code><p class="text-caption">${size || '—'}${tok(`--line-height-${k}`) ? ' / ' + tok(`--line-height-${k}`) : ''} · ${use}</p></div><p class="text-${r}">Who is driving this narrative?</p></div>`; }).join('');
+
+$('#space-table tbody').innerHTML = Array.from({ length: 11 }, (_, i) => i + 1).map((i) => `<tr><td><code>--space-${i}</code></td><td>${tok(`--space-${i}`)}</td><td><div class="space-bar" style="width:var(--space-${i})"></div></td></tr>`).join('');
+$('#radius-demo').innerHTML = ['xs', 'sm', 'md', 'lg', 'xl', 'pill'].map((r) => `<div class="stack stack--tight"><div class="shape" style="border-radius:var(--radius-${r})"><code class="token">${tok(`--radius-${r}`)}</code></div><span class="text-caption">radius-${r}</span></div>`).join('');
+const LAYOUT = [['--size-topbar', 'Top bar height'], ['--size-sidenav', 'Side navigation width'], ['--size-content', 'Reading column: digest, convos'], ['--size-content-wide', 'Comparing column: factions, alerts, editing'], ['--size-panel', 'Curation side panel'], ['--size-modal', 'Narrative Analysis modal'], ['--size-popover', 'Menus and popovers'], ['--size-viewport-min', 'Smallest supported window']];
+$('#layout-table tbody').innerHTML = LAYOUT.map(([t, use]) => `<tr><td><code>${t}</code></td><td>${tok(t)}</td><td>${use}</td></tr>`).join('');
+$('#shadow-demo').innerHTML = [['sm', 'Resting cards'], ['md', 'Hover, navigation, tooltips'], ['lg', 'Modals, panels, popovers']].map(([s, use]) => `<div class="stack stack--tight"><div class="shape" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-${s})"><code class="token">shadow-${s}</code></div><span class="text-caption">${use}</span></div>`).join('');
+$('#motion-table').innerHTML = [['--duration-fast', 'Colour changes, press feedback, tooltips'], ['--duration-base', 'Hover lift, borders, popovers'], ['--duration-slow', 'Panels, modals, meters and bars'], ['--easing-standard', 'Every transition']].map(([t, use]) => `<tr><td><code>${t}</code></td><td>${tok(t)}</td><td>${use}</td></tr>`).join('');
+
+const symbols = $$('symbol').filter((s) => s.id !== 'i-external');
+$('#icon-demo').innerHTML = symbols.map((s) => `<span class="icon-tile"><svg class="icon icon--lg" aria-hidden="true"><use href="#${s.id}"/></svg><span class="text-caption">${s.id.slice(2)}</span></span>`).join('');
+$('#stat-icons').textContent = symbols.length;
+try { const sheet = [...document.styleSheets].find((s) => s.href && s.href.includes('yonder-ds.css')); $('#stat-tokens').textContent = [...sheet.cssRules].filter((r) => r.selectorText === ':root').reduce((n, r) => n + [...r.style].filter((p) => p.startsWith('--')).length, 0); } catch (err) { $('#stat-tokens').textContent = '—'; }
+
+/* Motion lab: the dot travels with transform; under reduced motion it jumps */
+$('#motion-play').addEventListener('click', () => {
+  const tracks = $$('#motion-lab .motion-track');
+  tracks.forEach((t) => { const dot = t.firstElementChild; t.style.setProperty('--travel', `${t.clientWidth - dot.offsetWidth - dot.offsetLeft * 2}px`); dot.style.transitionDuration = reduced.matches ? '0s' : tok(t.dataset.dur); t.classList.toggle('is-on'); });
+  $('#motion-note').textContent = reduced.matches ? 'Reduced motion is on: the state changes without travel.' : '';
+});
+
+/* ---------- small component demos ---------- */
+$('#chip-demo').addEventListener('click', (e) => { const c = e.target.closest('.chip:not(:disabled)'); if (c) c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') !== 'true'); });
+const tabs = $$('#tab-demo .tabs__tab');
+const pickTab = (t) => { tabs.forEach((x) => { x.setAttribute('aria-selected', x === t); x.tabIndex = x === t ? 0 : -1; }); t.focus(); };
+tabs.forEach((t, i) => { t.addEventListener('click', () => pickTab(t)); t.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') pickTab(tabs[(i + 1) % tabs.length]); if (e.key === 'ArrowLeft') pickTab(tabs[(i + tabs.length - 1) % tabs.length]); }); });
+$('#legend-demo').addEventListener('click', (e) => {
+  const b = e.target.closest('button.legend__item'); if (!b) return;
+  const on = $$('#legend-demo button.legend__item[aria-pressed="true"]');
+  if (b.getAttribute('aria-pressed') === 'true' && on.length === 1) { toast('At least one faction stays visible'); return; }
+  b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true');
+});
+
+/* Page toast, as in the product */
+function toast(msg, undo, region = $('#toasts')) {
+  const el = document.createElement('div'); el.className = 'toast';
+  el.innerHTML = `${icon('check')}<span>${esc(msg)}</span>${undo ? '<button class="link" data-undo>Undo</button>' : ''}<button class="icon-btn icon-btn--sm" aria-label="Dismiss" data-dismiss>${icon('x')}</button>`;
+  region.replaceChildren(el);
+  const close = () => el.remove();
+  el.querySelector('[data-dismiss]').addEventListener('click', close);
+  if (undo) el.querySelector('[data-undo]').addEventListener('click', () => { close(); undo(); });
+  setTimeout(close, 6000);
+  return el;
+}
+
+/* ---------- Interaction: instant filters ---------- */
+const NARR = [
+  ['McDonalds, TigrayGenocide', 'high'], ['McDonalds Using More than 4 Million Plastic Cups', 'moderate'], ['McDonalds Employees Sharing Pronouns on Badge', 'low'],
+  ['McDonalds, masks in Palm Beach', 'high'], ['McDonalds Pay Your Employees', 'moderate'], ['Boycott McDonalds for supporting the police', 'low'],
+];
+const LABEL = { high: 'High impact', moderate: 'Moderate impact', low: 'Low impact' };
+const LETTER = { high: 'H', moderate: 'M', low: 'L' };
+function renderFilter() {
+  const on = $$('#fx-chips .chip[aria-pressed="true"]').map((c) => c.dataset.impact);
+  const shown = NARR.filter(([, i]) => !on.length || on.includes(i));
+  $('#fx-count').textContent = `Showing ${shown.length} of ${NARR.length} narratives`;
+  $('#fx-list').innerHTML = shown.length
+    ? shown.map(([t, i]) => `<li class="lab-row"><span class="impact-mark impact-mark--${i}" aria-label="${LABEL[i]}">${LETTER[i]}</span><span class="lab-row__label">${esc(t)}</span></li>`).join('')
+    : `<li class="empty-state"><span class="empty-state__icon">${icon('filter', 'icon--lg')}</span><p class="text-h3">No narratives match these filters</p><button class="btn btn--secondary btn--sm" data-clear>Clear filters</button></li>`;
+}
+$('#fx-chips').addEventListener('click', (e) => { const c = e.target.closest('.chip'); if (!c) return; c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') !== 'true'); renderFilter(); });
+$('#fx-list').addEventListener('click', (e) => { if (!e.target.closest('[data-clear]')) return; $$('#fx-chips .chip').forEach((c) => c.setAttribute('aria-pressed', 'false')); renderFilter(); $('#fx-chips .chip').focus(); });
+renderFilter();
+
+/* ---------- Interaction: collapse and star ---------- */
+$('#cx-toggle').addEventListener('click', (e) => {
+  const b = e.currentTarget, card = $('#cx-card'), open = b.getAttribute('aria-expanded') === 'true';
+  card.classList.toggle('is-collapsed', open); b.setAttribute('aria-expanded', String(!open));
+  b.setAttribute('aria-label', open ? 'Expand narrative' : 'Collapse narrative'); b.dataset.tooltip = open ? 'Expand' : 'Collapse';
+  b.innerHTML = icon(open ? 'chevron-down' : 'chevron-up');
+});
+$('#cx-star').addEventListener('click', (e) => {
+  const b = e.currentTarget, on = b.getAttribute('aria-pressed') !== 'true';
+  b.setAttribute('aria-pressed', String(on)); b.dataset.tooltip = on ? 'Starred' : 'Star';
+  toast(on ? 'Narrative starred' : 'Star removed', null, $('#cx-toast'));
+});
+
+/* ---------- Interaction: remove, undo, reorder ---------- */
+let order = NARR.map(([t, i]) => ({ t, i }));
+function renderRx(focusSel) {
+  $('#rx-n').textContent = order.length;
+  $('#rx-list').innerHTML = order.map((n, k) => `<li class="lab-row"><span class="impact-mark impact-mark--${n.i}" aria-label="${LABEL[n.i]}">${LETTER[n.i]}</span><span class="lab-row__label">${esc(n.t)}</span>
+    <button class="icon-btn icon-btn--sm" data-mv="-1" data-k="${k}" aria-label="Move ${esc(n.t)} up" ${k === 0 ? 'disabled' : ''}>${icon('chevron-up')}</button>
+    <button class="icon-btn icon-btn--sm" data-mv="1" data-k="${k}" aria-label="Move ${esc(n.t)} down" ${k === order.length - 1 ? 'disabled' : ''}>${icon('chevron-down')}</button>
+    <button class="icon-btn icon-btn--sm" data-rm data-k="${k}" aria-label="Remove ${esc(n.t)}">${icon('x')}</button></li>`).join('')
+    || `<li class="text-small">All narratives removed. Undo to bring one back.</li>`;
+  if (focusSel) { const f = $(focusSel, $('#rx-list')); (f && !f.disabled ? f : $('#rx-list button:not(:disabled)'))?.focus(); }
+}
+$('#rx-list').addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b) return; const k = Number(b.dataset.k);
+  if (b.dataset.mv) {
+    const d = Number(b.dataset.mv), j = k + d; [order[k], order[j]] = [order[j], order[k]];
+    renderRx(`[data-mv="${d}"][data-k="${j}"]`);
+    $('#rx-live').textContent = `${order[j].t} moved to position ${j + 1} of ${order.length}`;
+  } else if (b.dataset.rm !== undefined) {
+    const [gone] = order.splice(k, 1); renderRx(`[data-rm][data-k="${Math.min(k, order.length - 1)}"]`);
+    toast(`Removed “${gone.t}”`, () => { order.splice(k, 0, gone); renderRx(`[data-rm][data-k="${k}"]`); $('#rx-live').textContent = `${gone.t} restored`; }, $('#rx-toast'));
+  }
+});
+renderRx();
+
+/* ---------- Interaction: keyword tags ---------- */
+let tags = ['starbucks', 'nestle'];
+function renderTags() {
+  $$('#tx-box .tag').forEach((t) => t.remove());
+  $('#tx-in').insertAdjacentHTML('beforebegin', tags.map((t, k) => `<span class="tag">${esc(t)}<button class="tag__remove" data-k="${k}" aria-label="Remove ${esc(t)}">${icon('x', '')}</button></span>`).join(''));
+  $('#tx-read').innerHTML = tags.length ? `Matches posts that mention <strong>${tags.map(esc).join('</strong> or <strong>')}</strong>.` : 'Add a keyword to start the query.';
+}
+$('#tx-in').addEventListener('keydown', (e) => {
+  const v = e.target.value.trim().replace(/,$/, '');
+  if ((e.key === 'Enter' || e.key === ',') && v) { e.preventDefault(); if (!tags.includes(v.toLowerCase())) tags.push(v.toLowerCase()); e.target.value = ''; renderTags(); }
+  else if (e.key === 'Enter' || e.key === ',') e.preventDefault();
+  else if (e.key === 'Backspace' && !e.target.value && tags.length) { tags.pop(); renderTags(); }
+});
+$('#tx-box').addEventListener('click', (e) => { const b = e.target.closest('.tag__remove'); if (b) { tags.splice(Number(b.dataset.k), 1); renderTags(); } $('#tx-in').focus(); });
+renderTags();
+
+/* ---------- Interaction: modal focus ---------- */
+let opener = null;
+function openModal() {
+  opener = document.activeElement;
+  const scrim = document.createElement('div'); scrim.className = 'scrim'; scrim.id = 'mx-scrim';
+  scrim.innerHTML = `<div class="modal modal--sm" role="dialog" aria-modal="true" aria-labelledby="mx-t">
+    <div class="modal__header"><h2 class="text-h1" id="mx-t">Submit feedback</h2><button class="icon-btn" data-close aria-label="Close">${icon('x', '')}</button></div>
+    <div class="modal__body"><div class="field" style="width:100%"><label class="field__label" for="mx-msg">What should we know?</label><textarea class="textarea" id="mx-msg" aria-describedby="mx-err"></textarea><span class="field__error" id="mx-err" hidden>${icon('info')}Write a few words before sending.</span></div></div>
+    <div class="modal__footer"><button class="btn btn--secondary" data-close>Cancel</button><button class="btn btn--primary" data-send>Send feedback</button></div></div>`;
+  document.body.append(scrim);
+  const modal = $('.modal', scrim), focusables = () => $$('button, textarea', modal);
+  $('#mx-msg').focus();
+  const close = () => { scrim.remove(); opener?.focus(); };
+  scrim.addEventListener('click', (e) => {
+    if (e.target === scrim || e.target.closest('[data-close]')) close();
+    if (e.target.closest('[data-send]')) {
+      const t = $('#mx-msg'); if (!t.value.trim()) { t.setAttribute('aria-invalid', 'true'); $('#mx-err').hidden = false; t.focus(); return; }
+      close(); toast('Feedback sent. Thank you.');
+    }
+  });
+  scrim.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { e.preventDefault(); close(); }
+    if (e.key === 'Tab') { const f = focusables(), first = f[0], last = f[f.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } }
+  });
+}
+$('#mx-open').addEventListener('click', openModal);
+
+/* ---------- navigation: current section ---------- */
+const links = $$('.docs__link[href^="#"]');
+const spy = new IntersectionObserver((entries) => entries.forEach((en) => { if (en.isIntersecting) links.forEach((l) => l.setAttribute('aria-current', l.getAttribute('href') === '#' + en.target.id)); }), { rootMargin: '-10% 0px -80% 0px' });
+links.forEach((l) => { const s = document.querySelector(l.getAttribute('href')); if (s) spy.observe(s); });
+</script>
+</body>
+</html>

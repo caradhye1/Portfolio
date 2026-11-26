@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yonder AI — Interactive prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style data-ds>
+/* ==========================================================================
+   Yonder AI Design System
+   Single source of truth for the Yonder AI prototype and its documentation.
+   Layers: 1 primitives  2 semantic roles  3 base  4 components  5 app shell
+   Rule: component rules reference semantic roles only. Raw values live in :root.
+   Contrast: every text pair below was measured (WCAG 2.1); see design-system.html.
+   ========================================================================== */
+
+/* 1 + 2. TOKENS ---------------------------------------------------------- */
+:root {
+  /* Primitive: brand purple */
+  --purple-50: #f6f3ff;
+  --purple-100: #ede8ff;
+  --purple-200: #dcd2fe;
+  --purple-300: #c2b0fc;
+  --purple-400: #a487f7;
+  --purple-500: #8b63f0;
+  --purple-600: #7445e0;
+  --purple-700: #5f33c4;
+  --purple-800: #4b2a99;
+  --purple-900: #3a2374;
+
+  /* Primitive: violet-tinted neutrals */
+  --neutral-0: #ffffff;
+  --neutral-50: #faf9fc;
+  --neutral-100: #f3f1f7;
+  --neutral-200: #e7e4ee;
+  --neutral-300: #d2cedd;
+  --neutral-400: #8e88a0;
+  --neutral-500: #716b84;
+  --neutral-600: #605a73;
+  --neutral-700: #454058;
+  --neutral-800: #2d293c;
+  --neutral-900: #1b1826;
+
+  /* Primitive: reserved impact hues, success, data-viz */
+  --red-100: #fee4e2;
+  --red-600: #d92d20;
+  --red-800: #912018;
+  --amber-100: #fef0c7;
+  --amber-600: #dc6803;
+  --amber-800: #93370d;
+  --blue-100: #d1e9ff;
+  --blue-600: #1570ef;
+  --blue-800: #194185;
+  --green-100: #dcfae6;
+  --green-600: #079455;
+  --green-800: #085d3a;
+  --teal-600: #0e9384;
+  --pink-600: #dd2590;
+  --olive-600: #4f7a21;
+  --slate-600: #475467;
+  --blush-200: #f6cfd3;
+  --orchid-200: #e3c4de;
+  --lilac-300: #c4b0ea;
+
+  /* Semantic: text */
+  --color-text-primary: var(--neutral-900);
+  --color-text-body: var(--neutral-700);
+  --color-text-secondary: var(--neutral-600);
+  --color-text-tertiary: var(--neutral-500);
+  --color-text-disabled: var(--neutral-400);
+  --color-text-inverse: var(--neutral-0);
+  --color-text-link: var(--purple-600);
+  --color-text-link-hover: var(--purple-700);
+  --color-text-on-app: var(--neutral-900);
+  --color-text-on-app-secondary: var(--neutral-700);
+
+  /* Semantic: surfaces */
+  --color-surface-app: linear-gradient(120deg, var(--blush-200) 0%, var(--orchid-200) 45%, var(--lilac-300) 100%);
+  --color-surface-raised: var(--neutral-0);
+  --color-surface-sunken: var(--neutral-50);
+  --color-surface-muted: var(--neutral-100);
+  --color-surface-inverse: var(--neutral-900);
+  --color-surface-scrim: rgba(27, 24, 38, 0.48);
+
+  /* Semantic: borders */
+  --color-border-subtle: var(--neutral-200);
+  --color-border-default: var(--neutral-300);
+  --color-border-control: var(--neutral-400);
+  --color-border-strong: var(--neutral-900);
+  --color-border-brand: var(--purple-200);
+
+  /* Semantic: action (purple acts) */
+  --color-action: var(--purple-600);
+  --color-action-hover: var(--purple-700);
+  --color-action-pressed: var(--purple-800);
+  --color-action-surface: var(--purple-50);
+  --color-action-surface-hover: var(--purple-100);
+  --color-action-surface-pressed: var(--purple-200);
+  --color-action-on-surface: var(--purple-700);
+
+  /* Semantic: selection (ink selects) */
+  --color-selected: var(--neutral-900);
+  --color-selected-hover: var(--neutral-800);
+  --color-on-selected: var(--neutral-0);
+
+  /* Semantic: focus */
+  --color-focus: var(--purple-700);
+
+  /* Semantic: impact. RESERVED. Never used for anything but narrative impact. */
+  --color-impact-high: var(--red-600);
+  --color-impact-high-surface: var(--red-100);
+  --color-impact-high-text: var(--red-800);
+  --color-impact-moderate: var(--amber-600);
+  --color-impact-moderate-surface: var(--amber-100);
+  --color-impact-moderate-text: var(--amber-800);
+  --color-impact-low: var(--blue-600);
+  --color-impact-low-surface: var(--blue-100);
+  --color-impact-low-text: var(--blue-800);
+
+  /* Semantic: feedback */
+  --color-success: var(--green-600);
+  --color-success-surface: var(--green-100);
+  --color-success-text: var(--green-800);
+
+  /* Semantic: data visualisation. Categorical order is fixed. */
+  --color-viz-1: var(--teal-600);
+  --color-viz-2: var(--pink-600);
+  --color-viz-3: var(--olive-600);
+  --color-viz-4: var(--slate-600);
+  --color-viz-total: var(--purple-600);
+  --color-viz-benchmark: var(--neutral-600);
+  --color-viz-grid: var(--neutral-200);
+  --opacity-viz-area: 0.56;       /* area fill at its top edge */
+  --opacity-viz-area-soft: 0.24;  /* overlapping areas behind a line, top edge */
+  --opacity-viz-area-floor: 0.04; /* every area fades to this at its base */
+  --opacity-viz-dimmed: 0.12;
+
+  /* Typography */
+  --font-family: "Heebo", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-size-display: 32px;
+  --font-size-h1: 24px;
+  --font-size-h2: 18px;
+  --font-size-h3: 15px;
+  --font-size-body: 14px;
+  --font-size-small: 13px;
+  --font-size-caption: 12px;
+  --line-height-display: 40px;
+  --line-height-h1: 32px;
+  --line-height-h2: 26px;
+  --line-height-h3: 22px;
+  --line-height-body: 22px;
+  --line-height-small: 20px;
+  --line-height-caption: 16px;
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
+
+  /* Typography: editorial extension. Long-form pages only (case-study.html), never product UI. */
+  --font-size-hero: 56px;
+  --line-height-hero: 1.14;
+  --font-size-prose: 16px;
+  --line-height-prose: 28px;
+
+  /* Spacing: 4px base */
+  --space-0: 0px;
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 12px;
+  --space-5: 16px;
+  --space-6: 20px;
+  --space-7: 24px;
+  --space-8: 32px;
+  --space-9: 40px;
+  --space-10: 48px;
+  --space-11: 64px;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+
+  /* Borders */
+  --border-width-thin: 1px;
+  --border-width-thick: 2px;
+  --border-width-accent: 3px;
+
+  /* Elevation: violet-tinted, never gray */
+  --shadow-sm: 0 1px 2px rgba(43, 24, 92, 0.06), 0 1px 3px rgba(43, 24, 92, 0.08);
+  --shadow-md: 0 2px 4px rgba(43, 24, 92, 0.06), 0 8px 20px rgba(43, 24, 92, 0.1);
+  --shadow-lg: 0 8px 16px rgba(43, 24, 92, 0.08), 0 24px 48px rgba(43, 24, 92, 0.16);
+  --shadow-action: 0 2px 8px rgba(116, 69, 224, 0.32);
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-slow: 260ms;
+  --duration-spin: 700ms;
+  --duration-pulse: 1400ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --easing-exit: cubic-bezier(0.4, 0, 1, 1);
+  --lift: translateY(-1px);
+  --press: scale(0.98);
+
+  /* Sizing */
+  --size-icon-sm: 16px;
+  --size-icon-md: 20px;
+  --size-icon-lg: 24px;
+  --size-control-sm: 32px;
+  --size-control-md: 40px;
+  --size-control-lg: 48px;
+  --size-mark: 20px;
+  --size-avatar: 40px;
+  --size-avatar-lg: 56px;
+  --size-meter: 6px;
+  --size-scale: 10px;
+  --size-topbar: 56px;
+  --size-sidenav: 88px;
+  --size-panel: 360px;
+  --size-popover: 320px;
+  --size-content: 760px;
+  --size-content-wide: 1120px;
+  --size-modal: 1160px;
+  --size-aside: 240px;
+  --size-viewport-min: 1280px;
+  --size-textarea-min: 72px;
+  --size-tooltip-max: 240px;
+  --size-chart: 320px;
+  --size-thumb: 96px;
+  --size-label-col: 96px;
+  --size-page: 1200px;
+  --size-prose: 640px;
+
+  /* Layering */
+  --layer-sticky: 10;
+  --layer-popover: 30;
+  --layer-panel: 40;
+  --layer-modal: 50;
+  --layer-toast: 60;
+}
+
+/* 3. BASE ---------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: var(--space-0);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-body);
+  background: var(--neutral-0);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, p, ul, ol, dl, dd, blockquote, figure { margin: var(--space-0); padding: var(--space-0); }
+ul, ol { list-style: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+svg { display: block; }
+[hidden] { display: none !important; }
+
+:focus-visible {
+  outline: var(--border-width-thick) solid var(--color-focus);
+  outline-offset: var(--space-1);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: var(--border-width-thin);
+  height: var(--border-width-thin);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Type roles: one class per role, never mixed ad hoc */
+.text-display { font-size: var(--font-size-display); line-height: var(--line-height-display); font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing-tight); color: var(--color-text-primary); }
+.text-h1 { font-size: var(--font-size-h1); line-height: var(--line-height-h1); font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing-tight); color: var(--color-text-primary); }
+.text-h2 { font-size: var(--font-size-h2); line-height: var(--line-height-h2); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.text-h3 { font-size: var(--font-size-h3); line-height: var(--line-height-h3); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.text-body { font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--color-text-body); }
+.text-small { font-size: var(--font-size-small); line-height: var(--line-height-small); color: var(--color-text-secondary); }
+.text-caption { font-size: var(--font-size-caption); line-height: var(--line-height-caption); font-weight: var(--font-weight-medium); color: var(--color-text-tertiary); }
+.text-overline { font-size: var(--font-size-caption); line-height: var(--line-height-caption); font-weight: var(--font-weight-semibold); letter-spacing: var(--letter-spacing-wide); text-transform: uppercase; color: var(--color-text-secondary); }
+
+.text-lead { font-size: var(--font-size-h2); line-height: var(--line-height-h2); font-weight: var(--font-weight-regular); color: var(--color-text-body); }
+.text-hero { font-size: clamp(var(--font-size-display), 6vw, var(--font-size-hero)); line-height: var(--line-height-hero); font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing-tight); color: var(--color-text-primary); }
+.text-prose { font-size: var(--font-size-prose); line-height: var(--line-height-prose); color: var(--color-text-body); }
+.impact-text--high { color: var(--color-impact-high-text); }
+.impact-text--moderate { color: var(--color-impact-moderate-text); }
+.impact-text--low { color: var(--color-impact-low-text); }
+
+/* Layout helpers */
+.stack { display: flex; flex-direction: column; gap: var(--space-5); }
+.stack--tight { gap: var(--space-3); }
+.stack--loose { gap: var(--space-7); }
+.stack--center { align-items: center; }
+.cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.cluster--between { justify-content: space-between; }
+.cluster--nowrap { flex-wrap: nowrap; }
+.divider { border: var(--space-0); border-top: var(--border-width-thin) solid var(--color-border-subtle); margin: var(--space-0); }
+
+/* 4. COMPONENTS ---------------------------------------------------------- */
+
+/* Icon */
+.icon { width: var(--size-icon-md); height: var(--size-icon-md); flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.icon--sm { width: var(--size-icon-sm); height: var(--size-icon-sm); }
+.icon--lg { width: var(--size-icon-lg); height: var(--size-icon-lg); }
+.icon--solid { fill: currentColor; }
+
+/* Link */
+.link { color: var(--color-text-link); font-weight: var(--font-weight-medium); text-decoration: underline; text-decoration-color: var(--color-border-brand); text-underline-offset: var(--space-1); border-radius: var(--radius-xs); cursor: pointer; background: none; border: var(--space-0); padding: var(--space-0); transition: color var(--duration-fast) var(--easing-standard), text-decoration-color var(--duration-fast) var(--easing-standard); }
+.link:hover { color: var(--color-text-link-hover); text-decoration-color: currentColor; }
+.link:active { color: var(--color-action-pressed); }
+.link[aria-disabled="true"], .link:disabled { color: var(--color-text-disabled); text-decoration: none; cursor: not-allowed; }
+
+/* Button */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-3);
+  min-height: var(--size-control-md); padding: var(--space-0) var(--space-5);
+  border: var(--border-width-thin) solid transparent; border-radius: var(--radius-md);
+  font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: var(--font-weight-semibold);
+  white-space: nowrap; cursor: pointer; text-decoration: none;
+  transition: background-color var(--duration-base) var(--easing-standard), border-color var(--duration-base) var(--easing-standard), color var(--duration-base) var(--easing-standard), box-shadow var(--duration-base) var(--easing-standard), transform var(--duration-fast) var(--easing-standard);
+}
+.btn:active:not(:disabled) { transform: var(--press); }
+.btn:disabled, .btn[aria-disabled="true"] { background: var(--color-surface-muted); border-color: transparent; color: var(--color-text-disabled); box-shadow: none; cursor: not-allowed; }
+
+.btn--primary { background: var(--color-action); color: var(--color-text-inverse); box-shadow: var(--shadow-action); }
+.btn--primary:hover:not(:disabled) { background: var(--color-action-hover); }
+.btn--primary:active:not(:disabled) { background: var(--color-action-pressed); box-shadow: none; }
+
+.btn--secondary { background: var(--color-surface-raised); color: var(--color-text-primary); border-color: var(--color-border-control); }
+.btn--secondary:hover:not(:disabled) { background: var(--color-surface-muted); border-color: var(--color-border-strong); }
+.btn--secondary:active:not(:disabled) { background: var(--neutral-200); }
+
+.btn--tonal { background: var(--color-action-surface-hover); color: var(--color-action-on-surface); }
+.btn--tonal:hover:not(:disabled) { background: var(--color-action-surface-pressed); }
+.btn--tonal:active:not(:disabled) { background: var(--purple-300); }
+
+.btn--ghost { background: transparent; color: var(--color-action-on-surface); }
+.btn--ghost:hover:not(:disabled) { background: var(--color-action-surface-hover); }
+.btn--ghost:active:not(:disabled) { background: var(--color-action-surface-pressed); }
+.btn--ghost:disabled { background: transparent; }
+
+/* Destructive is ink, not red: red belongs to High impact. */
+.btn--destructive { background: var(--color-surface-raised); color: var(--color-text-primary); border-color: var(--color-border-strong); }
+.btn--destructive:hover:not(:disabled) { background: var(--color-surface-inverse); color: var(--color-text-inverse); }
+.btn--destructive:active:not(:disabled) { background: var(--neutral-800); color: var(--color-text-inverse); }
+
+/* Success is a resting confirmation state, so it keeps its colour while inert. */
+.btn--success, .btn--success:disabled { background: var(--color-success-surface); color: var(--color-success-text); border-color: var(--color-success); cursor: default; }
+
+.btn--sm { min-height: var(--size-control-sm); padding: var(--space-0) var(--space-4); font-size: var(--font-size-small); line-height: var(--line-height-small); border-radius: var(--radius-sm); }
+.btn--lg { min-height: var(--size-control-lg); padding: var(--space-0) var(--space-7); }
+.btn--block { width: 100%; }
+
+.btn[aria-busy="true"] { cursor: progress; }
+.spinner { width: var(--size-icon-sm); height: var(--size-icon-sm); border: var(--border-width-thick) solid currentColor; border-right-color: transparent; border-radius: var(--radius-pill); animation: spin var(--duration-spin) linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Icon button */
+.icon-btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  width: var(--size-control-md); height: var(--size-control-md); flex-shrink: 0;
+  border: var(--border-width-thin) solid transparent; border-radius: var(--radius-pill);
+  background: transparent; color: var(--color-text-secondary); cursor: pointer;
+  transition: background-color var(--duration-base) var(--easing-standard), color var(--duration-base) var(--easing-standard), border-color var(--duration-base) var(--easing-standard), transform var(--duration-fast) var(--easing-standard);
+}
+.icon-btn:hover:not(:disabled) { background: var(--color-surface-muted); color: var(--color-text-primary); }
+.icon-btn:active:not(:disabled) { background: var(--neutral-200); transform: var(--press); }
+.icon-btn:disabled { color: var(--color-text-disabled); cursor: not-allowed; }
+.icon-btn--raised { background: var(--color-surface-raised); color: var(--color-action-on-surface); box-shadow: var(--shadow-sm); }
+.icon-btn--raised:hover:not(:disabled) { background: var(--color-action-surface); color: var(--color-action-on-surface); box-shadow: var(--shadow-md); }
+.icon-btn--raised:active:not(:disabled) { background: var(--color-action-surface-hover); }
+.icon-btn--raised:disabled { background: var(--color-surface-muted); box-shadow: none; }
+.icon-btn--sm { width: var(--size-control-sm); height: var(--size-control-sm); }
+.icon-btn[aria-pressed="true"] { color: var(--color-action); background: var(--color-action-surface-hover); }
+.icon-btn[aria-pressed="true"] .icon { fill: currentColor; }
+.icon-btn[aria-expanded="true"] { background: var(--color-selected); color: var(--color-on-selected); }
+.icon-btn__count {
+  position: absolute; top: calc(var(--space-2) * -1); right: calc(var(--space-2) * -1);
+  min-width: var(--size-mark); height: var(--size-mark); padding: var(--space-0) var(--space-2);
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-pill); background: var(--color-selected); color: var(--color-on-selected);
+  font-size: var(--font-size-caption); line-height: var(--line-height-caption); font-weight: var(--font-weight-bold);
+  border: var(--border-width-thick) solid var(--color-surface-raised);
+}
+
+/* Form field */
+.field { display: flex; flex-direction: column; gap: var(--space-2); }
+.field__label { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-small); line-height: var(--line-height-small); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.field__hint { font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-tertiary); }
+.field__error { display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-caption); line-height: var(--line-height-caption); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.field__row { display: flex; align-items: center; gap: var(--space-4); }
+
+.input, .textarea, .select {
+  width: 100%; min-height: var(--size-control-md); padding: var(--space-3) var(--space-4);
+  border: var(--border-width-thin) solid var(--color-border-control); border-radius: var(--radius-md);
+  background: var(--color-surface-raised); color: var(--color-text-primary);
+  font-size: var(--font-size-body); line-height: var(--line-height-body);
+  transition: border-color var(--duration-base) var(--easing-standard), box-shadow var(--duration-base) var(--easing-standard), background-color var(--duration-base) var(--easing-standard);
+}
+.input::placeholder, .textarea::placeholder { color: var(--color-text-tertiary); opacity: 1; }
+.input:hover:not(:disabled), .textarea:hover:not(:disabled), .select:hover:not(:disabled) { border-color: var(--color-border-strong); }
+.input:focus-visible, .textarea:focus-visible, .select:focus-visible { outline: var(--border-width-thick) solid var(--color-focus); outline-offset: var(--space-0); border-color: var(--color-focus); }
+.input:disabled, .textarea:disabled, .select:disabled { background: var(--color-surface-muted); border-color: var(--color-border-default); color: var(--color-text-disabled); cursor: not-allowed; }
+.input[readonly] { background: var(--color-surface-sunken); border-style: dashed; }
+.input[aria-invalid="true"], .textarea[aria-invalid="true"] { border-color: var(--color-border-strong); border-width: var(--border-width-thick); }
+.textarea { min-height: var(--size-textarea-min); resize: vertical; }
+.select { appearance: none; padding-right: var(--space-8); cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, var(--neutral-600) 50%), linear-gradient(135deg, var(--neutral-600) 50%, transparent 50%); background-position: calc(100% - var(--space-5)) 50%, calc(100% - var(--space-4)) 50%; background-size: var(--space-2) var(--space-2); background-repeat: no-repeat; }
+.select--auto, .input--auto { width: auto; }
+.input--sm, .select--sm { min-height: var(--size-control-sm); padding-top: var(--space-2); padding-bottom: var(--space-2); font-size: var(--font-size-small); line-height: var(--line-height-small); }
+
+/* Checkbox */
+.checkbox { display: inline-flex; align-items: center; gap: var(--space-3); min-height: var(--size-control-sm); cursor: pointer; color: var(--color-text-body); }
+.checkbox input { appearance: none; width: var(--size-icon-md); height: var(--size-icon-md); margin: var(--space-0); flex-shrink: 0; border: var(--border-width-thin) solid var(--color-border-control); border-radius: var(--radius-xs); background: var(--color-surface-raised); cursor: pointer; transition: background-color var(--duration-fast) var(--easing-standard), border-color var(--duration-fast) var(--easing-standard); }
+.checkbox input:hover:not(:disabled) { border-color: var(--color-border-strong); }
+.checkbox input:active:not(:disabled) { background: var(--color-surface-muted); }
+.checkbox input:checked { background-color: var(--color-selected); border-color: var(--color-selected); background-image: linear-gradient(45deg, transparent 44%, var(--neutral-0) 44%, var(--neutral-0) 56%, transparent 56%), linear-gradient(-45deg, transparent 44%, var(--neutral-0) 44%, var(--neutral-0) 56%, transparent 56%); background-size: 28% 34%, 46% 60%; background-position: 24% 68%, 78% 50%; background-repeat: no-repeat; }
+.checkbox input:disabled { background-color: var(--color-surface-muted); border-color: var(--color-border-default); cursor: not-allowed; }
+.checkbox:has(input:disabled) { color: var(--color-text-disabled); cursor: not-allowed; }
+
+/* Tag + tag input */
+.tag { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--size-icon-lg); padding: var(--space-0) var(--space-3); border-radius: var(--radius-sm); background: var(--color-action-surface-hover); color: var(--purple-800); font-size: var(--font-size-small); line-height: var(--line-height-small); font-weight: var(--font-weight-medium); }
+.tag--neutral { background: var(--color-surface-muted); color: var(--color-text-body); }
+.tag__remove { display: inline-flex; align-items: center; justify-content: center; width: var(--size-icon-sm); height: var(--size-icon-sm); margin-right: calc(var(--space-2) * -1); padding: var(--space-0); border: var(--space-0); border-radius: var(--radius-xs); background: transparent; color: inherit; cursor: pointer; transition: background-color var(--duration-fast) var(--easing-standard); }
+.tag__remove:hover { background: var(--color-action-surface-pressed); }
+.tag__remove:active { background: var(--purple-300); }
+.tag__remove:disabled { color: var(--color-text-disabled); cursor: not-allowed; }
+.tag__remove .icon { width: var(--space-4); height: var(--space-4); }
+
+.tag-input { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); min-height: var(--size-control-md); padding: var(--space-2) var(--space-3); border: var(--border-width-thin) solid var(--color-border-control); border-radius: var(--radius-md); background: var(--color-surface-raised); cursor: text; transition: border-color var(--duration-base) var(--easing-standard); }
+.tag-input:hover { border-color: var(--color-border-strong); }
+.tag-input:focus-within { outline: var(--border-width-thick) solid var(--color-focus); border-color: var(--color-focus); }
+.tag-input__field { flex: 1; min-width: var(--size-thumb); border: var(--space-0); outline: none; background: transparent; padding: var(--space-2); font-size: var(--font-size-body); line-height: var(--line-height-small); color: var(--color-text-primary); }
+.tag-input__field::placeholder { color: var(--color-text-tertiary); opacity: 1; }
+.tag-input[aria-disabled="true"] { background: var(--color-surface-muted); border-color: var(--color-border-default); cursor: not-allowed; }
+
+/* Badge */
+.badge { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--size-icon-lg); padding: var(--space-0) var(--space-3); border-radius: var(--radius-pill); background: var(--color-surface-muted); color: var(--color-text-body); font-size: var(--font-size-caption); line-height: var(--line-height-caption); font-weight: var(--font-weight-semibold); white-space: nowrap; }
+.badge .icon { width: var(--space-4); height: var(--space-4); }
+.badge--impact-high { background: var(--color-impact-high-surface); color: var(--color-impact-high-text); }
+.badge--impact-moderate { background: var(--color-impact-moderate-surface); color: var(--color-impact-moderate-text); }
+.badge--impact-low { background: var(--color-impact-low-surface); color: var(--color-impact-low-text); }
+.badge--brand { background: var(--color-action-surface-hover); color: var(--purple-800); }
+.badge--success { background: var(--color-success-surface); color: var(--color-success-text); }
+.badge--outline { background: var(--color-surface-raised); box-shadow: inset 0 0 0 var(--border-width-thin) var(--color-border-control); }
+.badge--ink { background: var(--color-surface-inverse); color: var(--color-text-inverse); }
+
+/* Impact level glyph: three bars, filled count carries the level without colour */
+.level { display: inline-flex; align-items: flex-end; gap: var(--space-1); height: var(--space-4); }
+.level i { width: var(--border-width-accent); border-radius: var(--space-1); background: currentColor; opacity: 0.28; }
+.level i:nth-child(1) { height: 40%; }
+.level i:nth-child(2) { height: 70%; }
+.level i:nth-child(3) { height: 100%; }
+.level--1 i:nth-child(-n+1), .level--2 i:nth-child(-n+2), .level--3 i:nth-child(-n+3) { opacity: 1; }
+
+/* Impact mark: compact letter square for dense lists */
+.impact-mark { display: inline-flex; align-items: center; justify-content: center; width: var(--size-mark); height: var(--size-mark); flex-shrink: 0; border-radius: var(--radius-xs); font-size: var(--font-size-caption); line-height: var(--line-height-caption); font-weight: var(--font-weight-bold); }
+.impact-mark--high { background: var(--color-impact-high-surface); color: var(--color-impact-high-text); box-shadow: inset 0 0 0 var(--border-width-thin) var(--color-impact-high); }
+.impact-mark--moderate { background: var(--color-impact-moderate-surface); color: var(--color-impact-moderate-text); box-shadow: inset 0 0 0 var(--border-width-thin) var(--color-impact-moderate); }
+.impact-mark--low { background: var(--color-impact-low-surface); color: var(--color-impact-low-text); box-shadow: inset 0 0 0 var(--border-width-thin) var(--color-impact-low); }
+
+/* Chip: toggle. Ink when on. */
+.chip { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--size-control-sm); padding: var(--space-0) var(--space-4); border: var(--border-width-thin) solid var(--color-border-control); border-radius: var(--radius-pill); background: var(--color-surface-raised); color: var(--color-text-body); font-size: var(--font-size-small); line-height: var(--line-height-small); font-weight: var(--font-weight-medium); cursor: pointer; transition: background-color var(--duration-base) var(--easing-standard), border-color var(--duration-base) var(--easing-standard), color var(--duration-base) var(--easing-standard), transform var(--duration-fast) var(--easing-standard); }
+.chip:hover:not(:disabled) { border-color: var(--color-border-strong); color: var(--color-text-primary); }
+.chip:active:not(:disabled) { transform: var(--press); background: var(--color-surface-muted); }
+.chip[aria-pressed="true"] { background: var(--color-selected); border-color: var(--color-selected); color: var(--color-on-selected); }
+.chip[aria-pressed="true"]:hover:not(:disabled) { background: var(--color-selected-hover); color: var(--color-on-selected); }
+.chip:disabled { background: var(--color-surface-muted); border-color: var(--color-border-default); color: var(--color-text-disabled); cursor: not-allowed; }
+
+/* Tabs: segmented, ink when selected */
+.tabs { display: inline-flex; flex-wrap: wrap; gap: var(--space-3); }
+.tabs__tab { min-height: var(--size-control-md); padding: var(--space-0) var(--space-5); border: var(--border-width-thin) solid var(--color-border-default); border-radius: var(--radius-md); background: var(--color-surface-raised); color: var(--color-text-body); font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: var(--font-weight-medium); cursor: pointer; box-shadow: var(--shadow-sm); transition: background-color var(--duration-base) var(--easing-standard), color var(--duration-base) var(--easing-standard), border-color var(--duration-base) var(--easing-standard), transform var(--duration-fast) var(--easing-standard); }
+.tabs__tab:hover:not(:disabled) { border-color: var(--color-border-strong); color: var(--color-text-primary); }
+.tabs__tab:active:not(:disabled) { transform: var(--press); }
+.tabs__tab[aria-selected="true"] { background: var(--color-selected); border-color: var(--color-selected); color: var(--color-on-selected); font-weight: var(--font-weight-semibold); box-shadow: none; }
+.tabs__tab:disabled { background: var(--color-surface-muted); color: var(--color-text-disabled); box-shadow: none; cursor: not-allowed; }
+
+/* Card */
+.card { background: var(--color-surface-raised); border: var(--border-width-thin) solid var(--color-border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: var(--space-6) var(--space-7); }
+.card--flat { box-shadow: none; }
+.card--interactive { cursor: pointer; text-decoration: none; color: inherit; display: block; transition: box-shadow var(--duration-base) var(--easing-standard), transform var(--duration-base) var(--easing-standard), border-color var(--duration-base) var(--easing-standard); }
+.card--interactive:hover { box-shadow: var(--shadow-md); transform: var(--lift); border-color: var(--color-border-brand); }
+.card--interactive:active { transform: none; box-shadow: var(--shadow-sm); }
+.card--interactive[aria-disabled="true"] { box-shadow: none; transform: none; cursor: not-allowed; background: var(--color-surface-muted); }
+
+/* Stat card: banded header + body, used on faction profiles */
+.stat-card { display: flex; flex-direction: column; background: var(--color-surface-raised); border: var(--border-width-thin) solid var(--color-border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: visible; }
+.stat-card__header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-3) var(--space-5); background: var(--color-action-surface); border-bottom: var(--border-width-thin) solid var(--color-border-brand); border-radius: var(--radius-lg) var(--radius-lg) var(--space-0) var(--space-0); }
+.stat-card__body { flex: 1; padding: var(--space-6) var(--space-5); }
+
+/* Narrative card */
+.narrative-card { position: relative; background: var(--color-surface-raised); border: var(--border-width-thin) solid var(--color-border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: var(--space-6) var(--space-7); transition: box-shadow var(--duration-base) var(--easing-standard), transform var(--duration-base) var(--easing-standard), border-color var(--duration-base) var(--easing-standard); }
+.narrative-card:hover { box-shadow: var(--shadow-md); transform: var(--lift); border-color: var(--color-border-brand); }
+.narrative-card.is-flagged { border-left: var(--border-width-accent) solid var(--color-selected); }
+.narrative-card__header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-5); }
+.narrative-card__title { border: var(--space-0); background: none; padding: var(--space-0); text-align: left; cursor: pointer; font-size: var(--font-size-h2); line-height: var(--line-height-h2); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); border-radius: var(--radius-xs); transition: color var(--duration-fast) var(--easing-standard); }
+.narrative-card__title:hover { color: var(--color-text-link-hover); text-decoration: underline; text-underline-offset: var(--space-2); }
+.narrative-card__title:active { color: var(--color-action-pressed); }
+.narrative-card__title:disabled { color: var(--color-text-disabled); cursor: not-allowed; text-decoration: none; }
+.narrative-card__actions { display: flex; gap: var(--space-2); flex-shrink: 0; }
+.narrative-card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-3); }
+.narrative-card__body { margin-top: var(--space-5); display: flex; flex-direction: column; gap: var(--space-5); }
+.narrative-card.is-collapsed .narrative-card__body { display: none; }
+.narrative-card__quote { padding-left: var(--space-5); border-left: var(--border-width-accent) solid var(--color-border-subtle); font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--color-text-body); }
+.narrative-card__footer { display: flex; align-items: center; gap: var(--space-4); padding-top: var(--space-4); border-top: var(--border-width-thin) solid var(--color-border-subtle); }
+
+/* Meter: fill scales with transform, never width */
+.meter { flex: 1; height: var(--size-meter); border-radius: var(--radius-pill); background: var(--color-surface-muted); overflow: hidden; }
+.meter__fill { display: block; height: 100%; width: 100%; border-radius: var(--radius-pill); background: var(--color-action); transform-origin: left center; transform: scaleX(var(--meter-value, 0)); transition: transform var(--duration-slow) var(--easing-standard); }
+.meter--benchmark .meter__fill { background: var(--color-viz-benchmark); }
+
+/* Scale: three-step impact scale with a labelled pointer */
+.scale { display: inline-flex; flex-direction: column; gap: var(--space-2); }
+.scale__label { font-size: var(--font-size-small); line-height: var(--line-height-small); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+.scale__track { display: grid; grid-template-columns: repeat(3, var(--space-9)); gap: var(--space-1); }
+.scale__seg { height: var(--size-scale); background: var(--color-surface-muted); position: relative; }
+.scale__seg:first-child { border-radius: var(--radius-pill) var(--space-0) var(--space-0) var(--radius-pill); }
+.scale__seg:last-child { border-radius: var(--space-0) var(--radius-pill) var(--radius-pill) var(--space-0); }
+.scale__seg--low { background: var(--color-impact-low); }
+.scale__seg--moderate { background: var(--color-impact-moderate); }
+.scale__seg--high { background: var(--color-impact-high); }
+.scale__seg--step-1 { background: var(--neutral-300); }
+.scale__seg--step-2 { background: var(--neutral-500); }
+.scale__seg--step-3 { background: var(--neutral-900); }
+.scale__seg.is-current::after { content: ""; position: absolute; left: 50%; bottom: calc(var(--space-3) * -1); transform: translateX(-50%); border: var(--space-2) solid transparent; border-bottom-color: var(--color-text-primary); border-top-width: var(--space-0); }
+.scale--label-1 .scale__label { padding-left: var(--space-0); }
+.scale--label-2 .scale__label { text-align: center; }
+.scale--label-3 .scale__label { text-align: right; }
+
+/* Avatar: faction initials on ink or tint, never an impact hue */
+.avatar { display: inline-flex; align-items: center; justify-content: center; width: var(--size-avatar); height: var(--size-avatar); flex-shrink: 0; border-radius: var(--radius-md); background: var(--color-action-surface-hover); color: var(--purple-800); font-size: var(--font-size-small); line-height: var(--line-height-small); font-weight: var(--font-weight-bold); }
+.avatar--ink { background: var(--color-surface-inverse); color: var(--color-text-inverse); }
+.avatar--lg { width: var(--size-avatar-lg); height: var(--size-avatar-lg); font-size: var(--font-size-h2); border-radius: var(--radius-lg); }
+.avatar--brand { background: var(--color-action); color: var(--color-text-inverse); border-radius: var(--radius-pill); }
+
+/* Callout */
+.callout { display: flex; gap: var(--space-4); padding: var(--space-4) var(--space-5); border-radius: var(--radius-md); background: var(--color-action-surface); border: var(--border-width-thin) solid var(--color-border-brand); color: var(--color-text-body); font-size: var(--font-size-small); line-height: var(--line-height-small); }
+.callout .icon { color: var(--color-action); }
+.callout strong { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
+
+/* Tooltip: attribute-driven, shown on hover and keyboard focus */
+[data-tooltip] { position: relative; }
+[data-tooltip]::after { content: attr(data-tooltip); position: absolute; left: 50%; bottom: calc(100% + var(--space-3)); transform: translateX(-50%) translateY(var(--space-2)); width: max-content; max-width: var(--size-tooltip-max); padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); background: var(--color-surface-inverse); color: var(--color-text-inverse); font-size: var(--font-size-caption); line-height: var(--line-height-caption); font-weight: var(--font-weight-medium); letter-spacing: var(--letter-spacing-normal); text-transform: none; text-align: left; white-space: normal; box-shadow: var(--shadow-md); opacity: 0; pointer-events: none; z-index: var(--layer-popover); transition: opacity var(--duration-fast) var(--easing-standard), transform var(--duration-fast) var(--easing-standard); }
+[data-tooltip]:hover::after, [data-tooltip]:focus-visible::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+[data-tooltip-side="bottom"]::after { bottom: auto; top: calc(100% + var(--space-3)); }
+[data-tooltip-side="left"]::after { left: auto; right: 0; transform: translateY(var(--space-2)); }
+[data-tooltip-side="left"]:hover::after, [data-tooltip-side="left"]:focus-visible::after { transform: translateY(0); }
+
+.info-btn { display: inline-flex; align-items: center; justify-content: center; width: var(--size-icon-lg); height: var(--size-icon-lg); padding: var(--space-0); border: var(--space-0); border-radius: var(--radius-pill); background: transparent; color: var(--color-text-tertiary); cursor: help; transition: color var(--duration-fast) var(--easing-standard), background-color var(--duration-fast) var(--easing-standard); }
+.info-btn:hover { color: var(--color-action); background: var(--color-action-surface-hover); }
+.info-btn:active { color: var(--color-action-pressed); }
+.info-btn:disabled { color: var(--color-text-disabled); cursor: not-allowed; }
+
+/* Popover + menu */
+.popover { position: absolute; z-index: var(--layer-popover); width: var(--size-popover); background: var(--color-surface-raised); border: var(--border-width-thin) solid var(--color-border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: var(--space-5); transform-origin: top right; animation: pop-in var(--duration-base) var(--easing-standard); }
+.popover--menu { width: auto; min-width: var(--size-aside); padding: var(--space-3); }
+.popover.is-static { animation: none; }
+@keyframes pop-in { from { opacity: 0; transform: translateY(calc(var(--space-2) * -1)) scale(0.98); } to { opacity: 1; transform: none; } }
+.menu__item { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); width: 100%; min-height: var(--size-control-md); padding: var(--space-0) var(--space-4); border: var(--space-0); border-radius: var(--radius-sm); background: transparent; color: var(--color-text-body); font-size: var(--font-size-body); line-height: var(--line-height-body); text-align: left; cursor: pointer; transition: background-color var(--duration-fast) var(--easing-standard), color var(--duration-fast) var(--easing-standard); }
+.menu__item:hover:not(:disabled) { background: var(--color-surface-muted); color: var(--color-text-primary); }
+.menu__item:active:not(:disabled) { background: var(--neutral-200); }
+.menu__item[aria-checked="true"] { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
+.menu__item:disabled { color: var(--color-text-disabled); cursor: not-allowed; }
+a.menu__item { text-decoration: none; justify-content: flex-start; }
+.menu__item .icon { visibility: hidden; }
+.menu__item[aria-checked="true"] .icon { visibility: visible; }
+
+/* Scrim + modal */
+.scrim { position: fixed; inset: 0; z-index: var(--layer-modal); display: flex; align-items: center; justify-content: center; padding: var(--space-8); background: var(--color-surface-scrim); animation: fade-in var(--duration-base) var(--easing-standard); }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.modal { display: flex; flex-direction: column; width: 100%; max-width: var(--size-modal); max-height: 100%; background: var(--color-surface-raised); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); animation: rise-in var(--duration-slow) var(--easing-standard); }
+.modal--full { height: 100%; }
+.modal--sm { max-width: calc(var(--size-panel) + var(--space-11)); }
+@keyframes rise-in { from { opacity: 0; transform: translateY(var(--space-5)); } to { opacity: 1; transform: none; } }
+.modal__header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-5); padding: var(--space-7) var(--space-8) var(--space-5); }
+.modal__body { padding: var(--space-0) var(--space-8) var(--space-8); overflow-y: auto; }
+.modal__footer { display: flex; justify-content: flex-end; gap: var(--space-3); padding: var(--space-5) var(--space-8); border-top: var(--border-width-thin) solid var(--color-border-subtle); }
+
+/* Side panel */
+.panel { position: fixed; top: var(--size-topbar); bottom: 0; left: 0; z-index: var(--layer-panel); display: flex; flex-direction: column; width: var(--size-panel); background: var(--color-surface-raised); box-shadow: var(--shadow-lg); border-radius: var(--space-0) var(--radius-xl) var(--space-0) var(--space-0); transform: translateX(-100%); visibility: hidden; transition: transform var(--duration-slow) var(--easing-standard), visibility var(--duration-slow); }
+.panel.is-open { transform: none; visibility: visible; }
+.panel__header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-5) var(--space-6); border-bottom: var(--border-width-thin) solid var(--color-border-subtle); }
+.panel__body { flex: 1; overflow-y: auto; padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-7); }
+.panel__footer { display: flex; gap: var(--space-3); padding: var(--space-5) var(--space-6); border-top: var(--border-width-thin) solid var(--color-border-subtle); }
+
+/* Sortable list row */
+.list-row { display: flex; align-items: center; gap: var(--space-3); min-height: var(--size-control-lg); padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4); border: var(--border-width-thin) solid var(--color-border-subtle); border-radius: var(--radius-md); background: var(--color-surface-raised); box-shadow: var(--shadow-sm); }
+.list-row__label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--font-size-small); line-height: var(--line-height-small); color: var(--color-text-primary); }
+.list-row__actions { display: flex; }
+
+/* Toast */
+.toast-region { position: fixed; left: 50%; bottom: var(--space-7); transform: translateX(-50%); z-index: var(--layer-toast); display: flex; flex-direction: column; gap: var(--space-3); align-items: center; }
+.toast { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5); border-radius: var(--radius-md); background: var(--color-surface-inverse); color: var(--color-text-inverse); font-size: var(--font-size-body); line-height: var(--line-height-body); box-shadow: var(--shadow-lg); animation: rise-in var(--duration-slow) var(--easing-standard); }
+.toast .icon-btn { color: inherit; }
+.toast .icon-btn:hover:not(:disabled) { background: var(--neutral-700); color: inherit; }
+.toast .link { color: var(--purple-300); text-decoration-color: currentColor; }
+.toast .link:hover { color: var(--neutral-0); }
+
+/* Empty state */
+.empty-state { display: flex; flex-direction: column; align-items: center; gap: var(--space-4); padding: var(--space-10) var(--space-7); text-align: center; background: var(--color-surface-raised); border: var(--border-width-thin) dashed var(--color-border-control); border-radius: var(--radius-lg); }
+.empty-state__icon { display: inline-flex; align-items: center; justify-content: center; width: var(--size-avatar-lg); height: var(--size-avatar-lg); border-radius: var(--radius-pill); background: var(--color-action-surface-hover); color: var(--color-action); }
+.empty-state p { max-width: var(--size-panel); }
+
+/* Table */
+.table { width: 100%; border-collapse: collapse; font-size: var(--font-size-small); line-height: var(--line-height-small); }
+.table caption { text-align: left; padding-bottom: var(--space-3); font-size: var(--font-size-caption); color: var(--color-text-tertiary); }
+.table th { padding: var(--space-3) var(--space-4); text-align: left; font-size: var(--font-size-caption); line-height: var(--line-height-caption); font-weight: var(--font-weight-semibold); letter-spacing: var(--letter-spacing-wide); text-transform: uppercase; color: var(--color-text-secondary); border-bottom: var(--border-width-thin) solid var(--color-border-default); }
+.table td { padding: var(--space-3) var(--space-4); color: var(--color-text-body); border-bottom: var(--border-width-thin) solid var(--color-border-subtle); vertical-align: middle; }
+.table tbody tr:hover td { background: var(--color-surface-sunken); }
+.table td.table__actions, .table th.table__actions { width: var(--size-control-sm); padding-left: var(--space-0); text-align: right; }
+.table tbody tr:last-child td { border-bottom: var(--space-0); }
+
+/* Pagination: ink marks the current page, like every other selection */
+.pagination { display: flex; align-items: center; justify-content: center; gap: var(--space-2); }
+.pagination__page { display: inline-flex; align-items: center; justify-content: center; min-width: var(--size-control-sm); height: var(--size-control-sm); padding: var(--space-0) var(--space-3); border: var(--border-width-thin) solid transparent; border-radius: var(--radius-pill); background: transparent; color: var(--color-text-body); font-family: var(--font-family); font-size: var(--font-size-small); line-height: var(--line-height-small); font-weight: var(--font-weight-medium); cursor: pointer; transition: background-color var(--duration-fast) var(--easing-standard), color var(--duration-fast) var(--easing-standard), transform var(--duration-fast) var(--easing-standard); }
+.pagination__page:hover:not(:disabled) { background: var(--color-surface-muted); color: var(--color-text-primary); }
+.pagination__page:active:not(:disabled) { background: var(--neutral-200); transform: var(--press); }
+.pagination__page:disabled { color: var(--color-text-disabled); cursor: not-allowed; }
+.pagination__page[aria-current="page"] { background: var(--color-selected); color: var(--color-on-selected); font-weight: var(--font-weight-semibold); }
+.pagination__page[aria-current="page"]:hover:not(:disabled) { background: var(--color-selected-hover); color: var(--color-on-selected); }
+
+/* Thread: an original post and the replies it drew, joined by a connector */
+.thread { display: flex; flex-direction: column; gap: var(--space-6); }
+.thread__post { display: flex; flex-direction: column; gap: var(--space-2); }
+.thread__text { color: var(--color-text-primary); }
+.thread__meta { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-tertiary); }
+.thread__meta li + li::before { content: "·"; margin-right: var(--space-3); }
+.thread__meta strong { color: var(--color-text-secondary); font-weight: var(--font-weight-semibold); }
+.thread__replies { display: flex; flex-direction: column; gap: var(--space-6); margin-left: var(--space-4); padding-left: var(--space-7); border-left: var(--border-width-thick) solid var(--color-border-subtle); }
+.thread__replies > li { position: relative; }
+.thread__replies > li::before { content: ""; position: absolute; top: var(--space-4); left: calc((var(--space-7) + var(--border-width-thick)) * -1); width: var(--space-5); border-top: var(--border-width-thick) solid var(--color-border-subtle); }
+
+.table code, code.token { font-family: var(--font-family); font-weight: var(--font-weight-medium); font-size: var(--font-size-caption); padding: var(--space-1) var(--space-2); border-radius: var(--radius-xs); background: var(--color-surface-muted); color: var(--color-text-primary); }
+
+/* Skeleton */
+.skeleton { border-radius: var(--radius-sm); background: var(--color-surface-muted); min-height: var(--space-5); animation: pulse var(--duration-pulse) var(--easing-standard) infinite; }
+@keyframes pulse { 50% { opacity: 0.5; } }
+
+/* Legend */
+.legend { display: flex; flex-direction: column; gap: var(--space-2); }
+.legend__item { display: flex; align-items: center; gap: var(--space-3); min-height: var(--size-control-sm); padding: var(--space-0) var(--space-3); margin-left: calc(var(--space-3) * -1); border: var(--space-0); border-radius: var(--radius-sm); background: transparent; color: var(--color-text-body); font-size: var(--font-size-small); line-height: var(--line-height-small); text-align: left; cursor: pointer; transition: background-color var(--duration-fast) var(--easing-standard), opacity var(--duration-fast) var(--easing-standard); }
+.legend__item:hover:not(:disabled) { background: var(--color-surface-muted); }
+.legend__item:active:not(:disabled) { background: var(--neutral-200); }
+.legend__item[aria-pressed="false"] { color: var(--color-text-tertiary); text-decoration: line-through; }
+.legend__item[aria-pressed="false"] .legend__swatch { opacity: var(--opacity-viz-dimmed); }
+.legend__item:disabled { color: var(--color-text-disabled); cursor: not-allowed; }
+.legend__item--static { cursor: default; }
+.legend__item--static:hover { background: transparent; }
+.legend__swatch { width: var(--space-7); height: var(--space-2); border-radius: var(--radius-pill); flex-shrink: 0; background: currentColor; }
+.legend__swatch--dashed { background: repeating-linear-gradient(90deg, var(--color-viz-benchmark) 0 var(--space-2), transparent var(--space-2) var(--space-3)); }
+
+/* Chart primitives (inline SVG) */
+.chart { position: relative; width: 100%; }
+.chart svg { width: 100%; height: auto; overflow: visible; }
+.chart:focus-visible { border-radius: var(--radius-md); }
+.chart__grid { stroke: var(--color-viz-grid); stroke-width: 1; }
+.chart__tick { fill: var(--color-text-tertiary); font-size: var(--font-size-caption); font-family: var(--font-family); }
+.chart__axis-title { fill: var(--color-text-primary); font-size: var(--font-size-caption); font-weight: var(--font-weight-semibold); font-family: var(--font-family); }
+/* Areas fade from the series hue to near-clear; a solid top edge carries the value. The chart must include the
+   viz-fade gradients (see chartDefs in the prototype). Colour comes from the .viz-n class on each gradient. */
+.chart__fade stop { stop-color: currentColor; stop-opacity: var(--fade-start, var(--opacity-viz-area)); }
+.chart__fade stop + stop { stop-opacity: var(--opacity-viz-area-floor); }
+.chart__fade--soft { --fade-start: var(--opacity-viz-area-soft); }
+.chart__area { stroke: none; transition: opacity var(--duration-base) var(--easing-standard); }
+.chart__area.viz-1 { fill: url(#viz-fade-1); }
+.chart__area.viz-2 { fill: url(#viz-fade-2); }
+.chart__area.viz-3 { fill: url(#viz-fade-3); }
+.chart__area.viz-4 { fill: url(#viz-fade-4); }
+.chart__area--soft.viz-1 { fill: url(#viz-fade-soft-1); }
+.chart__area--soft.viz-2 { fill: url(#viz-fade-soft-2); }
+.chart__area--soft.viz-3 { fill: url(#viz-fade-soft-3); }
+.chart__area--soft.viz-4 { fill: url(#viz-fade-soft-4); }
+.chart .chart__edge { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.chart .chart__edge--soft { stroke-width: 1.5; }
+.chart__grid--base { stroke: var(--color-border-default); }
+.chart .chart__marker { fill: var(--color-surface-raised); stroke-width: 2; visibility: hidden; }
+.chart .chart__marker.is-on { visibility: visible; }
+.chart__line { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; transition: opacity var(--duration-base) var(--easing-standard); }
+.chart__line--dashed { stroke-dasharray: 4 6; stroke-width: 2.5; }
+.chart__dot { fill: var(--color-surface-raised); stroke-width: 2.5; }
+.chart__cursor { stroke: var(--color-text-tertiary); stroke-width: 1; stroke-dasharray: 3 3; }
+.chart__hit { fill: transparent; }
+.chart__tip { top: 0; left: 0; }
+.chart .is-hidden { opacity: 0; pointer-events: none; }
+.viz-1 { fill: var(--color-viz-1); stroke: var(--color-viz-1); color: var(--color-viz-1); }
+.viz-2 { fill: var(--color-viz-2); stroke: var(--color-viz-2); color: var(--color-viz-2); }
+.viz-3 { fill: var(--color-viz-3); stroke: var(--color-viz-3); color: var(--color-viz-3); }
+.viz-4 { fill: var(--color-viz-4); stroke: var(--color-viz-4); color: var(--color-viz-4); }
+.viz-total { stroke: var(--color-viz-total); color: var(--color-viz-total); }
+.viz-benchmark { stroke: var(--color-viz-benchmark); color: var(--color-viz-benchmark); }
+.chart__tip { position: absolute; z-index: var(--layer-sticky); min-width: var(--size-aside); padding: var(--space-4); border-radius: var(--radius-md); background: var(--color-surface-raised); border: var(--border-width-thin) solid var(--color-border-default); box-shadow: var(--shadow-md); font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-body); pointer-events: none; }
+.chart__tip-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); padding-top: var(--space-2); }
+.chart__tip-key { display: inline-flex; align-items: center; gap: var(--space-3); }
+.chart__tip-key i { width: var(--space-3); height: var(--space-3); border-radius: var(--space-1); background: currentColor; }
+.chart__tip strong { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
+
+/* Paired bars: actual vs typical */
+.bars { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: var(--space-7); align-items: end; }
+.bars__group { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+.bars__pair { display: flex; align-items: flex-end; gap: var(--space-3); height: var(--size-thumb); }
+.bars__bar { position: relative; width: var(--space-6); height: 100%; display: flex; align-items: flex-end; }
+.bars__bar span { display: block; width: 100%; height: 100%; border-radius: var(--radius-xs) var(--radius-xs) var(--space-0) var(--space-0); background: var(--color-viz-total); transform-origin: bottom; transform: scaleY(var(--bar-value, 0)); transition: transform var(--duration-slow) var(--easing-standard); }
+.bars__bar--typical span { background: var(--color-viz-benchmark); }
+.bars__bar em { position: absolute; left: 50%; bottom: calc(var(--bar-value, 0) * 100% + var(--space-2)); transform: translateX(-50%); font-style: normal; font-size: var(--font-size-caption); line-height: var(--line-height-caption); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+
+/* 5. APP SHELL ----------------------------------------------------------- */
+.app { min-width: var(--size-viewport-min); min-height: 100vh; background: var(--color-surface-app); background-attachment: fixed; color: var(--color-text-on-app); }
+.topbar { position: fixed; top: 0; left: 0; right: 0; z-index: var(--layer-sticky); display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); height: var(--size-topbar); min-width: var(--size-viewport-min); padding: var(--space-0) var(--space-6); background: var(--color-surface-app); background-attachment: fixed; }
+.topbar__actions { display: flex; align-items: center; gap: var(--space-3); }
+.wordmark { display: inline-flex; align-items: center; gap: var(--space-3); font-size: var(--font-size-h1); line-height: var(--line-height-h1); font-weight: var(--font-weight-regular); letter-spacing: var(--letter-spacing-tight); color: var(--color-text-primary); text-decoration: none; border-radius: var(--radius-sm); }
+.wordmark:hover { color: var(--purple-800); }
+.wordmark:active { color: var(--color-action-pressed); }
+.wordmark .icon { color: var(--color-action); }
+
+.sidenav { position: fixed; top: calc(var(--size-topbar) + var(--space-5)); left: 0; z-index: var(--layer-sticky); width: var(--size-sidenav); padding: var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); background: var(--color-surface-raised); border-radius: var(--space-0) var(--radius-xl) var(--radius-xl) var(--space-0); box-shadow: var(--shadow-md); }
+.sidenav__item { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-2); border-radius: var(--radius-md); color: var(--color-text-secondary); font-size: var(--font-size-caption); line-height: var(--line-height-caption); font-weight: var(--font-weight-medium); text-decoration: none; transition: color var(--duration-base) var(--easing-standard), background-color var(--duration-base) var(--easing-standard); }
+.sidenav__icon { display: inline-flex; align-items: center; justify-content: center; width: var(--size-control-md); height: var(--size-control-md); border-radius: var(--radius-pill); background: var(--color-surface-muted); transition: background-color var(--duration-base) var(--easing-standard), color var(--duration-base) var(--easing-standard); }
+.sidenav__item:hover { color: var(--color-text-primary); }
+.sidenav__item:hover .sidenav__icon { background: var(--color-action-surface-hover); color: var(--color-action-on-surface); }
+.sidenav__item:active .sidenav__icon { background: var(--color-action-surface-pressed); }
+.sidenav__item[aria-current="page"] { color: var(--color-action-on-surface); font-weight: var(--font-weight-semibold); }
+.sidenav__item[aria-current="page"] .sidenav__icon { background: var(--color-action); color: var(--color-text-inverse); }
+.sidenav__item[aria-disabled="true"] { color: var(--color-text-disabled); pointer-events: none; }
+
+.app__main { padding: calc(var(--size-topbar) + var(--space-5)) var(--space-8) var(--space-11) calc(var(--size-sidenav) + var(--space-8)); }
+.app__column { max-width: var(--size-content); margin: var(--space-0) auto; }
+.app__column--wide { max-width: var(--size-content-wide); }
+.page-header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); margin-bottom: var(--space-6); }
+.page-header .text-small { color: var(--color-text-on-app-secondary); }
+.back-link { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--size-control-sm); padding: var(--space-0) var(--space-3) var(--space-0) var(--space-2); border-radius: var(--radius-sm); color: var(--color-text-on-app); font-size: var(--font-size-body); font-weight: var(--font-weight-medium); text-decoration: none; transition: background-color var(--duration-fast) var(--easing-standard); }
+.back-link:hover { background: var(--color-surface-raised); }
+.back-link:active { background: var(--color-surface-muted); }
+
+/* Date pager */
+.date-pager { display: inline-flex; align-items: center; gap: var(--space-2); }
+.date-pager__label { min-height: var(--size-control-sm); display: inline-flex; align-items: center; padding: var(--space-0) var(--space-5); border-radius: var(--radius-sm); background: var(--color-surface-raised); box-shadow: var(--shadow-sm); font-size: var(--font-size-small); line-height: var(--line-height-small); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.date-pager .icon-btn { color: var(--color-text-on-app); }
+.date-pager .icon-btn:disabled { color: var(--neutral-500); opacity: 0.6; }
+
+/* Reduced motion: keep the state change, drop the travel */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+</style>
+<style>
+/* Screen layout only. Every value is a token from yonder-ds.css. */
+.toolbar { display: flex; align-items: center; justify-content: flex-end; gap: var(--space-3); margin-bottom: var(--space-4); }
+.toolbar__anchor { position: relative; }
+.toolbar__anchor .popover { top: calc(100% + var(--space-3)); right: 0; }
+.toolbar .date-pager { margin-left: var(--space-5); }
+
+.digest { position: relative; overflow: hidden; padding: var(--space-8) var(--space-10) var(--space-9); background: var(--color-surface-raised); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); }
+.digest::before { content: ""; position: absolute; top: calc(var(--size-panel) * -0.62); right: calc(var(--size-panel) * -0.5); width: var(--size-panel); height: var(--size-panel); border-radius: var(--radius-pill); background: linear-gradient(160deg, var(--purple-200), var(--purple-500)); }
+.digest > * { position: relative; }
+.digest__title { display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-8); }
+.digest__title .icon { color: var(--color-action); }
+.digest__date { margin-left: calc(var(--size-icon-lg) + var(--space-4)); }
+.digest__section { display: flex; align-items: center; gap: var(--space-3); margin: var(--space-8) var(--space-0) var(--space-5); }
+.digest__list { display: flex; flex-direction: column; gap: var(--space-6); }
+.digest__list p { margin-top: var(--space-2); }
+
+.results { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); margin: var(--space-7) var(--space-0) var(--space-4); min-height: var(--size-control-sm); }
+.results .text-small { color: var(--color-text-on-app-secondary); font-weight: var(--font-weight-medium); }
+.card-list { display: flex; flex-direction: column; gap: var(--space-5); }
+.flag-badge { position: absolute; top: calc(var(--space-4) * -1); left: var(--space-6); }
+.inauth-label { width: var(--size-thumb); flex-shrink: 0; }
+.inauth-value { width: var(--space-9); text-align: right; color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
+
+.filter-group { display: flex; flex-direction: column; gap: var(--space-3); }
+.filter-footer { display: flex; align-items: center; justify-content: space-between; padding-top: var(--space-5); border-top: var(--border-width-thin) solid var(--color-border-subtle); }
+
+.analysis { display: grid; grid-template-columns: minmax(0, 1fr) var(--size-aside); gap: var(--space-8); align-items: start; min-height: calc(var(--size-chart) + var(--size-thumb) * 2); }
+.analysis__cards { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); align-items: stretch; }
+.analysis__actions { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+.analysis__grow { flex: 1; }
+.care { display: flex; flex-direction: column; align-items: center; gap: var(--space-5); text-align: center; }
+.care .divider { align-self: stretch; }
+.care__section { align-items: center; }
+.care__value { font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.care__value--actual { color: var(--color-action-on-surface); }
+.care__compare { display: flex; gap: var(--space-8); padding-top: var(--space-4); }
+.care .bars { align-self: stretch; margin-top: var(--space-7); }
+.chart__note { position: absolute; max-width: var(--size-aside); margin: var(--space-0); padding: var(--space-2) var(--space-3); transform: translate(var(--space-4), -50%); border: var(--border-width-thin) solid var(--color-viz-total); border-radius: var(--radius-sm); background: var(--color-surface-raised); color: var(--color-text-body); pointer-events: none; }
+
+.search-field { width: var(--size-popover); }
+.faction-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+.faction-tile, .convo-tile { display: flex; align-items: center; gap: var(--space-5); }
+.faction-tile .stack { flex: 1; }
+.faction { display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-9) var(--space-10); }
+.faction__header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-9); align-items: start; }
+.faction__media { display: grid; grid-template-columns: repeat(3, var(--size-thumb)); gap: var(--space-3); }
+.faction__thumb { display: flex; align-items: center; justify-content: center; height: var(--size-thumb); border-radius: var(--radius-md); background: var(--color-surface-muted); color: var(--color-text-tertiary); }
+.stat-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-6); }
+.stat-card--2 { grid-column: span 2; }
+.stat-card--3 { grid-column: span 3; }
+.stat-card__body { display: flex; flex-direction: column; justify-content: center; gap: var(--space-3); }
+.stat-row { display: flex; align-items: center; gap: var(--space-4); }
+.stat-row__name { width: var(--size-thumb); flex-shrink: 0; color: var(--color-text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stat-row__value { width: var(--space-9); text-align: right; font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.wedge { width: 100%; height: var(--space-10); }
+.wedge__track { fill: var(--color-surface-muted); }
+.wedge__fill { fill: var(--color-action); }
+.megaphones { display: flex; align-items: flex-end; justify-content: center; gap: var(--space-8); }
+.megaphones__item { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+.megaphones__item:not(.is-current) { color: var(--color-border-control); }
+.megaphones__item.is-current .text-caption { color: inherit; font-weight: var(--font-weight-bold); }
+.alignment { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-1); }
+.alignment__step { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+.alignment__bar { align-self: stretch; height: var(--size-scale); background: var(--color-action-surface-hover); }
+.alignment__step:first-child .alignment__bar { border-radius: var(--radius-pill) var(--space-0) var(--space-0) var(--radius-pill); }
+.alignment__step:last-child .alignment__bar { border-radius: var(--space-0) var(--radius-pill) var(--radius-pill) var(--space-0); }
+.alignment__step.is-current .alignment__bar { background: var(--color-selected); }
+.alignment__step.is-current .text-caption { color: var(--color-text-primary); font-weight: var(--font-weight-bold); }
+
+.convo-form { display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-9) var(--space-10); }
+.convo-form__basics { display: flex; flex-direction: column; gap: var(--space-6); max-width: calc(var(--size-panel) + var(--size-thumb)); }
+.convo-form__footer { display: flex; align-items: center; gap: var(--space-5); padding-top: var(--space-6); border-top: var(--border-width-thin) solid var(--color-border-subtle); }
+.query { margin: var(--space-0); padding: var(--space-5); border: var(--border-width-thin) solid var(--color-border-subtle); border-radius: var(--radius-lg); background: var(--color-surface-sunken); display: flex; flex-direction: column; gap: var(--space-5); min-width: 0; }
+.query__grid { display: grid; grid-template-columns: auto minmax(0, 1fr) auto minmax(0, 1fr); gap: var(--space-4) var(--space-5); align-items: center; }
+.query__grid .cluster--nowrap .tag-input { flex: 1; }
+.query__label { text-align: right; }
+.query__platforms { width: var(--size-popover); }
+.query-or { text-align: center; }
+
+.steps { display: flex; align-items: center; gap: var(--space-3); }
+.steps__dot { width: var(--space-7); height: var(--space-2); border-radius: var(--radius-pill); background: var(--color-border-default); }
+.steps__dot.is-done { background: var(--color-selected); }
+.summary-list { display: grid; grid-template-columns: auto 1fr; gap: var(--space-3) var(--space-5); }
+.summary-list dd { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
+.alerts-card { padding: var(--space-3) var(--space-5) var(--space-5); }
+.alerts-card .table td { padding-top: var(--space-5); padding-bottom: var(--space-5); vertical-align: top; }
+.alerts-card .table__title { width: 28%; }
+.alerts-card .table__date { white-space: nowrap; }
+.alerts-card .table td.table__actions { padding-top: var(--space-3); }
+.alerts-card .text-caption { color: var(--color-text-tertiary); }
+.alerts-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); padding: var(--space-5) var(--space-4) var(--space-0); border-top: var(--border-width-thin) solid var(--color-border-subtle); }
+.row-menu { position: relative; display: inline-flex; }
+.row-menu .popover { top: calc(100% + var(--space-2)); right: 0; }
+.alert-detail { display: grid; grid-template-columns: minmax(0, 1fr) var(--size-popover); gap: var(--space-6); align-items: start; }
+.alert-detail__thread { display: flex; flex-direction: column; gap: var(--space-6); padding: var(--space-8) var(--space-9); }
+.alert-detail__aside { display: flex; flex-direction: column; gap: var(--space-5); }
+.faction-list { display: flex; flex-direction: column; gap: var(--space-2); }
+.faction-list span.text-small { color: var(--color-text-primary); }
+.add-anchor { position: relative; }
+.add-anchor .popover { left: 0; bottom: calc(100% + var(--space-3)); transform-origin: bottom left; }
+</style>
+</head>
+<body>
+
+<!-- Icon sprite: one stroke weight, 24px grid -->
+<svg width="0" height="0" class="visually-hidden" aria-hidden="true" focusable="false">
+  <symbol id="i-logo" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+  <symbol id="i-report" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M8 13h8M8 17h5"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/><circle cx="9" cy="7" r="4"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></symbol>
+  <symbol id="i-sort" viewBox="0 0 24 24"><path d="M7 4v16M3 8l4-4 4 4M17 20V4M13 16l4 4 4-4"/></symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-chevron-up" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M4 22V4M4 4h13l-2 4 2 4H4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M8 17v-5M13 17V8M18 17v-8"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1zM15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></symbol>
+  <symbol id="i-trend-up" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
+  <symbol id="i-trend-down" viewBox="0 0 24 24"><path d="M3 7l6 6 4-4 8 8M15 17h6v-6"/></symbol>
+  <symbol id="i-steady" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+  <symbol id="i-id" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.6-1.5 1.7-2 3-2s2.4.5 3 2M15 10h3M15 14h3"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M4 4h16v12l-4 4H4zM16 20v-4h4"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></symbol>
+</svg>
+
+<div class="app">
+  <header class="topbar">
+    <a class="wordmark" href="#/digest" aria-label="Yonder, go to Daily Digest">
+      <svg class="icon icon--lg" aria-hidden="true"><use href="#i-logo"/></svg>yonder
+    </a>
+    <div class="topbar__actions">
+      <button class="btn btn--secondary btn--sm" data-action="feedback" data-key="feedback">Submit feedback</button>
+      <button class="icon-btn icon-btn--raised icon-btn--sm" data-action="signout" aria-label="Sign out" data-tooltip="Sign out" data-tooltip-side="left">
+        <svg class="icon icon--sm" aria-hidden="true"><use href="#i-logout"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="sidenav" aria-label="Primary" id="sidenav"></nav>
+  <aside class="panel" id="panel" aria-label="Curate digest"></aside>
+  <main class="app__main" id="main" tabindex="-1"></main>
+</div>
+
+<div id="modal-root"></div>
+<div class="toast-region" id="toasts" role="status" aria-live="polite"></div>
+
+<script>
+/* ========================================================================
+   Yonder AI prototype. Sample data is illustrative; copy marked [COPY TBD]
+   was not legible in the source screens and is flagged for the author.
+   ======================================================================== */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const icon = (n, c = '') => `<svg class="icon ${c}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+
+const IMPACT = {
+  high: { label: 'High impact', short: 'High', level: 3, letter: 'H' },
+  moderate: { label: 'Moderate impact', short: 'Moderate', level: 2, letter: 'M' },
+  low: { label: 'Low impact', short: 'Low', level: 1, letter: 'L' },
+};
+const TRAJECTORY = {
+  rising: { label: 'Rising', icon: 'trend-up' },
+  steady: { label: 'Steady', icon: 'steady' },
+  falling: { label: 'Falling', icon: 'trend-down' },
+};
+const NARRATIVES = {
+  tigray: { title: 'McDonalds, TigrayGenocide', impact: 'high', trajectory: 'falling', flagged: true, factions: ['QAnon', 'Fringe Trolls', 'Antifa'], inauth: 0.21,
+    post: 'We ask @McDonalds to take a stance against the #TigrayGenocide, as well as the massacres happening across the country, incl. in Oromia, Benishangul Gumuz and more. #BoycottEthiopianCoffee – remain committed to your goals in ethical sourcing.' },
+  cups: { title: 'McDonalds Using More than 4 Million Plastic Cups', impact: 'moderate', trajectory: 'rising', flagged: true, factions: ['Social Action', 'Populist Left'], inauth: 0.34,
+    post: 'Welcome eco-friendlies! Today we have everyone’s favorite unnatural company McDonalds using more than 4 MILLION plastic cups a year! Did you know climate change is a real thing! Find out what else is swept underneath the rug!' },
+  pronouns: { title: 'McDonalds Employees Sharing Pronouns on Badge', impact: 'low', trajectory: 'steady', flagged: true, factions: ['Populist Right', 'Twitter Conspirators'], inauth: 0.12,
+    post: 'McDonalds wanting staff to show their pronouns on a badge for Pride Month (ENGLAND) So my housemate just told me that to ‘support’ Pride Month McDonalds employees are supposed to be having their pronouns on a separate badge next to their name.' },
+  masks: { title: 'McDonalds, masks in Palm Beach', impact: 'high', trajectory: 'rising', flagged: false, factions: ['Populist Right', 'QAnon'], inauth: 0.47, post: '[COPY TBD] Sample post for this narrative.' },
+  pay: { title: 'McDonalds Pay Your Employees', impact: 'moderate', trajectory: 'steady', flagged: false, factions: ['Social Action', 'Antifa'], inauth: 0.18, post: '[COPY TBD] Sample post for this narrative.' },
+  boycott: { title: 'Boycott McDonalds for supporting GB [COPY TBD]', impact: 'low', trajectory: 'falling', flagged: false, factions: ['Twitch Gamers'], inauth: 0.08, post: '[COPY TBD] Sample post for this narrative.' },
+};
+const FACTION_IDS = { 'QAnon': 'qanon', 'Fringe Trolls': 'fringe-trolls', 'Antifa': 'antifa', 'Populist Right': 'populist-right', 'Populist Left': 'populist-left', 'Social Action': 'social-action', 'Twitch Gamers': 'twitch-gamers', 'Twitter Conspirators': 'twitter-conspirators' };
+const DAYS = [
+  { short: 'Apr 22, 2021', long: 'Thursday, April 22, 2021' },
+  { short: 'Apr 21, 2021', long: 'Wednesday, April 21, 2021' },
+];
+const SORTS = { curated: 'Curated order', impact: 'Impact, high to low', inauth: 'Inauthenticity, high to low' };
+const NAV = [
+  { route: 'digest', label: 'McDonalds', letter: 'M' },
+  { route: 'reports', label: 'Reports', icon: 'search' },
+  { route: 'convos', label: 'Convos', icon: 'message' },
+  { route: 'content', label: 'Content', icon: 'layers' },
+  { route: 'alerts', label: 'Alerts', icon: 'bell' },
+  { route: 'factions', label: 'Factions', icon: 'users' },
+];
+
+const state = {
+  title: 'McDonalds Daily Digest',
+  order: Object.keys(NARRATIVES),
+  removed: [],
+  filters: { impact: new Set(), trajectory: new Set(), faction: new Set(), flagged: false },
+  sort: 'curated',
+  starred: new Set(['tigray']),
+  collapsed: new Set(),
+  day: 0,
+  pop: null,
+  curate: { open: false, step: 1 },
+};
+
+/* ---------- shared fragments ---------- */
+const impactBadge = (k) => `<span class="badge badge--impact-${k}"><span class="level level--${IMPACT[k].level}" aria-hidden="true"><i></i><i></i><i></i></span>${IMPACT[k].label}</span>`;
+const impactMark = (k) => `<span class="impact-mark impact-mark--${k}" aria-label="${IMPACT[k].label}">${IMPACT[k].letter}</span>`;
+const trajectoryBadge = (k) => `<span class="badge badge--outline">${icon(TRAJECTORY[k].icon)}${TRAJECTORY[k].label}</span>`;
+const pct = (v) => Math.round(v * 100) + '%';
+const filterCount = () => state.filters.impact.size + state.filters.trajectory.size + state.filters.faction.size + (state.filters.flagged ? 1 : 0);
+
+function visibleNarratives() {
+  const f = state.filters;
+  const rank = { high: 3, moderate: 2, low: 1 };
+  let ids = state.order.filter((id) => {
+    const n = NARRATIVES[id];
+    return (!f.impact.size || f.impact.has(n.impact)) && (!f.trajectory.size || f.trajectory.has(n.trajectory))
+      && (!f.faction.size || n.factions.some((x) => f.faction.has(x))) && (!f.flagged || n.flagged);
+  });
+  if (state.sort === 'impact') ids = [...ids].sort((a, b) => rank[NARRATIVES[b].impact] - rank[NARRATIVES[a].impact]);
+  if (state.sort === 'inauth') ids = [...ids].sort((a, b) => NARRATIVES[b].inauth - NARRATIVES[a].inauth);
+  return ids;
+}
+
+/* ---------- Screen 1: Daily Digest ---------- */
+function narrativeCard(id) {
+  const n = NARRATIVES[id];
+  const starred = state.starred.has(id), collapsed = state.collapsed.has(id);
+  return `
+  <li><article class="narrative-card ${n.flagged ? 'is-flagged' : ''} ${collapsed ? 'is-collapsed' : ''}" aria-labelledby="nt-${id}">
+    ${n.flagged ? `<span class="badge badge--ink flag-badge">${icon('flag')}Flagged</span>` : ''}
+    <div class="narrative-card__header">
+      <button class="narrative-card__title" id="nt-${id}" data-action="open-narrative" data-arg="${id}" data-key="title-${id}">${esc(n.title)}</button>
+      <div class="narrative-card__actions">
+        <button class="icon-btn icon-btn--sm" data-action="open-narrative" data-arg="${id}" data-key="analyze-${id}" aria-label="Analyze narrative" data-tooltip="Analyze">${icon('chart', 'icon--sm')}</button>
+        <button class="icon-btn icon-btn--sm" data-action="star" data-arg="${id}" data-key="star-${id}" aria-pressed="${starred}" aria-label="Star narrative" data-tooltip="${starred ? 'Starred' : 'Star'}">${icon('star', 'icon--sm')}</button>
+        <button class="icon-btn icon-btn--sm" data-action="collapse" data-arg="${id}" data-key="collapse-${id}" aria-label="${collapsed ? 'Expand' : 'Collapse'} narrative" data-tooltip="${collapsed ? 'Expand' : 'Collapse'}" data-tooltip-side="left">${icon(collapsed ? 'chevron-down' : 'chevron-up', 'icon--sm')}</button>
+      </div>
+    </div>
+    <div class="narrative-card__meta">
+      ${impactBadge(n.impact)}${trajectoryBadge(n.trajectory)}
+      ${n.factions.map((x) => `<a class="link text-small" href="#/factions/${FACTION_IDS[x]}">${x}</a>`).join('')}
+    </div>
+    <div class="narrative-card__body">
+      <blockquote class="narrative-card__quote">${esc(n.post)}</blockquote>
+      <div class="narrative-card__footer">
+        <span class="text-caption inauth-label">Inauthenticity</span>
+        <span class="meter" role="img" aria-label="Inauthenticity ${pct(n.inauth)}"><span class="meter__fill" style="--meter-value:${n.inauth}"></span></span>
+        <span class="text-small inauth-value">${pct(n.inauth)}</span>
+      </div>
+    </div>
+  </article></li>`;
+}
+
+function filterPopover() {
+  const f = state.filters;
+  const chip = (group, value, label, extra = '') => `<button class="chip" data-action="filter" data-arg="${group}:${value}" data-key="f-${group}-${value}" aria-pressed="${f[group].has(value)}">${extra}${label}</button>`;
+  const factions = [...new Set(state.order.flatMap((id) => NARRATIVES[id].factions))];
+  return `
+  <div class="popover stack" role="dialog" aria-label="Filter narratives">
+    <div class="filter-group"><h3 class="text-overline">Impact</h3><div class="cluster">
+      ${Object.keys(IMPACT).map((k) => chip('impact', k, IMPACT[k].short, `<span class="level level--${IMPACT[k].level}" aria-hidden="true"><i></i><i></i><i></i></span>`)).join('')}</div></div>
+    <div class="filter-group"><h3 class="text-overline">Trajectory</h3><div class="cluster">
+      ${Object.keys(TRAJECTORY).map((k) => chip('trajectory', k, TRAJECTORY[k].label)).join('')}</div></div>
+    <div class="filter-group"><h3 class="text-overline">Factions</h3><div class="cluster">
+      ${factions.map((x) => chip('faction', x, x)).join('')}</div></div>
+    <label class="checkbox"><input type="checkbox" data-action="filter-flagged" data-key="f-flagged" ${f.flagged ? 'checked' : ''}>Flagged narratives only</label>
+    <div class="filter-footer">
+      <span class="text-small">${visibleNarratives().length} of ${state.order.length} narratives</span>
+      <button class="btn btn--ghost btn--sm" data-action="filter-clear" data-key="f-clear" ${filterCount() ? '' : 'disabled'}>Clear all</button>
+    </div>
+  </div>`;
+}
+
+function sortPopover() {
+  return `<div class="popover popover--menu" role="menu" aria-label="Sort narratives">
+    ${Object.entries(SORTS).map(([k, label]) => `<button class="menu__item" role="menuitemradio" aria-checked="${state.sort === k}" data-action="sort" data-arg="${k}" data-key="sort-${k}">${label}${icon('check', 'icon--sm')}</button>`).join('')}
+  </div>`;
+}
+
+function viewDigest() {
+  const day = DAYS[state.day];
+  const ids = visibleNarratives();
+  const count = filterCount();
+  const flagged = state.order.filter((id) => NARRATIVES[id].flagged);
+  const toolbar = `
+  <div class="toolbar">
+    <button class="icon-btn icon-btn--raised" data-action="curate-open" data-key="curate" aria-label="Curate digest" data-tooltip="Curate" ${state.day ? 'disabled' : ''}>${icon('pencil')}</button>
+    <div class="toolbar__anchor">
+      <button class="icon-btn icon-btn--raised" data-action="pop" data-arg="filter" data-key="pop-filter" data-pop aria-label="Filter narratives${count ? `, ${count} active` : ''}" aria-expanded="${state.pop === 'filter'}" ${state.pop ? '' : 'data-tooltip="Filter"'} ${state.day ? 'disabled' : ''}>${icon('filter')}${count ? `<span class="icon-btn__count" aria-hidden="true">${count}</span>` : ''}</button>
+      ${state.pop === 'filter' ? filterPopover() : ''}
+    </div>
+    <div class="toolbar__anchor">
+      <button class="icon-btn icon-btn--raised" data-action="pop" data-arg="sort" data-key="pop-sort" data-pop aria-label="Sort narratives" aria-expanded="${state.pop === 'sort'}" ${state.pop ? '' : 'data-tooltip="Sort"'} ${state.day ? 'disabled' : ''}>${icon('sort')}</button>
+      ${state.pop === 'sort' ? sortPopover() : ''}
+    </div>
+    <div class="date-pager">
+      <button class="icon-btn icon-btn--sm" data-action="day" data-arg="1" data-key="day-prev" aria-label="Previous day" ${state.day >= DAYS.length - 1 ? 'disabled' : ''}>${icon('chevron-left', 'icon--sm')}</button>
+      <span class="date-pager__label">Daily Digest · ${day.short}</span>
+      <button class="icon-btn icon-btn--sm" data-action="day" data-arg="-1" data-key="day-next" aria-label="Next day" ${state.day === 0 ? 'disabled' : ''}>${icon('chevron-right', 'icon--sm')}</button>
+    </div>
+  </div>`;
+
+  if (state.day) {
+    return `<div class="app__column">${toolbar}
+      <div class="empty-state"><span class="empty-state__icon">${icon('calendar', 'icon--lg')}</span>
+        <h1 class="text-h2">No digest for ${day.short}</h1>
+        <p class="text-small">Nothing was curated for this day. Go forward to the latest digest.</p>
+        <button class="btn btn--secondary" data-action="day" data-arg="-1" data-key="day-latest">Go to ${DAYS[0].short}</button>
+      </div></div>`;
+  }
+
+  const active = [
+    ...[...state.filters.impact].map((k) => ['impact', k, IMPACT[k].label]),
+    ...[...state.filters.trajectory].map((k) => ['trajectory', k, TRAJECTORY[k].label]),
+    ...[...state.filters.faction].map((k) => ['faction', k, k]),
+  ];
+  return `<div class="app__column">${toolbar}
+    <section class="digest" aria-labelledby="digest-title">
+      <span class="avatar avatar--brand" aria-hidden="true">${icon('logo')}</span>
+      <div class="digest__title">${icon('calendar', 'icon--lg')}<h1 class="text-display" id="digest-title">${esc(state.title)}</h1></div>
+      <p class="text-small digest__date">${day.long}</p>
+      <div class="digest__section">${icon('flag')}<h2 class="text-h2">Flagged narratives</h2></div>
+      ${flagged.length ? `<ul class="digest__list">${flagged.map((id) => `<li>
+        <button class="link" data-action="open-narrative" data-arg="${id}" data-key="flag-${id}">${esc(NARRATIVES[id].title)}</button>
+        <p class="text-body">${esc(NARRATIVES[id].post)}</p></li>`).join('')}</ul>`
+      : `<p class="text-small">No narratives are flagged in this digest.</p>`}
+    </section>
+
+    <div class="results">
+      <div class="cluster">
+        <span class="text-small" aria-live="polite">Showing ${ids.length} of ${state.order.length} narratives${state.sort !== 'curated' ? ` · ${SORTS[state.sort]}` : ''}</span>
+        ${active.map(([g, v, label]) => `<span class="tag tag--neutral">${label}<button class="tag__remove" data-action="filter" data-arg="${g}:${v}" data-key="rm-${g}-${v}" aria-label="Remove filter ${label}">${icon('x')}</button></span>`).join('')}
+        ${state.filters.flagged ? `<span class="tag tag--neutral">Flagged only<button class="tag__remove" data-action="filter-flagged" data-key="rm-flagged" aria-label="Remove filter Flagged only">${icon('x')}</button></span>` : ''}
+      </div>
+      ${count ? `<button class="btn btn--ghost btn--sm" data-action="filter-clear" data-key="clear-inline">Clear filters</button>` : ''}
+    </div>
+    ${ids.length ? `<ul class="card-list">${ids.map(narrativeCard).join('')}</ul>` : `
+      <div class="empty-state"><span class="empty-state__icon">${icon('filter', 'icon--lg')}</span>
+        <h2 class="text-h2">${state.order.length ? 'No narratives match these filters' : 'This digest has no narratives'}</h2>
+        <p class="text-small">${state.order.length ? 'Remove a filter to see more of today’s narratives.' : 'Open Curate to add narratives back to this digest.'}</p>
+        ${state.order.length ? `<button class="btn btn--secondary" data-action="filter-clear" data-key="clear-empty">Clear filters</button>` : `<button class="btn btn--secondary" data-action="curate-open" data-key="curate-empty">Open Curate</button>`}
+      </div>`}
+  </div>`;
+}
+
+/* ---------- Curate panel ---------- */
+function renderPanel() {
+  const el = $('#panel');
+  el.classList.toggle('is-open', state.curate.open);
+  if (!state.curate.open) { el.innerHTML = ''; return; }
+  const step = state.curate.step;
+  const head = `<div class="panel__header">
+      <div class="cluster">${icon('pencil')}<h2 class="text-h2">Curate</h2>
+        <span class="steps" role="img" aria-label="Step ${step} of 2"><span class="steps__dot is-done"></span><span class="steps__dot ${step === 2 ? 'is-done' : ''}"></span></span></div>
+      <button class="icon-btn icon-btn--sm" data-action="curate-close" data-key="curate-close" aria-label="Close Curate">${icon('x')}</button>
+    </div>`;
+  if (step === 1) {
+    el.innerHTML = `${head}
+    <div class="panel__body">
+      <div class="field">
+        <label class="field__label" for="digest-title-input">Title</label>
+        <input class="input" id="digest-title-input" data-input="title" data-key="title-input" value="${esc(state.title)}" maxlength="60" aria-describedby="title-hint" ${state.title.trim() ? '' : 'aria-invalid="true"'}>
+        ${state.title.trim() ? `<span class="field__hint" id="title-hint">Shown at the top of the digest.</span>` : `<span class="field__error" id="title-hint">${icon('info', 'icon--sm')}Add a title before continuing.</span>`}
+      </div>
+      <div class="stack stack--tight">
+        <h3 class="text-h3 cluster">${icon('megaphone', 'icon--sm')}Narratives <span class="text-caption">${state.order.length}</span></h3>
+        ${state.order.length ? `<ol class="stack stack--tight">${state.order.map((id, i) => `<li class="list-row">
+          ${impactMark(NARRATIVES[id].impact)}<span class="list-row__label" title="${esc(NARRATIVES[id].title)}">${esc(NARRATIVES[id].title)}</span>
+          <span class="list-row__actions">
+            <button class="icon-btn icon-btn--sm" data-action="move" data-arg="${id}:-1" data-key="up-${id}" aria-label="Move ${esc(NARRATIVES[id].title)} up" ${i === 0 ? 'disabled' : ''}>${icon('chevron-up', 'icon--sm')}</button>
+            <button class="icon-btn icon-btn--sm" data-action="move" data-arg="${id}:1" data-key="down-${id}" aria-label="Move ${esc(NARRATIVES[id].title)} down" ${i === state.order.length - 1 ? 'disabled' : ''}>${icon('chevron-down', 'icon--sm')}</button>
+            <button class="icon-btn icon-btn--sm" data-action="remove" data-arg="${id}" data-key="rm-${id}" aria-label="Remove ${esc(NARRATIVES[id].title)}">${icon('x', 'icon--sm')}</button>
+          </span></li>`).join('')}</ol>` : `<p class="text-small">No narratives in this digest. Add one below.</p>`}
+        <div class="add-anchor">
+          <button class="btn btn--ghost btn--sm" data-action="pop" data-arg="add" data-key="pop-add" data-pop aria-expanded="${state.pop === 'add'}" ${state.removed.length ? '' : 'disabled'}>${icon('plus', 'icon--sm')}Add narrative</button>
+          ${state.removed.length ? '' : `<span class="text-caption">All of today’s narratives are in the digest.</span>`}
+          ${state.pop === 'add' ? `<div class="popover popover--menu" role="menu" aria-label="Add narrative">${state.removed.map((id) => `<button class="menu__item" role="menuitem" data-action="restore" data-arg="${id}" data-key="restore-${id}"><span class="cluster cluster--nowrap">${impactMark(NARRATIVES[id].impact)}${esc(NARRATIVES[id].title)}</span></button>`).join('')}</div>` : ''}
+        </div>
+      </div>
+    </div>
+    <div class="panel__footer"><button class="btn btn--primary btn--block" data-action="curate-step" data-arg="2" data-key="curate-next" ${state.title.trim() && state.order.length ? '' : 'disabled'}>Next</button></div>`;
+  } else {
+    const by = (k) => state.order.filter((id) => NARRATIVES[id].impact === k).length;
+    el.innerHTML = `${head}
+    <div class="panel__body">
+      <div class="stack stack--tight"><h3 class="text-h3">Review</h3>
+        <p class="text-small">Check the digest on the right. Publishing sends it to everyone following McDonalds.</p></div>
+      <dl class="summary-list text-small">
+        <dt>Title</dt><dd>${esc(state.title)}</dd>
+        <dt>Date</dt><dd>${DAYS[0].short}</dd>
+        <dt>Narratives</dt><dd>${state.order.length}</dd>
+        <dt>Flagged</dt><dd>${state.order.filter((id) => NARRATIVES[id].flagged).length}</dd>
+        <dt>By impact</dt><dd class="cluster">${Object.keys(IMPACT).map((k) => `<span class="cluster cluster--nowrap">${impactMark(k)}${by(k)}</span>`).join('')}</dd>
+      </dl>
+    </div>
+    <div class="panel__footer">
+      <button class="btn btn--secondary" data-action="curate-step" data-arg="1" data-key="curate-back">Back</button>
+      <button class="btn btn--primary btn--block" data-action="publish" data-key="publish">Publish digest</button>
+    </div>`;
+  }
+}
+
+/* ---------- Screen 2: Narrative Analysis ---------- */
+const TABS = [['who', 'Who is involved?'], ['care', 'Should I care?'], ['why', 'Why is this happening?'], ['what', 'What can I do?']];
+const AXIS_DATES = ['Apr 27', 'Apr 28', 'Apr 29', 'Apr 30', 'May 01', 'May 02', 'May 03'];
+const SERIES = {
+  tigray: {
+    factions: [
+      { name: 'QAnon', values: [8, 10, 14, 12, 26, 10, 12, 9, 15, 9, 11, 9, 8] },
+      { name: 'Fringe Trolls', values: [10, 16, 22, 18, 30, 12, 14, 10, 16, 12, 18, 12, 10] },
+      { name: 'Antifa', values: [4, 5, 6, 8, 10, 8, 6, 6, 10, 5, 4, 4, 3] },
+    ],
+    posts: [1050, 1080, 1200, 1400, 1720, 1300, 1250, 1320, 1180, 1300, 1290, 1100, 880],
+    share: [38, 30, 45, 42, 58, 50, 42, 55, 48, 46, 60, 50, 36],
+    note: 'First post from Populist Left using the hashtag #boycottethiopiancoffee',
+  },
+};
+const MEANS = {
+  who: 'This graph highlights the ebb and flow of factions active within the narrative, and focuses on faction activity rather than faction volume in order to provide a gauge of who is framing the narrative and influencing the conversation. A wider color band represents a more active faction, whereas a thinner color band represents a less active faction. This can be used to better understand who is involved in the narrative, if the factions active change over time, and whether factions are influencing one another.',
+  care: 'We assess inauthenticity in narratives by measuring posts from newly created accounts, accounts that appear to be automated, and accounts that do not appear to belong to a real person or entity (spam accounts). High volumes of inauthentic behavior within a narrative can be an indication of coordinated activity: an attempt to artificially amplify a narrative in order to push it mainstream. Low volumes of inauthentic behavior occur regularly across social media platforms, and this chart can be used to compare inauthentic behavior in a narrative to an established benchmark.',
+  why: 'Factions are organized and can mobilize to amplify messages effectively. High faction activity is often a precursor to narratives entering the mainstream, and can be an indication that the factions involved are agenda-driven and persistent. Factions often increase amplification of a narrative even as engagement from the mainstream has declined in an attempt to keep the narrative relevant. Use this graph to understand how active factions are in the narrative relative to the general public.',
+};
+const TIGRAY_COPY = {
+  influence: 'QAnon are currently the most influential faction within this narrative, they have low influence. They have a higher influence within this narrative than normal for the faction, they also have a higher reach than typical, suggesting they may be attracting engagement from factions they do not usually overlap with.',
+  coordination: 'There are no signals of coordinated activity within this narrative, at this time.',
+  trajectory: 'Interest from the general public is continuing to decrease.',
+  why: 'General public engagement with this narrative peaked on Apr 29. While factions have made attempts to re-ignite this narrative, interest from the general public is continuing to decrease. High faction engagement was a precursor to this narrative receiving engagement from the general public, and factions may continue their attempts to amplify this narrative as the “climate strike” continues.',
+  origin: 'This narrative first appeared in the Daily Digest from May 20th, and was originated by the Populist Right.',
+};
+const TBD = '[COPY TBD] Analysis summary for this narrative.';
+const analysis = { id: null, tab: 'who', hidden: new Set(), noteOpen: false };
+state.notes = {};
+state.alerts = new Set();
+
+function seriesFor(id) {
+  if (SERIES[id]) return SERIES[id];
+  let s = [...id].reduce((a, c) => a + c.charCodeAt(0), 7);
+  const r = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+  const wave = (base, amp) => Array.from({ length: 13 }, (_, i) => Math.round(base + amp * (0.5 + 0.5 * Math.sin(i / 1.7 + r() * 2)) * (0.6 + r() * 0.8)));
+  return (SERIES[id] = { factions: NARRATIVES[id].factions.slice(0, 3).map((name, i) => ({ name, values: wave(6 + i * 3, 14 - i * 3) })), posts: wave(400, 900), share: wave(25, 40) });
+}
+
+const G = { w: 860, h: 340, l: 56, r: 56, t: 20, b: 60 };
+const gx = (i) => G.l + i * (G.w - G.l - G.r) / 12;
+const gy = (v, max) => G.t + (1 - v / max) * (G.h - G.t - G.b);
+const f1 = (n) => n.toFixed(1);
+function smooth(p) {
+  let d = `M${f1(p[0][0])},${f1(p[0][1])}`;
+  for (let i = 0; i < p.length - 1; i++) {
+    const a = p[i - 1] || p[i], b = p[i], c = p[i + 1], e = p[i + 2] || c;
+    d += ` C${f1(b[0] + (c[0] - a[0]) / 6)},${f1(b[1] + (c[1] - a[1]) / 6)} ${f1(c[0] - (e[0] - b[0]) / 6)},${f1(c[1] - (e[1] - b[1]) / 6)} ${f1(c[0])},${f1(c[1])}`;
+  }
+  return d;
+}
+const band = (top, bottom) => `${smooth(top)} ${smooth([...bottom].reverse()).replace('M', 'L')} Z`;
+const pointLabel = (i) => (i % 2 ? `${AXIS_DATES[(i + 1) / 2]}, 12:00 AM` : `${AXIS_DATES[i / 2]}, 12:00 PM`);
+
+// Gradients the .chart__area classes point at: one strong and one soft fade per categorical hue.
+const chartDefs = () => `<defs>${[1, 2, 3, 4].map((k) => ['', 'soft-'].map((v) => `<linearGradient id="viz-fade-${v}${k}" class="chart__fade ${v ? 'chart__fade--soft' : ''} viz-${k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0"/><stop offset="1"/></linearGradient>`).join('')).join('')}</defs>`;
+// Hover markers: one dot per series per point, shown for the point under the cursor.
+const markers = (cls, pts) => pts.map(([x, y], i) => `<circle class="chart__marker ${cls}" data-i="${i}" cx="${f1(x)}" cy="${f1(y)}" r="4.5"/>`).join('');
+
+function chartFrame({ leftMax, leftFmt, leftTitle, rightFmt, body, label }) {
+  const steps = [0, 0.25, 0.5, 0.75, 1];
+  return `<div class="chart" tabindex="0" role="img" aria-label="${esc(label)} Use left and right arrow keys to read values.">
+    <svg viewBox="0 0 ${G.w} ${G.h}">${chartDefs()}
+      ${steps.map((s) => `<line class="chart__grid ${s ? '' : 'chart__grid--base'}" x1="${G.l}" x2="${G.w - G.r}" y1="${gy(s, 1)}" y2="${gy(s, 1)}"/>
+        <text class="chart__tick" x="${G.l - 10}" y="${gy(s, 1) + 4}" text-anchor="end">${leftFmt(s * leftMax)}</text>
+        ${rightFmt ? `<text class="chart__tick" x="${G.w - G.r + 10}" y="${gy(s, 1) + 4}">${rightFmt(s)}</text>` : ''}`).join('')}
+      ${AXIS_DATES.map((d, k) => `<text class="chart__tick" x="${gx(k * 2)}" y="${G.h - G.b + 22}" text-anchor="middle">${d}</text>`).join('')}
+      <text class="chart__axis-title" x="${(G.l + G.w - G.r) / 2}" y="${G.h - 8}" text-anchor="middle">Date</text>
+      <text class="chart__axis-title" transform="translate(14 ${(G.t + G.h - G.b) / 2}) rotate(-90)" text-anchor="middle">${leftTitle}</text>
+      ${body}
+      <line class="chart__cursor" y1="${G.t}" y2="${G.h - G.b}" visibility="hidden"/>
+      <rect class="chart__hit" x="${G.l}" y="${G.t}" width="${G.w - G.l - G.r}" height="${G.h - G.t - G.b}"/>
+    </svg>
+    <div class="chart__tip" hidden></div>
+  </div>`;
+}
+
+function whoChart(s) {
+  const max = Math.ceil(Math.max(...s.factions[0].values.map((_, i) => s.factions.reduce((a, f) => a + f.values[i], 0))) / 20) * 20;
+  let base = Array(13).fill(0), body = '', edges = '', dots = '';
+  s.factions.forEach((f, k) => {
+    if (analysis.hidden.has(f.name)) return;
+    const top = base.map((b, i) => b + f.values[i]), pts = top.map((v, i) => [gx(i), gy(v, max)]);
+    body += `<path class="chart__area viz-${k + 1}" d="${band(pts, base.map((v, i) => [gx(i), gy(v, max)]))}"/>`;
+    edges += `<path class="chart__edge viz-${k + 1}" d="${smooth(pts)}"/>`;
+    dots += markers(`viz-${k + 1}`, pts);
+    base = top;
+  });
+  body += edges + dots;
+  return chartFrame({ leftMax: max, leftFmt: (v) => Math.round(v) + '%', leftTitle: '% engagement', body, label: 'Stacked area chart of faction engagement over 7 days.' });
+}
+
+function whyChart(s) {
+  const max = Math.ceil(Math.max(...s.posts) / 500) * 500;
+  const peak = s.posts.indexOf(Math.max(...s.posts));
+  let body = s.factions.map((f, k) => { if (analysis.hidden.has(f.name)) return ''; const pts = f.values.map((v, i) => [gx(i), gy(v, 100)]);
+    return `<path class="chart__area chart__area--soft viz-${k + 1}" d="${band(pts, f.values.map((_, i) => [gx(i), gy(0, 100)]))}"/><path class="chart__edge chart__edge--soft viz-${k + 1}" d="${smooth(pts)}"/>`; }).join('');
+  const share = s.share.map((v, i) => [gx(i), gy(v, 100)]), posts = s.posts.map((v, i) => [gx(i), gy(v, max)]);
+  body += `<path class="chart__line chart__line--dashed viz-benchmark" d="${smooth(share)}"/>
+    <path class="chart__line viz-total" d="${smooth(posts)}"/>
+    <circle class="chart__dot viz-total" cx="${gx(peak)}" cy="${gy(s.posts[peak], max)}" r="5"/>${markers('viz-benchmark', share)}${markers('viz-total', posts)}`;
+  const html = chartFrame({ leftMax: max, leftFmt: (v) => Math.round(v).toLocaleString(), leftTitle: 'Number of posts', rightFmt: (v) => Math.round(v * 100) + '%', body, label: 'Line chart of number of posts and share of faction posts over 7 days.' });
+  const note = `<p class="chart__note text-caption" style="left:${gx(peak) / G.w * 100}%;top:${gy(s.posts[peak], max) / G.h * 100}%">${esc(s.note || `Peak: ${s.posts[peak].toLocaleString()} posts`)}</p>`;
+  return html.replace('<div class="chart__tip"', note + '<div class="chart__tip"');
+}
+
+function tipHTML(i) {
+  const s = seriesFor(analysis.id);
+  const row = (cls, name, value) => `<div class="chart__tip-row"><span class="chart__tip-key ${cls}"><i></i><span>${name}</span></span><strong>${value}</strong></div>`;
+  const factions = s.factions.map((f, k) => (analysis.hidden.has(f.name) ? '' : row(`viz-${k + 1}`, f.name, f.values[i] + '%'))).join('');
+  return `<strong>${pointLabel(i)}</strong>` + (analysis.tab === 'why' ? row('viz-total', 'Number of posts', s.posts[i].toLocaleString()) + row('viz-benchmark', '% of faction posts', s.share[i] + '%') : '') + factions;
+}
+
+function setChartIndex(i) {
+  const c = $('#modal-root .chart'); if (!c) return;
+  const cur = $('.chart__cursor', c), tip = $('.chart__tip', c);
+  analysis.idx = i;
+  $$('.chart__marker', c).forEach((m) => m.classList.toggle('is-on', Number(m.dataset.i) === i));
+  if (i == null) { cur.setAttribute('visibility', 'hidden'); tip.hidden = true; return; }
+  cur.setAttribute('x1', gx(i)); cur.setAttribute('x2', gx(i)); cur.setAttribute('visibility', 'visible');
+  tip.innerHTML = tipHTML(i); tip.hidden = false;
+  const b = $('svg', c).getBoundingClientRect(), px = gx(i) / G.w * b.width;
+  tip.style.transform = `translate(${i > 7 ? px - tip.offsetWidth - 12 : px + 12}px, ${G.t / G.h * b.height}px)`;
+}
+
+function bindChart() {
+  const c = $('#modal-root .chart'); if (!c) return;
+  const svg = $('svg', c);
+  svg.addEventListener('mousemove', (e) => { const b = svg.getBoundingClientRect(); const x = (e.clientX - b.left) / b.width * G.w; setChartIndex(Math.max(0, Math.min(12, Math.round((x - G.l) / ((G.w - G.l - G.r) / 12))))); });
+  svg.addEventListener('mouseleave', () => setChartIndex(null));
+  c.addEventListener('blur', () => setChartIndex(null));
+  c.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    e.preventDefault();
+    setChartIndex(Math.max(0, Math.min(12, (analysis.idx ?? (e.key === 'ArrowRight' ? -1 : 13)) + (e.key === 'ArrowRight' ? 1 : -1))));
+  });
+}
+
+const scale = (segs, current, label) => `<div class="scale scale--label-${current + 1}" role="img" aria-label="${label}"><span class="scale__label">${label}</span>
+  <span class="scale__track">${segs.map((c, i) => `<span class="scale__seg scale__seg--${c} ${i === current ? 'is-current' : ''}"></span>`).join('')}</span></div>`;
+const infoBtn = (text, side = '') => `<button class="info-btn" aria-label="${esc(text)}" data-tooltip="${esc(text)}" ${side ? `data-tooltip-side="${side}"` : ''}>${icon('info', 'icon--sm')}</button>`;
+const meansBlock = (k) => `<div class="stack stack--tight"><h3 class="text-h3">What this means</h3><p class="text-small">${MEANS[k]}</p></div>`;
+const factionLegend = (s) => s.factions.map((f, k) => `<button class="legend__item viz-${k + 1}" data-action="an-series" data-arg="${f.name}" data-key="series-${k}" aria-pressed="${!analysis.hidden.has(f.name)}" ${!analysis.hidden.has(f.name) && s.factions.length - analysis.hidden.size === 1 ? 'disabled' : ''}><span class="legend__swatch"></span><span class="text-small">${f.name}</span></button>`).join('');
+
+function analysisBody() {
+  const id = analysis.id, n = NARRATIVES[id], s = seriesFor(id), copy = id === 'tigray' ? TIGRAY_COPY : null;
+  if (analysis.tab === 'who') {
+    const notes = state.notes[id] || [];
+    return `<div class="analysis__main stack">${whoChart(s)}
+        ${notes.map((t, i) => `<div class="callout">${icon('note', 'icon--sm')}<p class="analysis__grow">${esc(t)}</p><button class="icon-btn icon-btn--sm" data-action="an-note-delete" data-arg="${i}" data-key="note-del-${i}" aria-label="Delete note">${icon('trash', 'icon--sm')}</button></div>`).join('')}
+        ${analysis.noteOpen ? `<div class="field"><label class="field__label" for="note-text">Note</label>
+            <textarea class="textarea" id="note-text" data-key="note-text" placeholder="What should your team know about this chart?"></textarea>
+            <div class="cluster"><button class="btn btn--secondary btn--sm" data-action="an-note-save" data-key="note-save">Save note</button><button class="btn btn--ghost btn--sm" data-action="an-note-cancel" data-key="note-add">Cancel</button></div></div>`
+        : `<div><button class="btn btn--tonal btn--sm" data-action="an-note-open" data-key="note-add">${icon('note', 'icon--sm')}Add a note</button></div>`}
+      </div>
+      <aside class="stack stack--loose"><div class="stack stack--tight"><h3 class="text-h3">Top factions</h3><div class="legend">${factionLegend(s)}</div><p class="text-caption">Select a faction to hide or show it.</p></div>${meansBlock('who')}</aside>`;
+  }
+  if (analysis.tab === 'care') {
+    const lvl = IMPACT[n.impact].level - 1;
+    const inauthLvl = n.inauth < 0.25 ? 0 : n.inauth < 0.4 ? 1 : 2;
+    const actual = id === 'tigray' ? [17, 2, 2] : [0.8, 0.1, 0.1].map((p) => Math.round(n.inauth * 100 * p));
+    const typical = [15, 3, 2], top = Math.max(...actual, ...typical) * 1.15;
+    const section = (title, value, text) => `<hr class="divider"><div class="stack stack--tight care__section"><h4 class="text-h3">${title}</h4><p class="care__value">${value}</p><p class="text-small">${text}</p></div>`;
+    return `<div class="analysis__main analysis__cards">
+        <section class="card card--flat care" aria-labelledby="care-impact">
+          <h3 class="text-h2 cluster" id="care-impact">Impact ${infoBtn('How much this narrative could affect the brand, from Low to High.')}</h3>
+          ${scale(['low', 'moderate', 'high'], lvl, IMPACT[n.impact].short)}
+          ${section('Influence', n.factions[0], copy ? copy.influence : TBD)}
+          ${section('Coordination', 'No', copy ? copy.coordination : TBD)}
+          ${section('Trajectory', TRAJECTORY[n.trajectory].label, copy ? copy.trajectory : TBD)}
+        </section>
+        <section class="card card--flat care" aria-labelledby="care-inauth">
+          <h3 class="text-h2" id="care-inauth">Inauthenticity</h3>
+          ${scale(['step-1', 'step-2', 'step-3'], inauthLvl, ['Normal', 'Elevated', 'High'][inauthLvl])}
+          <div class="care__compare"><div><p class="care__value care__value--actual">Actual ${pct(n.inauth)}</p><p class="text-caption">Based on 10 posts</p></div><div><p class="care__value">Typical 20%</p><p class="text-caption">Benchmark</p></div></div>
+          <div class="bars" role="img" aria-label="Actual versus typical: ${['Spam', 'Newly created', 'Automated'].map((l, i) => `${l} ${actual[i]}% versus ${typical[i]}%`).join(', ')}">
+            ${['Spam', 'Newly created', 'Automated'].map((l, i) => `<div class="bars__group"><div class="bars__pair">
+              <span class="bars__bar" style="--bar-value:${actual[i] / top}"><span></span><em>${actual[i]}%</em></span>
+              <span class="bars__bar bars__bar--typical" style="--bar-value:${typical[i] / top}"><span></span><em>${typical[i]}%</em></span></div>
+              <span class="text-caption">${l}</span></div>`).join('')}
+          </div>
+        </section>
+      </div>
+      <aside class="stack stack--loose"><div class="stack stack--tight"><h3 class="text-h3">Legend</h3><div class="legend">
+        <span class="legend__item legend__item--static viz-total"><span class="legend__swatch"></span><span class="text-small">Actual</span></span>
+        <span class="legend__item legend__item--static viz-benchmark"><span class="legend__swatch"></span><span class="text-small">Typical</span></span></div></div>${meansBlock('care')}</aside>`;
+  }
+  if (analysis.tab === 'why') {
+    return `<div class="analysis__main stack">${whyChart(s)}
+        <div class="stack stack--tight"><h3 class="text-h3">Why is this happening?</h3><p class="text-body">${copy ? copy.why : TBD}</p></div>
+        <div class="stack stack--tight"><h3 class="text-h3">Is this narrative new, or re-cycled?</h3><p class="text-body">${copy ? copy.origin : TBD}</p></div>
+      </div>
+      <aside class="stack stack--loose"><div class="stack stack--tight"><h3 class="text-h3">Legend</h3><div class="legend">
+        <span class="legend__item legend__item--static viz-total"><span class="legend__swatch"></span><span class="text-small">Number of posts</span></span>
+        <span class="legend__item legend__item--static"><span class="legend__swatch legend__swatch--dashed"></span><span class="text-small">% of faction posts</span></span>
+        ${factionLegend(s)}</div></div>${meansBlock('why')}</aside>`;
+  }
+  const alertOn = state.alerts.has(id);
+  const action = (ic, title, text, control) => `<section class="card card--flat stack"><span class="empty-state__icon">${icon(ic)}</span><div class="stack stack--tight"><h3 class="text-h3">${title}</h3><p class="text-small">${text}</p></div><div>${control}</div></section>`;
+  return `<div class="analysis__actions">
+    ${action('bell', 'Get alerted', 'Hear about it when this narrative changes impact level or trajectory.', `<button class="btn btn--tonal btn--sm" data-action="an-alert" data-key="an-alert" aria-pressed="${alertOn}">${icon(alertOn ? 'check' : 'bell', 'icon--sm')}${alertOn ? 'Alert on' : 'Turn on alert'}</button>`)}
+    ${action('share', 'Brief your team', 'Copy a link to this analysis for your brand and communications teams.', `<button class="btn btn--tonal btn--sm" data-action="an-copy" data-key="an-copy">${icon('link', 'icon--sm')}Copy link</button>`)}
+    ${action('message', 'Track the conversation', 'Follow this narrative beyond today’s digest by adding its keywords to a Convo.', `<a class="btn btn--tonal btn--sm" href="#/convos">${icon('chevron-right', 'icon--sm')}Go to Convos</a>`)}
+  </div>`;
+}
+
+function renderAnalysis(focusKey) {
+  const n = NARRATIVES[analysis.id];
+  $('#modal-root .modal').innerHTML = `
+    <div class="modal__header">
+      <div class="stack">
+        <div><h2 class="text-h1">${esc(n.title)}</h2><p class="text-small">An overview of a collection of similar posts over 7 days</p></div>
+        <div class="tabs" role="tablist" aria-label="Narrative analysis">${TABS.map(([k, l]) => `<button class="tabs__tab" role="tab" id="tab-${k}" aria-selected="${analysis.tab === k}" aria-controls="tabpanel" tabindex="${analysis.tab === k ? 0 : -1}" data-action="an-tab" data-arg="${k}" data-key="tab-${k}">${l}</button>`).join('')}</div>
+      </div>
+      <button class="icon-btn" data-action="modal-close" data-key="an-close" aria-label="Close analysis">${icon('x', 'icon--lg')}</button>
+    </div>
+    <div class="modal__body"><div class="analysis" role="tabpanel" id="tabpanel" aria-labelledby="tab-${analysis.tab}">${analysisBody()}</div></div>`;
+  bindChart();
+  $(`#modal-root [data-key="${focusKey || 'tab-' + analysis.tab}"]`)?.focus();
+}
+
+/* ---------- Screen 3: Factions ---------- */
+const STANCE = { Adversarial: 'badge--ink', Suspicious: 'badge--outline', Aligned: 'badge--brand', Neutral: '' };
+const ALIGNMENT = ['Far left', 'Left', 'Center', 'Right', 'Far right'];
+const FACTIONS = {
+  qanon: { name: 'QAnon', stance: 'Adversarial', desc: 'QAnon believers are far-right, fringe conspiracy theorists. They follow Q, an anonymous influencer claiming to be a top government official.', influence: 0.22, impact: 'low', alignment: 4, authenticity: 0.13,
+    platforms: [['8kun', 40], ['4chan', 30], ['reddit', 13], ['Twitter', 13]], sites: [['QAnon.com', 1001], ['conspiracy.com', 180], ['redfacts.org', 87], ['firsttoknow.com', 65]],
+    aligned: ['Twitch Gamers', 'Social Action', 'Populist Right', 'Twitter Conspirators'] },
+};
+[['Fringe Trolls', 'Adversarial', 4], ['Antifa', 'Suspicious', 0], ['Populist Right', 'Suspicious', 3], ['Populist Left', 'Neutral', 1], ['Social Action', 'Aligned', 1], ['Twitch Gamers', 'Neutral', 2], ['Twitter Conspirators', 'Suspicious', 3]].forEach(([name, stance, alignment], i) => {
+  FACTIONS[FACTION_IDS[name]] = { name, stance, alignment, desc: '[COPY TBD] Faction description.', influence: 0.3 + (i % 4) * 0.15, impact: ['moderate', 'low', 'high'][i % 3], authenticity: 0.2 + (i % 5) * 0.12,
+    platforms: [['Twitter', 46 - i * 3], ['reddit', 24], ['Facebook', 18], ['4chan', 6 + i]], sites: [['[COPY TBD] site 1', 420 - i * 30], ['[COPY TBD] site 2', 210], ['[COPY TBD] site 3', 96]],
+    aligned: Object.keys(FACTION_IDS).filter((x) => x !== name).slice(i % 3, (i % 3) + 3) };
+});
+const initials = (name) => name.split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+const stanceBadge = (s) => `<span class="badge ${STANCE[s]}">${s}</span>`;
+const narrativesFor = (name) => state.order.filter((id) => NARRATIVES[id].factions.includes(name));
+state.factionQuery = '';
+
+function viewFactions() {
+  const q = state.factionQuery.trim().toLowerCase();
+  const ids = Object.keys(FACTIONS).filter((id) => FACTIONS[id].name.toLowerCase().includes(q));
+  return `<div class="app__column app__column--wide">
+    <div class="page-header"><div><h1 class="text-h1">Factions</h1><p class="text-small">Groups that shape the narratives around McDonalds.</p></div>
+      <div class="field search-field"><label class="visually-hidden" for="faction-q">Search factions</label>
+        <input class="input" id="faction-q" type="search" placeholder="Search factions" data-input="factionQuery" data-key="faction-q" value="${esc(state.factionQuery)}"></div></div>
+    ${ids.length ? `<ul class="faction-grid">${ids.map((id) => { const f = FACTIONS[id], n = narrativesFor(f.name).length; return `<li><a class="card card--interactive faction-tile" href="#/factions/${id}">
+        <span class="avatar ${f.stance === 'Adversarial' ? 'avatar--ink' : ''}" aria-hidden="true">${initials(f.name)}</span>
+        <span class="stack stack--tight"><span class="text-h3">${f.name}</span><span>${stanceBadge(f.stance)}</span><span class="text-caption">${n ? `In ${n} of today’s narratives` : 'Not in today’s digest'}</span></span>
+        ${icon('chevron-right', 'icon--sm')}</a></li>`; }).join('')}</ul>`
+    : `<div class="empty-state"><span class="empty-state__icon">${icon('search', 'icon--lg')}</span><h2 class="text-h2">No factions match “${esc(state.factionQuery)}”</h2><p class="text-small">Check the spelling or clear the search to see every faction.</p><button class="btn btn--secondary" data-action="faction-clear" data-key="faction-q">Clear search</button></div>`}
+  </div>`;
+}
+
+function viewFaction(id) {
+  const f = FACTIONS[id];
+  if (!f) return viewOutOfScope('This faction');
+  const stat = (title, tip, body, span) => `<section class="stat-card stat-card--${span}"><div class="stat-card__header"><h3 class="text-h3">${title}</h3>${infoBtn(tip, 'left')}</div><div class="stat-card__body">${body}</div></section>`;
+  const rows = (list, fmt, max) => `<ul class="stack stack--tight">${list.map(([name, v]) => `<li class="stat-row"><span class="text-small stat-row__name">${name}</span><span class="meter" aria-hidden="true"><span class="meter__fill" style="--meter-value:${v / max}"></span></span><span class="text-small stat-row__value">${fmt(v)}</span></li>`).join('')}</ul>`;
+  const lvl = IMPACT[f.impact].level;
+  const today = narrativesFor(f.name);
+  return `<div class="app__column app__column--wide">
+    <div class="page-header"><a class="back-link" href="#/factions">${icon('chevron-left', 'icon--sm')}Factions</a></div>
+    <article class="card faction">
+      <header class="faction__header">
+        <div class="stack">
+          <div class="cluster"><h1 class="text-display">${f.name}</h1>
+            <button class="icon-btn" data-action="an-copy" data-key="faction-link" aria-label="Copy link to this faction" data-tooltip="Copy link">${icon('link')}</button></div>
+          <div>${stanceBadge(f.stance)}</div>
+          <p class="text-lead">${f.desc}</p>
+        </div>
+        <ul class="faction__media" aria-label="Recent post images">${Array.from({ length: 6 }, (_, i) => `<li class="faction__thumb">${icon('image')}<span class="visually-hidden">Post image ${i + 1} placeholder</span></li>`).join('')}</ul>
+      </header>
+      <div class="stat-grid">
+        ${stat('Faction influence', 'How much this faction shapes the narratives it joins.', `<svg class="wedge" viewBox="0 0 200 48" role="img" aria-label="Influence ${pct(f.influence)}"><polygon class="wedge__track" points="0,48 200,48 200,0"/><polygon class="wedge__fill" points="0,48 ${200 * f.influence},48 ${200 * f.influence},${48 - 48 * f.influence}"/></svg>
+          <p class="care__value">${f.influence < 0.34 ? 'Low' : f.influence < 0.67 ? 'Moderate' : 'High'}</p>`, 2)}
+        ${stat('Faction VIPs', 'The most followed accounts in this faction.', `<div class="cluster">${[1, 2, 3, 4, 5].map((i) => `<span class="tag">[COPY TBD] VIP ${i}</span>`).join('')}</div>`, 2)}
+        ${stat('Faction impact rating', 'How loudly this faction’s activity lands with the general public.', `<ul class="megaphones" role="img" aria-label="${IMPACT[f.impact].label}">${Object.keys(IMPACT).reverse().map((k) => `<li class="megaphones__item ${k === f.impact ? `is-current impact-text--${k}` : ''}">${icon('megaphone', ['', 'icon--sm', '', 'icon--lg'][IMPACT[k].level])}<span class="text-caption">${IMPACT[k].short}</span></li>`).join('')}</ul>`, 2)}
+        ${stat('Political alignment', 'Where this faction’s accounts sit on the political spectrum.', `<ol class="alignment" role="img" aria-label="Political alignment: ${ALIGNMENT[f.alignment]}">${ALIGNMENT.map((a, i) => `<li class="alignment__step ${i === f.alignment ? 'is-current' : ''}"><span class="alignment__bar"></span><span class="text-caption">${a}</span></li>`).join('')}</ol>`, 3)}
+        ${stat('Faction authenticity', 'Share of this faction’s accounts that look inauthentic.', `<div class="stat-row">${icon('id', 'icon--lg')}<span class="meter" aria-hidden="true"><span class="meter__fill" style="--meter-value:${f.authenticity}"></span></span><span class="care__value">${pct(f.authenticity)}</span></div><p class="text-caption">of accounts appear inauthentic</p>`, 3)}
+        ${stat('Popular platforms', 'Where this faction posts most.', rows(f.platforms, (v) => v + '%', 100), 2)}
+        ${stat('Popular sites shared', 'The domains this faction links to most, by number of shares.', rows(f.sites, (v) => v.toLocaleString(), f.sites[0][1]), 2)}
+        ${stat('Aligned factions', 'Factions that often amplify the same narratives.', `<ul class="stack stack--tight">${f.aligned.map((a) => `<li><a class="link" href="#/factions/${FACTION_IDS[a]}">${a}</a></li>`).join('')}</ul>`, 2)}
+      </div>
+      <section class="stack stack--tight"><h2 class="text-h2">In today’s digest</h2>
+        ${today.length ? `<ul class="stack stack--tight">${today.map((nid) => `<li class="cluster">${impactMark(NARRATIVES[nid].impact)}<button class="link" data-action="open-narrative" data-arg="${nid}" data-key="fn-${nid}">${esc(NARRATIVES[nid].title)}</button></li>`).join('')}</ul>` : `<p class="text-small">${f.name} is not active in any of today’s narratives.</p>`}
+      </section>
+    </article></div>`;
+}
+
+/* ---------- Screens 4 + 5: Convos list, Edit a Conversation ---------- */
+const TODAY = '2021-04-22', MIN_START = '2021-04-08';
+const FIELDS = ['Post Content', 'Hashtag', 'Author'];
+const emptyGroup = () => ({ field: 'Post Content', mode: 'Any', any: [[]], not: [], platforms: [] });
+state.convos = [{ id: 'c1', name: 'McDonalds + Stakeholder Meeting', status: 'Active', start: '2021-04-12', description: 'Boycott Nestle Malaysia/Starbucks "funds" Israel',
+  groups: [
+    { field: 'Post Content', mode: 'Any', any: [['starbucks', 'nestle'], ['boycott'], ['israel']], not: ['coffee'], platforms: [] },
+    { field: 'Post Content', mode: 'Any', any: [['starbucks', 'nestle'], ['boycott']], not: [], platforms: ['twitter'] },
+  ] }];
+let draft = null, saveState = 'saved', errors = {}, undoGroup = null;
+const fmtDate = (iso) => (iso ? new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'No start date');
+
+function viewConvos() {
+  return `<div class="app__column">
+    <div class="page-header"><div><h1 class="text-h1">Convos</h1><p class="text-small">Saved queries that curate the conversations behind each digest.</p></div>
+      <button class="btn btn--primary" data-action="convo-new" data-key="convo-new">${icon('plus', 'icon--sm')}New conversation</button></div>
+    <ul class="card-list">${state.convos.map((c) => `<li><a class="card card--interactive convo-tile" href="#/convos/${c.id}">
+      <span class="empty-state__icon" aria-hidden="true">${icon('message')}</span>
+      <span class="stack stack--tight analysis__grow"><span class="cluster"><span class="text-h3">${esc(c.name || 'Untitled conversation')}</span><span class="badge ${c.status === 'Active' ? 'badge--success' : 'badge--outline'}">${c.status}</span></span>
+        <span class="text-small">${esc(c.description || 'No description')}</span>
+        <span class="text-caption">${c.groups.length} query ${c.groups.length === 1 ? 'group' : 'groups'} · From ${fmtDate(c.start)} to present</span></span>
+      ${icon('chevron-right', 'icon--sm')}</a></li>`).join('')}</ul></div>`;
+}
+
+const listAt = (path) => { const [g, kind, row] = path.split(':'); const grp = draft.groups[g]; return kind === 'any' ? grp.any[row] : grp[kind]; };
+function tagInput(path, label, placeholder) {
+  const list = listAt(path);
+  return `<div class="tag-input" data-tags="${path}">${list.map((t, i) => `<span class="tag">${esc(t)}<button class="tag__remove" data-action="tag-remove" data-arg="${path}|${i}" data-key="tr-${path}-${i}" aria-label="Remove ${esc(t)}">${icon('x')}</button></span>`).join('')}
+    <input class="tag-input__field" data-tag-field="${path}" data-key="tf-${path}" aria-label="${label}" placeholder="${list.length ? '' : placeholder}"></div>`;
+}
+
+function saveBar() {
+  const btn = saveState === 'saving' ? `<button class="btn btn--primary" aria-busy="true" disabled><span class="spinner"></span>Saving</button>`
+    : saveState === 'saved' ? `<button class="btn btn--success" disabled data-key="convo-save">${icon('check', 'icon--sm')}Saved</button>`
+    : `<button class="btn btn--primary" data-action="convo-save" data-key="convo-save">Save changes</button>`;
+  return `${btn}<span class="text-small" role="status">${saveState === 'dirty' ? 'You have unsaved changes.' : saveState === 'saving' ? '' : 'All changes saved.'}</span>`;
+}
+function markDirty() { if (saveState !== 'saving') saveState = 'dirty'; const b = $('#save-bar'); if (b) b.innerHTML = saveBar(); }
+
+function viewConvo(id) {
+  const c = state.convos.find((x) => x.id === id);
+  if (!c) return viewOutOfScope('This conversation');
+  if (!draft || draft.id !== id) { draft = structuredClone(c); saveState = c.status === 'Draft' && !c.name ? 'dirty' : 'saved'; errors = {}; }
+  const group = (g, gi) => `
+    ${gi ? `<p class="text-overline query-or">Or</p>` : ''}
+    <fieldset class="query"><legend class="visually-hidden">Query group ${gi + 1}</legend>
+      <div class="query__grid">
+        <div class="cluster cluster--nowrap"><label class="visually-hidden" for="qf-${gi}">Field</label>
+          <select class="select select--sm select--auto" id="qf-${gi}" data-select="${gi}:field" data-key="qf-${gi}">${FIELDS.map((x) => `<option ${x === g.field ? 'selected' : ''}>${x}</option>`).join('')}</select>
+          <span class="text-small">Contains</span><label class="visually-hidden" for="qm-${gi}">Match</label>
+          <select class="select select--sm select--auto" id="qm-${gi}" data-select="${gi}:mode" data-key="qm-${gi}">${['Any', 'All'].map((x) => `<option ${x === g.mode ? 'selected' : ''}>${x}</option>`).join('')}</select></div>
+        ${tagInput(`${gi}:any:0`, 'Keywords', 'Type keyword and press Enter')}
+        <span class="text-small cluster cluster--nowrap">And not ${infoBtn('Posts with any of these keywords are left out.')}</span>
+        ${tagInput(`${gi}:not`, 'Excluded keywords', 'Type keyword and press Enter')}
+        ${g.any.slice(1).map((_, k) => `<span class="text-small query__label">And any of</span>
+          <div class="cluster cluster--nowrap">${tagInput(`${gi}:any:${k + 1}`, 'Keywords', 'Type keyword and press Enter')}<button class="icon-btn icon-btn--sm" data-action="cond-remove" data-arg="${gi}:${k + 1}" data-key="cr-${gi}-${k + 1}" aria-label="Remove condition">${icon('x', 'icon--sm')}</button></div><span></span><span></span>`).join('')}
+      </div>
+      <div class="cluster cluster--between">
+        <div class="cluster"><button class="btn btn--ghost btn--sm" data-action="cond-add" data-arg="${gi}" data-key="ca-${gi}">${icon('plus', 'icon--sm')}Add condition</button>
+          <div class="query__platforms">${tagInput(`${gi}:platforms`, 'Platforms', 'Platforms: leave blank for all')}</div></div>
+        <button class="icon-btn icon-btn--sm" data-action="group-remove" data-arg="${gi}" data-key="gr-${gi}" aria-label="Delete query group ${gi + 1}" data-tooltip="${draft.groups.length > 1 ? 'Delete group' : 'A conversation needs one query group'}" data-tooltip-side="left" ${draft.groups.length > 1 ? '' : 'disabled'}>${icon('trash', 'icon--sm')}</button>
+      </div>
+    </fieldset>`;
+  return `<div class="app__column app__column--wide">
+    <div class="page-header"><div class="cluster"><a class="back-link" href="#/convos">${icon('chevron-left', 'icon--sm')}Back</a><h1 class="text-h1">${c.name ? 'Edit a Conversation' : 'New conversation'}</h1></div></div>
+    <form class="card convo-form" novalidate data-form="convo">
+      <div class="convo-form__basics">
+        <div class="field"><label class="field__label" for="cv-name">Name ${infoBtn('Shown in the Convos list and in digests built from this conversation.')}</label>
+          <input class="input" id="cv-name" data-field="name" data-key="cv-name" value="${esc(draft.name)}" placeholder="McDonalds + Stakeholder Meeting" ${errors.name ? 'aria-invalid="true" aria-describedby="cv-name-err"' : ''}>
+          ${errors.name ? `<span class="field__error" id="cv-name-err">${icon('info', 'icon--sm')}${errors.name}</span>` : ''}</div>
+        <div class="field"><label class="field__label" for="cv-start">Start date ${infoBtn('Conversations collect posts from the start date to the present.')}</label>
+          <div class="field__row"><input class="input input--auto" id="cv-start" type="date" data-field="start" data-key="cv-start" value="${draft.start}" min="${MIN_START}" max="${TODAY}" aria-describedby="cv-start-hint" ${errors.start ? 'aria-invalid="true"' : ''}><span class="text-small">to present</span></div>
+          ${errors.start ? `<span class="field__error" id="cv-start-hint">${icon('info', 'icon--sm')}${errors.start}</span>` : `<span class="field__hint" id="cv-start-hint">Maximum range is 2 weeks: ${fmtDate(MIN_START)} or later.</span>`}</div>
+        <div class="field"><label class="field__label" for="cv-desc">Description</label>
+          <textarea class="textarea" id="cv-desc" data-field="description" data-key="cv-desc" placeholder="What is this conversation tracking?">${esc(draft.description)}</textarea></div>
+      </div>
+      <section class="stack" aria-labelledby="queries-h">
+        <div class="cluster cluster--between">
+          <div><h2 class="text-h2 cluster" id="queries-h">Queries ${infoBtn('Each group is a set of keyword conditions. A post matches the conversation if it matches any group.')}</h2><p class="text-small">Match any of the following conditions</p></div>
+          <div class="cluster"><button class="link" data-action="proto-note" data-arg="Querying best practices opens the help centre in the full product" data-key="best">Querying best practices</button>
+            <button class="btn btn--tonal btn--sm" data-action="proto-note" data-arg="Import is not part of this prototype" data-key="import">${icon('download', 'icon--sm')}Import queries</button>
+            <button class="icon-btn icon-btn--sm" data-action="proto-note" data-arg="Queries exported" data-key="export" aria-label="Export queries" data-tooltip="Export queries" data-tooltip-side="left">${icon('upload', 'icon--sm')}</button></div>
+        </div>
+        ${draft.groups.map(group).join('')}
+        <div><button class="btn btn--secondary btn--sm" data-action="group-add" data-key="group-add">${icon('plus', 'icon--sm')}Add query group</button></div>
+      </section>
+      <div class="convo-form__footer" id="save-bar">${saveBar()}</div>
+    </form></div>`;
+}
+
+function commitTag(field) {
+  const v = field.value.trim().replace(/,$/, '').trim();
+  if (!v) return false;
+  const list = listAt(field.dataset.tagField);
+  if (!list.includes(v)) list.push(v);
+  markDirty(); render(field.dataset.key); return true;
+}
+
+/* ---------- Screens 6 + 7: Alerts list, Alert details ---------- */
+// Rows and the Day of Action thread come from the original Alerts screens. Account names are anonymised and
+// dates moved before the digest date (Apr 22, 2021) so the prototype reads as one moment in time.
+const DAY_OF_ACTION = {
+  mentions: 10, date: '2021-04-20',
+  root: { text: 'BREAKING: @McDonalds workers in Phoenix are on strike today after at least four employees contracted COVID at the store in the last month.', time: '10:29 AM', platform: 'Twitter' },
+  replies: [
+    { author: 'User 4471', text: '@McDonalds Oh boy, can’t wait for unemployment to be 30% again, this country is a total failure.', time: '2:55 PM', platform: 'Twitter' },
+    { author: 'User 2093', text: '@fightfor15 @chifightfor15 @McDonalds Solidarity comrades', time: '11:28 PM', platform: 'Twitter' },
+    { author: 'User 8810', text: '@fightfor15 @McDonalds Wow, that smooth framerate though.', time: '11:58 PM', platform: 'Twitter' },
+  ],
+  originating: ['Populist Left', 'FightFor15'],
+  amplifying: ['Populist Left', 'FightFor15', 'UK Labor Party', 'Mainstream Left', 'MeToo Movement Activists', 'Cosplay', 'Nurses', 'LGBTQ+ and Allies', 'Free Palestine'],
+};
+state.alertList = [
+  { id: 'day-of-action', title: 'May 19 Day of Action', convo: 'Incident Report: Day of Action May 19th', keyword: 'Day of action', faction: '', created: '2021-04-20', thread: DAY_OF_ACTION },
+  { id: 'shareholder-incident', title: 'Shareholder Meeting and McDonald’s + Fringe Trolls + Incident Reporting', convo: 'Incident Report: McDonald’s May Shareholder Meeting', keyword: 'Shareholder meeting McDonald’s', faction: '', created: '2021-04-16' },
+  { id: 'stakeholder', title: 'McDonalds + Stakeholder Meeting', convo: 'McDonalds + Stakeholder Meeting', keyword: 'boycott', faction: '', created: '2021-04-12' },
+  { id: 'mcdc-nft', title: 'McDonald’s + MCDC', convo: 'Topic 1: McDonald’s Fringe', keyword: 'MCDC', faction: 'Non-Fungible Token (NFT) Enthusiasts', created: '2021-04-02' },
+  { id: 'shareholder', title: 'Shareholder Meeting', convo: 'Topic 1: McDonald’s Fringe', keyword: 'MCDC', faction: 'Cryptocurrency Promoters', created: '2021-03-15' },
+  { id: 'fringe', title: 'McDonald’s + Fringe Trolls & Extremists', convo: 'Topic 1: McDonald’s Fringe', keyword: 'MCDC', faction: '', created: '2021-03-15' },
+];
+state.alerts.add('cups');
+state.alertQuery = '';
+state.alertPage = 1;
+let alertQueryShown = '', undoAlert = null;
+const ALERT_PAGE_SIZE = 5;
+
+// Alerts turned on from "What can I do?" join the list as narrative alerts.
+const narrativeAlert = (nid) => ({ id: 'n-' + nid, narrative: nid, title: NARRATIVES[nid].title, convo: state.title, keyword: 'Impact or trajectory change', faction: NARRATIVES[nid].factions[0], created: TODAY });
+const allAlerts = () => [...[...state.alerts].map(narrativeAlert), ...state.alertList].sort((a, b) => b.created.localeCompare(a.created));
+const factionLink = (name) => (FACTION_IDS[name] ? `<a class="link text-small" href="#/factions/${FACTION_IDS[name]}">${esc(name)}</a>` : `<span class="text-small">${esc(name)}</span>`);
+
+function viewAlerts() {
+  const q = state.alertQuery.trim().toLowerCase();
+  if (state.alertQuery !== alertQueryShown) { state.alertPage = 1; alertQueryShown = state.alertQuery; }
+  const rows = allAlerts().filter((a) => !q || [a.title, a.convo, a.keyword, a.faction].some((v) => v.toLowerCase().includes(q)));
+  const pages = Math.max(1, Math.ceil(rows.length / ALERT_PAGE_SIZE));
+  state.alertPage = Math.min(state.alertPage, pages);
+  const from = (state.alertPage - 1) * ALERT_PAGE_SIZE, shown = rows.slice(from, from + ALERT_PAGE_SIZE);
+  const menu = (a) => `<div class="row-menu">
+      <button class="icon-btn icon-btn--sm" data-action="pop" data-arg="alert-${a.id}" data-key="pop-alert-${a.id}" data-pop aria-label="Actions for ${esc(a.title)}" aria-expanded="${state.pop === 'alert-' + a.id}">${icon('more', 'icon--sm')}</button>
+      ${state.pop === 'alert-' + a.id ? `<div class="popover popover--menu" role="menu" aria-label="Alert actions">
+        <a class="menu__item" role="menuitem" href="#/alerts/${a.id}">View details</a>
+        <button class="menu__item" role="menuitem" data-action="alert-delete" data-arg="${a.id}" data-key="del-${a.id}">Delete alert</button></div>` : ''}
+    </div>`;
+  const page = (n) => `<button class="pagination__page" data-action="alert-page" data-arg="${n}" data-key="page-${n}" ${n === state.alertPage ? 'aria-current="page"' : ''} aria-label="Page ${n}">${n}</button>`;
+  return `<div class="app__column app__column--wide">
+    <div class="page-header"><div><h1 class="text-h1">Alerts</h1><p class="text-small">Get told when a conversation, keyword or faction picks up new mentions.</p></div>
+      <div class="cluster"><div class="field search-field"><label class="visually-hidden" for="alert-q">Search alerts</label>
+        <input class="input" id="alert-q" type="search" placeholder="Search alerts" data-input="alertQuery" data-key="alert-q" value="${esc(state.alertQuery)}"></div>
+        <button class="btn btn--primary" data-action="alert-new" data-key="alert-new">${icon('plus', 'icon--sm')}Add alert</button></div></div>
+    ${rows.length ? `<section class="card alerts-card" aria-label="Alerts">
+      <table class="table">
+        <thead><tr><th scope="col" class="table__title">Title</th><th scope="col">Conversation</th><th scope="col">Keyword</th><th scope="col">Faction</th><th scope="col">Created</th><th scope="col" class="table__actions"><span class="visually-hidden">Actions</span></th></tr></thead>
+        <tbody>${shown.map((a) => `<tr>
+          <td><a class="link" href="#/alerts/${a.id}" data-key="alert-${a.id}">${esc(a.title)}</a></td>
+          <td>${esc(a.convo)}</td><td>${esc(a.keyword)}</td>
+          <td>${a.faction ? esc(a.faction) : '<span class="text-caption">Any faction</span>'}</td>
+          <td class="table__date">${fmtDate(a.created)}</td>
+          <td class="table__actions">${menu(a)}</td></tr>`).join('')}</tbody>
+      </table>
+      <div class="alerts-footer">
+        <span class="text-small" aria-live="polite">Showing ${from + 1} to ${from + shown.length} of ${rows.length} alerts</span>
+        ${pages > 1 ? `<nav class="pagination" aria-label="Alert pages">
+          <button class="icon-btn icon-btn--sm" data-action="alert-page" data-arg="${state.alertPage - 1}" data-key="page-prev" aria-label="Previous page" ${state.alertPage === 1 ? 'disabled' : ''}>${icon('chevron-left', 'icon--sm')}</button>
+          ${Array.from({ length: pages }, (_, i) => page(i + 1)).join('')}
+          <button class="icon-btn icon-btn--sm" data-action="alert-page" data-arg="${state.alertPage + 1}" data-key="page-next" aria-label="Next page" ${state.alertPage === pages ? 'disabled' : ''}>${icon('chevron-right', 'icon--sm')}</button></nav>` : ''}
+      </div></section>`
+    : q ? `<div class="empty-state"><span class="empty-state__icon">${icon('search', 'icon--lg')}</span><h2 class="text-h2">No alerts match “${esc(state.alertQuery)}”</h2><p class="text-small">Search looks at titles, conversations, keywords and factions.</p><button class="btn btn--secondary" data-action="alert-clear" data-key="alert-q">Clear search</button></div>`
+    : `<div class="empty-state"><span class="empty-state__icon">${icon('bell', 'icon--lg')}</span><h2 class="text-h2">No alerts yet</h2><p class="text-small">Add an alert to hear when a conversation picks up new mentions.</p><button class="btn btn--primary" data-action="alert-new" data-key="alert-new-empty">${icon('plus', 'icon--sm')}Add alert</button></div>`}
+  </div>`;
+}
+
+function viewAlert(id) {
+  const a = allAlerts().find((x) => x.id === id);
+  if (!a) return `<div class="app__column"><div class="page-header"><a class="back-link" href="#/alerts">${icon('chevron-left', 'icon--sm')}Alerts</a></div>
+    <div class="empty-state"><span class="empty-state__icon">${icon('bell', 'icon--lg')}</span><h1 class="text-h2">This alert was deleted</h1><p class="text-small">It no longer collects mentions. Go back to see your other alerts.</p><a class="btn btn--secondary" href="#/alerts">Back to Alerts</a></div></div>`;
+  const n = a.narrative && NARRATIVES[a.narrative];
+  const t = a.thread || (n && { mentions: 1, date: a.created, root: { text: n.post, time: '9:00 AM', platform: 'Twitter' }, replies: [], originating: n.factions.slice(0, 1), amplifying: n.factions });
+  const meta = (p, date) => `<ul class="thread__meta">${p.author ? `<li><strong>${esc(p.author)}</strong></li>` : ''}<li>${date ? fmtDate(date) + ' at ' : ''}${p.time}</li><li>${p.platform}</li></ul>`;
+  const factions = (title, list) => `<div class="stack stack--tight"><h3 class="text-overline">${title}</h3><ul class="faction-list">${list.map((x) => `<li>${factionLink(x)}</li>`).join('')}</ul></div>`;
+  const shownCount = t ? 1 + t.replies.length : 0;
+  return `<div class="app__column app__column--wide">
+    <div class="page-header"><div class="stack stack--tight"><a class="back-link" href="#/alerts">${icon('chevron-left', 'icon--sm')}Alerts</a>
+      <h1 class="text-h1">${esc(a.title)}</h1></div>
+      <button class="btn btn--secondary btn--sm" data-action="alert-delete" data-arg="${a.id}" data-key="detail-delete">${icon('trash', 'icon--sm')}Delete alert</button></div>
+    <div class="alert-detail">
+      ${t ? `<section class="card alert-detail__thread" aria-labelledby="thread-h">
+        <div class="cluster cluster--between"><h2 class="text-h2" id="thread-h">Thread</h2>
+          <span class="text-caption">${t.mentions} ${t.mentions === 1 ? 'mention' : 'mentions'} on ${fmtDate(t.date)}${shownCount < t.mentions ? ` · showing ${shownCount}` : ''}</span></div>
+        <div class="thread">
+          <article class="thread__post"><p class="text-overline">Original post</p><p class="text-body thread__text">${esc(t.root.text)}</p>${meta(t.root, t.date)}</article>
+          ${t.replies.length ? `<ul class="thread__replies" aria-label="Replies">${t.replies.map((r) => `<li><article class="thread__post"><p class="text-body thread__text">${esc(r.text)}</p>${meta(r)}</article></li>`).join('')}</ul>` : ''}
+        </div></section>`
+      : `<div class="empty-state"><span class="empty-state__icon">${icon('bell', 'icon--lg')}</span><h2 class="text-h2">No mentions yet</h2><p class="text-small">Nothing has matched this alert since ${fmtDate(a.created)}. New mentions will appear here as they are found.</p></div>`}
+      <aside class="alert-detail__aside">
+        <section class="card stack" aria-labelledby="criteria-h"><h2 class="text-h3" id="criteria-h">Alert criteria</h2>
+          <dl class="summary-list text-small"><dt>Conversation</dt><dd>${esc(a.convo)}</dd><dt>Keyword</dt><dd>${esc(a.keyword)}</dd><dt>Faction</dt><dd>${a.faction ? esc(a.faction) : 'Any faction'}</dd><dt>Created</dt><dd>${fmtDate(a.created)}</dd></dl>
+          ${n ? `<p><button class="link text-small" data-action="open-narrative" data-arg="${a.narrative}" data-key="alert-narrative">Open the narrative analysis</button></p>` : ''}</section>
+        ${t ? `<section class="card stack" aria-labelledby="factions-h"><h2 class="text-h3" id="factions-h">Participating factions</h2>
+          ${factions('Originating', t.originating)}${factions('Amplifying', t.amplifying)}</section>` : ''}
+      </aside>
+    </div></div>`;
+}
+
+function alertForm() {
+  const convos = [...new Set([...state.convos.filter((c) => c.name).map((c) => c.name), ...state.alertList.map((a) => a.convo)])];
+  return `<div class="modal__header"><h2 class="text-h1">Add alert</h2><button class="icon-btn" data-action="modal-close" aria-label="Close">${icon('x')}</button></div>
+    <div class="modal__body stack">
+      <div class="field"><label class="field__label" for="al-title">Title</label><input class="input" id="al-title" autofocus placeholder="May 19 Day of Action" aria-describedby="al-title-hint"><span class="field__hint" id="al-title-hint">Shown in the Alerts list.</span></div>
+      <div class="field"><label class="field__label" for="al-convo">Conversation</label><select class="select" id="al-convo">${convos.map((c) => `<option>${esc(c)}</option>`).join('')}</select></div>
+      <div class="field"><label class="field__label" for="al-keyword">Keyword</label><input class="input" id="al-keyword" placeholder="Day of action" aria-describedby="al-keyword-hint"><span class="field__hint" id="al-keyword-hint">Leave blank to hear about every new mention in the conversation.</span></div>
+      <div class="field"><label class="field__label" for="al-faction">Faction</label><select class="select" id="al-faction"><option value="">Any faction</option>${Object.values(FACTIONS).map((f) => `<option>${esc(f.name)}</option>`).join('')}</select></div>
+    </div>
+    <div class="modal__footer"><button class="btn btn--secondary" data-action="modal-close">Cancel</button><button class="btn btn--primary" data-action="alert-save">Add alert</button></div>`;
+}
+
+/* ---------- placeholder for sections outside the case study ---------- */
+function viewOutOfScope(name) {
+  return `<div class="app__column"><div class="page-header"><h1 class="text-h1">${name}</h1></div>
+    <div class="empty-state"><span class="empty-state__icon">${icon('layers', 'icon--lg')}</span>
+      <h2 class="text-h2">${name} is not part of this prototype</h2>
+      <p class="text-small">The prototype covers the Daily Digest, Narrative Analysis, Factions, Convos and Alerts.</p>
+      <a class="btn btn--secondary" href="#/digest">Back to Daily Digest</a></div></div>`;
+}
+
+/* ---------- router + render ---------- */
+const VIEWS = { digest: viewDigest, factions: (arg) => (arg ? viewFaction(arg) : viewFactions()), convos: (arg) => (arg ? viewConvo(arg) : viewConvos()), alerts: (arg) => (arg ? viewAlert(arg) : viewAlerts()) };
+function route() { const [, name = 'digest', arg] = location.hash.split('/'); return { name, arg }; }
+
+let lastPop = null;
+function render(focusKey) {
+  const r = route();
+  $('#sidenav').innerHTML = NAV.map((n) => `<a class="sidenav__item" href="#/${n.route}" ${r.name === n.route ? 'aria-current="page"' : ''}>
+    <span class="sidenav__icon">${n.letter ? `<strong aria-hidden="true">${n.letter}</strong>` : icon(n.icon)}</span>${n.label}</a>`).join('');
+  const view = VIEWS[r.name];
+  $('#main').innerHTML = view ? view(r.arg) : viewOutOfScope(NAV.find((n) => n.route === r.name)?.label || 'This page');
+  renderPanel();
+  if (state.pop && state.pop === lastPop) $$('.popover').forEach((p) => p.classList.add('is-static'));
+  lastPop = state.pop;
+  if (focusKey) $(`[data-key="${CSS.escape(focusKey)}"]`)?.focus();
+}
+
+/* ---------- toast ---------- */
+function toast(message, undo) {
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.innerHTML = `${icon('check', 'icon--sm')}<span>${esc(message)}</span>${undo ? `<button class="link" data-undo>${undo.label}</button>` : ''}<button class="icon-btn icon-btn--sm" data-dismiss aria-label="Dismiss">${icon('x', 'icon--sm')}</button>`;
+  el.querySelector('[data-dismiss]').onclick = () => el.remove();
+  if (undo) el.querySelector('[data-undo]').onclick = () => { undo.run(); el.remove(); };
+  $('#toasts').append(el);
+  setTimeout(() => el.remove(), 4500);
+}
+
+/* ---------- modal ---------- */
+let modalReturn = null;
+function openModal(html, { label, small } = {}) {
+  modalReturn = document.activeElement;
+  $('#modal-root').innerHTML = `<div class="scrim" data-action="modal-scrim"><div class="modal ${small ? 'modal--sm' : 'modal--full'}" role="dialog" aria-modal="true" aria-label="${esc(label)}">${html}</div></div>`;
+  ($('#modal-root [autofocus]') || $('#modal-root button'))?.focus();
+}
+function closeModal() {
+  if (!$('#modal-root').firstChild) return;
+  $('#modal-root').innerHTML = '';
+  if (modalReturn?.dataset?.key) $(`[data-key="${CSS.escape(modalReturn.dataset.key)}"]`)?.focus();
+  modalReturn = null;
+}
+
+/* ---------- actions ---------- */
+const ACTIONS = {
+  pop: (arg) => { state.pop = state.pop === arg ? null : arg; },
+  filter: (arg) => { const [g, v] = arg.split(/:(.*)/); const s = state.filters[g]; s.has(v) ? s.delete(v) : s.add(v); },
+  'filter-flagged': () => { state.filters.flagged = !state.filters.flagged; },
+  'filter-clear': () => { const f = state.filters; f.impact.clear(); f.trajectory.clear(); f.faction.clear(); f.flagged = false; },
+  sort: (arg) => { state.sort = arg; state.pop = null; return 'pop-sort'; },
+  star: (arg) => { state.starred.has(arg) ? state.starred.delete(arg) : state.starred.add(arg); },
+  collapse: (arg) => { state.collapsed.has(arg) ? state.collapsed.delete(arg) : state.collapsed.add(arg); },
+  day: (arg) => { state.day = Math.max(0, Math.min(DAYS.length - 1, state.day + Number(arg))); state.pop = null; return state.day ? 'day-next' : 'day-prev'; },
+  'curate-open': () => { state.curate = { open: true, step: 1 }; state.pop = null; return 'title-input'; },
+  'curate-close': () => { state.curate.open = false; state.pop = null; return 'curate'; },
+  'curate-step': (arg) => { state.curate.step = Number(arg); state.pop = null; return arg === '2' ? 'publish' : 'curate-next'; },
+  move: (arg) => { const [id, d] = arg.split(':'); const i = state.order.indexOf(id), j = i + Number(d); [state.order[i], state.order[j]] = [state.order[j], state.order[i]]; },
+  remove: (arg) => { state.order = state.order.filter((x) => x !== arg); state.removed.push(arg); return 'pop-add'; },
+  restore: (arg) => { state.removed = state.removed.filter((x) => x !== arg); state.order.push(arg); state.pop = null; return 'pop-add'; },
+  publish: () => { state.curate.open = false; toast('Digest published'); return 'curate'; },
+  signout: () => { toast('Sign out is disabled in this prototype'); },
+  feedback: () => {
+    openModal(`<div class="modal__header"><h2 class="text-h1" id="fb-title">Submit feedback</h2><button class="icon-btn" data-action="modal-close" aria-label="Close">${icon('x')}</button></div>
+      <div class="modal__body"><div class="field"><label class="field__label" for="fb-text">What should we know?</label>
+        <textarea class="textarea" id="fb-text" autofocus rows="5" aria-describedby="fb-hint"></textarea>
+        <span class="field__hint" id="fb-hint">Goes to the Yonder product team.</span></div></div>
+      <div class="modal__footer"><button class="btn btn--secondary" data-action="modal-close">Cancel</button><button class="btn btn--primary" data-action="feedback-send">Send feedback</button></div>`, { label: 'Submit feedback', small: true });
+    return false;
+  },
+  'feedback-send': () => {
+    const t = $('#fb-text');
+    if (!t.value.trim()) { t.setAttribute('aria-invalid', 'true'); $('#fb-hint').className = 'field__error'; $('#fb-hint').textContent = 'Write a few words before sending.'; t.focus(); return false; }
+    closeModal(); toast('Feedback sent. Thank you.'); return false;
+  },
+  'modal-close': () => { closeModal(); return false; },
+  'open-narrative': (arg) => {
+    Object.assign(analysis, { id: arg, tab: 'who', noteOpen: false, idx: null }); analysis.hidden.clear();
+    openModal('', { label: `Narrative analysis: ${NARRATIVES[arg].title}` }); renderAnalysis(); return false;
+  },
+  'an-tab': (arg) => { analysis.tab = arg; analysis.noteOpen = false; renderAnalysis(); return false; },
+  'an-series': (arg, t) => { analysis.hidden.has(arg) ? analysis.hidden.delete(arg) : analysis.hidden.add(arg); renderAnalysis(t.dataset.key); return false; },
+  'an-note-open': () => { analysis.noteOpen = true; renderAnalysis('note-text'); return false; },
+  'an-note-cancel': () => { analysis.noteOpen = false; renderAnalysis('note-add'); return false; },
+  'an-note-save': () => {
+    const v = $('#note-text').value.trim();
+    if (!v) { $('#note-text').setAttribute('aria-invalid', 'true'); $('#note-text').focus(); return false; }
+    (state.notes[analysis.id] ||= []).push(v); analysis.noteOpen = false; renderAnalysis('note-add'); return false;
+  },
+  'an-note-delete': (arg) => { state.notes[analysis.id].splice(Number(arg), 1); renderAnalysis('note-add'); return false; },
+  'an-alert': () => { const id = analysis.id; state.alerts.has(id) ? state.alerts.delete(id) : state.alerts.add(id); renderAnalysis('an-alert'); toast(state.alerts.has(id) ? 'Alert turned on' : 'Alert turned off'); return false; },
+  'faction-clear': () => { state.factionQuery = ''; },
+  'alert-clear': () => { state.alertQuery = ''; },
+  'alert-page': (arg) => { state.alertPage = Number(arg); return 'page-' + arg; },
+  'alert-new': () => { openModal(alertForm(), { label: 'Add alert', small: true }); return false; },
+  'alert-save': () => {
+    const title = $('#al-title');
+    if (!title.value.trim()) { title.setAttribute('aria-invalid', 'true'); $('#al-title-hint').className = 'field__error'; $('#al-title-hint').textContent = 'Give this alert a title.'; title.focus(); return false; }
+    state.alertList.unshift({ id: 'a' + Date.now(), title: title.value.trim(), convo: $('#al-convo').value, keyword: $('#al-keyword').value.trim() || 'Any new mention', faction: $('#al-faction').value, created: TODAY });
+    state.alertQuery = ''; alertQueryShown = ''; state.alertPage = 1; closeModal(); render('alert-new'); toast('Alert added'); return false;
+  },
+  'alert-delete': (arg) => {
+    const onDetail = route().arg === arg;
+    if (arg.startsWith('n-')) { const nid = arg.slice(2); state.alerts.delete(nid); undoAlert = () => state.alerts.add(nid); }
+    else { const i = state.alertList.findIndex((a) => a.id === arg), [row] = state.alertList.splice(i, 1); undoAlert = () => state.alertList.splice(i, 0, row); }
+    state.pop = null;
+    toast('Alert deleted', { label: 'Undo', run: () => { undoAlert(); render(); } });
+    if (onDetail) { location.hash = '#/alerts'; return false; }
+    return 'alert-new';
+  },
+  'proto-note': (arg) => { toast(arg); return false; },
+  'convo-new': () => { const id = 'c' + (state.convos.length + 1); state.convos.push({ id, name: '', status: 'Draft', start: '', description: '', groups: [emptyGroup()] }); location.hash = `#/convos/${id}`; return false; },
+  'tag-remove': (arg) => { const [path, i] = arg.split('|'); listAt(path).splice(Number(i), 1); markDirty(); return 'tf-' + path; },
+  'cond-add': (arg) => { draft.groups[arg].any.push([]); markDirty(); return `tf-${arg}:any:${draft.groups[arg].any.length - 1}`; },
+  'cond-remove': (arg) => { const [g, r] = arg.split(':'); draft.groups[g].any.splice(Number(r), 1); markDirty(); return 'ca-' + g; },
+  'group-add': () => { draft.groups.push(emptyGroup()); markDirty(); return `tf-${draft.groups.length - 1}:any:0`; },
+  'group-remove': (arg) => {
+    undoGroup = { index: Number(arg), group: draft.groups.splice(Number(arg), 1)[0] }; markDirty();
+    toast('Query group deleted', { label: 'Undo', run: () => { draft.groups.splice(undoGroup.index, 0, undoGroup.group); render('group-add'); } });
+    return 'group-add';
+  },
+  'convo-save': () => {
+    errors = {};
+    if (!draft.name.trim()) errors.name = 'Give this conversation a name.';
+    if (!draft.start) errors.start = 'Choose a start date.';
+    else if (draft.start < MIN_START || draft.start > TODAY) errors.start = `Choose a date between ${fmtDate(MIN_START)} and ${fmtDate(TODAY)}.`;
+    if (errors.name || errors.start) { render(errors.name ? 'cv-name' : 'cv-start'); return false; }
+    saveState = 'saving'; render();
+    setTimeout(() => { draft.status = 'Active'; Object.assign(state.convos.find((x) => x.id === draft.id), structuredClone(draft)); saveState = 'saved'; if (route().name === 'convos') render('convo-save'); toast('Conversation saved'); }, 900);
+    return false;
+  },
+  'an-copy': () => { navigator.clipboard?.writeText(location.href).catch(() => {}); toast('Link copied'); return false; },
+};
+
+document.addEventListener('click', (e) => {
+  const scrim = e.target.closest('[data-action="modal-scrim"]');
+  if (scrim && e.target === scrim) return closeModal();
+  const t = e.target.closest('[data-action]');
+  if (state.pop && !e.target.closest('.popover, [data-pop]')) { state.pop = null; if (!t) return render(); }
+  if (!t || t.disabled || t.dataset.action === 'modal-scrim') return;
+  if (t.tagName === 'INPUT') return; // handled on change
+  const key = t.dataset.key;
+  const result = ACTIONS[t.dataset.action]?.(t.dataset.arg, t);
+  if (result !== false) render(typeof result === 'string' ? result : key);
+});
+document.addEventListener('change', (e) => {
+  const t = e.target.closest('input[data-action]');
+  if (t) { ACTIONS[t.dataset.action](t.dataset.arg, t); render(t.dataset.key); }
+});
+document.addEventListener('input', (e) => {
+  const t = e.target;
+  if (t.dataset.input) {
+    state[t.dataset.input] = t.value;
+    const pos = t.selectionStart;
+    render(t.dataset.key);
+    $(`[data-key="${t.dataset.key}"]`)?.setSelectionRange(pos, pos);
+  }
+  if (t.dataset.field) { draft[t.dataset.field] = t.value; markDirty(); }
+  if (t.dataset.tagField && t.value.endsWith(',')) commitTag(t);
+});
+document.addEventListener('change', (e) => {
+  const t = e.target;
+  if (t.dataset.select) { const [g, k] = t.dataset.select.split(':'); draft.groups[g][k] = t.value; markDirty(); }
+});
+document.addEventListener('submit', (e) => e.preventDefault());
+document.addEventListener('focusout', (e) => { if (e.target.dataset?.tagField && e.target.value.trim()) { const list = listAt(e.target.dataset.tagField), v = e.target.value.trim(); if (!list.includes(v)) list.push(v); e.target.value = ''; markDirty(); setTimeout(() => render(document.activeElement?.dataset?.key), 0); } });
+document.addEventListener('click', (e) => { const w = e.target.closest('.tag-input'); if (w && !e.target.closest('button')) $('.tag-input__field', w).focus(); });
+document.addEventListener('keydown', (e) => {
+  if (e.target.dataset?.tagField) {
+    if (e.key === 'Enter') { e.preventDefault(); commitTag(e.target); return; }
+    if (e.key === 'Backspace' && !e.target.value) { const list = listAt(e.target.dataset.tagField); if (list.length) { list.pop(); markDirty(); render(e.target.dataset.key); } return; }
+  }
+  if (e.key === 'Escape') {
+    if ($('#modal-root').firstChild) return closeModal();
+    if (state.pop) { const k = 'pop-' + state.pop; state.pop = null; return render(k); }
+    if (state.curate.open) { state.curate.open = false; return render('curate'); }
+  }
+  if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && e.target.getAttribute?.('role') === 'tab') {
+    const i = TABS.findIndex(([k]) => k === analysis.tab);
+    analysis.tab = TABS[(i + (e.key === 'ArrowRight' ? 1 : TABS.length - 1)) % TABS.length][0];
+    return renderAnalysis();
+  }
+  if (e.key === 'Tab' && $('#modal-root').firstChild) {
+    const f = $$('#modal-root button:not(:disabled), #modal-root [href], #modal-root input, #modal-root textarea, #modal-root select, #modal-root [tabindex="0"]');
+    if (!f.length) return;
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+  }
+});
+window.addEventListener('hashchange', () => { state.pop = null; state.curate.open = false; closeModal(); render(); window.scrollTo(0, 0); });
+render();
+</script>
+<script>
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href]'); if (!a) return;
+  const href = a.getAttribute('href');
+  if (href.startsWith('#')) { e.preventDefault(); location.hash = href; }
+  else if (/^(index|design-system|case-study)\.html/.test(href)) e.preventDefault();
+}, true);
+</script>
+</body>
+</html>
